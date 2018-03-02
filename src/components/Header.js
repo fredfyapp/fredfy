@@ -1,19 +1,32 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import NotLoggedIn from './NotLoggedIn';
-import LoggedIn from './LoggedIn';
+
+const LoggedInLinks = () => {
+  return (
+    <div>
+      <NavLink to='/profile' activeClassName='is-active'>Profile</NavLink>
+      <NavLink to='/logout' activeClassName='is-active'>Log Out</NavLink>
+    </div>
+  )
+};
+
+const NotLoggedInLinks = () => (
+  <div>
+    <NavLink to='/login' activeClassName='is-active'>Log In</NavLink>
+    <NavLink to='/signup' activeClassName='is-active'>Sign Up</NavLink>
+  </div>
+);
 
 const Header = () => {
-  let loginState = false;
+  let loginState = true;
 
   return (
     <header className='header'>
       <div className='header__home'>
         <NavLink to='/' activeClassName='is-active' exact={true}>Home</NavLink>
       </div>
-      {/* IF STATEMENT TO DETERMINE WHICH NAVLINKS TO SHOW DEPENDING ON LOGIN STATE */}
       <div className='header__control'>
-        {loginState ? <LoggedIn />: <NotLoggedIn />}
+        {loginState ? <LoggedInLinks />: <NotLoggedInLinks />}
       </div>
     </header>
   );
