@@ -19,8 +19,8 @@ Through a series of questions the learner will become fluent in the art of codin
 
 ## Authors
 
-* **Marcel Cruz**
-* **Leonardo São Thiago**
 * **Catalina Ravest**
+* **Leonardo São Thiago**
+* **Marcel Cruz**
 * **Thiago Rodrigues**
 * **Willyum Anglim**
