@@ -1,0 +1,12 @@
+.add-questions-form {
+  // background: purple;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  width: 60%;
+
+  > * {
+    margin: 2rem 0;
+  }
+}

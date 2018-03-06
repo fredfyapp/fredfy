@@ -18,7 +18,7 @@ const NotLoggedInLinks = () => (
 );
 
 const Header = () => {
-  let loginState = true;
+  let loginState = false;
 
   return (
     <header className='header'>
