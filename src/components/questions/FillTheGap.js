@@ -5,18 +5,15 @@
 //     super(props);
 //
 //     this.state = {
-//       category: 'mcq',
-//       questionData: {
-//         type: 'variables',
-//         title: '',
-//         correctAnswer: '',
-//         options: {
-//           one: '',
-//           two: '',
-//           three: '',
-//           four: ''
-//         }
-//       }
+//       section: '',
+//       title: '',
+//       options: {
+//         optionOne: '',
+//         optionTwo: '',
+//         optionThree: '',
+//         optionFour: ''
+//       },
+//       error: ''
 //     };
 //   }
 //
