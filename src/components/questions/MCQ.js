@@ -7,6 +7,7 @@ export default class MCQ extends React.Component {
 
     this.state = {
       section: '',
+      type: 'mcq',
       title: '',
       options: {
         optionOne: '',
@@ -80,9 +81,8 @@ export default class MCQ extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
 
-    const { section, title } = this.state;
+    const { section, type, title } = this.state;
     const { optionOne, optionTwo, optionThree, optionFour } = this.state.options;
 
     if (!section || !title || !optionOne || !optionTwo || !optionThree || !optionFour) {
@@ -91,6 +91,7 @@ export default class MCQ extends React.Component {
       this.setState(() => ({ error: '' }) );
       this.props.onSubmit({
         section,
+        type,
         title,
         options: {
           optionOne,
@@ -102,6 +103,12 @@ export default class MCQ extends React.Component {
     }
 
   };
+
+
+// CHECK THIS
+  // title = () => {
+  //   this.ref
+  // }
 
   render() {
     const { section, title, options } = this.state;
@@ -122,6 +129,8 @@ export default class MCQ extends React.Component {
           <input
             type='text'
             placeholder='Title'
+            // CHECK THIS
+            // ref='title'
             value={title}
             onChange={this.onTitleChange}
           />
