@@ -29,14 +29,17 @@ export const setQuestions = (questions) => ({
 export const startSetQuestions = () => {
   return (dispatch, getState) => {
     return database.ref(`questions`).once('value').then((snapshot) => {
-      const questions = [];
+      let questions = [];
+      let sections = [];
+
       snapshot.forEach((childSnapshot) => {
         questions.push({
           id: childSnapshot.key,
-          sections: {
+          sections: [{
             ...childSnapshot.val()
-          }
+          }]
         });
+
       });
       dispatch(setQuestions(questions));
     });

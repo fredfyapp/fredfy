@@ -8,7 +8,7 @@ export default (state = questionsReducerDefaultState, action) => {
         action.question
       ];
     case 'SET_QUESTIONS':
-      return action.questions;  
+      return action.questions;
     default:
       return state;
   }

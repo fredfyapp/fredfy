@@ -3,6 +3,7 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 import AddQuestions from '../components/questions/AddQuestions';
+import Answering from '../components/Answering';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Help from '../components/Help';
@@ -24,6 +25,7 @@ const AppRouter = () => (
       <Header />
       <Switch>
         <Route path='/' component={Home} exact={true} />
+        <Route path='/answering/:id' component={Answering} />
         <Route path='/add-questions' component={AddQuestions} />
         <Route path='/help' component={Help} />
         <Route path='/login' component={LoginPage} />
