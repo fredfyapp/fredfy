@@ -10,7 +10,9 @@ import Home from '../components/Home';
 import LoginPage from '../components/auth/LoginPage';
 import NotFoundPage from '../components/NotFoundPage';
 import Profile from '../components/auth/Profile';
+import Section from '../components/Section';
 import SignUp from '../components/auth/SignUp';
+import ChooseAWorld from '../components/ChooseAWorld';
 import Team from '../components/Team';
 import Terms from '../components/Terms';
 
@@ -27,7 +29,9 @@ const AppRouter = () => (
         <Route path='/login' component={LoginPage} />
         <Route path='/logout' component={Home} />
         <Route path='/profile' component={Profile} />
+        <Route path='/section/:id' component={Section} />
         <Route path='/signup' component={SignUp} />
+        <Route path='/choose-a-world' component={ChooseAWorld} />
         <Route path='/team' component={Team} />
         <Route path='/terms' component={Terms} />
         <Route component={NotFoundPage} />

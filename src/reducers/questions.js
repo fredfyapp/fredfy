@@ -7,6 +7,8 @@ export default (state = questionsReducerDefaultState, action) => {
         ...state,
         action.question
       ];
+    case 'SET_QUESTIONS':
+      return action.questions;  
     default:
       return state;
   }
