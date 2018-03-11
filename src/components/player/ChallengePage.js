@@ -4,22 +4,25 @@ import PropTypes from 'prop-types';
 
 // ********** COMPONENTS ********** //
 import CharacterCard from '../CharacterCard';
+import Editor from './Editor';
 import Explanation from './Explanation';
+import Modal from '../Modal';
 
-const QuestionsPage = ({}) => {
+const ChallengePage = ({}) => {
   return (
     <div>
-      <h2>QuestionsPage</h2>
+      <h2>ChallengePage</h2>
       <div>
-        <CharacterCard />
         <Explanation />
+        <CharacterCard />
+        <Editor />
       </div>
     </div>
   );
 }
 
-QuestionsPage.propTypes = {
+ChallengePage.propTypes = {
   // : PropTypes.
 };
 
-export default QuestionsPage;
+export default ChallengePage;

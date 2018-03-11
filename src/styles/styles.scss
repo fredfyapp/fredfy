@@ -2,9 +2,13 @@
 @import './base/base';
 
 // ********** COMPONENTS ********** //
+// ********** NAVIGATOR ********** //
 @import './components/content-container';
 @import './components/navigator/choose-a-character';
 @import './components/navigator/footer';
 @import './components/navigator/header';
 @import './components/navigator/navigator';
 @import './components/navigator/section';
+
+// ********** PLAYER ********** //
+@import './components/player/player';

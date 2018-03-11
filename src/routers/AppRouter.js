@@ -18,7 +18,10 @@ import Section from '../components/navigator/Section';
 import Welcome from '../components/navigator/Welcome';
 
 // ********** PLAYER ********** //
+import ChallengePage from '../components/player/ChallengePage';
 import Player from '../components/player/Player';
+import QuestionsCard from '../components/player/QuestionsCard';
+import QuestionsPage from '../components/player/QuestionsPage';
 
 // ********** NOT FOUND ********** //
 import NotFoundPage from '../components/NotFoundPage';
@@ -35,6 +38,9 @@ const AppRouter = () => (
         <Navigator path='/our-team' component={OurTeam} />
         <Navigator path='/ranking' component={Ranking} />
         <Navigator path='/section' component={Section} />
+        <Player path='/questions-page' component={QuestionsPage} />
+        <Player path='/questions-card' component={QuestionsCard} />
+        <Player path='/challenge-page' component={ChallengePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
