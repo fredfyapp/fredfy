@@ -6,13 +6,12 @@ import WorldCard from './WorldCard';
 export const ChooseAWorld = (props) => {
   return (
     <div className='page-container'>
-      {/* {console.log('choose a ChooseAWorld', props.subjects)} */}
       <h1>Choose a world</h1>
       <div>
         {
           props.subjects.map((subject) => {
             return (
-              <Link key={subject.id} to={`/section/${subject.id}`}>
+              <Link key={subject.id} to={`/${subject.id}/sections`}>
                 <WorldCard {...subject} />
               </Link>
             )
@@ -23,7 +22,7 @@ export const ChooseAWorld = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
     subjects: state.questions
   };

@@ -11,7 +11,7 @@ import Home from '../components/Home';
 import LoginPage from '../components/auth/LoginPage';
 import NotFoundPage from '../components/NotFoundPage';
 import Profile from '../components/auth/Profile';
-import Section from '../components/Section';
+import Sections from '../components/Sections';
 import SignUp from '../components/auth/SignUp';
 import ChooseAWorld from '../components/ChooseAWorld';
 import Team from '../components/Team';
@@ -25,13 +25,13 @@ const AppRouter = () => (
       <Header />
       <Switch>
         <Route path='/' component={Home} exact={true} />
-        <Route path='/answering/:id' component={Answering} />
         <Route path='/add-questions' component={AddQuestions} />
         <Route path='/help' component={Help} />
         <Route path='/login' component={LoginPage} />
         <Route path='/logout' component={Home} />
         <Route path='/profile' component={Profile} />
-        <Route path='/section/:id' component={Section} />
+        <Route path='/:subject/sections' component={Sections} />
+        <Route path='/answering/:subject/:section' component={Answering} />
         <Route path='/signup' component={SignUp} />
         <Route path='/choose-a-world' component={ChooseAWorld} />
         <Route path='/team' component={Team} />
