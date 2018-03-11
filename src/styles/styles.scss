@@ -1,2 +1,10 @@
 @import './base/settings';
 @import './base/base';
+
+// ********** COMPONENTS ********** //
+@import './components/content-container';
+@import './components/navigator/choose-a-character';
+@import './components/navigator/footer';
+@import './components/navigator/header';
+@import './components/navigator/navigator';
+@import './components/navigator/section';
