@@ -35,7 +35,7 @@ const Section = ({ database }) => {
             <Inventory />
           </div>
           <div className='ranking-panel'>
-            <SectionRanking />
+            <SectionRanking currentSection={currentSection} database={database} />
           </div>
         </div>
 
