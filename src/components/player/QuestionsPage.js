@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 import CharacterCard from '../CharacterCard';
 import Explanation from './Explanation';
 
-const QuestionsPage = ({}) => {
+const QuestionsPage = ({ database }) => {
   return (
-    <div>
+    <div className='questions-page'>
       <h2>QuestionsPage</h2>
       <div>
-        <CharacterCard />
-        <Explanation />
+        <CharacterCard character={{ "name": "Chloe" }} />
+        <Explanation section={database.learning[0].sections[0]}/>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ const database = {
       "sections": [
         {
           "sectionName": "colors",
+          "explanation": "Color (American English) or colour (Commonwealth English) is the characteristic of human visual perception described through color categories, with names such as red, orange, yellow, green, blue, or purple. This perception of color derives from the stimulation of cone cells in the human eye by electromagnetic radiation in the visible spectrum.",
           "questions": [
             {
               "title": "What is color?",

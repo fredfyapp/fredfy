@@ -36,9 +36,9 @@ const AppRouter = ({ database }) => (
         <Navigator path='/our-team' component={OurTeam} />
         <Navigator path='/ranking' database={database} component={Ranking} />
         <Navigator path='/section' database={database} component={Section} />
-        <Player path='/questions-page' component={QuestionsPage} />
-        <Player path='/questions-card' component={QuestionsCard} />
-        <Player path='/challenge-page' component={ChallengePage} />
+        <Player path='/questions-page' database={database} component={QuestionsPage} />
+        <Player path='/questions-card' database={database} component={QuestionsCard} />
+        <Player path='/challenge-page' database={database} component={ChallengePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

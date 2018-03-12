@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CharacterCard = ({ character }) => {
+const CharacterCard = ({ character = ''}) => {
   return (
     <div>
       <h2>{character.name}</h2>

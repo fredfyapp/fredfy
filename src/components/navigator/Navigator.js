@@ -1,8 +1,6 @@
 // ********** REACT ********** //
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// ********** ROUTER ********** //
 import { Route } from 'react-router-dom';
 
 // ********** COMPONENTS ********** //
