@@ -8,13 +8,14 @@ import Editor from './Editor';
 import Explanation from './Explanation';
 import Modal from '../Modal';
 
-const ChallengePage = ({}) => {
+const ChallengePage = ({ database }) => {
   return (
     <div>
       <h2>ChallengePage</h2>
       <div>
-        <Explanation />
-        <CharacterCard />
+        {console.log(database)}
+        <Explanation challenge={database.learning[0].challenges[0]} />
+        <CharacterCard character={{ "name": "Chloe" }} />
         <Editor />
       </div>
     </div>

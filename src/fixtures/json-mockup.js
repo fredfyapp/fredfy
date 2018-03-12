@@ -10,9 +10,6 @@ const database = {
             {
               "title": "What is color?",
               "options": ["Option one", "Option two", "Option three", "Option four"]
-            }, {
-              "title": "How do you change the color?",
-              "options": ["Option one", "Option two", "Option three", "Option four"]
             }
           ]
         }, {
@@ -22,13 +19,22 @@ const database = {
           "sectionName": "images",
           "questions": []
         }
+      ],
+      "challenges": [
+        {
+          "challengeTitle": "Building a portfolio",
+          "challengeExplanation": "Now you should build a portfolio with the techniques you learned",
+          "expectedOutput": "<div>portfolio</div>"
+        }
       ]
     }, {
       "subject": "html",
-      "sections": []
+      "sections": [],
+      "challenges": []
     }, {
       "subject": "javascript",
-      "sections": []
+      "sections": [],
+      "challenges": []
     }
   ],
   "users": [

@@ -11,8 +11,8 @@ const QuestionsPage = ({ database }) => {
     <div className='questions-page'>
       <h2>QuestionsPage</h2>
       <div>
-        <CharacterCard character={{ "name": "Chloe" }} />
         <Explanation section={database.learning[0].sections[0]}/>
+        <CharacterCard character={{ "name": "Chloe" }} />
       </div>
     </div>
   );
