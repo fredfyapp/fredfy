@@ -2,10 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CharacterCard = ({}) => {
+const CharacterCard = ({ character }) => {
   return (
     <div>
-      <h2>CharacterCard</h2>
+      <h2>{character.name}</h2>
     </div>
   );
 }

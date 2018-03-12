@@ -5,26 +5,15 @@ import PropTypes from 'prop-types';
 // ********** COMPONENTS ********** //
 import CharacterCard from '../CharacterCard';
 
-const ChooseACharacter = ({}) => {
+const ChooseACharacter = ({ database }) => {
   return (
     <div>
       <h2>ChooseACharacter</h2>
-      <div className='choose-a-character'>
-        <div className='characters-row'>
-          <CharacterCard />
-          <CharacterCard />
-        </div>
-
-        <div className='characters-row'>
-          <CharacterCard />
-          <CharacterCard />
-        </div>
-
-        <div className='characters-row'>
-          <CharacterCard />
-          <CharacterCard />
-        </div>
-      </div>
+      {database.characters.map((character) => {
+        return (
+          <CharacterCard key={character.name} character={character} />
+        );
+      })}
     </div>
   );
 }

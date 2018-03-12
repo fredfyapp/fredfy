@@ -8,17 +8,22 @@ import SectionRanking from './SectionRanking';
 import Inventory from './Inventory';
 import SectionCard from './SectionCard';
 
-const Section = ({}) => {
+const Section = ({ database }) => {
+  const currentSection = database.learning[0];
   return (
     <div>
-      <h2>Section</h2>
+      <h2>{currentSection.subject}</h2>
       <div className='section'>
 
         <div className='section__map'>
           <div className='section__section-cards'>
-            <SectionCard />
-            <SectionCard />
-            <SectionCard />
+
+            {currentSection.sections.map((section) => {
+              return (
+                <SectionCard key={section.sectionName} section={section}/>
+              );
+            })}
+
           </div>
           <div className='section__challenge-card'>
             <ChallengeCard />

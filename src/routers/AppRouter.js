@@ -24,18 +24,18 @@ import QuestionsPage from '../components/player/QuestionsPage';
 // ********** NOT FOUND ********** //
 import NotFoundPage from '../components/NotFoundPage';
 
-const AppRouter = (props) => (
+const AppRouter = ({ database }) => (
   <Router history={history}>
     <div>
       <Switch>
         <Navigator path='/' component={Welcome} exact={true} />
         <Navigator path='/account' component={Account} />
-        <Navigator path='/choose-a-character' component={ChooseACharacter} />
-        <Navigator path='/choose-a-world' database={props.database} component={ChooseAWorld} />
+        <Navigator path='/choose-a-character' database={database} component={ChooseACharacter} />
+        <Navigator path='/choose-a-world' database={database} component={ChooseAWorld} />
         <Navigator path='/how-it-works' component={HowItWorks} />
         <Navigator path='/our-team' component={OurTeam} />
-        <Navigator path='/ranking' database={props.database} component={Ranking} />
-        <Navigator path='/section' component={Section} />
+        <Navigator path='/ranking' database={database} component={Ranking} />
+        <Navigator path='/section' database={database} component={Section} />
         <Player path='/questions-page' component={QuestionsPage} />
         <Player path='/questions-card' component={QuestionsCard} />
         <Player path='/challenge-page' component={ChallengePage} />
