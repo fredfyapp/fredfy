@@ -2,10 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const WorldCard = ({}) => {
+const WorldCard = (props) => {
   return (
     <div>
-      <h2>WorldCard</h2>
+      <h2>{props.subject.subject}</h2>
     </div>
   );
 }

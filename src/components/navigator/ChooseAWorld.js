@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 // ********** COMPONENTS ********** //
 import WorldCard from './WorldCard';
 
-const ChooseAWorld = ({}) => {
+const ChooseAWorld = ({ database }) => {
   return (
     <div>
       <h2>ChooseAWorld</h2>
       <div>
-        <WorldCard />
-        <WorldCard />
-        <WorldCard />
+        {database.learning.map((subject) => {
+          return <WorldCard key={subject.subject} subject={subject}/>
+        })}
       </div>
     </div>
   );

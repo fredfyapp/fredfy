@@ -1,7 +1,5 @@
 // ********** REACT ********** //
 import React from 'react';
-
-// ********** ROUTER ********** //
 import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
@@ -26,17 +24,17 @@ import QuestionsPage from '../components/player/QuestionsPage';
 // ********** NOT FOUND ********** //
 import NotFoundPage from '../components/NotFoundPage';
 
-const AppRouter = () => (
+const AppRouter = (props) => (
   <Router history={history}>
     <div>
       <Switch>
         <Navigator path='/' component={Welcome} exact={true} />
         <Navigator path='/account' component={Account} />
         <Navigator path='/choose-a-character' component={ChooseACharacter} />
-        <Navigator path='/choose-a-world' component={ChooseAWorld} />
+        <Navigator path='/choose-a-world' database={props.database} component={ChooseAWorld} />
         <Navigator path='/how-it-works' component={HowItWorks} />
         <Navigator path='/our-team' component={OurTeam} />
-        <Navigator path='/ranking' component={Ranking} />
+        <Navigator path='/ranking' database={props.database} component={Ranking} />
         <Navigator path='/section' component={Section} />
         <Player path='/questions-page' component={QuestionsPage} />
         <Player path='/questions-card' component={QuestionsCard} />

@@ -1,84 +1,102 @@
 const database = {
-	"learning": [
-		{
-			"subject": "css",
-			"sections": [
+  "learning": [
+    {
+      "subject": "css",
+      "sections": [
+        {
+          "sectionName": "colors",
+          "questions": [
+            {
+              "title": "What is color?",
+              "options": ["Option one", "Option two", "Option three", "Option four"]
+            }, {
+              "title": "How do you change the color?",
+              "options": ["Option one", "Option two", "Option three", "Option four"]
+            }
+          ]
+        }, {
+          "sectionName": "fonts",
+          "questions": []
+        }, {
+          "sectionName": "images",
+          "questions": []
+        }
+      ]
+    }, {
+      "subject": "html",
+      "sections": []
+    }, {
+      "subject": "javascript",
+      "sections": []
+    }
+  ],
+  "users": [
+    {
+      "userId": "1234",
+			"userName": "Marcel",
+      "subjects": [
 				{
-					"sectionName": "colors",
-					"questions": [
-						{
-							"title": "What is color?",
-							"options": [
-								"Option one",
-								"Option two",
-								"Option three",
-								"Option four"
-							]
-						},
-						{
-							"title": "How do you change the color?",
-							"options": [
-								"Option one",
-								"Option two",
-								"Option three",
-								"Option four"
-							]
-						}
-					]
+					"subject": "css",
+					"points": "23",
+					"character": "Fred",
+		      "isCompleted": false,
+		      "sections": {
+		        "colors": true,
+		        "fonts": false,
+		        "images": false
+		      },
 				},
 				{
-					"sectionName": "fonts",
-					"questions": []
+					"subject": "html",
+					"points": "41",
+					"character": "Chloe",
+		      "isCompleted": true,
+		      "sections": [{}],
 				},
 				{
-					"sectionName": "images",
-					"questions": []
+					"subject": "javascript",
+					"points": "68",
+					"character": "Piu",
+		      "isCompleted": false,
+		      "sections": [{}],
 				}
 			]
-		},
+    },
 		{
-			"subject": "html",
-			"sections": []
-		},
-		{
-			"subject": "javascript",
-			"sections": []
-		}
-	],
-	"users": {
-		"userId": "1234",
-		"totalPoints": "000",
-		"completed": {
-			"css": false,
-			"cssPoints": "20",
-			"cssSections": {
-				"colors": true,
-				"fonts": false,
-				"images": false
-			},
-			"html": true,
-			"htmlPoints": "50",
-			"htmlSections": {
-
-			},
-			"javascript": false,
-			"javascriptPoits": "0",
-			"javascriptSections": {
-
-			},
-		},
-		"characters": {
-			"css": "Fred",
-			"html": "Chloe",
-			"javascript": ""
-		}
-	}
+      "userId": "5678",
+			"userName": "Cruz",
+      "subjects": [
+				{
+					"subject": "css",
+					"points": "73",
+					"character": "Eric",
+		      "isCompleted": false,
+		      "sections": {
+		        "colors": true,
+		        "fonts": false,
+		        "images": false
+		      },
+				},
+				{
+					"subject": "html",
+					"points": "4",
+					"character": "Kenny",
+		      "isCompleted": true,
+		      "sections": [{}],
+				},
+				{
+					"subject": "javascript",
+					"points": "8",
+					"character": "Kyle",
+		      "isCompleted": false,
+		      "sections": [{}],
+				}
+			]
+    }
+  ]
 };
 
 export default database;
-
-
-
 
 // const database = {
 // 	"learning": [

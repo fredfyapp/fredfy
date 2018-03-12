@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // ********** COMPONENTS ********** //
 import ChallengeCard from './ChallengeCard';
-import Ranking from './Ranking';
+import SectionRanking from './SectionRanking';
 import Inventory from './Inventory';
 import SectionCard from './SectionCard';
 
@@ -30,7 +30,7 @@ const Section = ({}) => {
             <Inventory />
           </div>
           <div className='ranking-panel'>
-            <Ranking />
+            <SectionRanking />
           </div>
         </div>
 

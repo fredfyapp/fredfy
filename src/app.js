@@ -1,8 +1,6 @@
 // ********** REACT ********** //
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// ********** ROUTER ********** //
 import AppRouter, { history } from './routers/AppRouter';
 
 // ********** REDUX ********** //
