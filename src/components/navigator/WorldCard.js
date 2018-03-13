@@ -3,21 +3,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// const WorldCard = (props) => {
-//   return (
-//       <div>
-//         <h2>{props.subject.subject}</h2>
-//       </div>
-//   );
-// }
+// ********** REDUX ********** //
+import { connect } from 'react-redux';
+
+// ********** ACTIONS ********** //
+import { setChosenWorld } from '../../actions/navigation';
 
 class WorldCard extends React.Component {
 
 handleChosenWorld = () => {
-    // e.preventDefault();
     console.log('clicked');
-    // this.props.handler;
-    this.props.handleChosenWorld(this.props.subject);
+    // this.props.setChosenWorld(this.props.subject);
+    this.props.dispatch(setChosenWorld(this.props.subject));
   }
 
   render() {
@@ -39,4 +36,9 @@ WorldCard.propTypes = {
   // : PropTypes.
 };
 
-export default WorldCard;
+const mapDispatchToProps = (dispatch) => ({
+  // setChosenWorld: (chosenWorld) dispatch(chosenWorld(chosenWorld))
+  // setChosenWorld: dispatch(chosenWorld())
+});
+
+export default connect()(WorldCard);
