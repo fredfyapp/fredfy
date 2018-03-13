@@ -47,11 +47,16 @@ const database = {
 					"points": "23",
 					"character": "Fred",
 		      "isCompleted": false,
-		      "sections": {
+		      "sectionsCompleted": {
 		        "colors": true,
 		        "fonts": false,
 		        "images": false
 		      },
+          "challengesCompleted": {
+            "colors": true,
+            "fonts": false,
+            "images": false
+          }
 				},
 				{
 					"subject": "html",
@@ -64,37 +69,6 @@ const database = {
 					"subject": "javascript",
 					"points": "68",
 					"character": "Piu",
-		      "isCompleted": false,
-		      "sections": [{}],
-				}
-			]
-    },
-		{
-      "userId": "5678",
-			"userName": "Cruz",
-      "subjects": [
-				{
-					"subject": "css",
-					"points": "73",
-					"character": "Eric",
-		      "isCompleted": false,
-		      "sections": {
-		        "colors": true,
-		        "fonts": false,
-		        "images": false
-		      },
-				},
-				{
-					"subject": "html",
-					"points": "4",
-					"character": "Kenny",
-		      "isCompleted": true,
-		      "sections": [{}],
-				},
-				{
-					"subject": "javascript",
-					"points": "8",
-					"character": "Kyle",
 		      "isCompleted": false,
 		      "sections": [{}],
 				}
