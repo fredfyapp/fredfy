@@ -2,14 +2,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// ********** REDUX ********** //
+import { connect } from 'react-redux';
+
 // ********** COMPONENTS ********** //
 import ChallengeCard from './ChallengeCard';
 import SectionRanking from './SectionRanking';
 import Inventory from './Inventory';
 import SectionCard from './SectionCard';
 
-const Section = ({ database }) => {
-  const currentSection = database.learning[0];
+// const Section = ({ database, chosenWorld }) => {
+const Section = (props) => {
+  let currentSection = props.chosenWorld.chosenWorld;
   return (
     <div>
       <h2>{currentSection.subject}</h2>
@@ -35,7 +39,7 @@ const Section = ({ database }) => {
             <Inventory />
           </div>
           <div className='ranking-panel'>
-            <SectionRanking currentSection={currentSection} database={database} />
+            <SectionRanking currentSection={currentSection} database={props.database} />
           </div>
         </div>
 
@@ -48,4 +52,8 @@ Section.propTypes = {
   // : PropTypes.
 };
 
-export default Section;
+const mapStateToProps = (state) => ({
+  chosenWorld: state.navigation
+});
+
+export default connect(mapStateToProps)(Section);
