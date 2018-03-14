@@ -67,8 +67,8 @@ const database = {
 				},
 				{
 					"subject": "javascript",
-					"points": "68",
-					"character": "Piu",
+					"points": "0",
+					"character": "",
 		      "isCompleted": false,
 		      "sections": [{}],
 				}

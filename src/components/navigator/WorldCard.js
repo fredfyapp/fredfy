@@ -11,7 +11,7 @@ import { setChosenWorld } from '../../actions/navigation';
 
 class WorldCard extends React.Component {
 
-handleChosenWorld = () => {
+  handleChosenWorld = () => {
     this.props.dispatch(setChosenWorld(this.props.subject));
   }
 
@@ -19,7 +19,7 @@ handleChosenWorld = () => {
     return (
       <div>
         <Link
-          to='/section'
+          to='/choose-a-character'
           onClick={this.handleChosenWorld}
         >
           <h2>{this.props.subject.subject}</h2>

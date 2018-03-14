@@ -16,8 +16,8 @@ class ChooseAWorld extends React.Component {
           {this.props.database.learning.map((subject) => {
             return (
               <WorldCard
-                subject={subject}
                 key={subject.subject}
+                subject={subject}
               />
             );
           })}
