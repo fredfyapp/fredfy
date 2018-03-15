@@ -13,7 +13,7 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
 // ********** DATABASE ********** //
-import { firebase } from './firebase/firebase';
+// import { firebase } from './firebase/firebase';
 import database from './fixtures/json-mockup';
 
 const store = configureStore();
