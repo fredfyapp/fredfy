@@ -13,8 +13,6 @@ class CharacterCard extends React.Component {
     let character = this.props.character.name;
     let subject = this.props.chosenWorld.subject;
     let userId = this.props.user;
-    console.log(character);
-    console.log(userId);
 
     this.props.dispatch(setChosenCharacter(character, subject));
   }

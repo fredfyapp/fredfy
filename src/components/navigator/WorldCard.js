@@ -19,7 +19,7 @@ class WorldCard extends React.Component {
     return (
       <div>
         <Link
-          to='/choose-a-character'
+          to='/section'
           onClick={this.handleChosenWorld}
         >
           <h2>{this.props.subject.subject}</h2>
