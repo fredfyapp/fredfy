@@ -4,11 +4,28 @@ import PropTypes from 'prop-types';
 
 const Footer = ({}) => {
   return (
-    <footer className='footer'>
-      <h2>Footer</h2>
+    <footer id="footer">
+      <div class="logo">
+        <h1>Fredfy</h1>
+        <h2>
+          Learn<br />Code<br />Reapeat
+        </h2>
+      </div>
+      <div class="links">
+        <ul class="pages">
+          <li>How works Fredfy?</li>
+          <li>Our Team</li>
+          <li>Ranking</li>
+        </ul>
+        <ul class="media">
+          <li>Made in Dublin/Ireland @ 2018</li>
+          <li>Twitter</li>
+          <li>GitHub</li>
+        </ul>
+      </div>
     </footer>
   );
-}
+};
 
 Footer.propTypes = {
   // : PropTypes.
