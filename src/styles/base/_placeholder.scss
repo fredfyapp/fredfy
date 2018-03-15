@@ -1,0 +1,21 @@
+%header-box {
+  font-family: 'Press Start 2P', Verdana, Arial;
+  font-size: 0.8em;
+  background: #ccc;
+  margin-bottom: 0;
+  border-top: 5px solid #999;
+  padding: 10px;
+  display: inline-table;
+}
+
+%box-map {
+  padding: 10px;
+  background: #ccc;
+  border: 5px solid #999;
+}
+
+%be-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
