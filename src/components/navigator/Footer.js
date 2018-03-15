@@ -12,7 +12,7 @@ const Footer = ({}) => {
         </h2>
       </div>
       <div class="linasdafsadfsdafks">
-        <ul class="paasdfasdges">
+        <ul class="paasdfasdgitges">
           <li>How works Fredfy?</li>
           <li>Our Team</li>
           <li>Ranking</li>
