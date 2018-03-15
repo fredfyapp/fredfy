@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 
 const Footer = ({}) => {
   return (
-    <footer id="asdfsadf">
-      <div class="lsadfsadfogo">
+    <footer id="footer ">
+      <div className="logo lsadfsadfogo">
         <h1>Fredfy</h1>
         <h2>
           Learn<br />Code<br />Repeat
         </h2>
       </div>
-      <div class="linasdafsadfsdafks">
-        <ul class="paasdfasdgitges">
+      <div className="links">
+        <ul className="pages">
           <li>How works Fredfy?</li>
           <li>Our Team</li>
           <li>Ranking</li>
         </ul>
-        <ul class="measdfsadfdia">
+        <ul className="media test">
           <li>Made in Dublin/Ireland @ 20188888</li>
           <li>Twitter</li>
           <li>GitHub</li>
