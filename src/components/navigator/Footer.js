@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Footer = ({}) => {
   return (
     <footer id="footer ">
-      <div className="logo lsadfsadfogo">
+      <div class="logo lsadfsadfogo">
         <h1>Fredfy</h1>
         <h2>
           Learn<br />Code<br />Repeat
