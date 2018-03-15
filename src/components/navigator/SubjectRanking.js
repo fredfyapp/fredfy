@@ -2,11 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TableHeader = ({ subject }) => {
+const TableHeader = ({ subjectObject }) => {
   return (
     <div className='table__header'>
       <h3>Name</h3>
-      <h3>{subject.subject}</h3>
+      <h3>{subjectObject.subject}</h3>
       <h3>Total</h3>
     </div>
   );
@@ -14,11 +14,11 @@ const TableHeader = ({ subject }) => {
 
 const TableBody = ({ users, subject }) => {
   let points = [];
-  const subjectName = subject.subject;
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  // const subjectName = subject.subject;
+  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
   return (
     <div className='table__body'>
-      <div className='table__row'>
+      {/* <div className='table__row'>
         {users[0].map((user) => {
           points = [];
           user.subjects.map((subject) => {
@@ -42,18 +42,20 @@ const TableBody = ({ users, subject }) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };
 
-const SectionRanking = ({ currentSection, database }) => {
+const SectionRanking = ({ subjectObject, user }) => {
+  console.log('subjectObject', subjectObject);
+  console.log('user', user);
   return (
     <div>
       <h3>Ranking</h3>
       <div className='table'>
-        <TableHeader subject={currentSection} />
-        <TableBody users={[database.users]} subject={currentSection} />
+        <TableHeader subjectObject={subjectObject} />
+        {/* <TableBody users={[database.users]} subject={currentSection} /> */}
       </div>
     </div>
   );

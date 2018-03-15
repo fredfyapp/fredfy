@@ -10,18 +10,19 @@ import { setChosenCharacter } from '../actions/user';
 class CharacterCard extends React.Component {
 
   handleChosenCharacter = () => {
-    let character = this.props.character.name;
-    let subject = this.props.chosenWorld.subject;
-    let userId = this.props.user;
+    const character = this.props.character.name;
+    const subject = this.props.chosenWorld.subject;
+    const userId = this.props.user;
 
     this.props.dispatch(setChosenCharacter(character, subject));
   }
 
   render() {
+    const subject = this.props.chosenWorld.subject;
     return (
       <div>
         <Link
-          to='/section'
+          to={`/teaches-you/${subject}`}
           onClick={this.handleChosenCharacter}
         >
           <h2>{this.props.character.name}</h2>

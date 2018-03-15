@@ -38,12 +38,6 @@ class AppRouter extends React.Component {
     // ********** ONLY FOR DEVELOPMENT, IN PRODUCTION LOGIN WILL TRIGGER STATE CHANGE ********** //
     // this.props.dispatch(setUser(users[0]));
 
-    // ********** SET sessionStorage ********** //
-    if (sessionStorage.length === 0) {
-      console.log('is empty');
-    } else {
-      console.log('not empty');
-    }
   }
 
   render() {
@@ -60,7 +54,7 @@ class AppRouter extends React.Component {
             <Navigator path='/how-it-works' component={HowItWorks} />
             <Navigator path='/our-team' component={OurTeam} />
             <Navigator path='/ranking' database={database} component={Ranking} />
-            <Navigator path='/section' database={database} component={Section} />
+            <Navigator path='/teaches-you/:subject' database={database} component={Section} exact={true} />
             <Player path='/questions-page' database={database} component={QuestionsPage} />
             <Player path='/questions-card' database={database} component={QuestionsCard} />
             <Player path='/challenge-page' database={database} component={ChallengePage} />

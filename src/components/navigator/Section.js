@@ -5,62 +5,35 @@ import PropTypes from 'prop-types';
 // ********** REDUX ********** //
 import { connect } from 'react-redux';
 
-// ********** ACTIONS ********** //
-import { setChosenWorld } from '../../actions/navigation';
-
 // ********** COMPONENTS ********** //
 import ChallengeCard from './ChallengeCard';
-import SectionRanking from './SectionRanking';
+import SubjectRanking from './SubjectRanking';
 import Inventory from './Inventory';
 import SectionCard from './SectionCard';
 
 class Section extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     chosenWorld: {}
-  //   };
-  // }
-
   componentWillMount() {
+    const user = this.props.user;
 
-    if (sessionStorage.getItem('chosenWorld') === null) {
-      this.props.history.push('/');
-    }
+    const subjectName = this.props.match.params.subject;
 
-    let chosenWorld = JSON.parse(sessionStorage.getItem('chosenWorld'));
-    console.log(chosenWorld);
-
-    this.props.dispatch(setChosenWorld(chosenWorld));
-
-    // this.setState({
-    //   chosenWorld
-    // });
-
-
-    // !user.subjects[subject].character &&
-    // this.props.history.push('/choose-a-character');
-    //
-    // if (!subject && sessionStorage.getItem('chosenWorld') !== null) {
-    //   subject = JSON.parse(sessionStorage.getItem('chosenWorld'));
-    // } else if (!subject && sessionStorage.getItem('chosenWorld') === null) {
-    //   this.props.history.push('/');
-    // }
+    !user.subjects[subjectName].character &&
+    this.props.history.push('/choose-a-character');
 
   }
 
   render() {
-    let currentSection = this.props.chosenWorld;
+    const subjectObject = this.props.subjectObject;
     return (
       <div>
-        <h2>{currentSection.subject}</h2>
+        <h2>{subjectObject.subject}</h2>
         <div className='section'>
 
           <div className='section__map'>
             <div className='section__section-cards'>
 
-              {currentSection.sections.map((section) => {
+              {subjectObject.sections.map((section) => {
                 return (
                   <SectionCard key={section.sectionName} section={section}/>
                 );
@@ -77,7 +50,7 @@ class Section extends React.Component {
               <Inventory />
             </div>
             <div className='ranking-panel'>
-              <SectionRanking currentSection={currentSection} database={this.props.database} />
+              <SubjectRanking subjectObject={subjectObject} user={this.props.user} />
             </div>
           </div>
 
@@ -92,8 +65,8 @@ Section.propTypes = {
   // : PropTypes.
 };
 
-const mapStateToProps = (state) => ({
-  chosenWorld: state.navigation,
+const mapStateToProps = (state, props) => ({
+  subjectObject: props.database.learning.find((subject) => subject.subject === props.match.params.subject),
   user: state.user
 });
 
