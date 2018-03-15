@@ -37,6 +37,13 @@ class AppRouter extends React.Component {
 
     // ********** ONLY FOR DEVELOPMENT, IN PRODUCTION LOGIN WILL TRIGGER STATE CHANGE ********** //
     // this.props.dispatch(setUser(users[0]));
+
+    // ********** SET sessionStorage ********** //
+    if (sessionStorage.length === 0) {
+      console.log('is empty');
+    } else {
+      console.log('not empty');
+    }
   }
 
   render() {

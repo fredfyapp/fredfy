@@ -1,6 +1,7 @@
 // ********** REACT ********** //
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Footer = ({}) => {
   return (
@@ -13,12 +14,18 @@ const Footer = ({}) => {
       </div>
       <div className="links">
         <ul className="pages">
-          <li>How works Fredfy?</li>
-          <li>Our Team</li>
-          <li>Ranking</li>
+          <Link to='/how-it-works'>
+            <li>How works Fredfy?</li>
+          </Link>
+          <Link to='/our-team'>
+            <li>Our Team</li>
+          </Link>
+          <Link to='/ranking'>
+            <li>Ranking</li>
+          </Link>
         </ul>
         <ul className="media test">
-          <li>Made in Dublin/Ireland @ 20188888</li>
+          <li>Made in Dublin/Ireland @ 2018</li>
           <li>Twitter</li>
           <li>GitHub</li>
         </ul>

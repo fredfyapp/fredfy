@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 // ********** REDUX ********** //
 import { connect } from 'react-redux';
 
+// ********** ACTIONS ********** //
+import { setChosenWorld } from '../../actions/navigation';
+
 // ********** COMPONENTS ********** //
 import ChallengeCard from './ChallengeCard';
 import SectionRanking from './SectionRanking';
@@ -13,13 +16,37 @@ import SectionCard from './SectionCard';
 
 class Section extends React.Component {
 
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     chosenWorld: {}
+  //   };
+  // }
+
   componentWillMount() {
-    let user = this.props.user;
 
-    let subject = this.props.chosenWorld.subject;
+    if (sessionStorage.getItem('chosenWorld') === null) {
+      this.props.history.push('/');
+    }
 
-    !user.subjects[subject].character &&
-    this.props.history.push('/choose-a-character');
+    let chosenWorld = JSON.parse(sessionStorage.getItem('chosenWorld'));
+    console.log(chosenWorld);
+
+    this.props.dispatch(setChosenWorld(chosenWorld));
+
+    // this.setState({
+    //   chosenWorld
+    // });
+
+
+    // !user.subjects[subject].character &&
+    // this.props.history.push('/choose-a-character');
+    //
+    // if (!subject && sessionStorage.getItem('chosenWorld') !== null) {
+    //   subject = JSON.parse(sessionStorage.getItem('chosenWorld'));
+    // } else if (!subject && sessionStorage.getItem('chosenWorld') === null) {
+    //   this.props.history.push('/');
+    // }
 
   }
 
@@ -66,7 +93,7 @@ Section.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  chosenWorld: state.navigation.chosenWorld,
+  chosenWorld: state.navigation,
   user: state.user
 });
 
