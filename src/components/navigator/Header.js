@@ -24,7 +24,7 @@ const Header = ({}) => {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">Sign Up</li>
           <li>Sign In</li>
-          <li>Profileeeee</li>
+          <li>Profile</li>
         </ul>
       </div>
     </nav>
