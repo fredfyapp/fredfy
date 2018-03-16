@@ -12,10 +12,11 @@ const TableHeader = ({ subjectObject }) => {
   );
 };
 
-const TableBody = ({ users, subject }) => {
+const TableBody = ({ user, subjectObject }) => {
   let points = [];
-  // const subjectName = subject.subject;
-  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  const subjectName = subjectObject.subject;
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  console.log('name', subjectName);
   return (
     <div className='table__body'>
       {/* <div className='table__row'>
@@ -55,7 +56,7 @@ const SectionRanking = ({ subjectObject, user }) => {
       <h3>Ranking</h3>
       <div className='table'>
         <TableHeader subjectObject={subjectObject} />
-        {/* <TableBody users={[database.users]} subject={currentSection} /> */}
+        <TableBody user={user} subjectObject={subjectObject} />
       </div>
     </div>
   );

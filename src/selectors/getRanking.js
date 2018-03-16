@@ -15,16 +15,30 @@ export const getUserTotalPoints = (user) => {
 
 };
 
-console.log('getUserTotalPoints', getUserTotalPoints(user));
+// console.log('getUserTotalPoints', getUserTotalPoints(user));
 
 export const getGlobalTopUsers = (users) => {
   let finalList = [];
 
   users.map((user) => {
+
+    let name = user.userName;
+    let totalPoints = user.totalPoints;
+    let subjects = [];
+
+    for (let subject in user.subjects) {
+      subjects.push({
+        subjectName: subject,
+        subjectPoints: user.subjects[subject].points
+      });
+    }
+
     finalList.push({
-      name: user.userName,
-      points: user.totalPoints
+      name,
+      totalPoints,
+      subjects
     });
+
   });
 
   return finalList.sort((a, b) => {
@@ -32,7 +46,8 @@ export const getGlobalTopUsers = (users) => {
     });
 };
 
-console.log('getGlobalTopUsers', getGlobalTopUsers(users));
+// console.log('users info', users);
+// console.log('getGlobalTopUsers', getGlobalTopUsers(users));
 
 export const getSubjectTopUsers = (users) => {
   let finalList = [];
@@ -52,4 +67,4 @@ export const getSubjectTopUsers = (users) => {
     });
 };
 
-console.log('getSubjectTopUsers', getSubjectTopUsers(users));
+// console.log('getSubjectTopUsers', getSubjectTopUsers(users));

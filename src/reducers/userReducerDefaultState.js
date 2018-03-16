@@ -1,50 +1,51 @@
 export default {
   "userId": "",
   "userName": "",
+  "totalPoints": 0,
   "subjects": {
-    "css": {
-      "points": "23",
+    "html": {
+      "points": 10,
       "character": "Fred",
       "isCompleted": false,
       "sectionsCompleted": {
-        "colors": true,
-        "fonts": false,
-        "images": false
+        "htmlSection1": false,
+        "htmlSection2": false,
+        "htmlSection3": false
       },
       "challengesCompleted": {
-        "colors": true,
-        "fonts": false,
-        "images": false
+        "htmlSection1": false,
+        "htmlSection2": false,
+        "htmlSection3": false
       }
     },
-    "html": {
-      "points": "2",
-      "character": "Chloe",
-      "isCompleted": false,
-      "sectionsCompleted": {
-        "colors": true,
-        "fonts": false,
-        "images": false
-      },
-      "challengesCompleted": {
-        "colors": true,
-        "fonts": false,
-        "images": false
-      }
-    },
-    "javascript": {
-      "points": "",
+    "css": {
+      "points": 20,
       "character": "",
       "isCompleted": false,
       "sectionsCompleted": {
-        "colors": false,
-        "fonts": false,
-        "images": false
+        "cssSection1": false,
+        "cssSection2": false,
+        "cssSection3": false
       },
       "challengesCompleted": {
-        "colors": false,
-        "fonts": false,
-        "images": false
+        "cssSection1": false,
+        "cssSection2": false,
+        "cssSection3": false
+      }
+    },
+    "javascript": {
+      "points": 5,
+      "character": "",
+      "isCompleted": false,
+      "sectionsCompleted": {
+        "javascriptSection1": false,
+        "javascriptSection2": false,
+        "javascriptSection3": false
+      },
+      "challengesCompleted": {
+        "javascriptSection1": false,
+        "javascriptSection2": false,
+        "javascriptSection3": false
       }
     }
   }

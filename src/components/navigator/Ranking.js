@@ -2,6 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// ***************** TESTING ***************** //
+import '../../selectors/getRanking';
+import { getGlobalTopUsers } from '../../selectors/getRanking';
+
 const TableHeader = ({ subjects }) => {
   return (
     <div className='table__header'>
@@ -22,26 +26,25 @@ const TableBody = ({ users }) => {
   return (
     <div className='table__body'>
       <div className='table__row'>
-        {users[0].map((user) => {
-          points = [];
-          return (
-            <div className='table__item' key={user.userId}>
-              <h4>{user.userName}</h4>
-
-              {user.subjects.map((subject) => {
-                points.push(parseInt(subject.points));
-
-                return (
-                  <div key={user.userId, subject.subject}>
-                    <h4>{subject.points}</h4>
-                  </div>
-                );
-
-              })}
-              <h4>{points.reduce(reducer)}</h4>
-            </div>
-          );
-        })}
+        {
+          getGlobalTopUsers(users[0]).map((user) => {
+            return (
+              <div className='table__item' key={user.name, user.totalPoints}>
+                <h4>{user.name}</h4>
+                {
+                  user.subjects.map((subject) => {
+                    return (
+                      <h4 key={user.name, subject, subject.subjectPoints}>
+                        {subject.subjectPoints}
+                      </h4>
+                    );
+                  })
+                }
+                <h4>{user.totalPoints}</h4>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   );

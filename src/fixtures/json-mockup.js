@@ -1,5 +1,10 @@
-const database = {
+export default {
   "learning": [
+    {
+     "subject": "html",
+     "sections": [],
+     "challenges": []
+    },
     {
       "subject": "css",
       "sections": [
@@ -27,11 +32,8 @@ const database = {
           "expectedOutput": "<div>portfolio</div>"
         }
       ]
-    }, {
-      "subject": "html",
-      "sections": [],
-      "challenges": []
-    }, {
+    },
+    {
       "subject": "javascript",
       "sections": [],
       "challenges": []
@@ -41,40 +43,108 @@ const database = {
     {
       "userId": "1234",
 			"userName": "Marcel",
-      "subjects": [
-				{
-					"subject": "css",
-					"points": "23",
+      "totalPoints": 22,
+      "subjects": {
+				"html": {
+					"points": 10,
 					"character": "Fred",
-		      "isCompleted": false,
+		      "isCompleted": true,
 		      "sectionsCompleted": {
-		        "colors": true,
-		        "fonts": false,
-		        "images": false
+		        "htmlSection1": true,
+		        "htmlSection2": true,
+		        "htmlSection3": true
 		      },
           "challengesCompleted": {
-            "colors": true,
-            "fonts": false,
-            "images": false
+            "htmlSection1": true,
+            "htmlSection2": true,
+            "htmlSection3": true
           }
 				},
-				{
-					"subject": "html",
-					"points": "41",
+        "css": {
+					"points": 12,
 					"character": "Chloe",
-		      "isCompleted": true,
-		      "sections": [{}],
+		      "isCompleted": false,
+		      "sectionsCompleted": {
+		        "cssSection1": true,
+		        "cssSection2": false,
+		        "cssSection3": false
+		      },
+          "challengesCompleted": {
+            "cssSection1": false,
+            "cssSection2": false,
+            "cssSection3": false
+          }
 				},
-				{
-					"subject": "javascript",
-					"points": "0",
+        "javascript": {
+					"points": 0,
 					"character": "",
 		      "isCompleted": false,
-		      "sections": [{}],
-				}
-			]
-    }
-  ],
+		      "sectionsCompleted": {
+		        "javascriptSection1": false,
+		        "javascriptSection2": false,
+		        "javascriptSection3": false
+		      },
+          "challengesCompleted": {
+            "javascriptSection1": false,
+            "javascriptSection2": false,
+            "javascriptSection3": false
+          }
+				} // javascript
+      } // subjects
+    }, // user 1
+    {
+      "userId": "5678",
+			"userName": "Cruz",
+      "totalPoints": 43,
+      "subjects": {
+				"html": {
+					"points": 13,
+					"character": "Fred",
+		      "isCompleted": true,
+		      "sectionsCompleted": {
+		        "htmlSection1": true,
+		        "htmlSection2": true,
+		        "htmlSection3": true
+		      },
+          "challengesCompleted": {
+            "htmlSection1": true,
+            "htmlSection2": true,
+            "htmlSection3": true
+          }
+				},
+        "css": {
+					"points": 30,
+					"character": "Chloe",
+		      "isCompleted": false,
+		      "sectionsCompleted": {
+		        "cssSection1": true,
+		        "cssSection2": false,
+		        "cssSection3": false
+		      },
+          "challengesCompleted": {
+            "cssSection1": false,
+            "cssSection2": false,
+            "cssSection3": false
+          }
+				},
+        "javascript": {
+					"points": 0,
+					"character": "",
+		      "isCompleted": false,
+		      "sectionsCompleted": {
+		        "javascriptSection1": false,
+		        "javascriptSection2": false,
+		        "javascriptSection3": false
+		      },
+          "challengesCompleted": {
+            "javascriptSection1": false,
+            "javascriptSection2": false,
+            "javascriptSection3": false
+          }
+				} // javascript
+      } // subjects
+    } // user 2
+  ], // uses array
 	"characters": [
 		{
 			"name": "Fred"
@@ -96,5 +166,3 @@ const database = {
 		}
 	]
 };
-
-export default database;
