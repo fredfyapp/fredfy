@@ -2,6 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// ********** SELECTORS ********** //
+import { getSubjectTopUsers } from '../../selectors/getRanking';
+
 const TableHeader = ({ subjectObject }) => {
   return (
     <div className='table__header'>
@@ -12,51 +15,36 @@ const TableHeader = ({ subjectObject }) => {
   );
 };
 
-const TableBody = ({ user, subjectObject }) => {
+const TableBody = ({ users, subjectObject }) => {
   let points = [];
   const subjectName = subjectObject.subject;
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  console.log('name', subjectName);
   return (
     <div className='table__body'>
-      {/* <div className='table__row'>
-        {users[0].map((user) => {
-          points = [];
-          user.subjects.map((subject) => {
-            points.push(parseInt(subject.points));
-          });
-
-          return (
-            <div className='table__item' key={user.userId}>
-              <h4>{user.userName}</h4>
-                <div>
-                  {
-                    user.subjects.map((subject) => {
-                      return (
-                        subject.subject === subjectName &&
-                        <h4 key={user.userId, subject.points}>{subject.points}</h4>
-                      )
-                    })
-                  }
-                </div>
-              <h4>{points.reduce(reducer)}</h4>
-            </div>
-          );
-        })}
-      </div> */}
+      <div className='table__row'>
+        {
+          getSubjectTopUsers(users[0], subjectObject.subject).map((user) => {
+            return (
+              <div className='table__item' key={user.name, user.subjectPoints}>
+                <h4>{user.name}</h4>
+                <h4>{user.subjectPoints}</h4>
+                <h4>{user.totalPoints}</h4>
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
   );
 };
 
-const SectionRanking = ({ subjectObject, user }) => {
-  console.log('subjectObject', subjectObject);
-  console.log('user', user);
+const SectionRanking = ({ database, subjectObject, user }) => {
   return (
     <div>
       <h3>Ranking</h3>
       <div className='table'>
         <TableHeader subjectObject={subjectObject} />
-        <TableBody user={user} subjectObject={subjectObject} />
+        <TableBody users={[database.users]} subjectObject={subjectObject} />
       </div>
     </div>
   );

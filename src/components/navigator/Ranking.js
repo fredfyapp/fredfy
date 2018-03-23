@@ -2,8 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ***************** TESTING ***************** //
-import '../../selectors/getRanking';
+// ********** SELECTORS ********** //
 import { getGlobalTopUsers } from '../../selectors/getRanking';
 
 const TableHeader = ({ subjects }) => {
@@ -21,8 +20,6 @@ const TableHeader = ({ subjects }) => {
 };
 
 const TableBody = ({ users }) => {
-  let points = [];
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
   return (
     <div className='table__body'>
       <div className='table__row'>
@@ -49,6 +46,8 @@ const TableBody = ({ users }) => {
     </div>
   );
 };
+
+// IMPLEMENT CURRENT USER POSITION
 
 const Ranking = ({ database }) => {
   return (

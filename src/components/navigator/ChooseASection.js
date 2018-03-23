@@ -11,7 +11,7 @@ import SubjectRanking from './SubjectRanking';
 import Inventory from './Inventory';
 import SectionCard from './SectionCard';
 
-class Section extends React.Component {
+class ChooseASection extends React.Component {
 
   componentWillMount() {
     const user = this.props.user;
@@ -50,7 +50,11 @@ class Section extends React.Component {
               <Inventory />
             </div>
             <div className='ranking-panel'>
-              <SubjectRanking subjectObject={subjectObject} user={this.props.user} />
+              <SubjectRanking
+                database={this.props.database}
+                subjectObject={subjectObject}
+                user={this.props.user}
+              />
             </div>
           </div>
 
@@ -61,7 +65,7 @@ class Section extends React.Component {
 
 }
 
-Section.propTypes = {
+ChooseASection.propTypes = {
   // : PropTypes.
 };
 
@@ -70,4 +74,4 @@ const mapStateToProps = (state, props) => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(Section);
+export default connect(mapStateToProps)(ChooseASection);

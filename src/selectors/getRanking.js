@@ -1,7 +1,9 @@
+// ********** ASSETS FOR TESTING ********** //
 import database from '../fixtures/json-mockup';
-import user from '../reducers/userReducerDefaultState';
+// import user from '../reducers/userReducerDefaultState';
 
 const users = database.users;
+let subject = 'css';
 
 export const getUserTotalPoints = (user) => {
   let totalPoints = 0;
@@ -14,8 +16,6 @@ export const getUserTotalPoints = (user) => {
   return totalPoints;
 
 };
-
-// console.log('getUserTotalPoints', getUserTotalPoints(user));
 
 export const getGlobalTopUsers = (users) => {
   let finalList = [];
@@ -42,29 +42,27 @@ export const getGlobalTopUsers = (users) => {
   });
 
   return finalList.sort((a, b) => {
-        return a.points < b.points ? 1 : -1;
-    });
+    return a.totalPoints < b.totalPoints ? 1 : -1;
+  });
 };
 
-// console.log('users info', users);
-// console.log('getGlobalTopUsers', getGlobalTopUsers(users));
-
-export const getSubjectTopUsers = (users) => {
+export const getSubjectTopUsers = (users, subject) => {
   let finalList = [];
 
-  // JUST FOR TESTING, TAKE FROM PARAMS LATER
-  let subject = 'css';
-
   users.map((user) => {
+
+    let name = user.userName;
+    let totalPoints = user.totalPoints;
+    let subjectPoints = user.subjects[subject].points;
+
     finalList.push({
-      name: user.userName,
-      points: user.subjects[subject].points
+      name,
+      totalPoints,
+      subjectPoints
     });
   });
 
   return finalList.sort((a, b) => {
-        return a.points < b.points ? 1 : -1;
+        return a.subjectPoints < b.subjectPoints ? 1 : -1;
     });
 };
-
-// console.log('getSubjectTopUsers', getSubjectTopUsers(users));

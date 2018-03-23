@@ -18,7 +18,7 @@ import HowItWorks from '../components/navigator/HowItWorks';
 import Navigator from '../components/navigator/Navigator';
 import OurTeam from '../components/navigator/OurTeam';
 import Ranking from '../components/navigator/Ranking';
-import Section from '../components/navigator/Section';
+import ChooseASection from '../components/navigator/ChooseASection';
 import Welcome from '../components/navigator/Welcome';
 
 // ********** PLAYER ********** //
@@ -54,7 +54,7 @@ class AppRouter extends React.Component {
             <Navigator path='/how-it-works' component={HowItWorks} />
             <Navigator path='/our-team' component={OurTeam} />
             <Navigator path='/ranking' database={database} component={Ranking} />
-            <Navigator path='/teaches-you/:subject' database={database} component={Section} exact={true} />
+            <Navigator path='/teaches-you/:subject' database={database} component={ChooseASection} exact={true} />
             <Player path='/questions-page' database={database} component={QuestionsPage} />
             <Player path='/questions-card' database={database} component={QuestionsCard} />
             <Player path='/challenge-page' database={database} component={ChallengePage} />
