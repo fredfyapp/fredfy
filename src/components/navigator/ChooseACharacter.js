@@ -8,25 +8,34 @@ import { connect } from 'react-redux';
 // ********** COMPONENTS ********** //
 import CharacterCard from '../CharacterCard';
 
-const ChooseACharacter = (props) => {
-  let user = props.user;
-  let chosenWorld = props.chosenWorld;
-  return (
-    <div>
-      <h2>ChooseACharacter</h2>
-      {props.database.characters.map((character) => {
-        return (
-          <CharacterCard
-            key={character.name}
-            character={character}
-            user={user}
-            chosenWorld={chosenWorld}
-          />
-        );
-      })}
-    </div>
-  );
-};
+class ChooseACharacter extends React.Component {
+
+  componentWillMount() {
+    // this.props.chosenWorld ? console.log('yes') : console.log('no');
+    !this.props.chosenWorld && console.log('no');
+    !this.props.chosenWorld && this.props.history.push('/');
+  }
+
+  render() {
+    let user = this.props.user;
+    let chosenWorld = this.props.chosenWorld;
+    return (
+      <div>
+        <h2>ChooseACharacter</h2>
+        {this.props.database.characters.map((character) => {
+          return (
+            <CharacterCard
+              key={character.name}
+              character={character}
+              user={user}
+              chosenWorld={chosenWorld}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+}
 
 ChooseACharacter.propTypes = {
   // : PropTypes.

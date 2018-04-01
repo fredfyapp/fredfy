@@ -26,12 +26,12 @@ const TableBody = ({ users }) => {
         {
           getGlobalTopUsers(users[0]).map((user) => {
             return (
-              <div className='table__item' key={user.name, user.totalPoints}>
+              <div className='table__item' key={user.id}>
                 <h4>{user.name}</h4>
                 {
                   user.subjects.map((subject) => {
                     return (
-                      <h4 key={user.name, subject, subject.subjectPoints}>
+                      <h4 key={user.id + subject.subjectName}>
                         {subject.subjectPoints}
                       </h4>
                     );
@@ -46,8 +46,6 @@ const TableBody = ({ users }) => {
     </div>
   );
 };
-
-// IMPLEMENT CURRENT USER POSITION
 
 const Ranking = ({ database }) => {
   return (

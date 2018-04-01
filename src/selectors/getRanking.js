@@ -22,9 +22,10 @@ export const getGlobalTopUsers = (users) => {
 
   users.map((user) => {
 
-    let name = user.userName;
-    let totalPoints = user.totalPoints;
-    let subjects = [];
+    const name = user.userName;
+    const id = user.userId;
+    const totalPoints = user.totalPoints;
+    const subjects = [];
 
     for (let subject in user.subjects) {
       subjects.push({
@@ -35,6 +36,7 @@ export const getGlobalTopUsers = (users) => {
 
     finalList.push({
       name,
+      id,
       totalPoints,
       subjects
     });
@@ -51,12 +53,14 @@ export const getSubjectTopUsers = (users, subject) => {
 
   users.map((user) => {
 
-    let name = user.userName;
-    let totalPoints = user.totalPoints;
-    let subjectPoints = user.subjects[subject].points;
+    const name = user.userName;
+    const id = user.userId;
+    const totalPoints = user.totalPoints;
+    const subjectPoints = user.subjects[subject].points;
 
     finalList.push({
       name,
+      id,
       totalPoints,
       subjectPoints
     });
