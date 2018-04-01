@@ -35,7 +35,11 @@ class ChooseASection extends React.Component {
 
               {subjectObject.sections.map((section) => {
                 return (
-                  <SectionCard key={section.sectionName} section={section}/>
+                  <SectionCard
+                    key={section.sectionName}
+                    subject={subjectObject.subject}
+                    section={section}
+                  />
                 );
               })}
 

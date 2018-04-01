@@ -18,7 +18,14 @@ class CharacterCard extends React.Component {
   }
 
   render() {
-    const subject = this.props.chosenWorld.subject;
+    // const subject = this.props.chosenWorld.subject;
+    if (this.props.chosenWorld.subject) {
+      console.log('yes');
+    } else {
+      console.log('no');
+    }
+
+    let subject = '';
     return (
       <div>
         <Link

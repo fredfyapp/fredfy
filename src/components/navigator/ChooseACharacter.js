@@ -11,9 +11,7 @@ import CharacterCard from '../CharacterCard';
 class ChooseACharacter extends React.Component {
 
   componentWillMount() {
-    // this.props.chosenWorld ? console.log('yes') : console.log('no');
-    !this.props.chosenWorld && console.log('no');
-    !this.props.chosenWorld && this.props.history.push('/');
+    !this.props.chosenWorld.subject && this.props.history.push('/');
   }
 
   render() {

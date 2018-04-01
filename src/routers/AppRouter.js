@@ -55,7 +55,7 @@ class AppRouter extends React.Component {
             <Navigator path='/our-team' component={OurTeam} />
             <Navigator path='/ranking' database={database} component={Ranking} />
             <Navigator path='/teaches-you/:subject' database={database} component={ChooseASection} exact={true} />
-            <Player path='/questions-page' database={database} component={QuestionsPage} />
+            <Player path='/teaches-you/:subject/:section' database={database} component={QuestionsPage} />
             <Player path='/questions-card' database={database} component={QuestionsCard} />
             <Player path='/challenge-page' database={database} component={ChallengePage} />
             <Route component={NotFoundPage} />

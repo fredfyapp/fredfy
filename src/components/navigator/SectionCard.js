@@ -1,12 +1,19 @@
 // ********** REACT ********** //
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const SectionCard = ({ section }) => {
+const SectionCard = ({ subject, section }) => {
+  console.log('subject', subject);
+  console.log('section', section);
   return (
-    <div>
-      <h2>{section.sectionName}</h2>
-    </div>
+    <Link
+      to={`/teaches-you/${subject}/${section.sectionName}`}
+    >
+      <div>
+        <h2>{section.sectionName}</h2>
+      </div>
+    </Link>
   );
 }
 
