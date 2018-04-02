@@ -3,7 +3,7 @@ export const setIsPlaying= (bool) => ({
   isPlaying: bool
 });
 
-export const setQuestionAnswered = (value) => ({
-  type: 'SET_QUESTION_ANSWERED',
+export const setQuestionsAnswered = (value) => ({
+  type: 'SET_QUESTIONS_ANSWERED',
   questionsAnswered: value
 });

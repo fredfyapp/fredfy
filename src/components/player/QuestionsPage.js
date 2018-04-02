@@ -62,16 +62,23 @@ class QuestionsPage extends React.Component {
           }
 
           <CharacterCard characterName={character} />
-          <Link to={`/teaches-you/${subjectName}`}>
-            <h3>Go back</h3>
-          </Link>
-          <button
+          <Link
+            to={`/teaches-you/${subjectName}`}
             onClick={() => {
-              this.props.setIsPlaying(!this.props.playing.isPlaying)
+              this.props.setIsPlaying(false)
             }}
           >
-            { isPlaying ? 'Quit' : 'Play' }
-          </button>
+            <h3>Go back</h3>
+          </Link>
+
+          {
+            !isPlaying &&
+              <button
+                onClick={() => {
+                  this.props.setIsPlaying(true)
+                }}
+              >Play</button>
+          }
         </div>
       </div>
     );

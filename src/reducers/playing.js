@@ -12,7 +12,7 @@ export default (state = playingReducerDefaultState, action) => {
         isPlaying: action.isPlaying,
         questionsAnswered: 0
       };
-    case 'SET_QUESTION_ANSWERED':
+    case 'SET_QUESTIONS_ANSWERED':
       return {
         ...state,
         questionsAnswered: action.questionsAnswered
