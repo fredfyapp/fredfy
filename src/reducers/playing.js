@@ -1,6 +1,8 @@
 const playingReducerDefaultState = {
   isPlaying: false,
-  questionsAnswered: 0
+  questionsAnswered: 0,
+  shuffledQuestions: [],
+  shuffledOptions: []
 };
 
 export default (state = playingReducerDefaultState, action) => {
@@ -17,6 +19,11 @@ export default (state = playingReducerDefaultState, action) => {
         ...state,
         questionsAnswered: action.questionsAnswered
       };
+    case 'SET_SHUFFLED_QUESTIONS':
+    return {
+      ...state,
+      shuffledQuestions: action.shuffledQuestions
+    }
     default:
       return state;
   }

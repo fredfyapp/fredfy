@@ -1,9 +1,14 @@
-export const setIsPlaying= (bool) => ({
+export const setIsPlaying= (isPlaying) => ({
   type: 'SET_IS_PLAYING',
-  isPlaying: bool
+  isPlaying
 });
 
-export const setQuestionsAnswered = (value) => ({
+export const setQuestionsAnswered = (questionsAnswered) => ({
   type: 'SET_QUESTIONS_ANSWERED',
-  questionsAnswered: value
+  questionsAnswered
+});
+
+export const setShuffledQuestions = (shuffledQuestions) => ({
+  type: 'SET_SHUFFLED_QUESTIONS',
+  shuffledQuestions
 });

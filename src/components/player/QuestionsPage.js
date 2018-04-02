@@ -12,52 +12,52 @@ import Explanation from './Explanation';
 import QuestionsCard from './QuestionsCard';
 
 // ********** ACTIONS ********** //
-import { setIsPlaying } from '../../actions/playing';
+import { setIsPlaying, setShuffledQuestions } from '../../actions/playing';
 
 // ********** SELECTORS ********** //
 import shuffleArray from '../../selectors/shuffleArray';
 
 class QuestionsPage extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.subjectName = this.props.match.params.subject;
+    this.sectionName = this.props.match.params.section;
+
+    this.subjectObject = this.props.database.learning.find(
+      (subject) => subject.subject === this.subjectName
+    );
+
+    this.sectionObject = this.subjectObject.sections.find(
+      (section) => section.sectionName === this.sectionName
+    );
+  }
+
   componentDidMount() {
-    const subjectName = this.props.match.params.subject;
-    const sectionName = this.props.match.params.section;
-
-    const subjectObject = this.props.database.learning.find(
-      (subject) => subject.subject === subjectName
-    );
-
-    const sectionObject = subjectObject.sections.find(
-      (section) => section.sectionName === sectionName
-    );
-
     // CALLED HERE SO SHUFFLING JUST HAPPENS ONCE, WHEN COMPONENT RENDERS
-    this.shuffledQuestions = [];
-    shuffleArray(sectionObject.questions, this.shuffledQuestions);
+    this.props.setShuffledQuestions(shuffleArray(this.sectionObject.questions));
   }
 
   render() {
-    const subjectName = this.props.match.params.subject;
-    const sectionName = this.props.match.params.section;
 
-    const subjectObject = this.props.database.learning.find(
-      (subject) => subject.subject === subjectName
-    );
-
-    const sectionObject = subjectObject.sections.find(
-      (section) => section.sectionName === sectionName
-    );
-
-    const character = this.props.user.subjects[subjectName].character;
+    const subjectName = this.subjectName;
+    const sectionName = this.sectionName;
+    const sectionObject = this.sectionObject;
+    const character = this.props.user.subjects[this.subjectName].character;
     const isPlaying = this.props.playing.isPlaying;
+    const shuffledQuestions = this.props.playing.shuffledQuestions;
 
     return (
       <div className='questions-page'>
         <div>
-            <h2>{sectionObject.sectionName}</h2>
+            <h2>{this.sectionObject[sectionName]}</h2>
           {
             isPlaying ?
-             <QuestionsCard shuffledQuestions={this.shuffledQuestions} /> :
+             <QuestionsCard
+               shuffledQuestions={shuffledQuestions}
+               {...this.props}
+             /> :
             <Explanation sectionObject={sectionObject} />
           }
 
@@ -96,7 +96,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying))
+  setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying)),
+  setShuffledQuestions: (shuffledQuestions) => dispatch(setShuffledQuestions(shuffledQuestions))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);

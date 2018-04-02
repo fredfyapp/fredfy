@@ -14,15 +14,66 @@ export default {
           "questions": [
             {
               "title": "What is color?",
-              "options": ["Option one", "Option two", "Option three", "Option four"]
+              "options": [
+                {
+                  "isCorrect": true,
+                  "answer": "answer one"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer two"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer three"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer four"
+                },
+              ]
             },
             {
               "title": "How to change the color?",
-              "options": ["Option one", "Option two", "Option three", "Option four"]
+              "options": [
+                {
+                  "isCorrect": true,
+                  "answer": "answer one"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer two"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer three"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer four"
+                },
+              ]
             },
             {
               "title": "How to increase opacity?",
-              "options": ["Option one", "Option two", "Option three", "Option four"]
+              "options": [
+                {
+                  "isCorrect": true,
+                  "answer": "answer one"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer two"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer three"
+                },
+                {
+                  "isCorrect": false,
+                  "answer": "answer four"
+                },
+              ]
             }
           ]
         },
