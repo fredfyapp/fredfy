@@ -7,15 +7,12 @@ import Modal from '../Modal';
 import ProgressBar from './ProgressBar';
 import Question from './Question';
 
-const QuestionsCard = ({ database }) => {
-  const question = database.learning[0].sections[0].questions[0];
+const QuestionsCard = ({ shuffledQuestions }) => {
   return (
     <div>
-      <h2>QuestionsCard</h2>
       <div>
-        {console.log(database.learning[0].sections[0].questions[0])}
         <ProgressBar />
-        <Question question={question} />
+        <Question questions={shuffledQuestions} />
       </div>
     </div>
   );

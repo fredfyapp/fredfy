@@ -15,12 +15,22 @@ export default {
             {
               "title": "What is color?",
               "options": ["Option one", "Option two", "Option three", "Option four"]
+            },
+            {
+              "title": "How to change the color?",
+              "options": ["Option one", "Option two", "Option three", "Option four"]
+            },
+            {
+              "title": "How to increase opacity?",
+              "options": ["Option one", "Option two", "Option three", "Option four"]
             }
           ]
-        }, {
+        },
+        {
           "sectionName": "fonts",
           "questions": []
-        }, {
+        },
+        {
           "sectionName": "images",
           "questions": []
         }

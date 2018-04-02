@@ -2,26 +2,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Question = ({ question }) => {
-  return (
-    <div>
-      <h2>{question.title}</h2>
-      {
-        question.options.map((option, index) => {
-          return (
-            <div key={question.title, option}>
-              <input type='radio' name='option' value={index} />
-              <label htmlFor={index}>{option}</label>
-            </div>
-          );
-        })
-      }
-    </div>
-  );
+// ********** REDUX ********** //
+import { connect } from 'react-redux';
+
+// ********** ACTIONS ********** //
+import { setQuestionAnswered } from '../../actions/playing';
+
+class Question extends React.Component {
+
+  handleQuestionAnswered = () => {
+
+    this.props.setQuestionAnswered(this.props.questionsAnswered + 1);
+  }
+
+  render() {
+    console.log(this.props.questions);
+    return (
+      <div>
+        <div>Question</div>
+        <h3>questionsAnswered: {this.props.questionsAnswered}</h3>
+        <button onClick={this.handleQuestionAnswered}>click</button>
+      </div>
+    );
+  }
+
 }
 
 Question.propTypes = {
   // : PropTypes.
 };
 
-export default Question;
+const mapStateToProps = (state) => ({
+  questionsAnswered: state.playing.questionsAnswered
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setQuestionAnswered: (value) => dispatch(setQuestionAnswered(value))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

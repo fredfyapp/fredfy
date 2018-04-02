@@ -9,11 +9,32 @@ import { connect } from 'react-redux';
 // ********** COMPONENTS ********** //
 import CharacterCard from '../CharacterCard';
 import Explanation from './Explanation';
+import QuestionsCard from './QuestionsCard';
 
 // ********** ACTIONS ********** //
 import { setIsPlaying } from '../../actions/playing';
 
+// ********** SELECTORS ********** //
+import shuffleArray from '../../selectors/shuffleArray';
+
 class QuestionsPage extends React.Component {
+
+  componentDidMount() {
+    const subjectName = this.props.match.params.subject;
+    const sectionName = this.props.match.params.section;
+
+    const subjectObject = this.props.database.learning.find(
+      (subject) => subject.subject === subjectName
+    );
+
+    const sectionObject = subjectObject.sections.find(
+      (section) => section.sectionName === sectionName
+    );
+
+    // CALLED HERE SO SHUFFLING JUST HAPPENS ONCE, WHEN COMPONENT RENDERS
+    this.shuffledQuestions = [];
+    shuffleArray(sectionObject.questions, this.shuffledQuestions);
+  }
 
   render() {
     const subjectName = this.props.match.params.subject;
@@ -26,21 +47,31 @@ class QuestionsPage extends React.Component {
     const sectionObject = subjectObject.sections.find(
       (section) => section.sectionName === sectionName
     );
-    console.log(sectionObject);
 
     const character = this.props.user.subjects[subjectName].character;
+    const isPlaying = this.props.playing.isPlaying;
 
     return (
       <div className='questions-page'>
         <div>
-          <Explanation sectionObject={sectionObject} />
+            <h2>{sectionObject.sectionName}</h2>
+          {
+            isPlaying ?
+             <QuestionsCard shuffledQuestions={this.shuffledQuestions} /> :
+            <Explanation sectionObject={sectionObject} />
+          }
+
           <CharacterCard characterName={character} />
           <Link to={`/teaches-you/${subjectName}`}>
             <h3>Go back</h3>
           </Link>
-          <button onClick={() => {
-            this.props.setIsPlaying(!this.props.playing.isPlaying)
-          }}>Play</button>
+          <button
+            onClick={() => {
+              this.props.setIsPlaying(!this.props.playing.isPlaying)
+            }}
+          >
+            { isPlaying ? 'Quit' : 'Play' }
+          </button>
         </div>
       </div>
     );
