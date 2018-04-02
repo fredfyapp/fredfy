@@ -3,12 +3,12 @@ export const setIsPlaying= (isPlaying) => ({
   isPlaying
 });
 
-export const setQuestionsAnswered = (questionsAnswered) => ({
-  type: 'SET_QUESTIONS_ANSWERED',
-  questionsAnswered
-});
-
 export const setShuffledQuestions = (shuffledQuestions) => ({
   type: 'SET_SHUFFLED_QUESTIONS',
   shuffledQuestions
+});
+
+export const setShuffledOptions = (shuffledOptions) => ({
+  type: 'SET_SHUFFLED_OPTIONS',
+  shuffledOptions
 });

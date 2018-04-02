@@ -17,19 +17,19 @@ export default {
               "options": [
                 {
                   "isCorrect": true,
-                  "answer": "answer one"
+                  "answer": "what is one"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer two"
+                  "answer": "what is two"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer three"
+                  "answer": "what is three"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer four"
+                  "answer": "what is four"
                 },
               ]
             },
@@ -38,19 +38,19 @@ export default {
               "options": [
                 {
                   "isCorrect": true,
-                  "answer": "answer one"
+                  "answer": "how to change one"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer two"
+                  "answer": "how to change two"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer three"
+                  "answer": "how to change three"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer four"
+                  "answer": "how to change four"
                 },
               ]
             },
@@ -59,19 +59,19 @@ export default {
               "options": [
                 {
                   "isCorrect": true,
-                  "answer": "answer one"
+                  "answer": "how increase one"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer two"
+                  "answer": "how increase two"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer three"
+                  "answer": "how increase three"
                 },
                 {
                   "isCorrect": false,
-                  "answer": "answer four"
+                  "answer": "how increase four"
                 },
               ]
             }
