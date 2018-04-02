@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 import navigationReducer from '../reducers/navigation';
+import playingReducer from '../reducers/playing';
 import userReducer from '../reducers/user';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -11,6 +12,7 @@ export default () => {
     combineReducers({
       auth: authReducer,
       navigation: navigationReducer,
+      playing: playingReducer,
       user: userReducer
     }),
     composeEnhancers(applyMiddleware(thunk))

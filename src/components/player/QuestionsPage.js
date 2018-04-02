@@ -1,6 +1,7 @@
 // ********** REACT ********** //
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // ********** REDUX ********** //
 import { connect } from 'react-redux';
@@ -8,6 +9,9 @@ import { connect } from 'react-redux';
 // ********** COMPONENTS ********** //
 import CharacterCard from '../CharacterCard';
 import Explanation from './Explanation';
+
+// ********** ACTIONS ********** //
+import { setIsPlaying } from '../../actions/playing';
 
 class QuestionsPage extends React.Component {
 
@@ -28,10 +32,15 @@ class QuestionsPage extends React.Component {
 
     return (
       <div className='questions-page'>
-        <h2>QuestionsPage</h2>
         <div>
-          <Explanation explanation={sectionObject.explanation} />
+          <Explanation sectionObject={sectionObject} />
           <CharacterCard characterName={character} />
+          <Link to={`/teaches-you/${subjectName}`}>
+            <h3>Go back</h3>
+          </Link>
+          <button onClick={() => {
+            this.props.setIsPlaying(!this.props.playing.isPlaying)
+          }}>Play</button>
         </div>
       </div>
     );
@@ -44,8 +53,12 @@ QuestionsPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  playing: state.playing
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying))
+});
 
-export default connect(mapStateToProps)(QuestionsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);
