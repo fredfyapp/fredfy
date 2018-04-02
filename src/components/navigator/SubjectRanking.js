@@ -38,6 +38,7 @@ const TableBody = ({ users, subjectObject }) => {
 };
 
 const SubjectRanking = ({ database, subjectObject, user }) => {
+  // 'USER' WILL BE USED FOR SORTING CURRENT USER IN THE TABLE
   return (
     <div>
       <h3>Ranking</h3>

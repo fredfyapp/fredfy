@@ -1,33 +1,48 @@
 // ********** REACT ********** //
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // ********** REDUX ********** //
 import { connect } from 'react-redux';
+import { setChosenCharacter } from '../../actions/user';
 
 // ********** COMPONENTS ********** //
 import CharacterCard from '../CharacterCard';
 
 class ChooseACharacter extends React.Component {
 
+  handleChosenCharacter = () => {
+    const character = this.chosenCharacter;
+    const subject = this.props.subjectName;
+    this.props.dispatch(setChosenCharacter(character, subject));
+  }
+
   componentWillMount() {
-    !this.props.chosenWorld.subject && this.props.history.push('/');
+    !this.props.subjectName && this.props.history.push('/');
   }
 
   render() {
-    let user = this.props.user;
-    let chosenWorld = this.props.chosenWorld;
+    const user = this.props.user;
+    const subject = this.props.subjectName;
+
     return (
       <div>
         <h2>ChooseACharacter</h2>
         {this.props.database.characters.map((character) => {
           return (
-            <CharacterCard
+            <Link
               key={character.name}
-              character={character}
-              user={user}
-              chosenWorld={chosenWorld}
-            />
+              to={`/teaches-you/${subject}`}
+              onClick={() => {
+                this.chosenCharacter = character.name;
+                this.handleChosenCharacter();
+              }}
+            >
+              <CharacterCard
+                characterName={character.name}
+              />
+            </Link>
           );
         })}
       </div>
@@ -40,7 +55,7 @@ ChooseACharacter.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  chosenWorld: state.navigation.chosenWorld,
+  subjectName: state.navigation.chosenWorld.subject,
   user: state.user
 });
 

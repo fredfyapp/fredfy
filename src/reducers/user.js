@@ -24,7 +24,7 @@ export default (state = userReducerDefaultState, action) => {
 
 const userReducerDefaultState = {
   "userId": "",
-  "userName": "",
+  "username": "",
   "totalPoints": 0,
   "subjects": {
     "html": {
@@ -44,7 +44,7 @@ const userReducerDefaultState = {
     },
     "css": {
       "points": 20,
-      "character": "",
+      "character": "Chloe",
       "isCompleted": false,
       "sectionsCompleted": {
         "cssSection1": false,

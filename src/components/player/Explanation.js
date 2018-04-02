@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Explanation = ({ section = {}, challenge = {} }) => {
+  // console.log(section);
+  // console.log(challenge);
   return (
     <div>
 

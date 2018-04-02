@@ -22,7 +22,7 @@ export const getGlobalTopUsers = (users) => {
 
   users.map((user) => {
 
-    const name = user.userName;
+    const name = user.username;
     const id = user.userId;
     const totalPoints = user.totalPoints;
     const subjects = [];
@@ -53,7 +53,7 @@ export const getSubjectTopUsers = (users, subject) => {
 
   users.map((user) => {
 
-    const name = user.userName;
+    const name = user.username;
     const id = user.userId;
     const totalPoints = user.totalPoints;
     const subjectPoints = user.subjects[subject].points;

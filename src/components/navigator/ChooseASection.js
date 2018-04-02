@@ -20,7 +20,6 @@ class ChooseASection extends React.Component {
 
     !user.subjects[subjectName].character &&
     this.props.history.push('/choose-a-character');
-
   }
 
   render() {

@@ -12,7 +12,6 @@ import { setChosenWorld } from '../../actions/navigation';
 class WorldCard extends React.Component {
 
   handleChosenWorld = () => {
-    // sessionStorage.setItem('chosenWorld', JSON.stringify(this.props.subject));
     this.props.dispatch(setChosenWorld(this.props.subject));
   }
 

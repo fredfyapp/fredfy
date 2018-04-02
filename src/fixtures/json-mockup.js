@@ -42,7 +42,7 @@ export default {
   "users": [
     {
       "userId": "1234",
-			"userName": "Marcel",
+			"username": "Marcel",
       "totalPoints": 22,
       "subjects": {
 				"html": {
@@ -94,7 +94,7 @@ export default {
     }, // user 1
     {
       "userId": "5678",
-			"userName": "Cruz",
+			"username": "Cruz",
       "totalPoints": 43,
       "subjects": {
 				"html": {

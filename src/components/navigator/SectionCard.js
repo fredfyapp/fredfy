@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const SectionCard = ({ subject, section }) => {
-  console.log('subject', subject);
-  console.log('section', section);
+  // console.log('subject', subject);
+  // console.log('section', section);
   return (
     <Link
       to={`/teaches-you/${subject}/${section.sectionName}`}
