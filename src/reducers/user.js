@@ -4,19 +4,31 @@ export default (state = userReducerDefaultState, action) => {
       return {
         user: action.user
       };
-    case 'SET_CHOSEN_CHARACTER': {
-      let subject = action.subject;
+    case 'SET_CHOSEN_CHARACTER':
       return {
         ...state,
         subjects: {
           ...state.subjects,
-          [subject]: {
-            ...state.subjects[subject],
+          [action.subject]: {
+            ...state.subjects[action.subject],
             character: action.character
           }
         }
-      }
-    }
+      };
+    case 'SET_FINISHED_SECTION':
+      return {
+        ...state,
+        subjects: {
+          ...state.subjects,
+          [action.subject]: {
+            ...state.subjects[action.subject],
+            finishedSections: {
+              ...state.subjects[action.subject].finishedSections,
+              [action.section]: true
+            }
+          }
+        }
+      };
     default:
       return state;
   }
@@ -30,47 +42,29 @@ const userReducerDefaultState = {
     "html": {
       "points": 10,
       "character": "Fred",
-      "isCompleted": false,
-      "sectionsCompleted": {
-        "htmlSection1": false,
-        "htmlSection2": false,
-        "htmlSection3": false
-      },
-      "challengesCompleted": {
-        "htmlSection1": false,
-        "htmlSection2": false,
-        "htmlSection3": false
-      }
+      "isFinished": true,
+      "finishedSections": {},
+      "finishedChallenges": {}
     },
     "css": {
-      "points": 20,
-      "character": "Chloe",
-      "isCompleted": false,
-      "sectionsCompleted": {
-        "cssSection1": false,
-        "cssSection2": false,
-        "cssSection3": false
+      "points": 30,
+      "character": "Fred",
+      "isFinished": false,
+      "finishedSections": {
+        "colors": false,
+        "fonts": true,
+        "images": false
       },
-      "challengesCompleted": {
-        "cssSection1": false,
-        "cssSection2": false,
-        "cssSection3": false
+      "finishedChallenges": {
+        "one": false
       }
     },
     "javascript": {
-      "points": 5,
+      "points": 10,
       "character": "",
-      "isCompleted": false,
-      "sectionsCompleted": {
-        "javascriptSection1": false,
-        "javascriptSection2": false,
-        "javascriptSection3": false
-      },
-      "challengesCompleted": {
-        "javascriptSection1": false,
-        "javascriptSection2": false,
-        "javascriptSection3": false
-      }
+      "isFinished": false,
+      "finishedSections": {},
+      "finishedChallenges": {}
     }
   }
 };

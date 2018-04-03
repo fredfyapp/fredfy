@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 // ********** ACTIONS ********** //
 import { setIsPlaying, setShuffledOptions } from '../../actions/playing';
+import { setFinishedSection } from '../../actions/user';
 
 // ********** SELECTORS ********** //
 import shuffleArray from '../../selectors/shuffleArray';
@@ -31,6 +32,7 @@ class Question extends React.Component {
       return;
     }
 
+    // HAS TO COME AFTER PREVIOUS RETURN OTHERWISE IS GONNA BE UNDEFINED
     const selectedOption = parseInt(this.state.selectedOption);
     const shuffledOptions = this.props.shuffledOptions;
 
@@ -50,9 +52,12 @@ class Question extends React.Component {
     const index = this.state.questionsAnswered;
     const questions = this.props.questions;
     const subjectName = this.props.match.params.subject;
+    const sectionName = this.props.match.params.section;
 
+    // WHEN ALL ANSWERS HAVE BEEN COMPLETED
     if (questions.length === index + 1) {
       alert('you finished');
+      this.props.setFinishedSection(subjectName, sectionName);
       this.props.history.push(`/teaches-you/${subjectName}`);
       this.props.setIsPlaying(false);
       return;
@@ -73,24 +78,9 @@ class Question extends React.Component {
     const index = this.state.questionsAnswered;
     const questions = this.props.questions;
 
-    // console.log(this.props.questions);
     if(questions[index]) {
       this.props.setShuffledOptions(shuffleArray(questions[index].options));
     }
-  }
-
-  componentDidUpdate() {
-    // console.log('did', this.state.questionsAnswered);
-  //   const subjectName = this.props.match.params.subject;
-  //   const index = this.props.questionsAnswered;
-  //   const questions = this.props.questions;
-  //
-  //   if(index === questions.length) {
-  //     alert('you finished it!');
-  //     this.props.setQuestionsAnswered(0);
-  //     this.props.setIsPlaying(false);
-  //     this.props.history.push(`/teaches-you/${subjectName}`);
-  //   }
   }
 
   render() {
@@ -145,7 +135,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying)),
-  setShuffledOptions: (shuffledOptions) => dispatch(setShuffledOptions(shuffledOptions))
+  setShuffledOptions: (shuffledOptions) => dispatch(setShuffledOptions(shuffledOptions)),
+  setFinishedSection: (subject, section) => dispatch(setFinishedSection(subject, section))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);
