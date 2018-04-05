@@ -24,7 +24,7 @@ import ChooseASection from '../components/navigator/ChooseASection';
 import Welcome from '../components/navigator/Welcome';
 
 // ********** PLAYER ********** //
-import ChallengePage from '../components/player/ChallengePage';
+import ChooseAChallenge from '../components/player/ChallengePage';
 import Player from '../components/player/Player';
 import QuestionsCard from '../components/player/QuestionsCard';
 import QuestionsPage from '../components/player/QuestionsPage';
@@ -58,8 +58,7 @@ class AppRouter extends React.Component {
             <Navigator path='/ranking' database={database} component={Ranking} />
             <Navigator path='/teaches-you/:subject' database={database} component={ChooseASection} exact={true} />
             <Player path='/teaches-you/:subject/:section' database={database} component={QuestionsPage} exact={true} />
-            {/* <Player path='/teaches-you/:subject/:section/:questionNumber' database={database} component={QuestionsCard} exact={true} /> */}
-            <Player path='/challenge-page' database={database} component={ChallengePage} />
+            <Player path='/choose-a-challenge' database={database} component={ChooseAChallenge} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
