@@ -53,7 +53,7 @@ const userReducerDefaultState = {
     "html": {
       "points": 10,
       "character": "Fred",
-      "isFinished": true,
+      "isFinished": false,
       "finishedSections": {
         "one": true,
         "two": true

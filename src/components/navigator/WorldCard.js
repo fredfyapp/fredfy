@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { setChosenWorld } from '../../actions/navigation';
 import { setFinishedSubject } from "../../actions/user";
 
-// ********** ACTIONS ********** //
+// ********** SELECTORS ********** //
 import checkFinishedSections from '../../selectors/checkFinishedSections';
 
 class WorldCard extends React.Component {
