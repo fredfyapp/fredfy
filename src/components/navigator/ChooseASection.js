@@ -19,7 +19,8 @@ class ChooseASection extends React.Component {
     const subjectName = this.props.match.params.subject;
 
     !user.subjects[subjectName].character &&
-    this.props.history.push('/choose-a-character');
+      // this.props.history.push('/choose-a-character');
+      this.props.history.push(`/choose-a-character-for/${subjectName}`);
   }
 
   render() {

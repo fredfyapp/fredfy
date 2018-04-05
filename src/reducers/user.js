@@ -29,6 +29,17 @@ export default (state = userReducerDefaultState, action) => {
           }
         }
       };
+      case 'SET_FINISHED_SUBJECT':
+        return {
+          ...state,
+          subjects: {
+            ...state.subjects,
+            [action.subject]: {
+              ...state.subjects[action.subject],
+              isFinished: action.bool
+            }
+          }
+        };
     default:
       return state;
   }
@@ -43,7 +54,10 @@ const userReducerDefaultState = {
       "points": 10,
       "character": "Fred",
       "isFinished": true,
-      "finishedSections": {},
+      "finishedSections": {
+        "one": true,
+        "two": true
+      },
       "finishedChallenges": {}
     },
     "css": {
@@ -53,7 +67,7 @@ const userReducerDefaultState = {
       "finishedSections": {
         "colors": false,
         "fonts": true,
-        "images": false
+        "images": true
       },
       "finishedChallenges": {
         "one": false

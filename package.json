@@ -1,5 +1,5 @@
 {
-  "name": "Fredfy",
+  "name": "fredfy",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Catalina Ravest, Leonardo São Thiago, Marcel Cruz, Thiago Rodrigues, Willyum Anglim",
@@ -23,6 +23,7 @@
     "babel-preset-react": "6.24.1",
     "css-loader": "0.28.4",
     "enzyme-adapter-react-16": "^1.0.4",
+    "eslint": "^4.19.1",
     "express": "4.15.4",
     "extract-text-webpack-plugin": "3.0.0",
     "firebase": "4.2.0",

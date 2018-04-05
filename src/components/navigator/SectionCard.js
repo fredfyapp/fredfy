@@ -9,8 +9,7 @@ import { connect } from 'react-redux';
 const SectionCard = (props) => {
   const subject = props.subject;
   const sectionName = props.section.sectionName;
-  console.log('subject', subject);
-  console.log('section', sectionName);
+  
   return (
     <Link
       to={`/teaches-you/${subject}/${sectionName}`}

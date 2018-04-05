@@ -14,3 +14,9 @@ export const setFinishedSection = (subject, section) => ({
   subject,
   section
 });
+
+export const setFinishedSubject = (subject, bool) => ({
+  type: 'SET_FINISHED_SUBJECT',
+  subject,
+  bool
+});
