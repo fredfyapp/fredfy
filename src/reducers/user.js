@@ -40,6 +40,17 @@ export default (state = userReducerDefaultState, action) => {
             }
           }
         };
+        case 'SET_POINTS':
+          return {
+            ...state,
+            subjects: {
+              ...state.subjects,
+              [action.subject]: {
+                ...state.subjects[action.subject],
+                points: action.points
+              }
+            }
+          };
     default:
       return state;
   }

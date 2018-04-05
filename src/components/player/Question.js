@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 // ********** ACTIONS ********** //
 import { setIsPlaying, setShuffledOptions } from '../../actions/playing';
-import { setFinishedSection } from '../../actions/user';
+import { setFinishedSection, setPoints } from '../../actions/user';
 
 // ********** SELECTORS ********** //
 import shuffleArray from '../../selectors/shuffleArray';
@@ -58,6 +58,7 @@ class Question extends React.Component {
     if (questions.length === index + 1) {
       alert('you finished');
       this.props.setFinishedSection(subjectName, sectionName);
+      this.props.setPoints(subjectName, this.props.points + 10);
       this.props.history.push(`/teaches-you/${subjectName}`);
       this.props.setIsPlaying(false);
       return;
@@ -65,7 +66,6 @@ class Question extends React.Component {
 
     // + 1 TO GET NEXT ITEM IN THE ARRAY BEFORE CHANGING STATE
     this.props.setShuffledOptions(shuffleArray(questions[index + 1].options));
-
   }
 
   handleOptionChange = (changeEvent) => {
@@ -129,14 +129,16 @@ Question.propTypes = {
   // : PropTypes.
 };
 
-const mapStateToProps = (state) => ({
-  shuffledOptions: state.playing.shuffledOptions
+const mapStateToProps = (state, props) => ({
+  shuffledOptions: state.playing.shuffledOptions,
+  points: state.user.subjects[props.subjectName].points
 });
 
 const mapDispatchToProps = (dispatch) => ({
   setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying)),
   setShuffledOptions: (shuffledOptions) => dispatch(setShuffledOptions(shuffledOptions)),
-  setFinishedSection: (subject, section) => dispatch(setFinishedSection(subject, section))
+  setFinishedSection: (subject, section) => dispatch(setFinishedSection(subject, section)),
+  setPoints: (subject, points) => dispatch(setPoints(subject, points))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);

@@ -10,12 +10,13 @@ import Question from './Question';
 class QuestionsCard extends React.Component {
 
   render() {
-    // console.log('card', this);
+    const subjectName = this.props.match.params.subject;
     return (
       <div>
         <ProgressBar />
         <Question
           questions={this.props.shuffledQuestions}
+          subjectName={subjectName}
           {...this.props}
         />
       </div>
