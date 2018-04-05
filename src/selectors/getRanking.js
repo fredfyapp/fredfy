@@ -3,19 +3,19 @@ import database from '../fixtures/json-mockup';
 // import user from '../reducers/userReducerDefaultState';
 
 const users = database.users;
-let subject = 'css';
 
-export const getUserTotalPoints = (user) => {
-  let totalPoints = 0;
+// NOT BEING USED, BECAUSE POINTS GAINED ARE ADDED TO SUBJECT AND TOTAL WHEN QUESTION
+// IS FINISHED
+// export const getUserTotalPoints = (user) => {
+//   let totalPoints = 0;
 
-  for (let subject in user.subjects) {
+//   for (let subject in user.subjects) {
 
-    totalPoints += user.subjects[subject].points;
-  }
+//     totalPoints += user.subjects[subject].points;
+//   }
 
-  return totalPoints;
-
-};
+//   return totalPoints;
+// };
 
 export const getGlobalTopUsers = (users) => {
   let finalList = [];

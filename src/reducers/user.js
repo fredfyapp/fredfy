@@ -29,28 +29,33 @@ export default (state = userReducerDefaultState, action) => {
           }
         }
       };
-      case 'SET_FINISHED_SUBJECT':
-        return {
-          ...state,
-          subjects: {
-            ...state.subjects,
-            [action.subject]: {
-              ...state.subjects[action.subject],
-              isFinished: action.bool
-            }
+    case 'SET_FINISHED_SUBJECT':
+      return {
+        ...state,
+        subjects: {
+          ...state.subjects,
+          [action.subject]: {
+            ...state.subjects[action.subject],
+            isFinished: action.bool
           }
-        };
-        case 'SET_POINTS':
-          return {
-            ...state,
-            subjects: {
-              ...state.subjects,
-              [action.subject]: {
-                ...state.subjects[action.subject],
-                points: action.points
-              }
-            }
-          };
+        }
+      };
+    case 'SET_SUBJECT_POINTS':
+      return {
+        ...state,
+        subjects: {
+          ...state.subjects,
+          [action.subject]: {
+            ...state.subjects[action.subject],
+            points: action.points
+          }
+        }
+      };
+    case 'SET_TOTAL_POINTS':
+      return {
+        ...state,
+        totalPoints: action.points
+      };   
     default:
       return state;
   }
@@ -59,7 +64,7 @@ export default (state = userReducerDefaultState, action) => {
 const userReducerDefaultState = {
   "userId": "",
   "username": "",
-  "totalPoints": 0,
+  "totalPoints": 50,
   "subjects": {
     "html": {
       "points": 10,

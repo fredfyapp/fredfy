@@ -20,8 +20,14 @@ export const setFinishedSubject = (subject, bool) => ({
   subject,
   bool
 });
-export const setPoints = (subject, points) => ({
-  type: 'SET_POINTS',
+
+export const setSubjectPoints = (subject, points) => ({
+  type: 'SET_SUBJECT_POINTS',
   subject,
+  points
+});
+
+export const setTotalPoints = (points) => ({
+  type: 'SET_TOTAL_POINTS',
   points
 });

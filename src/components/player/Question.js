@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 // ********** ACTIONS ********** //
 import { setIsPlaying, setShuffledOptions } from '../../actions/playing';
-import { setFinishedSection, setPoints } from '../../actions/user';
+import { setFinishedSection, setSubjectPoints, setTotalPoints } from '../../actions/user';
 
 // ********** SELECTORS ********** //
 import shuffleArray from '../../selectors/shuffleArray';
@@ -53,17 +53,21 @@ class Question extends React.Component {
     const questions = this.props.questions;
     const subjectName = this.props.match.params.subject;
     const sectionName = this.props.match.params.section;
+    const points = 13;
 
     // WHEN ALL ANSWERS HAVE BEEN COMPLETED
     if (questions.length === index + 1) {
       alert('you finished');
       this.props.setFinishedSection(subjectName, sectionName);
-      this.props.setPoints(subjectName, this.props.points + 10);
+      this.props.setSubjectPoints(subjectName, this.props.subjectPoints + points);
+      
+      this.props.setTotalPoints(this.props.totalPoints + points);
+      
       this.props.history.push(`/teaches-you/${subjectName}`);
       this.props.setIsPlaying(false);
       return;
     }
-
+    
     // + 1 TO GET NEXT ITEM IN THE ARRAY BEFORE CHANGING STATE
     this.props.setShuffledOptions(shuffleArray(questions[index + 1].options));
   }
@@ -131,14 +135,17 @@ Question.propTypes = {
 
 const mapStateToProps = (state, props) => ({
   shuffledOptions: state.playing.shuffledOptions,
-  points: state.user.subjects[props.subjectName].points
+  subjectPoints: state.user.subjects[props.subjectName].points,
+  totalPoints: state.user.totalPoints,
+  user: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
   setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying)),
   setShuffledOptions: (shuffledOptions) => dispatch(setShuffledOptions(shuffledOptions)),
   setFinishedSection: (subject, section) => dispatch(setFinishedSection(subject, section)),
-  setPoints: (subject, points) => dispatch(setPoints(subject, points))
+  setSubjectPoints: (subject, points) => dispatch(setSubjectPoints(subject, points)),
+  setTotalPoints: (points) => dispatch(setTotalPoints(points))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);
