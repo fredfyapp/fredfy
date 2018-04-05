@@ -15,8 +15,8 @@ import checkFinishedSections from '../../selectors/checkFinishedSections';
 
 class WorldCard extends React.Component {
 
-  handleChosenWorld = () => {
-    this.props.dispatch(setChosenWorld(this.props.subject));
+  handleChosenWorld = (e) => {
+    this.props.setChosenWorld(this.props.subject);
   }
 
   componentDidMount() {
@@ -63,6 +63,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  setChosenWorld: (subject) => dispatch(setChosenWorld(subject)),
   setFinishedSubject: (subject, bool) => dispatch(setFinishedSubject(subject, bool))
 });
 
