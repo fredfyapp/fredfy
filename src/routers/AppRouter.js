@@ -37,10 +37,16 @@ class AppRouter extends React.Component {
   // const { users } = this.props.database;
   // console.log('from AppRouter', users[0]);
 
+<<<<<<< HEAD
   // ********** ONLY FOR DEVELOPMENT, IN PRODUCTION LOGIN WILL TRIGGER STATE CHANGE ********** //
   // this.props.dispatch(setUser(users[0]));
 
   // }
+=======
+    // ********** ONLY FOR DEVELOPMENT, IN PRODUCTION LOGIN WILL TRIGGER STATE CHANGE ********** //
+    // this.props.dispatch(setUser(users[0]));
+  }
+>>>>>>> leo
 
   render() {
     const { database } = this.props;

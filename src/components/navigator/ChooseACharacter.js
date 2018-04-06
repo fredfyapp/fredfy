@@ -17,7 +17,11 @@ class ChooseACharacter extends React.Component {
     this.props.dispatch(setChosenCharacter(character, subject));
   };
 
+<<<<<<< HEAD
   componentDidMount() {
+=======
+  componentWillMount() {
+>>>>>>> leo
     !this.props.subjectName && this.props.history.push("/");
   }
 
