@@ -1,6 +1,5 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 const Editor = ({}) => {
   return (
@@ -8,10 +7,6 @@ const Editor = ({}) => {
       <h2>Editor</h2>
     </div>
   );
-}
-
-Editor.propTypes = {
-  // : PropTypes.
 };
 
 export default Editor;

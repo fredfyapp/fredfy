@@ -1,6 +1,5 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 const ChallengeCard = ({}) => {
   return (
@@ -8,10 +7,6 @@ const ChallengeCard = ({}) => {
       <h2>ChallengeCard</h2>
     </div>
   );
-}
-
-ChallengeCard.propTypes = {
-  // : PropTypes.
 };
 
 export default ChallengeCard;

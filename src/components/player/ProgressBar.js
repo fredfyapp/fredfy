@@ -1,6 +1,5 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 const ProgressBar = ({}) => {
   return (
@@ -8,10 +7,6 @@ const ProgressBar = ({}) => {
       <h2>ProgressBar</h2>
     </div>
   );
-}
-
-ProgressBar.propTypes = {
-  // : PropTypes.
 };
 
 export default ProgressBar;

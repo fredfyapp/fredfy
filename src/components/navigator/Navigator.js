@@ -1,6 +1,5 @@
 // ********** REACT ********** //
 import React from "react";
-import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
 
 // ********** COMPONENTS ********** //
@@ -22,10 +21,6 @@ const Navigator = ({ component: Component, database, ...rest }) => {
       )}
     />
   );
-};
-
-Navigator.propTypes = {
-  // : PropTypes.
 };
 
 export default Navigator;

@@ -107,6 +107,7 @@
       "subjectName": "css",
       "sections": {
         "colours": {
+          "sectionName": "colours",
           "explanation": "Colour is bla bla bla bla",
           "questions": {
             "colours-001": {
@@ -175,9 +176,11 @@
           }
         },
         "fonts": {
+          "sectionName": "fonts",
           "placeholder": "placeholder"
         },
         "images": {
+          "sectionName": "images",
           "placeholder": "placeholder"
         }
       },

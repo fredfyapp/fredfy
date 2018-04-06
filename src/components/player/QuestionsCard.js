@@ -1,14 +1,12 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 // ********** COMPONENTS ********** //
-import Modal from '../Modal';
-import ProgressBar from './ProgressBar';
-import Question from './Question';
+import Modal from "../Modal";
+import ProgressBar from "./ProgressBar";
+import Question from "./Question";
 
 class QuestionsCard extends React.Component {
-
   render() {
     const subjectName = this.props.match.params.subject;
     return (
@@ -22,11 +20,6 @@ class QuestionsCard extends React.Component {
       </div>
     );
   }
-
 }
-
-QuestionsCard.propTypes = {
-  // : PropTypes.
-};
 
 export default QuestionsCard;

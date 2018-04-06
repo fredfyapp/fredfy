@@ -43,7 +43,7 @@ class AppRouter extends React.Component {
             <Navigator path="/account" component={Account} />
             {/* <Navigator
               path="/choose-a-character-for/:subject"
-              database={database}
+              database={characters}
               component={ChooseACharacter}
             /> */}
             <Navigator
@@ -58,12 +58,12 @@ class AppRouter extends React.Component {
               database={database}
               component={Ranking}
             /> */}
-            {/* <Navigator
+            <Navigator
               path="/teaches-you/:subject"
-              database={database}
+              database={learning}
               component={ChooseASection}
               exact={true}
-            /> */}
+            />
             {/* <Player
               path="/teaches-you/:subject/:section"
               database={database}

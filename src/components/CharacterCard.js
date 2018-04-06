@@ -1,17 +1,12 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-const CharacterCard = (props) => {
+const CharacterCard = props => {
   return (
     <div>
-        <h2>{props.characterName}</h2>
+      <h2>{props.characterName}</h2>
     </div>
   );
-}
-
-CharacterCard.propTypes = {
-  // : PropTypes.
 };
 
 export default CharacterCard;

@@ -12,24 +12,23 @@ import WorldCard from "./WorldCard";
 import { setChosenSubject } from "../../actions/navigation";
 
 class ChooseAWorld extends React.Component {
-  handleChosenWorld = subject => {
-    this.props.setChosenSubject(subject);
+  handleChosenWorld = subjectName => {
+    this.props.setChosenSubject(subjectName);
   };
 
   render() {
-    const { database } = this.props;
+    const subjects = this.props.database;
 
-    let subjects = [];
-    for (let [key, value] of Object.entries(database)) {
-      subjects.push(value);
-      // console.log(key, value);
+    let subjectsArray = [];
+    for (let [key, value] of Object.entries(subjects)) {
+      subjectsArray.push(value);
     }
 
     return (
       <div id="world" className="block-content">
         <h2>Choose a World</h2>
         <div>
-          {subjects.map(subject => {
+          {subjectsArray.map(subject => {
             return (
               <Link
                 to={`/teaches-you/${subject.subjectName}`}

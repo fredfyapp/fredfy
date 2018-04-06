@@ -1,6 +1,5 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 const OurTeam = ({}) => {
   return (
@@ -8,10 +7,6 @@ const OurTeam = ({}) => {
       <h2>OurTeam</h2>
     </div>
   );
-}
-
-OurTeam.propTypes = {
-  // : PropTypes.
 };
 
 export default OurTeam;

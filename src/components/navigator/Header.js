@@ -1,13 +1,12 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = ({}) => {
   return (
     <nav className="header navbar navbar-expand-lg navbar-light bg-light">
       <div className="logo navbar-brand">
-        <Link to='/'>
+        <Link to="/">
           <h1>Fredfy</h1>
           <h2>Learn_</h2>
         </Link>
@@ -32,10 +31,6 @@ const Header = ({}) => {
       </div>
     </nav>
   );
-};
-
-Header.propTypes = {
-  // : PropTypes.
 };
 
 export default Header;

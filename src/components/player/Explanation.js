@@ -1,6 +1,5 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 const Explanation = ({ sectionObject }) => {
   return (
@@ -8,10 +7,6 @@ const Explanation = ({ sectionObject }) => {
       <h4>{sectionObject.explanation}</h4>
     </div>
   );
-}
-
-Explanation.propTypes = {
-  // : PropTypes.
 };
 
 export default Explanation;

@@ -1,6 +1,5 @@
 // ********** REACT ********** //
 import React from "react";
-import PropTypes from "prop-types";
 
 // ********** api ************ //
 import db from "../../fixtures/challenges";
@@ -17,10 +16,6 @@ const ChallengePage = ({ database }) => {
       {"asdf"}
     </div>
   );
-};
-
-ChallengePage.propTypes = {
-  // : PropTypes.
 };
 
 export default ChallengePage;

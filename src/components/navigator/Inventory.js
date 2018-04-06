@@ -1,6 +1,5 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 const Inventory = ({}) => {
   return (
@@ -8,10 +7,6 @@ const Inventory = ({}) => {
       <h2>Inventory</h2>
     </div>
   );
-}
-
-Inventory.propTypes = {
-  // : PropTypes.
 };
 
 export default Inventory;

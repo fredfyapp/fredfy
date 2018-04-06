@@ -1,6 +1,5 @@
 // ********** REACT ********** //
 import React from "react";
-import PropTypes from "prop-types";
 
 const HowItWorks = ({}) => {
   return (
@@ -8,10 +7,6 @@ const HowItWorks = ({}) => {
       <h2>HowItWorks</h2>
     </div>
   );
-};
-
-HowItWorks.propTypes = {
-  // : PropTypes.
 };
 
 export default HowItWorks;

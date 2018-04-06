@@ -1,32 +1,25 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 // ********** REDUX ********** //
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-const SectionCard = (props) => {
-  const subject = props.subject;
-  const sectionName = props.section.sectionName;
-  
+const SectionCard = props => {
+  const subjectName = props.subjectName;
+  const sectionName = props.sectionName;
+
   return (
-      <div>
-        <h2>
-          { sectionName }
-          {
-            props.user.subjects[subject].finishedSections[sectionName] &&
-            ' - done!'
-          }
-        </h2>
-      </div>
+    <div>
+      <h2>
+        {sectionName}
+        {props.user.subjects[subjectName].finishedSections[sectionName] &&
+          " - done!"}
+      </h2>
+    </div>
   );
-}
-
-SectionCard.propTypes = {
-  // : PropTypes.
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user
 });
 
