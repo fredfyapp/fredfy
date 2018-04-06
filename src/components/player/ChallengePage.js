@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 // ********** api ************ //
 import db from "../../fixtures/challenges";
 
-const ListChallenges = (obj) => {
-  return Object.keys(obj).map((key) => <span>{key}</span>);
+const ListChallenges = obj => {
+  return Object.keys(obj).map(key => <span>{key}</span>);
 };
 
 const ChallengePage = ({ database }) => {

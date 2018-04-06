@@ -1,25 +1,24 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 // ********** REDUX ********** //
-import { connect } from 'react-redux';
-import { setChosenCharacter } from '../../actions/user';
+import { connect } from "react-redux";
+import { setChosenCharacter } from "../../actions/user";
 
 // ********** COMPONENTS ********** //
-import CharacterCard from '../CharacterCard';
+import CharacterCard from "../CharacterCard";
 
 class ChooseACharacter extends React.Component {
-
   handleChosenCharacter = () => {
     const character = this.chosenCharacter;
     const subject = this.props.subjectName;
     this.props.dispatch(setChosenCharacter(character, subject));
-  }
+  };
 
   componentWillMount() {
-    !this.props.subjectName && this.props.history.push('/');
+    !this.props.subjectName && this.props.history.push("/");
   }
 
   render() {
@@ -29,7 +28,7 @@ class ChooseACharacter extends React.Component {
     return (
       <div>
         <h2>ChooseACharacter</h2>
-        {this.props.database.characters.map((character) => {
+        {this.props.database.characters.map(character => {
           return (
             <Link
               key={character.name}
@@ -39,9 +38,7 @@ class ChooseACharacter extends React.Component {
                 this.handleChosenCharacter();
               }}
             >
-              <CharacterCard
-                characterName={character.name}
-              />
+              <CharacterCard characterName={character.name} />
             </Link>
           );
         })}
@@ -54,7 +51,7 @@ ChooseACharacter.propTypes = {
   // : PropTypes.
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   subjectName: state.navigation.chosenWorld.subject,
   user: state.user
 });
