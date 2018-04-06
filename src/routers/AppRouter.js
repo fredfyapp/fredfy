@@ -33,32 +33,64 @@ import QuestionsPage from "../components/player/QuestionsPage";
 import NotFoundPage from "../components/NotFoundPage";
 
 class AppRouter extends React.Component {
-  // componentDidMount() {
-  // const { users } = this.props.database;
-  // console.log('from AppRouter', users[0]);
+  constructor(props) {
+    super(props);
 
-  // ********** ONLY FOR DEVELOPMENT, IN PRODUCTION LOGIN WILL TRIGGER STATE CHANGE ********** //
-  // this.props.dispatch(setUser(users[0]));
+    const { database } = this.props;
 
-  // }
+    this.characters = database.characters;
+    this.learning = database.learning;
+    this.users = database.users;
+  }
 
   render() {
-    const { database } = this.props;
+    const { characters, learning, users } = this.props.database;
+    console.log("users", users);
+    console.log("characters", characters);
+    console.log("learning", learning);
+
+    const test = "testing";
 
     return (
       <Router history={history}>
         <div>
           <Switch>
-            <Navigator path='/' component={Welcome} exact={true} />
-            <Navigator path='/account' component={Account} />
-            <Navigator path='/choose-a-character-for/:subject' database={database} component={ChooseACharacter} />
-            <Navigator path='/choose-a-world' database={database} component={ChooseAWorld} />
-            <Navigator path='/how-it-works' component={HowItWorks} />
-            <Navigator path='/our-team' component={OurTeam} />
-            <Navigator path='/ranking' database={database} component={Ranking} />
-            <Navigator path='/teaches-you/:subject' database={database} component={ChooseASection} exact={true} />
-            <Player path='/teaches-you/:subject/:section' database={database} component={QuestionsPage} exact={true} />
-            <Player path='/choose-a-challenge' database={database} component={ChooseAChallenge} />
+            <Navigator path="/" component={Welcome} test={test} exact={true} />
+            {/* <Navigator path="/account" component={Account} /> */}
+            {/* <Navigator
+              path="/choose-a-character-for/:subject"
+              database={database}
+              component={ChooseACharacter}
+            /> */}
+            {/* <Navigator
+              path="/choose-a-world"
+              database={database}
+              component={ChooseAWorld}
+            /> */}
+            <Navigator path="/how-it-works" component={HowItWorks} />
+            <Navigator path="/our-team" component={OurTeam} />
+            {/* <Navigator
+              path="/ranking"
+              database={database}
+              component={Ranking}
+            /> */}
+            {/* <Navigator
+              path="/teaches-you/:subject"
+              database={database}
+              component={ChooseASection}
+              exact={true}
+            /> */}
+            {/* <Player
+              path="/teaches-you/:subject/:section"
+              database={database}
+              component={QuestionsPage}
+              exact={true}
+            /> */}
+            {/* <Player
+              path="/choose-a-challenge"
+              database={database}
+              component={ChooseAChallenge}
+            /> */}
             <Route component={NotFoundPage} />
           </Switch>
         </div>
@@ -66,6 +98,10 @@ class AppRouter extends React.Component {
     );
   }
 }
+
+// AppRouter.propTypes = {
+
+// };
 
 export default connect()(AppRouter);
 export const history = createHistory();
