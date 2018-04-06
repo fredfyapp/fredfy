@@ -1,3 +1,4 @@
+@import './base/reset';
 @import './base/settings';
 @import './base/variables';
 @import './base/placeholder';
@@ -16,3 +17,8 @@
 // ********** PLAYER ********** //
 @import './components/player/player';
 @import './components/player/questions-page';
+
+// ********** FONTS ********** //
+@import url('https://fonts.googleapis.com/css?family=Bungee');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
