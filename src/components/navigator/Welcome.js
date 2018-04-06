@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 
 const Welcome = ({}) => {
   return (
-    <div>
-      <h2>Welcome</h2>
-      <Link to='/choose-a-world'>
-        <h3>Start</h3>
-      </Link>
+    <div id="home" className="block-content">
+      <h2>Welcome to Fredfy</h2>
+      <div className="content">
+        <Link to='/choose-a-world'>
+          <h3 className="btn btn-outline-primary btn-lg">Start a game</h3>
+        </Link>
+      </div>
     </div>
   );
 }
