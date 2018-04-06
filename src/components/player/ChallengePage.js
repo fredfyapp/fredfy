@@ -14,6 +14,7 @@ const ChallengePage = ({ database }) => {
     <div>
       <h2>ChallengePage</h2>
       <ListChallenges obj={db} />
+      {"asdf"}
     </div>
   );
 };
