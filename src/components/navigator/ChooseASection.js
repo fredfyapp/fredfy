@@ -42,7 +42,7 @@ class ChooseASection extends React.Component {
                 return (
                   <Link
                     to={`/teaches-you/${subjectName}/${sectionName}`}
-                    key={sectionName}
+                    key={subjectName + sectionName}
                   >
                     <SectionCard
                       subjectName={subjectName}
