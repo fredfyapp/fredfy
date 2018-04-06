@@ -26,15 +26,9 @@ class ChooseACharacter extends React.Component {
     const subject = this.props.subjectName;
 
     return (
-<<<<<<< HEAD
-      <div>
-        <h2>ChooseACharacter</h2>
-        {this.props.database.characters.map(character => {
-=======
       <div id="hero" className="block-content">
         <h2>Choose a Hero</h2>
         {this.props.database.characters.map((character) => {
->>>>>>> f059ba6aaebc4027131ea7f7f1395b92f31a0138
           return (
             <Link
               key={character.name}
