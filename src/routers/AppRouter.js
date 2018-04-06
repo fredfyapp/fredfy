@@ -1,36 +1,36 @@
 // ********** REACT ********** //
-import React from 'react';
-import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import React from "react";
+import { Router, Route, Switch, Link, NavLink } from "react-router-dom";
 
 // ********** HISTORY ********** //
-import createHistory from 'history/createBrowserHistory';
+import createHistory from "history/createBrowserHistory";
 
 // ********** REDUX ********** //
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // ********** ACTIONS ********** //
-import { setUser } from '../actions/user';
+import { setUser } from "../actions/user";
 
 // ********** COMPONENTS ********** //
 // ********** NAVIGATOR ********** //
-import Account from '../components/navigator/Account';
-import ChooseACharacter from '../components/navigator/ChooseACharacter';
-import ChooseAWorld from '../components/navigator/ChooseAWorld';
-import HowItWorks from '../components/navigator/HowItWorks';
-import Navigator from '../components/navigator/Navigator';
-import OurTeam from '../components/navigator/OurTeam';
-import Ranking from '../components/navigator/Ranking';
-import ChooseASection from '../components/navigator/ChooseASection';
-import Welcome from '../components/navigator/Welcome';
+import Account from "../components/navigator/Account";
+import ChooseACharacter from "../components/navigator/ChooseACharacter";
+import ChooseAWorld from "../components/navigator/ChooseAWorld";
+import HowItWorks from "../components/navigator/HowItWorks";
+import Navigator from "../components/navigator/Navigator";
+import OurTeam from "../components/navigator/OurTeam";
+import Ranking from "../components/navigator/Ranking";
+import ChooseASection from "../components/navigator/ChooseASection";
+import Welcome from "../components/navigator/Welcome";
 
 // ********** PLAYER ********** //
-import ChooseAChallenge from '../components/player/ChallengePage';
-import Player from '../components/player/Player';
-import QuestionsCard from '../components/player/QuestionsCard';
-import QuestionsPage from '../components/player/QuestionsPage';
+import ChooseAChallenge from "../components/player/ChallengePage";
+import Player from "../components/player/Player";
+import QuestionsCard from "../components/player/QuestionsCard";
+import QuestionsPage from "../components/player/QuestionsPage";
 
 // ********** NOT FOUND ********** //
-import NotFoundPage from '../components/NotFoundPage';
+import NotFoundPage from "../components/NotFoundPage";
 
 class AppRouter extends React.Component {
   componentWillMount() {
@@ -39,7 +39,6 @@ class AppRouter extends React.Component {
 
     // ********** ONLY FOR DEVELOPMENT, IN PRODUCTION LOGIN WILL TRIGGER STATE CHANGE ********** //
     // this.props.dispatch(setUser(users[0]));
-
   }
 
   render() {
@@ -65,7 +64,6 @@ class AppRouter extends React.Component {
       </Router>
     );
   }
-
 }
 
 export default connect()(AppRouter);
