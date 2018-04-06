@@ -1,20 +1,19 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 // ********** REDUX ********** //
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // ********** COMPONENTS ********** //
-import ChallengeCard from './ChallengeCard';
-import SubjectRanking from './SubjectRanking';
-import Inventory from './Inventory';
-import SectionCard from './SectionCard';
+import ChallengeCard from "./ChallengeCard";
+import SubjectRanking from "./SubjectRanking";
+import Inventory from "./Inventory";
+import SectionCard from "./SectionCard";
 
 class ChooseASection extends React.Component {
-
-  componentWillMount() {
+  componentDidMount() {
     const user = this.props.user;
 
     const subjectName = this.props.match.params.subject;
@@ -28,15 +27,15 @@ class ChooseASection extends React.Component {
     return (
       <div>
         <h2>{subjectObject.subject}</h2>
-        <div className='section'>
-
-          <div className='section__map'>
-            <div className='section__section-cards'>
-
-              {subjectObject.sections.map((section) => {
+        <div className="section">
+          <div className="section__map">
+            <div className="section__section-cards">
+              {subjectObject.sections.map(section => {
                 return (
                   <Link
-                    to={`/teaches-you/${subjectObject.subject}/${section.sectionName}`}
+                    to={`/teaches-you/${subjectObject.subject}/${
+                      section.sectionName
+                    }`}
                     key={section.sectionName}
                   >
                     <SectionCard
@@ -46,18 +45,17 @@ class ChooseASection extends React.Component {
                   </Link>
                 );
               })}
-
             </div>
-            <div className='section__challenge-card'>
+            <div className="section__challenge-card">
               <ChallengeCard />
             </div>
           </div>
 
-          <div className='section__sidepanel'>
-            <div className='inventory-panel'>
+          <div className="section__sidepanel">
+            <div className="inventory-panel">
               <Inventory />
             </div>
-            <div className='ranking-panel'>
+            <div className="ranking-panel">
               <SubjectRanking
                 database={this.props.database}
                 subjectObject={subjectObject}
@@ -65,12 +63,10 @@ class ChooseASection extends React.Component {
               />
             </div>
           </div>
-
         </div>
       </div>
     );
   }
-
 }
 
 ChooseASection.propTypes = {
@@ -78,7 +74,9 @@ ChooseASection.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-  subjectObject: props.database.learning.find((subject) => subject.subject === props.match.params.subject),
+  subjectObject: props.database.learning.find(
+    subject => subject.subject === props.match.params.subject
+  ),
   user: state.user
 });
 
