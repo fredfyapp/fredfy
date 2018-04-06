@@ -1,6 +1,7 @@
 // ********** REACT ********** //
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // ********** REDUX ********** //
 import { connect } from 'react-redux';
@@ -34,11 +35,15 @@ class ChooseASection extends React.Component {
 
               {subjectObject.sections.map((section) => {
                 return (
-                  <SectionCard
+                  <Link
+                    to={`/teaches-you/${subjectObject.subject}/${section.sectionName}`}
                     key={section.sectionName}
-                    subject={subjectObject.subject}
-                    section={section}
-                  />
+                  >
+                    <SectionCard
+                      subject={subjectObject.subject}
+                      section={section}
+                    />
+                  </Link>
                 );
               })}
 

@@ -1,7 +1,6 @@
 // ********** REACT ********** //
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 // ********** REDUX ********** //
 import { connect } from 'react-redux';
@@ -11,9 +10,6 @@ const SectionCard = (props) => {
   const sectionName = props.section.sectionName;
   
   return (
-    <Link
-      to={`/teaches-you/${subject}/${sectionName}`}
-    >
       <div>
         <h2>
           { sectionName }
@@ -23,7 +19,6 @@ const SectionCard = (props) => {
           }
         </h2>
       </div>
-    </Link>
   );
 }
 
