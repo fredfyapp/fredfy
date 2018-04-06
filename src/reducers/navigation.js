@@ -1,17 +1,13 @@
 const navigationReducerDefaultState = {
-  chosenWorld: {
-    subject: '',
-    sections: [],
-    challenges: []
-  }
+  chosenSubject: ""
 };
 
 export default (state = navigationReducerDefaultState, action) => {
   switch (action.type) {
-    case 'SET_CHOSEN_WORLD':
+    case "SET_CHOSEN_SUBJECT":
       return {
         ...state,
-        chosenWorld: action.chosenWorld
+        chosenSubject: action.chosenSubject
       };
     default:
       return state;

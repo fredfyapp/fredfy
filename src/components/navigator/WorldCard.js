@@ -1,6 +1,5 @@
 // ********** REACT ********** //
 import React from "react";
-import PropTypes from "prop-types";
 
 // ********** REDUX ********** //
 import { connect } from "react-redux";
@@ -12,7 +11,7 @@ import checkFinishedSections from "../../selectors/checkFinishedSections";
 
 class WorldCard extends React.Component {
   componentDidMount() {
-    const subjectName = this.props.subject.subjectName;
+    const subjectName = this.props.subjectName;
     const userSubject = this.props.user.subjects[subjectName];
     const finishedSections = this.props.user.subjects[subjectName]
       .finishedSections;
@@ -25,7 +24,7 @@ class WorldCard extends React.Component {
   }
 
   render() {
-    const subject = this.props.subject.subjectName;
+    const subject = this.props.subjectName;
     return (
       <div>
         <h2>
@@ -36,10 +35,6 @@ class WorldCard extends React.Component {
     );
   }
 }
-
-WorldCard.propTypes = {
-  // : PropTypes.
-};
 
 const mapStateToProps = state => ({
   user: state.user

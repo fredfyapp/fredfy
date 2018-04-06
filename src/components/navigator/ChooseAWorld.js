@@ -1,6 +1,5 @@
 // ********** REACT ********** //
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // ********** REDUX ********** //
@@ -10,11 +9,11 @@ import { connect } from "react-redux";
 import WorldCard from "./WorldCard";
 
 // ********** ACTIONS ********** //
-import { setChosenWorld } from "../../actions/navigation";
+import { setChosenSubject } from "../../actions/navigation";
 
 class ChooseAWorld extends React.Component {
   handleChosenWorld = subject => {
-    this.props.setChosenWorld(subject);
+    this.props.setChosenSubject(subject);
   };
 
   render() {
@@ -23,10 +22,9 @@ class ChooseAWorld extends React.Component {
     let subjects = [];
     for (let [key, value] of Object.entries(database)) {
       subjects.push(value);
-      console.log(key, value);
+      // console.log(key, value);
     }
-    console.log(subjects);
-    console.log(this.props.database);
+
     return (
       <div id="world" className="block-content">
         <h2>Choose a World</h2>
@@ -37,10 +35,10 @@ class ChooseAWorld extends React.Component {
                 to={`/teaches-you/${subject.subjectName}`}
                 key={subject.subjectName}
                 onClick={() => {
-                  this.handleChosenWorld(subject);
+                  this.handleChosenWorld(subject.subjectName);
                 }}
               >
-                <WorldCard subject={subject} />
+                <WorldCard subjectName={subject.subjectName} />
               </Link>
             );
           })}
@@ -50,12 +48,8 @@ class ChooseAWorld extends React.Component {
   }
 }
 
-ChooseAWorld.propTypes = {
-  // : PropTypes.
-};
-
 const mapDispatchToProps = dispatch => ({
-  setChosenWorld: subject => dispatch(setChosenWorld(subject))
+  setChosenSubject: subject => dispatch(setChosenSubject(subject))
 });
 
 export default connect(null, mapDispatchToProps)(ChooseAWorld);
