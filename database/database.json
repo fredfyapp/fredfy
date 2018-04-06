@@ -95,6 +95,7 @@
   },
   "learning": {
     "html": {
+      "subjectName": "html",
       "sections": {
         "placeholder": "placeholder"
       },
@@ -103,6 +104,7 @@
       }
     },
     "css": {
+      "subjectName": "css",
       "sections": {
         "colours": {
           "explanation": "Colour is bla bla bla bla",
@@ -172,12 +174,19 @@
             }
           }
         },
-        "fonts": {},
-        "images": {}
+        "fonts": {
+          "placeholder": "placeholder"
+        },
+        "images": {
+          "placeholder": "placeholder"
+        }
       },
-      "challenges": {}
+      "challenges": {
+        "placeholder": "placeholder"
+      }
     },
     "javascript": {
+      "subjectName": "javascript",
       "sections": {
         "placeholder": "placeholder"
       },

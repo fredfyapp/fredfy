@@ -18,15 +18,24 @@ class ChooseAWorld extends React.Component {
   };
 
   render() {
+    const { database } = this.props;
+
+    let subjects = [];
+    for (let [key, value] of Object.entries(database)) {
+      subjects.push(value);
+      console.log(key, value);
+    }
+    console.log(subjects);
+    console.log(this.props.database);
     return (
       <div id="world" className="block-content">
         <h2>Choose a World</h2>
         <div>
-          {this.props.database.learning.map(subject => {
+          {subjects.map(subject => {
             return (
               <Link
-                to={`/teaches-you/${subject.subject}`}
-                key={subject.subject}
+                to={`/teaches-you/${subject.subjectName}`}
+                key={subject.subjectName}
                 onClick={() => {
                   this.handleChosenWorld(subject);
                 }}

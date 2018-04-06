@@ -33,40 +33,24 @@ import QuestionsPage from "../components/player/QuestionsPage";
 import NotFoundPage from "../components/NotFoundPage";
 
 class AppRouter extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { database } = this.props;
-
-    this.characters = database.characters;
-    this.learning = database.learning;
-    this.users = database.users;
-  }
-
   render() {
     const { characters, learning, users } = this.props.database;
-    console.log("users", users);
-    console.log("characters", characters);
-    console.log("learning", learning);
-
-    const test = "testing";
-
     return (
       <Router history={history}>
         <div>
           <Switch>
-            <Navigator path="/" component={Welcome} test={test} exact={true} />
-            {/* <Navigator path="/account" component={Account} /> */}
+            <Navigator path="/" component={Welcome} exact={true} />
+            <Navigator path="/account" component={Account} />
             {/* <Navigator
               path="/choose-a-character-for/:subject"
               database={database}
               component={ChooseACharacter}
             /> */}
-            {/* <Navigator
+            <Navigator
               path="/choose-a-world"
-              database={database}
+              database={learning}
               component={ChooseAWorld}
-            /> */}
+            />
             <Navigator path="/how-it-works" component={HowItWorks} />
             <Navigator path="/our-team" component={OurTeam} />
             {/* <Navigator

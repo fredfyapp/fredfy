@@ -12,7 +12,7 @@ import checkFinishedSections from "../../selectors/checkFinishedSections";
 
 class WorldCard extends React.Component {
   componentDidMount() {
-    const subjectName = this.props.subject.subject;
+    const subjectName = this.props.subject.subjectName;
     const userSubject = this.props.user.subjects[subjectName];
     const finishedSections = this.props.user.subjects[subjectName]
       .finishedSections;
@@ -25,7 +25,7 @@ class WorldCard extends React.Component {
   }
 
   render() {
-    const subject = this.props.subject.subject;
+    const subject = this.props.subject.subjectName;
     return (
       <div>
         <h2>
