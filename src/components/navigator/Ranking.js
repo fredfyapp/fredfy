@@ -6,17 +6,14 @@ import { subjectsDB } from "../../app";
 
 // ********** SELECTORS ********** //
 import { getGlobalTopUsers } from "../../selectors/getRanking";
+import objectToArray from "../../selectors/objectToArray";
 
 const TableHeader = () => {
-  let subjectsArray = [];
-  for (let [key, value] of Object.entries(subjectsDB)) {
-    subjectsArray.push(value);
-  }
-
+  const subjects = objectToArray(subjectsDB);
   return (
     <div className="table__header">
       <h3>Name</h3>
-      {subjectsArray.map(subject => {
+      {subjects.map(subject => {
         return <h3 key={subject.subjectName}>{subject.subjectName}</h3>;
       })}
       <h3>Total</h3>

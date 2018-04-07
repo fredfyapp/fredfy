@@ -105,18 +105,19 @@ class Question extends React.Component {
             <h3>{questions[index].title}</h3>
             <form>
               {shuffledOptions.map((option, index) => (
-                <div key={option.answer}>
-                  <label>
-                    <input
-                      type="radio"
-                      value={index}
-                      checked={this.state.selectedOption === index.toString()}
-                      correct={option.isCorrect.toString()}
-                      onChange={this.handleOptionChange}
-                    />
-                    {option.answer}
-                  </label>
-                </div>
+                // <div key={option.answer}>
+                //   <label>
+                //     <input
+                //       type="radio"
+                //       value={index}
+                //       checked={this.state.selectedOption === index.toString()}
+                //       correct={option.isCorrect.toString()}
+                //       onChange={this.handleOptionChange}
+                //     />
+                //     {option.answer}
+                //   </label>
+                // </div>
+                <div>test</div>
               ))}
             </form>
           </div>

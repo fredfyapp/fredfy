@@ -14,6 +14,9 @@ import SubjectRanking from "./SubjectRanking";
 import Inventory from "./Inventory";
 import SectionCard from "./SectionCard";
 
+// ********** SELECTORS ********** //
+import objectToArray from "../../selectors/objectToArray";
+
 class ChooseASection extends React.Component {
   componentDidMount() {
     const user = this.props.user;
@@ -26,18 +29,15 @@ class ChooseASection extends React.Component {
 
   render() {
     const subjectName = this.props.subjectObject.subjectName;
-    const sections = this.props.subjectObject.sections;
-    let sectionsArray = [];
-    for (let [key, value] of Object.entries(sections)) {
-      sectionsArray.push(value);
-    }
+    const sectionsObject = this.props.subjectObject.sections;
+    const sections = objectToArray(sectionsObject);
     return (
       <div>
         <h2>{subjectName}</h2>
         <div className="section">
           <div className="section__map">
             <div className="section__section-cards">
-              {sectionsArray.map(section => {
+              {sections.map(section => {
                 const sectionName = section.sectionName;
                 return (
                   <Link

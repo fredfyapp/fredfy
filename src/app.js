@@ -8,55 +8,55 @@ import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 import { login, logout } from "./actions/auth";
 
-// ********** STYLES ********** //
-import "normalize.css/normalize.css";
-import "./styles/styles.scss";
-
 // ********** DATABASE ********** //
 import databaseFirebase from "./firebase/firebase";
 import databaseMockup from "../databaseModel/database.json";
 
+// ********** STYLES ********** //
+import "normalize.css/normalize.css";
+import "./styles/styles.scss";
+
 const store = configureStore();
 
 // COMMENTED OUT UNTIL TESTS ARE FINISHED
-// ReactDOM.render(<h1>Loading page</h1>, document.getElementById("app"));
+ReactDOM.render(<h1>Loading page</h1>, document.getElementById("app"));
 
 // EXPORTING DATABASE
-// export let charactersDB;
-// export let subjectsDB;
-// export let usersDB;
+export let charactersDB;
+export let subjectsDB;
+export let usersDB;
 
-// databaseFirebase
-//   .ref()
-//   .once("value")
-//   .then(snapshot => {
-//     const database = snapshot.val();
-//     charactersDB = database.characters;
-//     subjectsDB = database.subjects;
-//     usersDB = database.users;
+databaseFirebase
+  .ref()
+  .once("value")
+  .then(snapshot => {
+    const database = snapshot.val();
+    charactersDB = database.characters;
+    subjectsDB = database.subjects;
+    usersDB = database.users;
 
-//     // RENDER METHOD MUST COME IN THE LAST POSITION
-//     renderApp();
-//   });
+    // RENDER METHOD MUST COME IN THE LAST POSITION
+    renderApp();
+  });
 
-// const renderApp = () => {
-//   const jsx = (
-//     <Provider store={store}>
-//       <AppRouter />
-//     </Provider>
-//   );
-//   ReactDOM.render(jsx, document.getElementById("app"));
-// };
+const renderApp = () => {
+  const jsx = (
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  );
+  ReactDOM.render(jsx, document.getElementById("app"));
+};
 
 // EXPORTING DATABASE MOCKUP
-export const charactersDB = databaseMockup.characters;
-export const subjectsDB = databaseMockup.subjects;
-export const usersDB = databaseMockup.users;
+// export const charactersDB = databaseMockup.characters;
+// export const subjectsDB = databaseMockup.subjects;
+// export const usersDB = databaseMockup.users;
 
-const jsx = (
-  <Provider store={store}>
-    <AppRouter />
-  </Provider>
-);
+// const jsx = (
+//   <Provider store={store}>
+//     <AppRouter />
+//   </Provider>
+// );
 
-ReactDOM.render(jsx, document.getElementById("app"));
+// ReactDOM.render(jsx, document.getElementById("app"));

@@ -12,6 +12,9 @@ import { charactersDB } from "../../app";
 // ********** COMPONENTS ********** //
 import CharacterCard from "../CharacterCard";
 
+// ********** SELECTORS ********** //
+import objectToArray from "../../selectors/objectToArray";
+
 class ChooseACharacter extends React.Component {
   handleChosenCharacter = characterName => {
     const subjectName = this.props.subjectName;
@@ -23,17 +26,14 @@ class ChooseACharacter extends React.Component {
   }
 
   render() {
-    let charactersArray = [];
-    for (let [key, value] of Object.entries(charactersDB)) {
-      charactersArray.push(value);
-    }
+    const characters = objectToArray(charactersDB);
     const user = this.props.user;
     const subjectName = this.props.subjectName;
 
     return (
       <div id="hero" className="block-content">
         <h2>Choose a Hero</h2>
-        {charactersArray.map(character => {
+        {characters.map(character => {
           return (
             <Link
               key={character.name}

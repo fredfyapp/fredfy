@@ -6,20 +6,15 @@ import Modal from "../Modal";
 import ProgressBar from "./ProgressBar";
 import Question from "./Question";
 
-class QuestionsCard extends React.Component {
-  render() {
-    const subjectName = this.props.match.params.subject;
-    return (
-      <div>
-        <ProgressBar />
-        <Question
-          questions={this.props.shuffledQuestions}
-          subjectName={subjectName}
-          {...this.props}
-        />
-      </div>
-    );
-  }
-}
+const QuestionsCard = props => (
+  <div>
+    <ProgressBar />
+    <Question
+      questions={props.questions}
+      subjectName={props.subjectName}
+      {...props}
+    />
+  </div>
+);
 
 export default QuestionsCard;

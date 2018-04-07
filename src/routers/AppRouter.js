@@ -51,11 +51,11 @@ class AppRouter extends React.Component {
               component={ChooseASection}
               exact={true}
             />
-            {/* <Player
+            <Player
               path="/teaches-you/:subject/:section"
               component={QuestionsPage}
               exact={true}
-            /> */}
+            />
             <Player path="/choose-a-challenge" component={ChooseAChallenge} />
             <Route component={NotFoundPage} />
           </Switch>
