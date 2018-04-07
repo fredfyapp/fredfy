@@ -45,10 +45,7 @@ class AppRouter extends React.Component {
             <Navigator path="/choose-a-world" component={ChooseAWorld} />
             <Navigator path="/how-it-works" component={HowItWorks} />
             <Navigator path="/our-team" component={OurTeam} />
-            {/* <Navigator
-              path="/ranking"
-              component={Ranking}
-            /> */}
+            <Navigator path="/ranking" component={Ranking} />
             <Navigator
               path="/teaches-you/:subject"
               component={ChooseASection}

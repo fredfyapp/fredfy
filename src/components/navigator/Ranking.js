@@ -1,26 +1,35 @@
 // ********** REACT ********** //
 import React from "react";
 
-// ********** SELECTORS ********** //
-// import { getGlobalTopUsers } from "../../selectors/getRanking";
+// ********** DATABASE ********** //
+import { learningDB } from "../../app";
 
-const TableHeader = ({ subjects }) => {
+// ********** SELECTORS ********** //
+import { getGlobalTopUsers } from "../../selectors/getRanking";
+
+const TableHeader = () => {
+  const subjects = learningDB;
+  let subjectsArray = [];
+  for (let [key, value] of Object.entries(subjects)) {
+    subjectsArray.push(value);
+  }
+
   return (
     <div className="table__header">
       <h3>Name</h3>
-      {subjects[0].map(subject => {
-        return <h3 key={subject.subject}>{subject.subject}</h3>;
+      {subjectsArray.map(subject => {
+        return <h3 key={subject.subjectName}>{subject.subjectName}</h3>;
       })}
       <h3>Total</h3>
     </div>
   );
 };
 
-const TableBody = ({ users }) => {
+const TableBody = () => {
   return (
     <div className="table__body">
       <div className="table__row">
-        {/* {getGlobalTopUsers(users[0]).map(user => {
+        {getGlobalTopUsers().map(user => {
           return (
             <div className="table__item" key={user.id}>
               <h4>{user.name}</h4>
@@ -34,19 +43,19 @@ const TableBody = ({ users }) => {
               <h4>{user.totalPoints}</h4>
             </div>
           );
-        })} */}
+        })}
       </div>
     </div>
   );
 };
 
-const Ranking = ({ database }) => {
+const Ranking = () => {
   return (
     <div className="ranking">
       <h2>Ranking</h2>
       <div className="table">
-        <TableHeader subjects={[database.learning]} />
-        <TableBody users={[database.users]} />
+        <TableHeader />
+        <TableBody />
       </div>
     </div>
   );
