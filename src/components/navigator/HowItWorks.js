@@ -1,7 +1,7 @@
 // ********** REACT ********** //
 import React from "react";
 
-const HowItWorks = ({}) => {
+const HowItWorks = props => {
   return (
     <div>
       <h2>HowItWorks</h2>

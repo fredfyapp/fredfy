@@ -8,9 +8,6 @@ import createHistory from "history/createBrowserHistory";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
-// ********** ACTIONS ********** //
-import { setUser } from "../actions/user";
-
 // ********** COMPONENTS ********** //
 // ********** NAVIGATOR ********** //
 import Account from "../components/navigator/Account";
@@ -24,7 +21,7 @@ import ChooseASection from "../components/navigator/ChooseASection";
 import Welcome from "../components/navigator/Welcome";
 
 // ********** PLAYER ********** //
-import ChooseAChallenge from "../components/player/ChallengePage";
+import ChooseAChallenge from "../components/challenge/ChooseAChallenge";
 import Player from "../components/player/Player";
 import QuestionsCard from "../components/player/QuestionsCard";
 import QuestionsPage from "../components/player/QuestionsPage";
@@ -35,7 +32,6 @@ import NotFoundPage from "../components/NotFoundPage";
 
 class AppRouter extends React.Component {
   render() {
-    const { characters, learning, users } = this.props.database;
     return (
       <Router history={history}>
         <div>
@@ -44,30 +40,22 @@ class AppRouter extends React.Component {
             <Navigator path="/account" component={Account} />
             {/* <Navigator
               path="/choose-a-character-for/:subject"
-              database={characters}
               component={ChooseACharacter}
             /> */}
-            <Navigator
-              path="/choose-a-world"
-              database={learning}
-              component={ChooseAWorld}
-            />
+            <Navigator path="/choose-a-world" component={ChooseAWorld} />
             <Navigator path="/how-it-works" component={HowItWorks} />
             <Navigator path="/our-team" component={OurTeam} />
             {/* <Navigator
               path="/ranking"
-              database={database}
               component={Ranking}
             /> */}
             <Navigator
               path="/teaches-you/:subject"
-              database={learning}
               component={ChooseASection}
               exact={true}
             />
             {/* <Player
               path="/teaches-you/:subject/:section"
-              database={database}
               component={QuestionsPage}
               exact={true}
             /> */}

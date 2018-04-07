@@ -14,35 +14,48 @@ import "./styles/styles.scss";
 
 // ********** DATABASE ********** //
 import databaseFirebase from "./firebase/firebase";
-import databaseMockup from "../database/database.json";
+import databaseMockup from "../databaseModel/database.json";
 
 const store = configureStore();
 
 // COMMENTED OUT UNTIL TESTS ARE FINISHED
 // ReactDOM.render(<h1>Loading page</h1>, document.getElementById("app"));
 
-// let database = {};
+// EXPORTING DATABASE
+// export let charactersDB;
+// export let learningDB;
+// export let usersDB;
 
 // databaseFirebase
 //   .ref()
 //   .once("value")
 //   .then(snapshot => {
-//     database = snapshot.val();
+//     const database = snapshot.val();
+//     charactersDB = database.characters;
+//     learningDB = database.learning;
+//     usersDB = database.users;
+
+//     // RENDER METHOD MUST COME IN THE LAST POSITION
 //     renderApp();
 //   });
 
 // const renderApp = () => {
 //   const jsx = (
 //     <Provider store={store}>
-//       <AppRouter database={database} />
+//       <AppRouter />
 //     </Provider>
 //   );
 //   ReactDOM.render(jsx, document.getElementById("app"));
 // };
 
+// EXPORTING DATABASE MOCKUP
+export const charactersDB = databaseMockup.characters;
+export const learningDB = databaseMockup.learning;
+export const usersDB = databaseMockup.users;
+
 const jsx = (
   <Provider store={store}>
-    <AppRouter database={databaseMockup} />
+    <AppRouter />
   </Provider>
 );
 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // ********** COMPONENTS ********** //
-import ChallengeCard from "./ChallengeCard";
+import ChallengeCard from "../challenge/ChallengeCard";
 import SubjectRanking from "./SubjectRanking";
 import Inventory from "./Inventory";
 import SectionCard from "./SectionCard";
@@ -19,8 +19,9 @@ class ChooseASection extends React.Component {
 
     !user.subjects[subjectName].character &&
       this.props.history.push(`/choose-a-character-for/${subjectName}`);
-    console.log(this.props.subjectObject);
-    console.log(this.props.user);
+    // console.log(this.props.subjectObject);
+    // console.log(this.props.user);
+    console.log(this.props);
   }
 
   render() {
@@ -30,7 +31,7 @@ class ChooseASection extends React.Component {
     for (let [key, value] of Object.entries(sections)) {
       sectionsArray.push(value);
     }
-    console.log(sectionsArray);
+    // console.log(sectionsArray);
     return (
       <div>
         <h2>{subjectName}</h2>
