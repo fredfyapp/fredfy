@@ -40,7 +40,6 @@ class AppRouter extends React.Component {
       <Router history={history}>
         <div>
           <Switch>
-<<<<<<< HEAD
             <Navigator path="/" component={Welcome} exact={true} />
             <Navigator path="/account" component={Account} />
             {/* <Navigator
@@ -77,20 +76,8 @@ class AppRouter extends React.Component {
               database={database}
               component={ChooseAChallenge}
             /> */}
-=======
-            <Navigator path='/' component={Welcome} exact={true} />
-            <Navigator path='/account' component={Account} />
-            <Navigator path='/choose-a-character-for/:subject' database={database} component={ChooseACharacter} />
-            <Navigator path='/choose-a-world' database={database} component={ChooseAWorld} />
-            <Navigator path='/how-it-works' component={HowItWorks} />
-            <Navigator path='/our-team' component={OurTeam} />
-            <Navigator path='/ranking' database={database} component={Ranking} />
-            <Navigator path='/teaches-you/:subject' database={database} component={ChooseASection} exact={true} />
-            <Player path='/teaches-you/:subject/:section' database={database} component={QuestionsPage} exact={true} />
-            <Player path='/choose-a-challenge' database={database} component={ChooseAChallenge} />
-            <Player path='/challenges-you/:challenge' database={database} component={ProblemsPage} />
->>>>>>> leo
             <Route component={NotFoundPage} />
+            <h3>oiiiiii</h3>
           </Switch>
         </div>
       </Router>
