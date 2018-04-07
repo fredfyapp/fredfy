@@ -71,13 +71,8 @@ class AppRouter extends React.Component {
               component={QuestionsPage}
               exact={true}
             /> */}
-            {/* <Player
-              path="/choose-a-challenge"
-              database={database}
-              component={ChooseAChallenge}
-            /> */}
+            <Player path="/choose-a-challenge" component={ChooseAChallenge} />
             <Route component={NotFoundPage} />
-            <h3>oiiiiii</h3>
           </Switch>
         </div>
       </Router>

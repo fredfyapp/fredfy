@@ -1,5 +1,5 @@
-// ********** REACT ********** //
 import React from "react";
+import { Link } from "react-router-dom";
 
 // ********** api ************ //
 import db from "../../fixtures/challenges";
@@ -10,27 +10,23 @@ import { connect } from "react-redux";
 const ListChallenges = props => {
   const challenges = Object.keys(props.challenges);
   const listItems = challenges.map(challenge => (
-    <Link
-      key={challenge.toString()}
-      to={`/challenges-you/${challenge}`}
-      onClick={() => {}}
-    >
+    <Link key={challenge.toString()} to={`/challenges-you/${challenge}`} onClick={() => {}}>
       <li key={challenge.toString()}>{challenge}</li>
     </Link>
   ));
   return <ul>{listItems}</ul>;
 };
 
-class ChallengePage extends React.Component {
+class ChooseAChallenge extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      challenges: {}
+      challenges: ""
     };
   }
 
-  handleChosenChallenges = () => {};
+  handleChoseChallenges;
 
   componentDidMount = () => {
     console.log(this.props.history);
@@ -39,15 +35,13 @@ class ChallengePage extends React.Component {
   render() {
     return (
       <div>
-        <h2>ChallengePage</h2>
-        <div />
+        <h3>Challenge Page</h3>
+        <div>
+          <ListChallenges challenges={db} />
+        </div>
       </div>
     );
   }
 }
 
-ChallengePage.propTypes = {
-  // : PropTypes.
-};
-
-export default ChallengePage;
+export default ChooseAChallenge;
