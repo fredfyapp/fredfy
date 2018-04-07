@@ -20,19 +20,25 @@ const ListChallenges = props => {
 };
 
 class ChallengePage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      challenges: {}
+    };
+  }
+
   handleChosenChallenges = () => {};
 
   componentDidMount = () => {
-    console.log(this.props);
+    console.log(this.props.history);
   };
 
   render() {
     return (
       <div>
         <h2>ChallengePage</h2>
-        <div>
-          <ListChallenges challenges={db} />
-        </div>
+        <div />
       </div>
     );
   }
