@@ -2,6 +2,7 @@
   "users": {
     "1234": {
       "username": "Marcel",
+      "id": 1234,
       "totalPoints": 22,
       "subjects": {
         "html": {
@@ -38,6 +39,7 @@
     },
     "5678": {
       "username": "Cruz",
+      "id": 5678,
       "totalPoints": 53,
       "subjects": {
         "html": {

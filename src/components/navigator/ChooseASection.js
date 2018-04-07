@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
+// ********** DATABASE ********** //
+import { learningDB } from "../../app";
+
 // ********** COMPONENTS ********** //
 import ChallengeCard from "../challenge/ChallengeCard";
 import SubjectRanking from "./SubjectRanking";
@@ -19,9 +22,6 @@ class ChooseASection extends React.Component {
 
     !user.subjects[subjectName].character &&
       this.props.history.push(`/choose-a-character-for/${subjectName}`);
-    // console.log(this.props.subjectObject);
-    // console.log(this.props.user);
-    console.log(this.props);
   }
 
   render() {
@@ -31,7 +31,6 @@ class ChooseASection extends React.Component {
     for (let [key, value] of Object.entries(sections)) {
       sectionsArray.push(value);
     }
-    // console.log(sectionsArray);
     return (
       <div>
         <h2>{subjectName}</h2>
@@ -63,11 +62,10 @@ class ChooseASection extends React.Component {
               <Inventory />
             </div>
             <div className="ranking-panel">
-              {/* <SubjectRanking
-                database={this.props.database}
-                subjectObject={subjectObject}
+              <SubjectRanking
+                subjectName={subjectName}
                 user={this.props.user}
-              /> */}
+              />
             </div>
           </div>
         </div>
@@ -79,7 +77,7 @@ class ChooseASection extends React.Component {
 const mapStateToProps = (state, props) => {
   const subjectName = props.match.params.subject;
   return {
-    subjectObject: props.database[subjectName],
+    subjectObject: learningDB[subjectName],
     user: state.user
   };
 };

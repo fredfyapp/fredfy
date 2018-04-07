@@ -1,8 +1,5 @@
 // ********** ASSETS FOR TESTING ********** //
-import database from '../fixtures/json-mockup';
-// import user from '../reducers/userReducerDefaultState';
-
-const users = database.users;
+import { usersDB } from "../app";
 
 // NOT BEING USED, BECAUSE POINTS GAINED ARE ADDED TO SUBJECT AND TOTAL WHEN QUESTION
 // IS FINISHED
@@ -17,44 +14,48 @@ const users = database.users;
 //   return totalPoints;
 // };
 
-export const getGlobalTopUsers = (users) => {
+// export const getGlobalTopUsers = (usersDB) => {
+//   let finalList = [];
+
+//   usersDB.map((user) => {
+
+//     const name = user.username;
+//     const id = user.id;
+//     const totalPoints = user.totalPoints;
+//     const subjects = [];
+
+//     for (let subject in user.subjects) {
+//       subjects.push({
+//         subjectName: subject,
+//         subjectPoints: user.subjects[subject].points
+//       });
+//     }
+
+//     finalList.push({
+//       name,
+//       id
+//       totalPoints,
+//       subjects
+//     });
+
+//   });
+
+//   return finalList.sort((a, b) => {
+//     return a.totalPoints < b.totalPoints ? 1 : -1;
+//   });
+// };
+
+export const getSubjectTopUsers = subject => {
+  let usersArray = [];
+  for (let [key, value] of Object.entries(usersDB)) {
+    usersArray.push(value);
+  }
+
   let finalList = [];
 
-  users.map((user) => {
-
+  usersArray.map(user => {
     const name = user.username;
-    const id = user.userId;
-    const totalPoints = user.totalPoints;
-    const subjects = [];
-
-    for (let subject in user.subjects) {
-      subjects.push({
-        subjectName: subject,
-        subjectPoints: user.subjects[subject].points
-      });
-    }
-
-    finalList.push({
-      name,
-      id,
-      totalPoints,
-      subjects
-    });
-
-  });
-
-  return finalList.sort((a, b) => {
-    return a.totalPoints < b.totalPoints ? 1 : -1;
-  });
-};
-
-export const getSubjectTopUsers = (users, subject) => {
-  let finalList = [];
-
-  users.map((user) => {
-
-    const name = user.username;
-    const id = user.userId;
+    const id = user.id;
     const totalPoints = user.totalPoints;
     const subjectPoints = user.subjects[subject].points;
 
@@ -67,6 +68,6 @@ export const getSubjectTopUsers = (users, subject) => {
   });
 
   return finalList.sort((a, b) => {
-        return a.subjectPoints < b.subjectPoints ? 1 : -1;
-    });
+    return a.subjectPoints < b.subjectPoints ? 1 : -1;
+  });
 };

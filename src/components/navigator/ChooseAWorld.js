@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
+// ********** REDUX ********** //
+import { learningDB } from "../../app";
+
 // ********** COMPONENTS ********** //
 import WorldCard from "./WorldCard";
 
@@ -12,13 +15,12 @@ import WorldCard from "./WorldCard";
 import { setChosenSubject } from "../../actions/navigation";
 
 class ChooseAWorld extends React.Component {
-  handleChosenWorld = subjectName => {
+  handleChosenSubject = subjectName => {
     this.props.setChosenSubject(subjectName);
   };
 
   render() {
-    const subjects = this.props.database;
-
+    const subjects = learningDB;
     let subjectsArray = [];
     for (let [key, value] of Object.entries(subjects)) {
       subjectsArray.push(value);
@@ -34,7 +36,7 @@ class ChooseAWorld extends React.Component {
                 to={`/teaches-you/${subject.subjectName}`}
                 key={subject.subjectName}
                 onClick={() => {
-                  this.handleChosenWorld(subject.subjectName);
+                  this.handleChosenSubject(subject.subjectName);
                 }}
               >
                 <WorldCard subjectName={subject.subjectName} />

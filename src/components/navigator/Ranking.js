@@ -2,7 +2,7 @@
 import React from "react";
 
 // ********** SELECTORS ********** //
-import { getGlobalTopUsers } from "../../selectors/getRanking";
+// import { getGlobalTopUsers } from "../../selectors/getRanking";
 
 const TableHeader = ({ subjects }) => {
   return (
@@ -20,7 +20,7 @@ const TableBody = ({ users }) => {
   return (
     <div className="table__body">
       <div className="table__row">
-        {getGlobalTopUsers(users[0]).map(user => {
+        {/* {getGlobalTopUsers(users[0]).map(user => {
           return (
             <div className="table__item" key={user.id}>
               <h4>{user.name}</h4>
@@ -34,7 +34,7 @@ const TableBody = ({ users }) => {
               <h4>{user.totalPoints}</h4>
             </div>
           );
-        })}
+        })} */}
       </div>
     </div>
   );
