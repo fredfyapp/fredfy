@@ -38,10 +38,10 @@ class AppRouter extends React.Component {
           <Switch>
             <Navigator path="/" component={Welcome} exact={true} />
             <Navigator path="/account" component={Account} />
-            {/* <Navigator
+            <Navigator
               path="/choose-a-character-for/:subject"
               component={ChooseACharacter}
-            /> */}
+            />
             <Navigator path="/choose-a-world" component={ChooseAWorld} />
             <Navigator path="/how-it-works" component={HowItWorks} />
             <Navigator path="/our-team" component={OurTeam} />

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // ********** DATABASE ********** //
-import { learningDB } from "../../app";
+import { subjectsDB } from "../../app";
 
 // ********** COMPONENTS ********** //
 import ChallengeCard from "../challenge/ChallengeCard";
@@ -77,7 +77,7 @@ class ChooseASection extends React.Component {
 const mapStateToProps = (state, props) => {
   const subjectName = props.match.params.subject;
   return {
-    subjectObject: learningDB[subjectName],
+    subjectObject: subjectsDB[subjectName],
     user: state.user
   };
 };

@@ -2,15 +2,14 @@
 import React from "react";
 
 // ********** DATABASE ********** //
-import { learningDB } from "../../app";
+import { subjectsDB } from "../../app";
 
 // ********** SELECTORS ********** //
 import { getGlobalTopUsers } from "../../selectors/getRanking";
 
 const TableHeader = () => {
-  const subjects = learningDB;
   let subjectsArray = [];
-  for (let [key, value] of Object.entries(subjects)) {
+  for (let [key, value] of Object.entries(subjectsDB)) {
     subjectsArray.push(value);
   }
 

@@ -23,7 +23,7 @@ const store = configureStore();
 
 // EXPORTING DATABASE
 // export let charactersDB;
-// export let learningDB;
+// export let subjectsDB;
 // export let usersDB;
 
 // databaseFirebase
@@ -32,7 +32,7 @@ const store = configureStore();
 //   .then(snapshot => {
 //     const database = snapshot.val();
 //     charactersDB = database.characters;
-//     learningDB = database.learning;
+//     subjectsDB = database.subjects;
 //     usersDB = database.users;
 
 //     // RENDER METHOD MUST COME IN THE LAST POSITION
@@ -50,7 +50,7 @@ const store = configureStore();
 
 // EXPORTING DATABASE MOCKUP
 export const charactersDB = databaseMockup.characters;
-export const learningDB = databaseMockup.learning;
+export const subjectsDB = databaseMockup.subjects;
 export const usersDB = databaseMockup.users;
 
 const jsx = (

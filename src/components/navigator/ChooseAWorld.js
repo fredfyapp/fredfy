@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
-// ********** REDUX ********** //
-import { learningDB } from "../../app";
+// ********** DATABASE ********** //
+import { subjectsDB } from "../../app";
 
 // ********** COMPONENTS ********** //
 import WorldCard from "./WorldCard";
@@ -20,9 +20,8 @@ class ChooseAWorld extends React.Component {
   };
 
   render() {
-    const subjects = learningDB;
     let subjectsArray = [];
-    for (let [key, value] of Object.entries(subjects)) {
+    for (let [key, value] of Object.entries(subjectsDB)) {
       subjectsArray.push(value);
     }
 
