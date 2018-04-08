@@ -113,7 +113,6 @@ class Question extends React.Component {
 
     return (
       <div>
-        <h3>Correct questions: {questionsAnswered}</h3>
         {questions[questionsAnswered] && (
           <div>
             <h3>{questions[questionsAnswered].title}</h3>
