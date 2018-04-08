@@ -6,16 +6,7 @@ import db from "../../fixtures/challenges";
 
 // ******** REDUX **********//
 import { connect } from "react-redux";
-
-const ListChallenges = props => {
-  const challenges = Object.keys(props.challenges);
-  const listItems = challenges.map(challenge => (
-    <Link key={challenge.toString()} to={`/challenges-you/${challenge}`} onClick={() => {}}>
-      <li key={challenge.toString()}>{challenge}</li>
-    </Link>
-  ));
-  return <ul>{listItems}</ul>;
-};
+import { setChallenge } from "../../actions/challenge";
 
 class ChooseAChallenge extends React.Component {
   constructor(props) {
@@ -26,22 +17,36 @@ class ChooseAChallenge extends React.Component {
     };
   }
 
-  handleChoseChallenges;
-
-  componentDidMount = () => {
-    console.log(this.props.history);
+  handleChosenChallenges = challenges => {
+    this.props.setChallenge(challenges);
   };
+
+  componentDidMount = () => {};
 
   render() {
     return (
       <div>
-        <h3>Challenge Page</h3>
+        <h3>Choose a Challenge</h3>
         <div>
-          <ListChallenges challenges={db} />
+          {Object.keys(db).map(challenge => (
+            <Link
+              key={challenge.toString()}
+              to={`/challenges-you/${challenge}`}
+              onClick={() => {
+                this.handleChosenChallenges(challenge);
+              }}
+            >
+              {challenge}
+            </Link>
+          ))}
         </div>
       </div>
     );
   }
 }
 
-export default ChooseAChallenge;
+const mapDispatchToProps = dispatch => ({
+  setChallenge: challenges => dispatch(setChallenge(challenges))
+});
+
+export default connect(null, mapDispatchToProps)(ChooseAChallenge);

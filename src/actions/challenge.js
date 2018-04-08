@@ -1,4 +1,4 @@
-export const setChallenge = (challenge) => ({
-	type: 'SET_CHALLENGE',
-	challenge
+export const setChallenge = challenges => ({
+  type: "SET_CHALLENGE",
+  challenges
 });

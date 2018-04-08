@@ -30,7 +30,7 @@ class ChooseACharacter extends React.Component {
         {/* {this.props.database.characters.map(character => {
           return (
             <Link
-              key={character.name}
+              key={character.name
               to={`/teaches-you/${subjectName}`}
               onClick={() => {
                 this.chosenCharacter = character.name;

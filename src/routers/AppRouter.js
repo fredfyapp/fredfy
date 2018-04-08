@@ -24,11 +24,14 @@ import ChooseASection from "../components/navigator/ChooseASection";
 import Welcome from "../components/navigator/Welcome";
 
 // ********** PLAYER ********** //
-import ChooseAChallenge from "../components/player/ChallengePage";
 import Player from "../components/player/Player";
 import QuestionsCard from "../components/player/QuestionsCard";
 import QuestionsPage from "../components/player/QuestionsPage";
 import ProblemsPage from "../components/player/ProblemsPage";
+
+// ******* Challenge ********** //
+import ChooseAChallenge from "../components/challenge/ChooseAChallenge";
+import ChallengePage from "../components/challenge/ChallengePage";
 
 // ********** NOT FOUND ********** //
 import NotFoundPage from "../components/NotFoundPage";
@@ -71,7 +74,19 @@ class AppRouter extends React.Component {
               component={QuestionsPage}
               exact={true}
             /> */}
-            <Player path="/choose-a-challenge" component={ChooseAChallenge} />
+
+            {/* Challenge routes begins*/}
+            <Player
+              path="/choose-a-challenge"
+              component={ChooseAChallenge}
+              exact={true}
+            />
+            <Player
+              path="/challenges-you/:challenge"
+              component={ChallengePage}
+              exact={true}
+            />
+            {/* Challenge routes end */}
             <Route component={NotFoundPage} />
           </Switch>
         </div>

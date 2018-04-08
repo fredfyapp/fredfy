@@ -7,47 +7,25 @@ import db from "../../fixtures/challenges";
 // ******** REDUX **********//
 import { connect } from "react-redux";
 
-const ListChallenges = props => {
-  const challenges = Object.keys(props.challenges);
-  const listItems = challenges.map(challenge => (
-    <Link
-      key={challenge.toString()}
-      to={`/challenges-you/${challenge}`}
-      onClick={() => {}}
-    >
-      <li key={challenge.toString()}>{challenge}</li>
-    </Link>
-  ));
-  return <ul>{listItems}</ul>;
-};
-
 class ChallengePage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      challenges: {}
-    };
-  }
-
-  handleChosenChallenges = () => {};
-
   componentDidMount = () => {
-    console.log(this.props.history);
+    console.log(this.props.ChosenChallenges);
   };
 
   render() {
     return (
       <div>
         <h2>ChallengePage</h2>
-        <div />
+        <h1>test</h1>
       </div>
     );
   }
 }
 
-ChallengePage.propTypes = {
-  // : PropTypes.
-};
+const mapStateToProps = state => ({
+  ChosenChallenges: state.challenge.currentChallenges
+});
 
-export default ChallengePage;
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChallengePage);
