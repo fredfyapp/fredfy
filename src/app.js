@@ -12,13 +12,16 @@ import { login, logout } from "./actions/auth";
 import databaseFirebase from "./firebase/firebase";
 import databaseMockup from "../databaseModel/database.json";
 
+// ********** COMPONENTS ********** //
+import Loading from "./components/Loading";
+
 // ********** STYLES ********** //
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 
 const store = configureStore();
 
-ReactDOM.render(<h1>Loading page</h1>, document.getElementById("app"));
+ReactDOM.render(<Loading />, document.getElementById("app"));
 
 // EXPORTING DATABASE
 export let charactersDB;
