@@ -5,7 +5,11 @@ import React from "react";
 import { connect } from "react-redux";
 
 // ********** ACTIONS ********** //
-import { setIsPlaying, setShuffledOptions } from "../../actions/playing";
+import {
+  setIsPlaying,
+  setShuffledOptions,
+  setQuestionsAnswered
+} from "../../actions/playing";
 import {
   setFinishedSection,
   setSubjectPoints,
@@ -21,13 +25,12 @@ class Question extends React.Component {
     super(props);
 
     this.state = {
-      questionsAnswered: 0,
       selectedOption: "",
       error: ""
     };
 
     // SHUFFLES OPTIONS FOR THE FIRST TIME
-    const questionsAnswered = this.state.questionsAnswered;
+    const questionsAnswered = this.props.questionsAnswered;
     const questions = this.props.questions;
     const options = objectToArray(questions[questionsAnswered].options);
 
@@ -46,6 +49,12 @@ class Question extends React.Component {
     );
 
     this.props.setTotalPoints(this.props.totalPoints + pointsToAdd);
+  };
+
+  handleOptionChange = changeEvent => {
+    this.setState({
+      selectedOption: changeEvent.target.value
+    });
   };
 
   handleQuestionsAnswered = () => {
@@ -70,13 +79,7 @@ class Question extends React.Component {
     }
 
     // IF CHOSEN OPTION IS CORRECT
-    this.setState(prevState => ({
-      questionsAnswered: prevState.questionsAnswered + 1,
-      selectedOption: "",
-      error: ""
-    }));
-
-    const questionsAnswered = this.state.questionsAnswered;
+    const questionsAnswered = this.props.questionsAnswered;
     const questions = this.props.questions;
     const subjectName = this.props.match.params.subject;
     const sectionName = this.props.match.params.section;
@@ -86,24 +89,25 @@ class Question extends React.Component {
       alert("you finished");
       this.props.setFinishedSection(subjectName, sectionName);
       this.addPoints();
-      this.props.history.push(`/teaches-you/${subjectName}`);
       this.props.setIsPlaying(false);
+      this.props.setQuestionsAnswered(0);
+      this.props.history.push(`/teaches-you/${subjectName}`);
       return;
     }
+
+    this.props.setQuestionsAnswered(questionsAnswered + 1);
+    this.setState({
+      selectedOption: "",
+      error: ""
+    });
 
     // + 1 TO GET NEXT ITEM IN THE ARRAY BECAUSE STATE DIDN'T CHANGE YET
     const options = objectToArray(questions[questionsAnswered + 1].options);
     this.props.setShuffledOptions(shuffleArray(options));
   };
 
-  handleOptionChange = changeEvent => {
-    this.setState({
-      selectedOption: changeEvent.target.value
-    });
-  };
-
   render() {
-    const questionsAnswered = this.state.questionsAnswered;
+    const questionsAnswered = this.props.questionsAnswered;
     const questions = this.props.questions;
     const shuffledOptions = this.props.shuffledOptions;
 
@@ -141,6 +145,7 @@ class Question extends React.Component {
 const mapStateToProps = (state, props) => {
   const subjectName = props.match.params.subject;
   return {
+    questionsAnswered: state.playing.questionsAnswered,
     shuffledOptions: state.playing.shuffledOptions,
     subjectPoints: state.user.subjects[subjectName].points,
     totalPoints: state.user.totalPoints
@@ -149,6 +154,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => ({
   setIsPlaying: isPlaying => dispatch(setIsPlaying(isPlaying)),
+  setQuestionsAnswered: questionsAnswered =>
+    dispatch(setQuestionsAnswered(questionsAnswered)),
   setShuffledOptions: shuffledOptions =>
     dispatch(setShuffledOptions(shuffledOptions)),
   setFinishedSection: (subject, section) =>
