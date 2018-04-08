@@ -7,7 +7,7 @@ import ProgressBar from "./ProgressBar";
 import Question from "./Question";
 
 const QuestionsCard = props => (
-  <div>
+  <div className="opacity-toggle-fast">
     <ProgressBar />
     <Question questions={props.questions} {...props} />
   </div>

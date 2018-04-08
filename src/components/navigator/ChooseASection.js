@@ -32,7 +32,7 @@ class ChooseASection extends React.Component {
     const sectionsObject = this.props.subjectObject.sections;
     const sections = objectToArray(sectionsObject);
     return (
-      <div>
+      <div className="opacity-toggle-fast">
         <h2>{subjectName}</h2>
         <div className="section">
           <div className="section__map">
@@ -42,8 +42,7 @@ class ChooseASection extends React.Component {
                 return (
                   <Link
                     to={`/teaches-you/${subjectName}/${sectionName}`}
-                    key={subjectName + sectionName}
-                  >
+                    key={subjectName + sectionName}>
                     <SectionCard
                       subjectName={subjectName}
                       sectionName={sectionName}

@@ -31,6 +31,10 @@ import ProblemsPage from "../components/player/ProblemsPage";
 import NotFoundPage from "../components/NotFoundPage";
 
 class AppRouter extends React.Component {
+  func = () => {
+    console.log("works");
+  };
+
   render() {
     return (
       <Router history={history}>

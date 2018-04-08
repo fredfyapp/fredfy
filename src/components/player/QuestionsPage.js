@@ -56,7 +56,7 @@ class QuestionsPage extends React.Component {
     const shuffledQuestions = this.props.shuffledQuestions;
 
     return (
-      <div className="questions-page">
+      <div className="questions-page opacity-toggle-fast">
         <div>
           <h2>{sectionName}</h2>
           {isPlaying ? (
@@ -74,8 +74,7 @@ class QuestionsPage extends React.Component {
             to={`/teaches-you/${subjectName}`}
             onClick={() => {
               this.props.setIsPlaying(false);
-            }}
-          >
+            }}>
             <h3>Go back</h3>
           </Link>
 
@@ -83,8 +82,7 @@ class QuestionsPage extends React.Component {
             <button
               onClick={() => {
                 this.props.setIsPlaying(true);
-              }}
-            >
+              }}>
               Play
             </button>
           )}

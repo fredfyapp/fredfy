@@ -112,7 +112,7 @@ class Question extends React.Component {
     const shuffledOptions = this.props.shuffledOptions;
 
     return (
-      <div>
+      <div className="opacity-toggle-fast">
         {questions[questionsAnswered] && (
           <div>
             <h3>{questions[questionsAnswered].title}</h3>

@@ -47,7 +47,7 @@ const TableBody = () => {
 
 const Ranking = () => {
   return (
-    <div className="ranking">
+    <div className="ranking opacity-toggle-fast">
       <h2>Ranking</h2>
       <div className="table">
         <TableHeader />

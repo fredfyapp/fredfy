@@ -31,7 +31,7 @@ class ChooseACharacter extends React.Component {
     const subjectName = this.props.subjectName;
 
     return (
-      <div id="hero" className="block-content">
+      <div id="hero" className="block-content opacity-toggle-fast">
         <h2>Choose a Hero</h2>
         {characters.map(character => {
           return (
@@ -40,8 +40,7 @@ class ChooseACharacter extends React.Component {
               to={`/teaches-you/${subjectName}`}
               onClick={() => {
                 this.handleChosenCharacter(character.name);
-              }}
-            >
+              }}>
               <CharacterCard characterName={character.name} />
             </Link>
           );

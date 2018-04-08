@@ -1,43 +1,43 @@
-.loading {
+#loading {
   align-items: center;
   background: #f3f3f3;
   display: flex;
   height: 100vh;
   justify-content: center;
   margin: 0;
-  // opacity: 0.3;
   text-align: center;
   width: 100vw;
 }
 
+#loading__box {
+  // background: lemonchiffon;
+  position: relative;
+  width: 15vw;
+  height: 15vw;
+}
+
 #loading__logo {
   // background: lightblue;
-  color: #333;
+  color: #444;
   font-family: "Bungee", Impact, Arial;
-  font-size: 15rem;
-  left: 50%;
-  line-height: 0.7;
-  // margin: 0 0 200px;
+  font-size: 10vw;
+  height: 100%;
   padding: 0;
   position: absolute;
-  top: 40%;
+  width: 100%;
+  z-index: 2;
 }
 
 #loader {
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  z-index: 1;
-  // width: 150px;
-  // height: 150px;
-  margin: -75px 0 0 -75px;
-  border: 26px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 26px solid #333;
-  width: 250px;
-  height: 250px;
-  -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
+  border: 2vw solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2vw solid #444;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  -webkit-animation: spin 2s linear infinite;
 }
 
 @-webkit-keyframes spin {

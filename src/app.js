@@ -38,13 +38,20 @@ databaseFirebase
     usersDB = database.users;
 
     // RENDER METHOD MUST COME IN THE LAST POSITION
-    renderApp();
+    // renderApp();
+
+    // SETTIMEOUT JUST FOR TESTING
+    setTimeout(() => {
+      renderApp();
+    }, 1000);
   });
 
 const renderApp = () => {
   const jsx = (
     <Provider store={store}>
-      <AppRouter />
+      <div className="opacity-toggle-slow">
+        <AppRouter />
+      </div>
     </Provider>
   );
   ReactDOM.render(jsx, document.getElementById("app"));

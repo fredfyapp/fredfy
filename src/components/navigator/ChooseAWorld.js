@@ -25,7 +25,7 @@ class ChooseAWorld extends React.Component {
   render() {
     const subjects = objectToArray(subjectsDB);
     return (
-      <div id="world" className="block-content">
+      <div id="world" className="block-content opacity-toggle-fast">
         <h2>Choose a World</h2>
         <div>
           {subjects.map(subject => {
@@ -35,8 +35,7 @@ class ChooseAWorld extends React.Component {
                 key={subject.subjectName}
                 onClick={() => {
                   this.handleChosenSubject(subject.subjectName);
-                }}
-              >
+                }}>
                 <WorldCard subjectName={subject.subjectName} />
               </Link>
             );
