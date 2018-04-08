@@ -18,7 +18,6 @@ import "./styles/styles.scss";
 
 const store = configureStore();
 
-// COMMENTED OUT UNTIL TESTS ARE FINISHED
 ReactDOM.render(<h1>Loading page</h1>, document.getElementById("app"));
 
 // EXPORTING DATABASE

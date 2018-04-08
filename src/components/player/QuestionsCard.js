@@ -9,11 +9,7 @@ import Question from "./Question";
 const QuestionsCard = props => (
   <div>
     <ProgressBar />
-    <Question
-      questions={props.questions}
-      subjectName={props.subjectName}
-      {...props}
-    />
+    <Question questions={props.questions} {...props} />
   </div>
 );
 

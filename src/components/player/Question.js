@@ -14,6 +14,7 @@ import {
 
 // ********** SELECTORS ********** //
 import shuffleArray from "../../selectors/shuffleArray";
+import objectToArray from "../../selectors/objectToArray";
 
 class Question extends React.Component {
   constructor(props) {
@@ -24,9 +25,31 @@ class Question extends React.Component {
       selectedOption: "",
       error: ""
     };
+
+    // SHUFFLES OPTIONS FOR THE FIRST TIME
+    const questionsAnswered = this.state.questionsAnswered;
+    const questions = this.props.questions;
+    const options = objectToArray(questions[questionsAnswered].options);
+
+    if (questions[questionsAnswered]) {
+      this.props.setShuffledOptions(shuffleArray(options));
+    }
   }
 
+  addPoints = () => {
+    const subjectName = this.props.match.params.subject;
+    const pointsToAdd = 13;
+
+    this.props.setSubjectPoints(
+      subjectName,
+      this.props.subjectPoints + pointsToAdd
+    );
+
+    this.props.setTotalPoints(this.props.totalPoints + pointsToAdd);
+  };
+
   handleQuestionsAnswered = () => {
+    // IF NO OPTION IS CHOSEN
     if (!this.state.selectedOption) {
       this.setState({
         error: "Choose an option"
@@ -38,43 +61,39 @@ class Question extends React.Component {
     const selectedOption = parseInt(this.state.selectedOption);
     const shuffledOptions = this.props.shuffledOptions;
 
+    // IF CHOSEN OPTION IS WRONG
     if (!shuffledOptions[selectedOption].isCorrect) {
       this.setState({
-        error: "Wrong answer"
+        error: "Try again"
       });
       return;
     }
 
+    // IF CHOSEN OPTION IS CORRECT
     this.setState(prevState => ({
       questionsAnswered: prevState.questionsAnswered + 1,
       selectedOption: "",
       error: ""
     }));
 
-    const index = this.state.questionsAnswered;
+    const questionsAnswered = this.state.questionsAnswered;
     const questions = this.props.questions;
     const subjectName = this.props.match.params.subject;
     const sectionName = this.props.match.params.section;
-    const points = 13;
 
     // WHEN ALL ANSWERS HAVE BEEN COMPLETED
-    if (questions.length === index + 1) {
+    if (questions.length === questionsAnswered + 1) {
       alert("you finished");
       this.props.setFinishedSection(subjectName, sectionName);
-      this.props.setSubjectPoints(
-        subjectName,
-        this.props.subjectPoints + points
-      );
-
-      this.props.setTotalPoints(this.props.totalPoints + points);
-
+      this.addPoints();
       this.props.history.push(`/teaches-you/${subjectName}`);
       this.props.setIsPlaying(false);
       return;
     }
 
-    // + 1 TO GET NEXT ITEM IN THE ARRAY BEFORE CHANGING STATE
-    this.props.setShuffledOptions(shuffleArray(questions[index + 1].options));
+    // + 1 TO GET NEXT ITEM IN THE ARRAY BECAUSE STATE DIDN'T CHANGE YET
+    const options = objectToArray(questions[questionsAnswered + 1].options);
+    this.props.setShuffledOptions(shuffleArray(options));
   };
 
   handleOptionChange = changeEvent => {
@@ -83,41 +102,31 @@ class Question extends React.Component {
     });
   };
 
-  componentDidMount() {
-    const index = this.state.questionsAnswered;
-    const questions = this.props.questions;
-
-    if (questions[index]) {
-      this.props.setShuffledOptions(shuffleArray(questions[index].options));
-    }
-  }
-
   render() {
-    const index = this.state.questionsAnswered;
+    const questionsAnswered = this.state.questionsAnswered;
     const questions = this.props.questions;
     const shuffledOptions = this.props.shuffledOptions;
 
     return (
       <div>
-        <h3>Correct questions: {index}</h3>
-        {questions[index] && (
+        <h3>Correct questions: {questionsAnswered}</h3>
+        {questions[questionsAnswered] && (
           <div>
-            <h3>{questions[index].title}</h3>
+            <h3>{questions[questionsAnswered].title}</h3>
             <form>
               {shuffledOptions.map((option, index) => (
-                // <div key={option.answer}>
-                //   <label>
-                //     <input
-                //       type="radio"
-                //       value={index}
-                //       checked={this.state.selectedOption === index.toString()}
-                //       correct={option.isCorrect.toString()}
-                //       onChange={this.handleOptionChange}
-                //     />
-                //     {option.answer}
-                //   </label>
-                // </div>
-                <div>test</div>
+                <div key={option.answer}>
+                  <label>
+                    <input
+                      type="radio"
+                      value={index}
+                      checked={this.state.selectedOption === index.toString()}
+                      correct={option.isCorrect.toString()}
+                      onChange={this.handleOptionChange}
+                    />
+                    {option.answer}
+                  </label>
+                </div>
               ))}
             </form>
           </div>
@@ -129,12 +138,14 @@ class Question extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  shuffledOptions: state.playing.shuffledOptions,
-  subjectPoints: state.user.subjects[props.subjectName].points,
-  totalPoints: state.user.totalPoints,
-  user: state.user
-});
+const mapStateToProps = (state, props) => {
+  const subjectName = props.match.params.subject;
+  return {
+    shuffledOptions: state.playing.shuffledOptions,
+    subjectPoints: state.user.subjects[subjectName].points,
+    totalPoints: state.user.totalPoints
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   setIsPlaying: isPlaying => dispatch(setIsPlaying(isPlaying)),

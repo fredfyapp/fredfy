@@ -36,9 +36,9 @@ class QuestionsPage extends React.Component {
     // IN 'THIS' BECAUSE IT'S NEEDED IN CDM AND RENDER
     this.sectionObject = subjectObject.sections[sectionName];
 
-    console.log(subjects);
-    console.log(subjectObject);
-    console.log(this.sectionObject);
+    // console.log(subjects);
+    // console.log(subjectObject);
+    // console.log("this.sectionObjects", this.sectionObject);
   }
 
   componentDidMount() {
