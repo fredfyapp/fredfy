@@ -14,7 +14,11 @@ import Explanation from "./Explanation";
 import QuestionsCard from "./QuestionsCard";
 
 // ********** ACTIONS ********** //
-import { setIsPlaying, setShuffledQuestions } from "../../actions/playing";
+import {
+  setIsPlaying,
+  setShuffledQuestions,
+  setQuestionsAnswered
+} from "../../actions/playing";
 
 // ********** SELECTORS ********** //
 import shuffleArray from "../../selectors/shuffleArray";
@@ -73,6 +77,7 @@ class QuestionsPage extends React.Component {
           <Link
             to={`/teaches-you/${subjectName}`}
             onClick={() => {
+              this.props.setQuestionsAnswered(0);
               this.props.setIsPlaying(false);
             }}>
             <h3>Go back</h3>
@@ -101,7 +106,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setIsPlaying: isPlaying => dispatch(setIsPlaying(isPlaying)),
   setShuffledQuestions: shuffledQuestions =>
-    dispatch(setShuffledQuestions(shuffledQuestions))
+    dispatch(setShuffledQuestions(shuffledQuestions)),
+  setQuestionsAnswered: questionsAnswered =>
+    dispatch(setQuestionsAnswered(questionsAnswered))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);

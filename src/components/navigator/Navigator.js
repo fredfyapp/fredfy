@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 // ********** COMPONENTS ********** //
 import Footer from "./Footer";
 import Header from "./Header";
+import LoginModal from "./LoginModal";
 
 const Navigator = ({ component: Component, ...rest }) => {
   return (
@@ -16,6 +17,7 @@ const Navigator = ({ component: Component, ...rest }) => {
             <Header />
             <div className="content-container">
               <Component {...props} />
+              <LoginModal />
             </div>
             <Footer />
           </div>

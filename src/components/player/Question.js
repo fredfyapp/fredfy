@@ -115,9 +115,11 @@ class Question extends React.Component {
       <div>
         {questions[questionsAnswered] && (
           <div>
-            <div className="opacity-toggle-fast">
-              <h3>{questions[questionsAnswered].title}</h3>
-            </div>
+            {/* RERENDER NOT HAPPENING FOR TITLE, SO OPACITY TOGGLE WON'T HAVE
+          EFFECT AFTER THE FIRST RENDER */}
+            <h3 className="opacity-toggle-fast">
+              {questions[questionsAnswered].title}
+            </h3>
             <form>
               {shuffledOptions.map((option, index) => (
                 <div key={option.answer} className="opacity-toggle-fast">

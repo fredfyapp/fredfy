@@ -4,6 +4,7 @@
 @import "./base/placeholder";
 @import "./base/base";
 @import "./base/opacity-toggle";
+@import "./base/modal";
 
 // ********** COMPONENTS ********** //
 @import "./components/loading";
@@ -12,6 +13,7 @@
 @import "./components/navigator/choose-a-character";
 @import "./components/navigator/footer";
 @import "./components/navigator/header";
+@import "./components/navigator/login-modal";
 @import "./components/navigator/navigator";
 @import "./components/navigator/ranking";
 @import "./components/navigator/section";

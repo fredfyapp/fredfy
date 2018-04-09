@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // ********** ACTIONS ********** //
-import { startLogin, startLogout } from "../../actions/auth";
+import { startLogout } from "../../actions/auth";
+import { setIsLoginModalOpen } from "../../actions/navigation";
 
 const Header = props => {
-  console.log(props.isAuthenticated);
   return (
     <nav className="header navbar navbar-expand-lg navbar-light bg-light">
       <div className="logo navbar-brand">
@@ -38,7 +38,12 @@ const Header = props => {
               <button onClick={props.startLogout}>Logout</button>
             </div>
           ) : (
-            <button onClick={props.startLogin}>Connect</button>
+            <button
+              onClick={() => {
+                props.setIsLoginModalOpen(true);
+              }}>
+              Connect
+            </button>
           )}
         </ul>
       </div>
@@ -51,7 +56,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  startLogin: () => dispatch(startLogin()),
+  setIsLoginModalOpen: isLoginModalOpen =>
+    dispatch(setIsLoginModalOpen(isLoginModalOpen)),
   startLogout: () => dispatch(startLogout())
 });
 
