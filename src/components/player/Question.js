@@ -112,13 +112,15 @@ class Question extends React.Component {
     const shuffledOptions = this.props.shuffledOptions;
 
     return (
-      <div className="opacity-toggle-fast">
+      <div>
         {questions[questionsAnswered] && (
           <div>
-            <h3>{questions[questionsAnswered].title}</h3>
+            <div className="opacity-toggle-fast">
+              <h3>{questions[questionsAnswered].title}</h3>
+            </div>
             <form>
               {shuffledOptions.map((option, index) => (
-                <div key={option.answer}>
+                <div key={option.answer} className="opacity-toggle-fast">
                   <label>
                     <input
                       type="radio"
