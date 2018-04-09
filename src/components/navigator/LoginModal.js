@@ -22,6 +22,12 @@ const LoginModal = props => {
       className="login-modal">
       <button onClick={props.startGoogleLogin}>Connect with Google</button>
       <button onClick={props.startFacebookLogin}>Connect with Facebook</button>
+      <button
+        onClick={() => {
+          props.setIsLoginModalOpen(false);
+        }}>
+        x
+      </button>
     </Modal>
   );
 };
