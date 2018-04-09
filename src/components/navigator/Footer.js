@@ -6,10 +6,10 @@ const Footer = ({}) => {
   return (
     <footer id="footer">
       <div className="logo">
-        <h1>Fredfy</h1>
-        <h2>
-          Learn<br />Code<br />Repeat
-        </h2>
+        <Link to="/">
+          <h1>Fredfy</h1>
+          <h2>Learn<br />Code<br />Repeat</h2>
+        </Link>
       </div>
       <div className="links">
         <ul className="pages">
@@ -20,13 +20,21 @@ const Footer = ({}) => {
             <li>Our Team</li>
           </Link>
           <Link to="/ranking">
-            <li>Ranking</li>
+            <li>Global Ranking</li>
           </Link>
         </ul>
         <ul className="media">
           <li>Made in Dublin/Ireland @ 2018</li>
-          <li>Twitter</li>
-          <li>GitHub</li>
+          <li className="tw social">
+            <Link to="http://www.twitter.com" target="_blank">
+              Twitter
+            </Link>
+          </li>
+          <li  className="gt social">
+            <Link to="https://github.com/fredfyapp/fredfy" target="_blank">
+              Github
+            </Link>
+          </li>
         </ul>
       </div>
     </footer>
