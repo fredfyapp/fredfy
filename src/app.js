@@ -9,6 +9,7 @@ import configureStore from "./store/configureStore";
 
 // ********** ACTIONS ********** //
 import { login, logout } from "./actions/auth";
+import { setIsLoginModalOpen } from "./actions/navigation";
 
 // ********** AUTH ********** //
 import { firebase } from "./firebase/firebase";
@@ -65,6 +66,7 @@ const renderApp = () => {
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     store.dispatch(login(user.uid));
+    store.dispatch(setIsLoginModalOpen(false));
     console.log("is logged");
   } else {
     store.dispatch(logout());

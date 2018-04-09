@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 
 // ********** ACTIONS ********** //
 import { setIsLoginModalOpen } from "../../actions/navigation";
+import { startGoogleLogin, startFacebookLogin } from "../../actions/auth";
 
 const LoginModal = props => {
   return (
@@ -19,7 +20,8 @@ const LoginModal = props => {
       ariaHideApp={false}
       closeTimeoutMS={200}
       className="login-modal">
-      <h2>test</h2>
+      <button onClick={props.startGoogleLogin}>Connect with Google</button>
+      <button onClick={props.startFacebookLogin}>Connect with Facebook</button>
     </Modal>
   );
 };
@@ -30,7 +32,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setIsLoginModalOpen: isLoginModalOpen =>
-    dispatch(setIsLoginModalOpen(isLoginModalOpen))
+    dispatch(setIsLoginModalOpen(isLoginModalOpen)),
+  startGoogleLogin: () => dispatch(startGoogleLogin()),
+  startFacebookLogin: () => dispatch(startFacebookLogin())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
