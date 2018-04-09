@@ -6,7 +6,12 @@ import AppRouter, { history } from "./routers/AppRouter";
 // ********** REDUX ********** //
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
+
+// ********** ACTIONS ********** //
 import { login, logout } from "./actions/auth";
+
+// ********** AUTH ********** //
+import { firebase } from "./firebase/firebase";
 
 // ********** DATABASE ********** //
 import databaseFirebase from "./firebase/firebase";
@@ -56,6 +61,17 @@ const renderApp = () => {
   );
   ReactDOM.render(jsx, document.getElementById("app"));
 };
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.dispatch(login(user.uid));
+    console.log("is logged");
+  } else {
+    store.dispatch(logout());
+    history.push("/");
+    console.log("not logged");
+  }
+});
 
 // EXPORTING DATABASE MOCKUP
 // export const charactersDB = databaseMockup.characters;
