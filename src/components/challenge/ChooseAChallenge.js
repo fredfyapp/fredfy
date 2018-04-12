@@ -9,14 +9,6 @@ import { connect } from "react-redux";
 import { setChallenge } from "../../actions/challenge";
 
 class ChooseAChallenge extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      challenges: ""
-    };
-  }
-
   handleChosenChallenges = challenges => {
     this.props.setChallenge(challenges);
   };
