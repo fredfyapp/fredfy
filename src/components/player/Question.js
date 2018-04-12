@@ -88,6 +88,7 @@ class Question extends React.Component {
     if (questions.length === questionsAnswered + 1) {
       alert("you finished");
       this.props.setFinishedSection(subjectName, sectionName);
+      console.log(subjectName, sectionName);
       this.addPoints();
       this.props.setIsPlaying(false);
       this.props.setQuestionsAnswered(0);
