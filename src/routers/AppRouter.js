@@ -72,12 +72,12 @@ class AppRouter extends React.Component {
               exact={true}
             />
             <Navigator
-              path="/challenges-you/:challenge"
+              path="/challenges-you/:challenges"
               component={ChallengePage}
               exact={true}
             />
             <Navigator
-              path="/challenges-you/:challenge/:puzzle"
+              path="/challenges-you/:challenges/:puzzle"
               component={PuzzlePage}
               exact={true}
             />

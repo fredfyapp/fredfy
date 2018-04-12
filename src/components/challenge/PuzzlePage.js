@@ -14,23 +14,31 @@ class PuzzlePage extends Component {
     const currentChallenges = this.props.currentChallenges;
     const currentIndex = Object.keys(db[currentChallenges]).indexOf(name);
     const nextPuzzle = Object.keys(db[currentChallenges])[currentIndex + args];
+    console.log(currentIndex);
     console.log(nextPuzzle);
+    this.props.setPuzzle(db[currentChallenges][nextPuzzle]);
   };
   componentDidMount = () => {
     const { name } = this.props.currentPuzzle;
     const currentChallenges = this.props.currentChallenges;
     if (name == undefined) {
       const puzzle = this.props.match.params.puzzle;
-      const challenge = this.props.match.params.challenge;
-      this.props.setPuzzle(db[challenge][puzzle]);
-      this.props.setChallenge(challenge);
+      const challenges = this.props.match.params.challenges;
+      this.props.setPuzzle(db[challenges][puzzle]);
+      this.props.setChallenge(challenges);
       this.forceUpdate();
     }
   };
 
   render() {
-    const { description, code, section, name } = this.props.currentPuzzle;
-    const currentChallenges = this.props.currentChallenges;
+    const { description, code, section } = this.props.currentPuzzle;
+    const name = this.props.match.params.puzzle;
+    const currentChallenges = this.props.match.params.challenges;
+    const currentIndex = Object.keys(db[currentChallenges]).indexOf(name);
+
+    // TODO
+    // has next and hasPrev to grey out buttons
+
     return (
       <div>
         <h1>Puzzle page</h1>
@@ -63,6 +71,9 @@ class PuzzlePage extends Component {
         </div>
         <div>
           <Editor code={code} />
+        </div>
+        <div>
+          <button>Run code</button>
         </div>
       </div>
     );

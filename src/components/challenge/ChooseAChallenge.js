@@ -16,21 +16,25 @@ class ChooseAChallenge extends React.Component {
   componentDidMount = () => {};
 
   render() {
+    const listOfChallenges = Object.keys(db).map(challenge => (
+      <li key={challenge.toString()}>
+        <Link
+          key={challenge.toString()}
+          to={`/challenges-you/${challenge}`}
+          onClick={() => {
+            this.handleChosenChallenges(challenge);
+          }}
+        >
+          {challenge}
+        </Link>
+      </li>
+    ));
+
     return (
       <div>
         <h3>Choose a Challenge</h3>
         <div>
-          {Object.keys(db).map(challenge => (
-            <Link
-              key={challenge.toString()}
-              to={`/challenges-you/${challenge}`}
-              onClick={() => {
-                this.handleChosenChallenges(challenge);
-              }}
-            >
-              {challenge}
-            </Link>
-          ))}
+          <ul>{listOfChallenges}</ul>
         </div>
       </div>
     );
