@@ -81,7 +81,7 @@ const userReducerDefaultState = {
       character: "Fred",
       isFinished: false,
       finishedSections: {
-        colors: false,
+        colours: false,
         fonts: true,
         images: true
       },
