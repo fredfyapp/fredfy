@@ -29,6 +29,7 @@ import ProblemsPage from "../components/player/ProblemsPage";
 // ******* Challenge ********** //
 import ChooseAChallenge from "../components/challenge/ChooseAChallenge";
 import ChallengePage from "../components/challenge/ChallengePage";
+import PuzzlePage from "../components/challenge/PuzzlePage";
 
 // ********** NOT FOUND ********** //
 import NotFoundPage from "../components/NotFoundPage";
@@ -65,14 +66,19 @@ class AppRouter extends React.Component {
             />{" "}
             */}
             {/* Challenge routes begins*/}
-            <Player
+            <Navigator
               path="/choose-a-challenge"
               component={ChooseAChallenge}
               exact={true}
             />
-            <Player
+            <Navigator
               path="/challenges-you/:challenge"
               component={ChallengePage}
+              exact={true}
+            />
+            <Navigator
+              path="/challenges-you/:challenge/:puzzle"
+              component={PuzzlePage}
               exact={true}
             />
             {/* Challenge routes end */}

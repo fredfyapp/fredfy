@@ -5,6 +5,11 @@ export default (state = challengeReducerDefaultState, action) => {
         ...state,
         currentChallenges: action.challenges
       };
+    case "SET_PUZZLE":
+      return {
+        ...state,
+        currentPuzzle: action.puzzle
+      };
     default:
       return state;
   }
