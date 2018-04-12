@@ -43,8 +43,7 @@ class ChallengePage extends React.Component {
     return (
       <div>
         <h1>{currentChallenges}</h1>
-        {listOfPuzzles}
-        <ul />
+        <ul>{listOfPuzzles}</ul>
       </div>
     );
   }
