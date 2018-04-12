@@ -28,18 +28,28 @@ class Editor extends Component {
       vim: false
     };
   }
+
+  componentWillReceiveProps = nextProps => {
+    var value = nextProps.code;
+    this.setState({
+      value
+    });
+  };
+
   componentDidMount() {
     var value = this.props.code;
     this.setState({
       value
     });
   }
+
   keybindingSwitcher = e => {
     e.preventDefault();
     this.setState({
       vim: !this.state.vim
     });
   };
+
   themeSwitcher = e => {
     e.preventDefault();
     this.setState({

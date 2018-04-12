@@ -12,21 +12,21 @@ class ChallengePage extends React.Component {
   componentDidMount = () => {};
 
   handleChosenPuzzle = puzzle => {
-    const currentChallenge = this.props.ChosenChallenges;
-    this.props.setPuzzle(db[currentChallenge][puzzle]);
+    const currentChallenges = this.props.ChosenChallenges;
+    this.props.setPuzzle(db[currentChallenges][puzzle]);
   };
 
   render() {
-    const currentChallenge = this.props.ChosenChallenges;
+    const currentChallenges = this.props.ChosenChallenges;
     return (
       <div>
-        <h1>{currentChallenge}</h1>
+        <h1>{currentChallenges}</h1>
         <ul>
-          {Object.keys(db[currentChallenge]).map(puzzle => (
+          {Object.keys(db[currentChallenges]).map(puzzle => (
             <li>
               <Link
                 key={puzzle.toString()}
-                to={`/challenges-you/${currentChallenge}/${puzzle}`}
+                to={`/challenges-you/${currentChallenges}/${puzzle}`}
                 onClick={() => {
                   this.handleChosenPuzzle(puzzle);
                 }}
