@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { subjectsDB } from "../../app";
 
 // ********** COMPONENTS ********** //
-import ChallengeCard from "../challenge/ChallengeCard";
+import ChallengeCard from "../navigator/ChallengeCard";
 import SubjectRanking from "./SubjectRanking";
 import Inventory from "./Inventory";
 import SectionCard from "./SectionCard";
@@ -42,7 +42,8 @@ class ChooseASection extends React.Component {
                 return (
                   <Link
                     to={`/teaches-you/${subjectName}/${sectionName}`}
-                    key={subjectName + sectionName}>
+                    key={subjectName + sectionName}
+                  >
                     <SectionCard
                       subjectName={subjectName}
                       sectionName={sectionName}

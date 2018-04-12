@@ -36,11 +36,12 @@ class ChooseACharacter extends React.Component {
         {characters.map(character => {
           return (
             <Link
-              key={character.name
+              key={character.name}
               to={`/teaches-you/${subjectName}`}
               onClick={() => {
                 this.handleChosenCharacter(character.name);
-              }}>
+              }}
+            >
               <CharacterCard characterName={character.name} />
             </Link>
           );

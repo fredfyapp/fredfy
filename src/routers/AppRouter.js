@@ -21,10 +21,6 @@ import ChooseASection from "../components/navigator/ChooseASection";
 import Welcome from "../components/navigator/Welcome";
 
 // ********** PLAYER ********** //
-<<<<<<< HEAD
-=======
-import ChooseAChallenge from "../components/challenge/ChooseAChallenge";
->>>>>>> master
 import Player from "../components/player/Player";
 import QuestionsCard from "../components/player/QuestionsCard";
 import QuestionsPage from "../components/player/QuestionsPage";
@@ -66,9 +62,8 @@ class AppRouter extends React.Component {
               path="/teaches-you/:subject/:section"
               component={QuestionsPage}
               exact={true}
-<<<<<<< HEAD
-            /> */}
-
+            />{" "}
+            */}
             {/* Challenge routes begins*/}
             <Player
               path="/choose-a-challenge"
@@ -81,10 +76,6 @@ class AppRouter extends React.Component {
               exact={true}
             />
             {/* Challenge routes end */}
-=======
-            />
-            <Player path="/choose-a-challenge" component={ChooseAChallenge} />
->>>>>>> master
             <Route component={NotFoundPage} />
           </Switch>
         </div>
