@@ -9,9 +9,7 @@ import { connect } from "react-redux";
 import { setPuzzle } from "../../actions/challenge";
 
 class ChallengePage extends React.Component {
-  componentDidMount = () => {
-    console.log(Object.keys(db["warmup-1"]));
-  };
+  componentDidMount = () => {};
 
   handleChosenPuzzle = puzzle => {
     const currentChallenge = this.props.ChosenChallenges;
