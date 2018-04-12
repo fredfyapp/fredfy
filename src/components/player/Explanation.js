@@ -1,10 +1,10 @@
 // ********** REACT ********** //
 import React from "react";
 
-const Explanation = ({ sectionObject }) => {
+const Explanation = ({ explanation }) => {
   return (
     <div>
-      <h4>{sectionObject.explanation}</h4>
+      <h4>{explanation}</h4>
     </div>
   );
 };

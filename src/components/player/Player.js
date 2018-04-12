@@ -2,14 +2,14 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-const Player = ({ component: Component, database, ...rest }) => {
+const Player = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       component={props => (
         <div className="player">
           <div className="content-container">
-            <Component {...props} database={database} />
+            <Component {...props} />
           </div>
         </div>
       )}

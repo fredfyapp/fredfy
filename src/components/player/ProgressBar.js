@@ -1,12 +1,20 @@
 // ********** REACT ********** //
 import React from "react";
 
-const ProgressBar = ({}) => {
+// ********** REDUX ********** //
+import { connect } from "react-redux";
+
+const ProgressBar = props => {
   return (
     <div>
       <h2>ProgressBar</h2>
+      <h3>{props.questionsAnswered}</h3>
     </div>
   );
 };
 
-export default ProgressBar;
+const mapStateToProps = state => ({
+  questionsAnswered: state.playing.questionsAnswered
+});
+
+export default connect(mapStateToProps)(ProgressBar);

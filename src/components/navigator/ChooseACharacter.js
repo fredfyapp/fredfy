@@ -6,14 +6,19 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setChosenCharacter } from "../../actions/user";
 
+// ********** DATABASE ********** //
+import { charactersDB } from "../../app";
+
 // ********** COMPONENTS ********** //
 import CharacterCard from "../CharacterCard";
 
+// ********** SELECTORS ********** //
+import objectToArray from "../../selectors/objectToArray";
+
 class ChooseACharacter extends React.Component {
-  handleChosenCharacter = () => {
-    const character = this.chosenCharacter;
+  handleChosenCharacter = characterName => {
     const subjectName = this.props.subjectName;
-    this.props.dispatch(setChosenCharacter(character, subjectName));
+    this.props.dispatch(setChosenCharacter(characterName, subjectName));
   };
 
   componentDidMount() {
@@ -21,26 +26,25 @@ class ChooseACharacter extends React.Component {
   }
 
   render() {
+    const characters = objectToArray(charactersDB);
     const user = this.props.user;
     const subjectName = this.props.subjectName;
 
     return (
-      <div id="hero" className="block-content">
+      <div id="hero" className="block-content opacity-toggle-fast">
         <h2>Choose a Hero</h2>
-        {/* {this.props.database.characters.map(character => {
+        {characters.map(character => {
           return (
             <Link
               key={character.name
               to={`/teaches-you/${subjectName}`}
               onClick={() => {
-                this.chosenCharacter = character.name;
-                this.handleChosenCharacter();
-              }}
-            >
+                this.handleChosenCharacter(character.name);
+              }}>
               <CharacterCard characterName={character.name} />
             </Link>
           );
-        })} */}
+        })}
       </div>
     );
   }

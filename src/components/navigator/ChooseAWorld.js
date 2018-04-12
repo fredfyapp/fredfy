@@ -5,38 +5,37 @@ import { Link } from "react-router-dom";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
+// ********** DATABASE ********** //
+import { subjectsDB } from "../../app";
+
 // ********** COMPONENTS ********** //
 import WorldCard from "./WorldCard";
 
 // ********** ACTIONS ********** //
 import { setChosenSubject } from "../../actions/navigation";
 
+// ********** SELECTORS ********** //
+import objectToArray from "../../selectors/objectToArray";
+
 class ChooseAWorld extends React.Component {
-  handleChosenWorld = subjectName => {
+  handleChosenSubject = subjectName => {
     this.props.setChosenSubject(subjectName);
   };
 
   render() {
-    const subjects = this.props.database;
-
-    let subjectsArray = [];
-    for (let [key, value] of Object.entries(subjects)) {
-      subjectsArray.push(value);
-    }
-
+    const subjects = objectToArray(subjectsDB);
     return (
-      <div id="world" className="block-content">
+      <div id="world" className="block-content opacity-toggle-fast">
         <h2>Choose a World</h2>
         <div>
-          {subjectsArray.map(subject => {
+          {subjects.map(subject => {
             return (
               <Link
                 to={`/teaches-you/${subject.subjectName}`}
                 key={subject.subjectName}
                 onClick={() => {
-                  this.handleChosenWorld(subject.subjectName);
-                }}
-              >
+                  this.handleChosenSubject(subject.subjectName);
+                }}>
                 <WorldCard subjectName={subject.subjectName} />
               </Link>
             );

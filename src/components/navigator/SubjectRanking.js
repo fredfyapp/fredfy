@@ -4,21 +4,21 @@ import React from "react";
 // ********** SELECTORS ********** //
 import { getSubjectTopUsers } from "../../selectors/getRanking";
 
-const TableHeader = ({ subjectObject }) => {
+const TableHeader = ({ subjectName }) => {
   return (
     <div className="table__header">
       <h3>Name</h3>
-      <h3>{subjectObject.subject}</h3>
+      <h3>{subjectName}</h3>
       <h3>Total</h3>
     </div>
   );
 };
 
-const TableBody = ({ users, subjectObject }) => {
+const TableBody = ({ subjectName }) => {
   return (
     <div className="table__body">
       <div className="table__row">
-        {getSubjectTopUsers(users, subjectObject.subject).map(user => {
+        {getSubjectTopUsers(subjectName).map(user => {
           return (
             <div className="table__item" key={user.id}>
               <h4>{user.name}</h4>
@@ -32,14 +32,14 @@ const TableBody = ({ users, subjectObject }) => {
   );
 };
 
-const SubjectRanking = ({ database, subjectObject, user }) => {
-  // 'USER' WILL BE USED FOR SORTING CURRENT USER IN THE TABLE
+const SubjectRanking = ({ subjectName, user }) => {
+  // PARAM 'USER' WILL BE USED FOR SORTING CURRENT USER IN THE TABLE
   return (
     <div>
       <h3>Ranking</h3>
       <div className="table">
-        <TableHeader subjectObject={subjectObject} />
-        <TableBody users={database.users} subjectObject={subjectObject} />
+        <TableHeader subjectName={subjectName} />
+        <TableBody subjectName={subjectName} />
       </div>
     </div>
   );

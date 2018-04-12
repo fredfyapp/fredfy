@@ -5,66 +5,81 @@ import { Link } from "react-router-dom";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
+// ********** DATABASE ********** //
+import { subjectsDB } from "../../app";
+
 // ********** COMPONENTS ********** //
 import CharacterCard from "../CharacterCard";
 import Explanation from "./Explanation";
 import QuestionsCard from "./QuestionsCard";
 
 // ********** ACTIONS ********** //
-import { setIsPlaying, setShuffledQuestions } from "../../actions/playing";
+import {
+  setIsPlaying,
+  setShuffledQuestions,
+  setQuestionsAnswered
+} from "../../actions/playing";
 
 // ********** SELECTORS ********** //
 import shuffleArray from "../../selectors/shuffleArray";
+import objectToArray from "../../selectors/objectToArray";
 
 class QuestionsPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.subjectName = this.props.match.params.subject;
-    this.sectionName = this.props.match.params.section;
+    const subjectName = this.props.match.params.subject;
+    const sectionName = this.props.match.params.section;
 
-    this.subjectObject = this.props.database.learning.find(
-      subject => subject.subject === this.subjectName
+    const subjects = objectToArray(subjectsDB);
+
+    const subjectObject = subjects.find(
+      subject => subject.subjectName === subjectName
     );
 
-    this.sectionObject = this.subjectObject.sections.find(
-      section => section.sectionName === this.sectionName
-    );
+    // IN 'THIS' BECAUSE IT'S NEEDED IN CDM AND RENDER
+    this.sectionObject = subjectObject.sections[sectionName];
+
+    // console.log(subjects);
+    // console.log(subjectObject);
+    // console.log("this.sectionObjects", this.sectionObject);
   }
 
   componentDidMount() {
-    // CALLED HERE SO SHUFFLING JUST HAPPENS ONCE, WHEN COMPONENT RENDERS
-    this.props.setShuffledQuestions(shuffleArray(this.sectionObject.questions));
+    // CALLED HERE SO SHUFFLING JUST HAPPENS ONCE, WHEN COMPONENT FIRST RENDERS
+    const questions = objectToArray(this.sectionObject.questions);
+    this.props.setShuffledQuestions(shuffleArray(questions));
   }
 
   render() {
-    const subjectName = this.subjectName;
-    const sectionName = this.sectionName;
-    const sectionObject = this.sectionObject;
-    const character = this.props.user.subjects[this.subjectName].character;
-    const isPlaying = this.props.playing.isPlaying;
-    const shuffledQuestions = this.props.playing.shuffledQuestions;
+    const subjectName = this.props.match.params.subject;
+    const sectionName = this.props.match.params.section;
+    const explanation = this.sectionObject.explanation;
+    const characterName = this.props.user.subjects[subjectName].character;
+    const isPlaying = this.props.isPlaying;
+    const shuffledQuestions = this.props.shuffledQuestions;
 
     return (
-      <div className="questions-page">
+      <div className="questions-page opacity-toggle-fast">
         <div>
-          <h2>{this.sectionObject[sectionName]}</h2>
+          <h2>{sectionName}</h2>
           {isPlaying ? (
             <QuestionsCard
-              shuffledQuestions={shuffledQuestions}
+              questions={shuffledQuestions}
+              subjectName={subjectName}
               {...this.props}
             />
           ) : (
-            <Explanation sectionObject={sectionObject} />
+            <Explanation explanation={explanation} />
           )}
 
-          <CharacterCard characterName={character} />
+          <CharacterCard characterName={characterName} />
           <Link
             to={`/teaches-you/${subjectName}`}
             onClick={() => {
+              this.props.setQuestionsAnswered(0);
               this.props.setIsPlaying(false);
-            }}
-          >
+            }}>
             <h3>Go back</h3>
           </Link>
 
@@ -72,8 +87,7 @@ class QuestionsPage extends React.Component {
             <button
               onClick={() => {
                 this.props.setIsPlaying(true);
-              }}
-            >
+              }}>
               Play
             </button>
           )}
@@ -85,13 +99,16 @@ class QuestionsPage extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  playing: state.playing
+  isPlaying: state.playing.isPlaying,
+  shuffledQuestions: state.playing.shuffledQuestions
 });
 
 const mapDispatchToProps = dispatch => ({
   setIsPlaying: isPlaying => dispatch(setIsPlaying(isPlaying)),
   setShuffledQuestions: shuffledQuestions =>
-    dispatch(setShuffledQuestions(shuffledQuestions))
+    dispatch(setShuffledQuestions(shuffledQuestions)),
+  setQuestionsAnswered: questionsAnswered =>
+    dispatch(setQuestionsAnswered(questionsAnswered))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);

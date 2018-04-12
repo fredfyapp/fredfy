@@ -1,26 +1,31 @@
 // ********** REACT ********** //
 import React from "react";
 
+// ********** DATABASE ********** //
+import { subjectsDB } from "../../app";
+
 // ********** SELECTORS ********** //
 import { getGlobalTopUsers } from "../../selectors/getRanking";
+import objectToArray from "../../selectors/objectToArray";
 
-const TableHeader = ({ subjects }) => {
+const TableHeader = () => {
+  const subjects = objectToArray(subjectsDB);
   return (
     <div className="table__header">
       <h3>Name</h3>
-      {subjects[0].map(subject => {
-        return <h3 key={subject.subject}>{subject.subject}</h3>;
+      {subjects.map(subject => {
+        return <h3 key={subject.subjectName}>{subject.subjectName}</h3>;
       })}
       <h3>Total</h3>
     </div>
   );
 };
 
-const TableBody = ({ users }) => {
+const TableBody = () => {
   return (
     <div className="table__body">
       <div className="table__row">
-        {getGlobalTopUsers(users[0]).map(user => {
+        {getGlobalTopUsers().map(user => {
           return (
             <div className="table__item" key={user.id}>
               <h4>{user.name}</h4>
@@ -40,13 +45,13 @@ const TableBody = ({ users }) => {
   );
 };
 
-const Ranking = ({ database }) => {
+const Ranking = () => {
   return (
-    <div className="ranking">
+    <div className="ranking opacity-toggle-fast">
       <h2>Ranking</h2>
       <div className="table">
-        <TableHeader subjects={[database.learning]} />
-        <TableBody users={[database.users]} />
+        <TableHeader />
+        <TableBody />
       </div>
     </div>
   );

@@ -1,24 +1,27 @@
-@import './base/reset';
-@import './base/settings';
-@import './base/variables';
-@import './base/placeholder';
-@import './base/base';
+@import "./base/reset";
+@import "./base/settings";
+@import "./base/placeholder";
+@import "./base/base";
+@import "./base/opacity-toggle";
+@import "./base/modal";
 
 // ********** COMPONENTS ********** //
+@import "./components/loading";
 // ********** NAVIGATOR ********** //
-@import './components/content-container';
-@import './components/navigator/choose-a-character';
-@import './components/navigator/footer';
-@import './components/navigator/header';
-@import './components/navigator/navigator';
-@import './components/navigator/ranking';
-@import './components/navigator/section';
+@import "./components/content-container";
+@import "./components/navigator/choose-a-character";
+@import "./components/navigator/footer";
+@import "./components/navigator/header";
+@import "./components/navigator/login-modal";
+@import "./components/navigator/navigator";
+@import "./components/navigator/ranking";
+@import "./components/navigator/section";
 
 // ********** PLAYER ********** //
-@import './components/player/player';
-@import './components/player/questions-page';
+@import "./components/player/player";
+@import "./components/player/questions-page";
 
 // ********** FONTS ********** //
-@import url('https://fonts.googleapis.com/css?family=Bungee');
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Bungee");
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@import url("https://fonts.googleapis.com/css?family=Roboto");

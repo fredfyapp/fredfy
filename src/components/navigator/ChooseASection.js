@@ -5,11 +5,17 @@ import { Link } from "react-router-dom";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
+// ********** DATABASE ********** //
+import { subjectsDB } from "../../app";
+
 // ********** COMPONENTS ********** //
-import ChallengeCard from "./ChallengeCard";
+import ChallengeCard from "../challenge/ChallengeCard";
 import SubjectRanking from "./SubjectRanking";
 import Inventory from "./Inventory";
 import SectionCard from "./SectionCard";
+
+// ********** SELECTORS ********** //
+import objectToArray from "../../selectors/objectToArray";
 
 class ChooseASection extends React.Component {
   componentDidMount() {
@@ -19,31 +25,24 @@ class ChooseASection extends React.Component {
 
     !user.subjects[subjectName].character &&
       this.props.history.push(`/choose-a-character-for/${subjectName}`);
-    console.log(this.props.subjectObject);
-    console.log(this.props.user);
   }
 
   render() {
     const subjectName = this.props.subjectObject.subjectName;
-    const sections = this.props.subjectObject.sections;
-    let sectionsArray = [];
-    for (let [key, value] of Object.entries(sections)) {
-      sectionsArray.push(value);
-    }
-    console.log(sectionsArray);
+    const sectionsObject = this.props.subjectObject.sections;
+    const sections = objectToArray(sectionsObject);
     return (
-      <div>
+      <div className="opacity-toggle-fast">
         <h2>{subjectName}</h2>
         <div className="section">
           <div className="section__map">
             <div className="section__section-cards">
-              {sectionsArray.map(section => {
+              {sections.map(section => {
                 const sectionName = section.sectionName;
                 return (
                   <Link
                     to={`/teaches-you/${subjectName}/${sectionName}`}
-                    key={subjectName + sectionName}
-                  >
+                    key={subjectName + sectionName}>
                     <SectionCard
                       subjectName={subjectName}
                       sectionName={sectionName}
@@ -62,11 +61,10 @@ class ChooseASection extends React.Component {
               <Inventory />
             </div>
             <div className="ranking-panel">
-              {/* <SubjectRanking
-                database={this.props.database}
-                subjectObject={subjectObject}
+              <SubjectRanking
+                subjectName={subjectName}
                 user={this.props.user}
-              /> */}
+              />
             </div>
           </div>
         </div>
@@ -78,7 +76,7 @@ class ChooseASection extends React.Component {
 const mapStateToProps = (state, props) => {
   const subjectName = props.match.params.subject;
   return {
-    subjectObject: props.database[subjectName],
+    subjectObject: subjectsDB[subjectName],
     user: state.user
   };
 };

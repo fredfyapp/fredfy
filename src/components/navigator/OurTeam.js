@@ -3,7 +3,7 @@ import React from "react";
 
 const OurTeam = ({}) => {
   return (
-    <div>
+    <div className="opacity-toggle-fast">
       <h2>OurTeam</h2>
     </div>
   );

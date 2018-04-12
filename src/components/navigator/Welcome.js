@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
-    <div id="home" className="block-content">
+    <div id="home" className="block-content opacity-toggle-fast">
       <h2>Welcome to Fredfy</h2>
       <div className="content">
         <Link to="/choose-a-world">

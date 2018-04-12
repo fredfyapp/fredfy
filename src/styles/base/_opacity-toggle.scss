@@ -1,0 +1,51 @@
+.opacity-toggle-slow {
+  position: relative;
+  -webkit-animation-name: opacityToggleSlow;
+  -webkit-animation-duration: 1.5s;
+  animation-name: opacityToggleSlow;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes opacityToggleSlow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityToggleSlow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.opacity-toggle-fast {
+  position: relative;
+  -webkit-animation-name: opacityToggleFast;
+  -webkit-animation-duration: 0.3s;
+  animation-name: opacityToggleFast;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes opacityToggleFast {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityToggleFast {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

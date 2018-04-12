@@ -2,6 +2,7 @@
   "users": {
     "1234": {
       "username": "Marcel",
+      "id": 1234,
       "totalPoints": 22,
       "subjects": {
         "html": {
@@ -38,6 +39,7 @@
     },
     "5678": {
       "username": "Cruz",
+      "id": 5678,
       "totalPoints": 53,
       "subjects": {
         "html": {
@@ -93,7 +95,7 @@
       "name": "Liz"
     }
   },
-  "learning": {
+  "subjects": {
     "html": {
       "subjectName": "html",
       "sections": {
@@ -113,19 +115,19 @@
             "colours-001": {
               "title": "what is colour?",
               "options": {
-                "1": {
+                "option-01": {
                   "answer": "What is one",
                   "isCorrect": true
                 },
-                "2": {
+                "option-02": {
                   "answer": "What is two",
                   "isCorrect": false
                 },
-                "3": {
+                "option-03": {
                   "answer": "What is three",
                   "isCorrect": false
                 },
-                "4": {
+                "option-04": {
                   "answer": "What is four",
                   "isCorrect": false
                 }
@@ -134,19 +136,19 @@
             "colours-002": {
               "title": "how to change the colour?",
               "options": {
-                "1": {
+                "option-01": {
                   "answer": "How to change one",
                   "isCorrect": true
                 },
-                "2": {
+                "option-02": {
                   "answer": "How to change two",
                   "isCorrect": false
                 },
-                "3": {
+                "option-03": {
                   "answer": "How to change three",
                   "isCorrect": false
                 },
-                "4": {
+                "option-04": {
                   "answer": "How to change four",
                   "isCorrect": false
                 }
@@ -155,19 +157,19 @@
             "colours-003": {
               "title": "how to increase opacity?",
               "options": {
-                "1": {
+                "option-01": {
                   "answer": "How to increase one",
                   "isCorrect": true
                 },
-                "2": {
+                "option-02": {
                   "answer": "How to increase two",
                   "isCorrect": false
                 },
-                "3": {
+                "option-03": {
                   "answer": "How to increase three",
                   "isCorrect": false
                 },
-                "4": {
+                "option-04": {
                   "answer": "How to increase four",
                   "isCorrect": false
                 }

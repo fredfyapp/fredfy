@@ -1,5 +1,6 @@
 const navigationReducerDefaultState = {
-  chosenSubject: ""
+  chosenSubject: "",
+  isLoginModalOpen: false
 };
 
 export default (state = navigationReducerDefaultState, action) => {
@@ -8,6 +9,11 @@ export default (state = navigationReducerDefaultState, action) => {
       return {
         ...state,
         chosenSubject: action.chosenSubject
+      };
+    case "SET_IS_LOGIN_MODAL_OPEN":
+      return {
+        ...state,
+        isLoginModalOpen: action.isLoginModalOpen
       };
     default:
       return state;

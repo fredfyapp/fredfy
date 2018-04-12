@@ -8,9 +8,6 @@ import createHistory from "history/createBrowserHistory";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
-// ********** ACTIONS ********** //
-import { setUser } from "../actions/user";
-
 // ********** COMPONENTS ********** //
 // ********** NAVIGATOR ********** //
 import Account from "../components/navigator/Account";
@@ -24,6 +21,10 @@ import ChooseASection from "../components/navigator/ChooseASection";
 import Welcome from "../components/navigator/Welcome";
 
 // ********** PLAYER ********** //
+<<<<<<< HEAD
+=======
+import ChooseAChallenge from "../components/challenge/ChooseAChallenge";
+>>>>>>> master
 import Player from "../components/player/Player";
 import QuestionsCard from "../components/player/QuestionsCard";
 import QuestionsPage from "../components/player/QuestionsPage";
@@ -37,42 +38,35 @@ import ChallengePage from "../components/challenge/ChallengePage";
 import NotFoundPage from "../components/NotFoundPage";
 
 class AppRouter extends React.Component {
+  func = () => {
+    console.log("works");
+  };
+
   render() {
-    const { characters, learning, users } = this.props.database;
     return (
       <Router history={history}>
         <div>
           <Switch>
             <Navigator path="/" component={Welcome} exact={true} />
             <Navigator path="/account" component={Account} />
-            {/* <Navigator
-              path="/choose-a-character-for/:subject"
-              database={characters}
-              component={ChooseACharacter}
-            /> */}
             <Navigator
-              path="/choose-a-world"
-              database={learning}
-              component={ChooseAWorld}
+              path="/choose-a-character-for/:subject"
+              component={ChooseACharacter}
             />
+            <Navigator path="/choose-a-world" component={ChooseAWorld} />
             <Navigator path="/how-it-works" component={HowItWorks} />
             <Navigator path="/our-team" component={OurTeam} />
-            {/* <Navigator
-              path="/ranking"
-              database={database}
-              component={Ranking}
-            /> */}
+            <Navigator path="/ranking" component={Ranking} />
             <Navigator
               path="/teaches-you/:subject"
-              database={learning}
               component={ChooseASection}
               exact={true}
             />
-            {/* <Player
+            <Player
               path="/teaches-you/:subject/:section"
-              database={database}
               component={QuestionsPage}
               exact={true}
+<<<<<<< HEAD
             /> */}
 
             {/* Challenge routes begins*/}
@@ -87,6 +81,10 @@ class AppRouter extends React.Component {
               exact={true}
             />
             {/* Challenge routes end */}
+=======
+            />
+            <Player path="/choose-a-challenge" component={ChooseAChallenge} />
+>>>>>>> master
             <Route component={NotFoundPage} />
           </Switch>
         </div>
