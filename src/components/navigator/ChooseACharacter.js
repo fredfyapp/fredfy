@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { setChosenCharacter } from "../../actions/user";
 
 // ********** DATABASE ********** //
-import { charactersDB } from "../../app";
+import { charactersDB } from "../../firebase/database";
 
 // ********** COMPONENTS ********** //
 import CharacterCard from "../CharacterCard";
@@ -40,8 +40,7 @@ class ChooseACharacter extends React.Component {
               to={`/teaches-you/${subjectName}`}
               onClick={() => {
                 this.handleChosenCharacter(character.name);
-              }}
-            >
+              }}>
               <CharacterCard characterName={character.name} />
             </Link>
           );

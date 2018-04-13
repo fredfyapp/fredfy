@@ -2,7 +2,7 @@
 import React from "react";
 
 // ********** DATABASE ********** //
-import { subjectsDB } from "../../app";
+import { subjectsDB } from "../../firebase/database";
 
 // ********** SELECTORS ********** //
 import { getGlobalTopUsers } from "../../selectors/getRanking";

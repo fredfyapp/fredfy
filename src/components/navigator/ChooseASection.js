@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // ********** DATABASE ********** //
-import { subjectsDB } from "../../app";
+import { subjectsDB } from "../../firebase/database";
 
 // ********** COMPONENTS ********** //
 import ChallengeCard from "../navigator/ChallengeCard";
@@ -42,8 +42,7 @@ class ChooseASection extends React.Component {
                 return (
                   <Link
                     to={`/teaches-you/${subjectName}/${sectionName}`}
-                    key={subjectName + sectionName}
-                  >
+                    key={subjectName + sectionName}>
                     <SectionCard
                       subjectName={subjectName}
                       sectionName={sectionName}

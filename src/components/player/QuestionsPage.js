@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // ********** DATABASE ********** //
-import { subjectsDB } from "../../app";
+import { subjectsDB } from "../../firebase/database";
 
 // ********** COMPONENTS ********** //
 import CharacterCard from "../CharacterCard";
