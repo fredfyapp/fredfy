@@ -39,6 +39,8 @@ class ChooseASection extends React.Component {
     const subjectName = this.subjectObject.subjectName;
     const sectionsObject = this.subjectObject.sections;
     const sections = objectToArray(sectionsObject);
+    console.log("subjectname", subjectName);
+    console.log("props.user", this.props.user);
     return (
       <div className="opacity-toggle-fast">
         <h2>{subjectName}</h2>

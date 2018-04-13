@@ -1,6 +1,7 @@
 const navigationReducerDefaultState = {
   chosenSubject: "",
-  isLoginModalOpen: false
+  isLoginModalOpen: false,
+  isAppRunning: false
 };
 
 export default (state = navigationReducerDefaultState, action) => {
@@ -14,6 +15,11 @@ export default (state = navigationReducerDefaultState, action) => {
       return {
         ...state,
         isLoginModalOpen: action.isLoginModalOpen
+      };
+    case "SET_IS_APP_RUNNING":
+      return {
+        ...state,
+        isAppRunning: action.isAppRunning
       };
     default:
       return state;

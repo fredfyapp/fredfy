@@ -1,28 +1,11 @@
 // ********** DATABASE ********** //
 import { usersDB } from "../firebase/database";
-
-// NOT BEING USED, BECAUSE POINTS GAINED ARE ADDED TO SUBJECT AND TOTAL WHEN QUESTION
-// IS FINISHED
-// export const getUserTotalPoints = (user) => {
-//   let totalPoints = 0;
-
-//   for (let subject in user.subjects) {
-
-//     totalPoints += user.subjects[subject].points;
-//   }
-
-//   return totalPoints;
-// };
+import objectToArray from "../selectors/objectToArray";
 
 export const getGlobalTopUsers = () => {
-  let usersArray = [];
-  for (let [key, value] of Object.entries(usersDB)) {
-    usersArray.push(value);
-  }
-
   let finalList = [];
 
-  usersArray.map(user => {
+  objectToArray(usersDB).map(user => {
     const name = user.username;
     const id = user.id;
     const totalPoints = user.totalPoints;
@@ -49,14 +32,9 @@ export const getGlobalTopUsers = () => {
 };
 
 export const getSubjectTopUsers = subject => {
-  let usersArray = [];
-  for (let [key, value] of Object.entries(usersDB)) {
-    usersArray.push(value);
-  }
-
   let finalList = [];
 
-  usersArray.map(user => {
+  objectToArray(usersDB).map(user => {
     const name = user.username;
     const id = user.id;
     const totalPoints = user.totalPoints;
