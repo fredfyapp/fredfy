@@ -1,9 +1,5 @@
 node_modules/
 public/dist/
-<<<<<<< HEAD
-.vscode
-=======
 .vscode/
->>>>>>> leo
 .env.test
 .env.development
