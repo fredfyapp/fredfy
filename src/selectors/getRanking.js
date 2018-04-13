@@ -1,5 +1,5 @@
 // ********** DATABASE ********** //
-import { usersDB } from "../app";
+import { usersDB } from "../firebase/database";
 
 // NOT BEING USED, BECAUSE POINTS GAINED ARE ADDED TO SUBJECT AND TOTAL WHEN QUESTION
 // IS FINISHED

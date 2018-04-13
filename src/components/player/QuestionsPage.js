@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // ********** DATABASE ********** //
-import { subjectsDB } from "../../app";
+import { subjectsDB } from "../../firebase/database";
 
 // ********** COMPONENTS ********** //
 import CharacterCard from "../CharacterCard";
@@ -28,24 +28,23 @@ class QuestionsPage extends React.Component {
   constructor(props) {
     super(props);
 
-    const subjectName = this.props.match.params.subject;
-    const sectionName = this.props.match.params.section;
+    const subjectName = props.match.params.subject;
+    const sectionName = props.match.params.section;
 
-    const subjects = objectToArray(subjectsDB);
+    this.subjectObject = subjectsDB[subjectName];
 
-    const subjectObject = subjects.find(
-      subject => subject.subjectName === subjectName
-    );
-
-    // IN 'THIS' BECAUSE IT'S NEEDED IN CDM AND RENDER
-    this.sectionObject = subjectObject.sections[sectionName];
-
-    // console.log(subjects);
-    // console.log(subjectObject);
-    // console.log("this.sectionObjects", this.sectionObject);
+    this.sectionObject = this.subjectObject.sections[sectionName];
   }
 
   componentDidMount() {
+    // CHECK IF THERE IS A CHARACTER FOR THE SUBJECT
+    const user = this.props.user;
+
+    const subjectName = this.props.match.params.subject;
+
+    !user.subjects[subjectName].character &&
+      this.props.history.push(`/choose-a-character-for/${subjectName}`);
+
     // CALLED HERE SO SHUFFLING JUST HAPPENS ONCE, WHEN COMPONENT FIRST RENDERS
     const questions = objectToArray(this.sectionObject.questions);
     this.props.setShuffledQuestions(shuffleArray(questions));
@@ -97,11 +96,13 @@ class QuestionsPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
-  isPlaying: state.playing.isPlaying,
-  shuffledQuestions: state.playing.shuffledQuestions
-});
+const mapStateToProps = (state, props) => {
+  return {
+    user: state.user,
+    isPlaying: state.playing.isPlaying,
+    shuffledQuestions: state.playing.shuffledQuestions
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   setIsPlaying: isPlaying => dispatch(setIsPlaying(isPlaying)),

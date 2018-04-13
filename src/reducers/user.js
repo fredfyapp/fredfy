@@ -64,33 +64,33 @@ export default (state = userReducerDefaultState, action) => {
 const userReducerDefaultState = {
   userId: "",
   username: "",
-  totalPoints: 50,
+  totalPoints: 0,
   subjects: {
     html: {
-      points: 10,
-      character: "Fred",
+      points: 0,
+      character: "",
       isFinished: false,
       finishedSections: {
-        one: true,
-        two: true
+        one: false,
+        two: false
       },
       finishedChallenges: {}
     },
     css: {
-      points: 30,
-      character: "Fred",
+      points: 0,
+      character: "",
       isFinished: false,
       finishedSections: {
-        colors: false,
-        fonts: true,
-        images: true
+        colours: false,
+        fonts: false,
+        images: false
       },
       finishedChallenges: {
         one: false
       }
     },
     javascript: {
-      points: 10,
+      points: 0,
       character: "",
       isFinished: false,
       finishedSections: {},
@@ -98,3 +98,42 @@ const userReducerDefaultState = {
     }
   }
 };
+
+// DEFAULT STATE WITH SOME DATA FILLED
+// const userReducerDefaultState = {
+//   userId: "",
+//   username: "",
+//   totalPoints: 50,
+//   subjects: {
+//     html: {
+//       points: 10,
+//       character: "Fred",
+//       isFinished: false,
+//       finishedSections: {
+//         one: true,
+//         two: true
+//       },
+//       finishedChallenges: {}
+//     },
+//     css: {
+//       points: 30,
+//       character: "Fred",
+//       isFinished: false,
+//       finishedSections: {
+//         colours: false,
+//         fonts: true,
+//         images: true
+//       },
+//       finishedChallenges: {
+//         one: false
+//       }
+//     },
+//     javascript: {
+//       points: 10,
+//       character: "",
+//       isFinished: false,
+//       finishedSections: {},
+//       finishedChallenges: {}
+//     }
+//   }
+// };

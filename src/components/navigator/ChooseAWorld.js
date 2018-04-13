@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // ********** DATABASE ********** //
-import { subjectsDB } from "../../app";
+import { subjectsDB } from "../../firebase/database";
 
 // ********** COMPONENTS ********** //
 import WorldCard from "./WorldCard";
@@ -23,7 +23,8 @@ class ChooseAWorld extends React.Component {
   };
 
   render() {
-    const subjects = objectToArray(subjectsDB);
+    console.log("chooseAWorld");
+    const subjects = objectToArray(subjectsDB) || null;
     return (
       <div id="world" className="block-content opacity-toggle-fast">
         <h2>Choose a World</h2>

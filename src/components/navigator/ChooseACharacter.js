@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { setChosenCharacter } from "../../actions/user";
 
 // ********** DATABASE ********** //
-import { charactersDB } from "../../app";
+import { charactersDB } from "../../firebase/database";
 
 // ********** COMPONENTS ********** //
 import CharacterCard from "../CharacterCard";
@@ -26,7 +26,7 @@ class ChooseACharacter extends React.Component {
   }
 
   render() {
-    const characters = objectToArray(charactersDB);
+    let characters = objectToArray(charactersDB) || null;
     const user = this.props.user;
     const subjectName = this.props.subjectName;
 
@@ -40,8 +40,7 @@ class ChooseACharacter extends React.Component {
               to={`/teaches-you/${subjectName}`}
               onClick={() => {
                 this.handleChosenCharacter(character.name);
-              }}
-            >
+              }}>
               <CharacterCard characterName={character.name} />
             </Link>
           );

@@ -1,0 +1,197 @@
+{
+  "characters": {
+    "Chloe": {
+      "name": "Chloe"
+    },
+    "Ciara": {
+      "name": "Ciara"
+    },
+    "Fred": {
+      "name": "Fred"
+    },
+    "Greg": {
+      "name": "Greg"
+    },
+    "Liz": {
+      "name": "Liz"
+    },
+    "Piu": {
+      "name": "Piu"
+    }
+  },
+  "subjects": {
+    "css": {
+      "challenges": {
+        "placeholder": "placeholder"
+      },
+      "sections": {
+        "colours": {
+          "explanation": "Colour is bla bla bla bla",
+          "questions": {
+            "colours-001": {
+              "options": {
+                "option-01": {
+                  "answer": "What is one",
+                  "isCorrect": true
+                },
+                "option-02": {
+                  "answer": "What is two",
+                  "isCorrect": false
+                },
+                "option-03": {
+                  "answer": "What is three",
+                  "isCorrect": false
+                },
+                "option-04": {
+                  "answer": "What is four",
+                  "isCorrect": false
+                }
+              },
+              "title": "what is colour?"
+            },
+            "colours-002": {
+              "options": {
+                "option-01": {
+                  "answer": "How to change one",
+                  "isCorrect": true
+                },
+                "option-02": {
+                  "answer": "How to change two",
+                  "isCorrect": false
+                },
+                "option-03": {
+                  "answer": "How to change three",
+                  "isCorrect": false
+                },
+                "option-04": {
+                  "answer": "How to change four",
+                  "isCorrect": false
+                }
+              },
+              "title": "how to change the colour?"
+            },
+            "colours-003": {
+              "options": {
+                "option-01": {
+                  "answer": "How to increase one",
+                  "isCorrect": true
+                },
+                "option-02": {
+                  "answer": "How to increase two",
+                  "isCorrect": false
+                },
+                "option-03": {
+                  "answer": "How to increase three",
+                  "isCorrect": false
+                },
+                "option-04": {
+                  "answer": "How to increase four",
+                  "isCorrect": false
+                }
+              },
+              "title": "how to increase opacity?"
+            }
+          },
+          "sectionName": "colours"
+        },
+        "fonts": {
+          "placeholder": "placeholder",
+          "sectionName": "fonts"
+        },
+        "images": {
+          "placeholder": "placeholder",
+          "sectionName": "images"
+        }
+      },
+      "subjectName": "css"
+    },
+    "html": {
+      "challenges": {
+        "placeholder": "placeholder"
+      },
+      "sections": {
+        "placeholder": "placeholder"
+      },
+      "subjectName": "html"
+    },
+    "javascript": {
+      "challenges": {
+        "placeholder": "placeholder"
+      },
+      "sections": {
+        "placeholder": "placeholder"
+      },
+      "subjectName": "javascript"
+    }
+  },
+  "users": {
+    "1234": {
+      "id": 1234,
+      "subjects": {
+        "css": {
+          "character": "Chloe",
+          "finishedChallenges": {
+            "one": false
+          },
+          "finishedSections": {
+            "colours": false,
+            "fonts": true,
+            "images": true
+          },
+          "isFinished": false,
+          "points": 12
+        },
+        "html": {
+          "character": "Fred",
+          "finishedSections": {
+            "one": true,
+            "two": true
+          },
+          "isFinished": true,
+          "points": 10
+        },
+        "javascript": {
+          "character": "",
+          "isFinished": false,
+          "points": 0
+        }
+      },
+      "totalPoints": 22,
+      "username": "Marcel"
+    },
+    "5678": {
+      "id": 5678,
+      "subjects": {
+        "css": {
+          "character": "Chloe",
+          "finishedChallenges": {
+            "one": false
+          },
+          "finishedSections": {
+            "colours": false,
+            "fonts": true,
+            "images": true
+          },
+          "isFinished": false,
+          "points": 10
+        },
+        "html": {
+          "character": "Fred",
+          "finishedSections": {
+            "one": true,
+            "two": true
+          },
+          "isFinished": true,
+          "points": 43
+        },
+        "javascript": {
+          "character": "",
+          "isFinished": false,
+          "points": 0
+        }
+      },
+      "totalPoints": 53,
+      "username": "Cruz"
+    }
+  }
+}
