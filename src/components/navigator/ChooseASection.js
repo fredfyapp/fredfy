@@ -18,18 +18,26 @@ import SectionCard from "./SectionCard";
 import objectToArray from "../../selectors/objectToArray";
 
 class ChooseASection extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const subjectName = props.match.params.subject;
+    this.subjectObject = subjectsDB[subjectName];
+  }
+
   componentDidMount() {
+    // CHECK IF THERE IS A CHARACTER FOR THE SUBJECT
     const user = this.props.user;
 
-    const subjectName = this.props.subjectObject.subjectName;
+    const subjectName = this.props.match.params.subject;
 
     !user.subjects[subjectName].character &&
       this.props.history.push(`/choose-a-character-for/${subjectName}`);
   }
 
   render() {
-    const subjectName = this.props.subjectObject.subjectName;
-    const sectionsObject = this.props.subjectObject.sections;
+    const subjectName = this.subjectObject.subjectName;
+    const sectionsObject = this.subjectObject.sections;
     const sections = objectToArray(sectionsObject);
     return (
       <div className="opacity-toggle-fast">
@@ -73,12 +81,8 @@ class ChooseASection extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const subjectName = props.match.params.subject;
-  return {
-    subjectObject: subjectsDB[subjectName],
-    user: state.user
-  };
-};
+const mapStateToProps = (state, props) => ({
+  user: state.user
+});
 
 export default connect(mapStateToProps)(ChooseASection);

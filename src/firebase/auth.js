@@ -1,13 +1,13 @@
 import { history } from "../routers/AppRouter";
 import { store } from "../app";
 import { firebase } from "./firebase";
-import callDatabase from "./database";
+import callDatabase, { callDatabaseMockup } from "./database";
 
 // ********** ACTIONS ********** //
 import { login, logout } from "../actions/auth";
 import { setIsLoginModalOpen } from "../actions/navigation";
 
-// CHECKS IF THE USER IS LOGGED
+// CHECK IF THE USER IS LOGGED
 export let userId;
 
 export default () => {
@@ -31,7 +31,7 @@ export default () => {
       console.log("not logged");
     }
 
-    // CALLS DATABASE
+    // CALL DATABASE
     callDatabase();
   });
 };

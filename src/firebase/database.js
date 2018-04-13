@@ -1,13 +1,18 @@
 import { renderApp } from "../app";
+
+// ********** DATABASE FIREBASE ********** //
 import database from "./firebase";
 import { userId } from "./auth";
 
-// EXPORTS DATABASE
+// ********** DATABASE MOCKUP ********** //
+import databaseMockup from "../databaseModel/database.json";
+
+// EXPORT DATABASE
 export let charactersDB;
 export let subjectsDB;
 export let usersDB;
 
-// FETCHS DATABASE
+// FETCH DATABASE FIREBASE
 export default () => {
   database
     .ref()
@@ -27,4 +32,12 @@ export default () => {
       //   renderApp();
       // }, 1000);
     });
+};
+
+// FETCH DATABASE MOCKUP
+export const callDatabaseMockup = () => {
+  console.log("db mockup");
+  charactersDB = databaseMockup.characters;
+  subjectsDB = databaseMockup.subjects;
+  usersDB = databaseMockup.users;
 };

@@ -26,7 +26,7 @@ class ChooseACharacter extends React.Component {
   }
 
   render() {
-    const characters = objectToArray(charactersDB);
+    let characters = objectToArray(charactersDB) || null;
     const user = this.props.user;
     const subjectName = this.props.subjectName;
 
