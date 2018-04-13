@@ -2,7 +2,7 @@ import { renderApp } from "../app";
 
 // ********** DATABASE FIREBASE ********** //
 import database from "./firebase";
-import { userId } from "./auth";
+// import { userId } from "./auth";
 
 // ********** DATABASE MOCKUP ********** //
 import databaseMockup from "../databaseModel/database.json";
@@ -12,25 +12,48 @@ export let charactersDB;
 export let subjectsDB;
 export let usersDB;
 
+const checkUserId = userId => {
+  let isNewUser = true;
+
+  for (let user in usersDB) {
+    if (user === userId) {
+      isNewUser = false;
+      break;
+    }
+  }
+
+  if (isNewUser) {
+    console.log("is new");
+  } else {
+    console.log("not new");
+  }
+
+  renderApp();
+};
+
 // FETCH DATABASE FIREBASE
-export default () => {
+export default userId => {
   database
     .ref()
     .once("value")
     .then(snapshot => {
       const database = snapshot.val();
+
+      // EXPORT DATABASE
       charactersDB = database.characters;
       subjectsDB = database.subjects;
       usersDB = database.users;
 
-      // RENDER METHOD MUST COME IN THE LAST POSITION
-      console.log("database", userId);
-      renderApp();
+      console.log("database", database);
 
-      // SETTIMEOUT JUST FOR TESTING
-      // setTimeout(() => {
-      //   renderApp();
-      // }, 1000);
+      if (userId) {
+        checkUserId(userId);
+        return;
+      }
+
+      // RENDER METHOD MUST COME IN THE LAST POSITION TO ALLOW
+      // DATABASE TO BE DECLARED FIRST AND USER HANDLED
+      renderApp();
     });
 };
 

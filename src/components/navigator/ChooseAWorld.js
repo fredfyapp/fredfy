@@ -23,7 +23,7 @@ class ChooseAWorld extends React.Component {
   };
 
   render() {
-    console.log("chooseAWorld");
+    // console.log("chooseAWorld");
     const subjects = objectToArray(subjectsDB) || null;
     return (
       <div id="world" className="block-content opacity-toggle-fast">
