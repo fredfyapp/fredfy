@@ -10,6 +10,11 @@ export default (state = challengeReducerDefaultState, action) => {
         ...state,
         currentPuzzle: action.puzzle
       };
+    case "SET_USERCODE":
+      return {
+        ...state,
+        userCode: action.userCode
+      };
     default:
       return state;
   }
@@ -17,5 +22,6 @@ export default (state = challengeReducerDefaultState, action) => {
 
 const challengeReducerDefaultState = {
   currentPuzzle: {},
-  currentChallenges: ""
+  currentChallenges: "",
+  userCode: ""
 };

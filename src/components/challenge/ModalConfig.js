@@ -2,6 +2,8 @@ import React from "react";
 import Toggle from "react-toggle";
 import Modal from "react-modal";
 
+// import "react-toggle/style.css"; // for ES6 modules
+
 const customStyles = {
   content: {
     top: "50%",
@@ -54,7 +56,7 @@ class ModalConfig extends React.Component {
           style={customStyles}
           ariaHideApp={false}
         >
-          <div className="editor-config">
+          <div>
             <Toggler
               name={this.props.themeLabel}
               action={this.props.themeSwitcher}
