@@ -126,7 +126,7 @@
   },
   "users": {
     "1234": {
-      "id": 1234,
+      "userId": 1234,
       "subjects": {
         "css": {
           "character": "Chloe",
@@ -160,7 +160,7 @@
       "username": "Marcel"
     },
     "5678": {
-      "id": 5678,
+      "userId": 5678,
       "subjects": {
         "css": {
           "character": "Chloe",

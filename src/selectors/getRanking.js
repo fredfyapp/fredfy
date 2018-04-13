@@ -7,7 +7,7 @@ export const getGlobalTopUsers = () => {
 
   objectToArray(usersDB).map(user => {
     const name = user.username;
-    const id = user.id;
+    const id = user.userId;
     const totalPoints = user.totalPoints;
     const subjects = [];
 
@@ -36,7 +36,7 @@ export const getSubjectTopUsers = subject => {
 
   objectToArray(usersDB).map(user => {
     const name = user.username;
-    const id = user.id;
+    const id = user.userId;
     const totalPoints = user.totalPoints;
     const subjectPoints = user.subjects[subject].points;
 

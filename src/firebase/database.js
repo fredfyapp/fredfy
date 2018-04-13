@@ -1,4 +1,4 @@
-import { renderApp } from "../app";
+import { renderApp, store } from "../app";
 
 // ********** DATABASE FIREBASE ********** //
 import database from "./firebase";
@@ -6,6 +6,9 @@ import database from "./firebase";
 
 // ********** DATABASE MOCKUP ********** //
 import databaseMockup from "../databaseModel/database.json";
+
+// ********** ACTIONS ********** //
+import { setUser } from "../actions/user";
 
 // EXPORT DATABASE
 export let charactersDB;
@@ -22,10 +25,24 @@ const checkUserId = userId => {
     }
   }
 
+  console.log(store.getState().user);
+
   if (isNewUser) {
     console.log("is new");
+    const user = store.getState().user;
+    database.ref(`users/${userId}`).update({
+      ...user,
+      userId
+    });
   } else {
     console.log("not new");
+    database
+      .ref(`users/${userId}`)
+      .once("value")
+      .then(snapshot => {
+        const user = snapshot.val();
+        store.dispatch(setUser(user));
+      });
   }
 
   renderApp();
@@ -37,14 +54,13 @@ export default userId => {
     .ref()
     .once("value")
     .then(snapshot => {
+      console.log("db firebase");
       const database = snapshot.val();
 
       // EXPORT DATABASE
       charactersDB = database.characters;
       subjectsDB = database.subjects;
       usersDB = database.users;
-
-      console.log("database", database);
 
       if (userId) {
         checkUserId(userId);
