@@ -16,6 +16,10 @@ import { callDatabaseMockup } from "./firebase/database";
 // ********** COMPONENTS ********** //
 import Loading from "./components/Loading";
 
+// ********** STYLES ********** //	
+import "normalize.css/normalize.css";	
+import "./styles/styles.scss";
+
 // INITIALIZE STORE FOR REDUX
 export const store = configureStore();
 
