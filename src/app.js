@@ -38,6 +38,7 @@ export const store = configureStore();
 
 // ########## FETCH DATABASE FROM MOCKUP ########## //
 callDatabaseMockup();
+
 const jsx = (
   <Provider store={store}>
     <AppRouter />
