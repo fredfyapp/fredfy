@@ -103,6 +103,9 @@ class PuzzlePage extends Component {
     });
     // console.log(resultsPass);
 
+    // TODO
+    // list all the fucking results on the screen
+
     return (
       <div>
         <h1>Puzzle page</h1>
