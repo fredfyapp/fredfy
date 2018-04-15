@@ -7,3 +7,8 @@ export const setPuzzle = puzzle => ({
   type: "SET_PUZZLE",
   puzzle
 });
+
+export const setUserCode = userCode => ({
+  type: "SET_USERCODE",
+  userCode
+});

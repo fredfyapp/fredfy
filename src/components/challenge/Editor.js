@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import AceEditor from "react-ace";
 
 // redux
-
 import { connect } from "react-redux";
+import { setUserCode } from "../../actions/challenge";
 
 // editor config
 import "brace/mode/javascript";
@@ -25,15 +25,17 @@ class Editor extends Component {
     this.state = {
       value: "",
       darkMode: false,
-      vim: false
+      vim: true
     };
   }
 
   componentWillReceiveProps = nextProps => {
-    var value = nextProps.code;
-    this.setState({
-      value
-    });
+    const value = nextProps.code;
+    if (!this.state.value) {
+      this.setState({
+        value
+      });
+    }
   };
 
   componentDidMount() {
@@ -57,12 +59,14 @@ class Editor extends Component {
     });
   };
 
-  loadNextChallenge = () => {};
-
   onChange = newValue => {
     this.setState({
       value: newValue
     });
+  };
+
+  runCode = () => {
+    this.props.setUserCode(this.state.value);
   };
 
   render() {
@@ -91,16 +95,26 @@ class Editor extends Component {
             editorProps={{ $blockScrolling: true }}
           />
         </div>
+        <div>
+          <button
+            onClick={() => {
+              this.runCode();
+            }}
+          >
+            Run code
+          </button>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  currentPuzzle: state.challenge.currentPuzzle,
-  currentChallenges: state.challenge.currentChallenges
+  userCode: state.challenge.userCode
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  setUserCode: userCode => dispatch(setUserCode(userCode))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

@@ -43,19 +43,16 @@ class ChallengePage extends React.Component {
     return (
       <div>
         <h1>{currentChallenges}</h1>
-        <ul>{listOfPuzzles}</ul>
+        <ul>{listOfPuzzles}</ul>{" "}
       </div>
     );
   }
 }
-
 const mapStateToProps = state => ({
   currentChallenges: state.challenge.currentChallenges
 });
-
 const mapDispatchToProps = dispatch => ({
   setPuzzle: puzzle => dispatch(setPuzzle(puzzle)),
   setChallenge: challenge => dispatch(setChallenge(challenge))
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(ChallengePage);
