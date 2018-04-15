@@ -25,15 +25,17 @@ class Editor extends Component {
     this.state = {
       value: "",
       darkMode: false,
-      vim: false
+      vim: true
     };
   }
 
   componentWillReceiveProps = nextProps => {
     const value = nextProps.code;
-    this.setState({
-      value
-    });
+    if (!this.state.value) {
+      this.setState({
+        value
+      });
+    }
   };
 
   componentDidMount() {
@@ -107,7 +109,9 @@ class Editor extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  userCode: state.challenge.userCode
+});
 
 const mapDispatchToProps = dispatch => ({
   setUserCode: userCode => dispatch(setUserCode(userCode))

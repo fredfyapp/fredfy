@@ -12,6 +12,8 @@ import { setPuzzle, setChallenge } from "../../actions/challenge";
 // vm // eval
 import vm from "vm";
 
+// fs
+
 class PuzzlePage extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,9 @@ class PuzzlePage extends Component {
     this.state = {
       hasBeenRun: false,
       resultsExpected: [],
-      resultsFromUser: []
+      resultsFromUser: [],
+      hasNext: "",
+      hasPrev: ""
     };
   }
 
@@ -36,7 +40,13 @@ class PuzzlePage extends Component {
 
   componentDidMount = () => {
     const { name } = this.props.currentPuzzle;
+    const { challenges, puzzle } = this.props.match.params;
     const currentChallenges = this.props.currentChallenges;
+    const currentIndex = Object.keys(db[challenges]).indexOf(puzzle);
+    this.setState({
+      hasNext: Object.keys(db[challenges])[currentIndex + 1],
+      hasPrev: Object.keys(db[challenges])[currentIndex - 1]
+    });
     if (name == undefined) {
       const puzzle = this.props.match.params.puzzle;
       const challenges = this.props.match.params.challenges;
@@ -53,25 +63,25 @@ class PuzzlePage extends Component {
 
   evaluateCode = userCode => {
     const { name, solutions, inputs } = this.props.currentPuzzle;
-    const solution = `const ${name} = ${solutions} \n`;
-    const testInputs = this.props.currentPuzzle.inputs.map(
-      test => `${name}${test}`
-    );
     let resultsExpected = [];
     let resultsFromUser = [];
 
+    console.log("before try");
     try {
-      testInputs.forEach(test => {
-        resultsExpected.push(vm.runInNewContext(solution + test, {}));
+      inputs.forEach(test => {
+        resultsExpected.push(vm.runInNewContext(solutions + "\n" + test, {}));
       });
-      testInputs.forEach(test => {
+      console.log("before running");
+      inputs.forEach(test => {
         resultsFromUser.push(vm.runInNewContext(userCode + "\n" + test, {}));
       });
+      console.log(resultsFromUser[0]);
       this.setState({
         hasBeenRun: true,
         resultsExpected,
         resultsFromUser
       });
+      console.log("set state");
     } catch (error) {
       console.log("something went wrong");
       console.log(error);
@@ -81,38 +91,30 @@ class PuzzlePage extends Component {
   render() {
     const { challenges, puzzle } = this.props.match.params;
     const { description, code, section } = this.props.currentPuzzle;
-    const { hasBeenRun, resultsExpected, resultsFromUser } = this.state;
-
-    const currentIndex = Object.keys(db[challenges]).indexOf(puzzle);
-
-    const hasNext = Object.keys(db[challenges])[currentIndex + 1];
-    const hasPrev = Object.keys(db[challenges])[currentIndex - 1];
-
-    console.log(this.state);
-    let listResultsFromUser = resultsFromUser.map((res, i) => (
-      <li key={i}>{res}</li>
-    ));
-    let listResultsExpected = resultsExpected.map((res, i) => (
-      <li key={i}>{res}</li>
-    ));
-    // console.log(listResultsExpected);
-    let resultsPass = [];
-    resultsExpected.forEach((res, i) => {
-      console.log(i);
-      resultsPass.push(res === resultsFromUser[i]);
-    });
-    // console.log(resultsPass);
-
-    // TODO
-    // list all the fucking results on the screen
-
+    const {
+      hasBeenRun,
+      resultsExpected,
+      resultsFromUser,
+      hasNext,
+      hasPrev
+    } = this.state;
+    let compareResults = [];
+    if (hasBeenRun) {
+      resultsExpected.forEach((res, i) => {
+        if (res === resultsFromUser[i]) {
+          compareResults.push("Pass");
+        } else {
+          compareResults.push("----");
+        }
+      });
+    }
     return (
       <div>
         <h1>Puzzle page</h1>
         <div>
           <h2>
             {challenges}
-            {" > "}
+            {" => "}
             {puzzle}
           </h2>
           <br />
@@ -138,14 +140,59 @@ class PuzzlePage extends Component {
         <div>
           <span>{description}</span>
         </div>
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Editor code={code} />
-          <ul>{hasBeenRun && listResultsExpected}</ul>
+          <ListResults
+            resultsExpected={resultsExpected}
+            resultsFromUser={resultsFromUser}
+            compareResults={compareResults}
+          />
         </div>
       </div>
     );
   }
 }
+
+const ListResults = props => (
+  <div style={{ display: "flex" }}>
+    <div>
+      <span>Expected</span>
+      <ul>
+        {props.resultsExpected[0] === undefined ? (
+          props.resultsFromUser.map((res, i) => {
+            return <li key={i}>Wrong solution or Test inputs</li>;
+          })
+        ) : (
+          props.resultsExpected.map((res, i) => {
+            return <li key={i}>{res.toString()}</li>;
+          })
+        )}
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <span>Run</span>
+        {props.resultsFromUser[0] === undefined ? (
+          props.resultsFromUser.map((res, i) => {
+            return <li key={i}>Error</li>;
+          })
+        ) : (
+          props.resultsFromUser.map((res, i) => {
+            return <li key={i}>{res.toString()}</li>;
+          })
+        )}
+      </ul>
+    </div>
+    <div>
+      <span>Comparison</span>
+      <ul>
+        {props.compareResults.map((comp, i) => {
+          return <li key={i}>{comp}</li>;
+        })}
+      </ul>
+    </div>
+  </div>
+);
 
 const mapStateToProps = state => ({
   currentPuzzle: state.challenge.currentPuzzle,
