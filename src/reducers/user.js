@@ -2,7 +2,7 @@ export default (state = userReducerDefaultState, action) => {
   switch (action.type) {
     case "SET_USER":
       return {
-        user: action.user
+        ...action.user
       };
     case "SET_CHOSEN_CHARACTER":
       return {
@@ -66,36 +66,36 @@ const userReducerDefaultState = {
   username: "",
   totalPoints: 0,
   subjects: {
-    html: {
-      points: 0,
-      character: "",
-      isFinished: false,
-      finishedSections: {
-        one: false,
-        two: false
-      },
-      finishedChallenges: {}
-    },
-    css: {
-      points: 0,
-      character: "",
-      isFinished: false,
-      finishedSections: {
-        colours: false,
-        fonts: false,
-        images: false
-      },
-      finishedChallenges: {
-        one: false
-      }
-    },
-    javascript: {
-      points: 0,
-      character: "",
-      isFinished: false,
-      finishedSections: {},
-      finishedChallenges: {}
-    }
+    // html: {
+    //   points: 0,
+    //   character: "",
+    //   isFinished: false,
+    //   finishedSections: {
+    //     one: false,
+    //     two: false
+    //   },
+    //   finishedChallenges: {}
+    // },
+    // css: {
+    //   points: 0,
+    //   character: "",
+    //   isFinished: false,
+    //   finishedSections: {
+    //     colours: false,
+    //     fonts: false,
+    //     images: false
+    //   },
+    //   finishedChallenges: {
+    //     one: false
+    //   }
+    // },
+    // javascript: {
+    //   points: 0,
+    //   character: "",
+    //   isFinished: false,
+    //   finishedSections: {},
+    //   finishedChallenges: {}
+    // }
   }
 };
 

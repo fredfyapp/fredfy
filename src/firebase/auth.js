@@ -12,7 +12,7 @@ export default () => {
   firebase.auth().onAuthStateChanged(user => {
     // USER IS LOGGED
     if (user) {
-      const userId = user.uid;
+      // const userId = user.uid;
       store.dispatch(login(user.uid));
 
       // CLOSE LOGIN MODAL AFTER SUCCESSFUL LOGIN
@@ -20,7 +20,7 @@ export default () => {
         store.dispatch(setIsLoginModalOpen(false));
 
       store.dispatch(setIsAppRunning(true));
-      callDatabase(userId);
+      callDatabase(user);
       console.log("is logged");
       return;
     }

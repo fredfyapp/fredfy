@@ -13,14 +13,15 @@ class WorldCard extends React.Component {
   componentDidMount() {
     const subjectName = this.props.subjectName;
     const userSubject = this.props.user.subjects[subjectName];
-    const finishedSections = this.props.user.subjects[subjectName]
-      .finishedSections;
+    const finishedSections =
+      this.props.user.subjects[subjectName].finishedSections || "test";
+    console.log(finishedSections);
 
-    if (checkFinishedSections(finishedSections)) {
-      this.props.setFinishedSubject(subjectName, true);
-    } else {
-      this.props.setFinishedSubject(subjectName, false);
-    }
+    // if (checkFinishedSections(finishedSections)) {
+    //   this.props.setFinishedSubject(subjectName, true);
+    // } else {
+    //   this.props.setFinishedSubject(subjectName, false);
+    // }
   }
 
   render() {
@@ -29,7 +30,7 @@ class WorldCard extends React.Component {
       <div>
         <h2>
           {subject}
-          {this.props.user.subjects[subject].isFinished && " - done!"}
+          {/* {this.props.user.subjects[subject].isFinished && " - done!"} */}
         </h2>
       </div>
     );

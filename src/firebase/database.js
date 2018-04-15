@@ -15,32 +15,36 @@ export let charactersDB;
 export let subjectsDB;
 export let usersDB;
 
-const checkUserId = userId => {
+// CHECK IF USER IS NEW OR EXISTING
+const checkUserId = user => {
   let isNewUser = true;
 
-  for (let user in usersDB) {
-    if (user === userId) {
+  for (let tempUser in usersDB) {
+    if (tempUser === user.uid) {
       isNewUser = false;
       break;
     }
   }
 
   console.log(store.getState().user);
+  console.log(user.displayName);
 
   if (isNewUser) {
     console.log("is new");
-    const user = store.getState().user;
-    database.ref(`users/${userId}`).update({
-      ...user,
-      userId
+    const stateUser = store.getState().user;
+    database.ref(`users/${user.uid}`).update({
+      ...stateUser,
+      userId: user.uid,
+      username: user.displayName
     });
   } else {
     console.log("not new");
     database
-      .ref(`users/${userId}`)
+      .ref(`users/${user.uid}`)
       .once("value")
       .then(snapshot => {
         const user = snapshot.val();
+        console.log(user);
         store.dispatch(setUser(user));
       });
   }
@@ -49,7 +53,7 @@ const checkUserId = userId => {
 };
 
 // FETCH DATABASE FIREBASE
-export default userId => {
+export default user => {
   database
     .ref()
     .once("value")
@@ -62,8 +66,8 @@ export default userId => {
       subjectsDB = database.subjects;
       usersDB = database.users;
 
-      if (userId) {
-        checkUserId(userId);
+      if (user) {
+        checkUserId(user);
         return;
       }
 
