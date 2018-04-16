@@ -23,19 +23,11 @@ class ChallengePage extends React.Component {
 
   componentDidMount = () => {
     const { challenges } = this.props.match.params;
-    let {
-      currentChallenges,
-      setPuzzle,
-      setChallenge
-    } = this.props.currentChallenges;
-    if (!currentChallenges) {
-      this.props.setChallenge(challenges);
-      currentChallenges = challenges;
-    }
+    const { currentChallenges, setPuzzles, setChallenge } = this.props;
 
     const puzzles = database.ref(`challenges/${currentChallenges}`);
     puzzles.on("value", snapshot => {
-      this.props.setPuzzles(Object.values(snapshot.val()));
+      setPuzzles(Object.values(snapshot.val()));
       this.setState({
         isLoading: false
       });

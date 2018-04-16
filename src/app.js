@@ -5,7 +5,8 @@ import AppRouter from "./routers/AppRouter";
 
 // ********** REDUX ********** //
 import { Provider } from "react-redux";
-import configureStore from "./store/configureStore";
+import configureStore, { persistor } from "./store/configureStore";
+import { PersistGate } from "redux-persist/integration/react";
 
 // ********** FIREBASE ********** //
 import userAuth from "./firebase/auth";
@@ -45,7 +46,9 @@ callDatabaseMockup();
 
 const jsx = (
   <Provider store={store}>
-    <AppRouter />
+    <PersistGate loading={null} persistor={persistor}>
+      <AppRouter />
+    </PersistGate>
   </Provider>
 );
 
