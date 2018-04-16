@@ -25,27 +25,20 @@ class ChallengePage extends React.Component {
     const { challenges } = this.props.match.params;
     const { currentChallenges, setPuzzles, setChallenge } = this.props;
 
-    const puzzles = database.ref(`challenges/${currentChallenges}`);
-    puzzles.on("value", snapshot => {
-      setPuzzles(Object.values(snapshot.val()));
-      this.setState({
-        isLoading: false
-      });
+    database.ref(`challenges/${challenges}`).on("value", snapshot => {
+      setPuzzles(snapshot.val());
     });
   };
 
   handleChosenPuzzle = (puzzle, i) => {
     const currentChallenges = this.props.currentChallenges;
-    const currentPuzzle = Object.values(this.props.puzzles[i][puzzle])[0];
 
-    this.props.setCurrentPuzzle(currentPuzzle);
+    this.props.setCurrentPuzzle(puzzle);
   };
 
   render() {
-    const puzzles = Object.values(this.props.puzzles).map(puzzle =>
-      Object.keys(puzzle)
-    );
     const { challenges } = this.props.match.params;
+    const { puzzles } = this.props;
 
     return (
       <div>
@@ -56,12 +49,12 @@ class ChallengePage extends React.Component {
               <li key={i}>
                 <Link
                   key={i}
-                  to={`/challenges-you/${challenges}/${puzzle}`}
+                  to={`/challenges-you/${challenges}/${puzzle.name}`}
                   onClick={() => {
-                    this.handleChosenPuzzle(puzzle, i);
+                    this.handleChosenPuzzle(puzzle);
                   }}
                 >
-                  {puzzle}
+                  {puzzle.name}
                 </Link>
               </li>
             ))

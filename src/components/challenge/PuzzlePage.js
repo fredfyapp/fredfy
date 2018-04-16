@@ -8,13 +8,16 @@ import database from "../../firebase/firebase";
 // ******** REDUX **********//
 import { connect } from "react-redux";
 import {
-  setCurrentPuzzles,
+  setCurrentPuzzle,
   setChallenge,
   setPuzzles
 } from "../../actions/challenge";
 
 // vm // eval
 import vm from "vm";
+
+// selectors
+import objectToArray from "../../selectors/objectToArray";
 
 class PuzzlePage extends Component {
   constructor(props) {
@@ -26,32 +29,28 @@ class PuzzlePage extends Component {
       errorType: "",
       resultsExpected: [],
       resultsFromUser: [],
-      hasNext: "",
-      hasPrev: ""
+      hasNext: null,
+      hasPrev: null
     };
   }
 
   loadNext = args => {
-    const { name } = this.props.currentPuzzle;
-    const currentChallenges = this.props.currentChallenges;
-    const currentIndex = Object.keys(db[currentChallenges]).indexOf(name);
-    const nextPuzzle = Object.keys(db[currentChallenges])[currentIndex + args];
-    this.props.setPuzzle(db[currentChallenges][nextPuzzle]);
+    const { setCurrentPuzzle, puzzles, currentChallenges } = this.props;
+    const { puzzle } = this.props.match.params;
+    const currentIndex = puzzles.findIndex(p => p.name === puzzle);
+    const nextPuzzle = puzzles[currentIndex + args];
+    setCurrentPuzzle(nextPuzzle);
     this.props.history.push(
-      `/challenges-you/${currentChallenges}/${nextPuzzle}`
+      `/challenges-you/${currentChallenges}/${nextPuzzle.name}`
     );
   };
 
   componentDidMount = () => {
     const { puzzles, userCode, currentPuzzle, currentChallenges } = this.props;
     const { challenges, puzzle } = this.props.match.params;
-
-    puzzles[0] === undefined &&
-      database.ref(`challenges/${challenges}`).on("value", snapshot => {
-        this.props.setPuzzles(Object.values(snapshot.val()));
-      });
-
-    // currentPuzzle.name === undefined &&
+    const currentIndex = puzzles.findIndex(p => p.name === puzzle);
+    puzzles[currentIndex - 1] && this.setState({ hasPrev: true });
+    puzzles[currentIndex + 1] && this.setState({ hasNext: true });
   };
 
   componentWillReceiveProps = nextProps => {
