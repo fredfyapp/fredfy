@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import Editor from "./Editor";
 
 // ********** api ************ //
-import db from "../../fixtures/challenges";
+import database from "../../firebase/firebase";
 
 // ******** REDUX **********//
 import { connect } from "react-redux";
-import { setPuzzle, setChallenge } from "../../actions/challenge";
+import {
+  setCurrentPuzzles,
+  setChallenge,
+  setPuzzles
+} from "../../actions/challenge";
 
 // vm // eval
 import vm from "vm";
-
-// fs
 
 class PuzzlePage extends Component {
   constructor(props) {
@@ -20,6 +22,8 @@ class PuzzlePage extends Component {
 
     this.state = {
       hasBeenRun: false,
+      syntaxError: false,
+      errorType: "",
       resultsExpected: [],
       resultsFromUser: [],
       hasNext: "",
@@ -39,20 +43,15 @@ class PuzzlePage extends Component {
   };
 
   componentDidMount = () => {
-    const { name } = this.props.currentPuzzle;
+    const { puzzles, userCode, currentPuzzle, currentChallenges } = this.props;
     const { challenges, puzzle } = this.props.match.params;
-    const currentChallenges = this.props.currentChallenges;
-    const currentIndex = Object.keys(db[challenges]).indexOf(puzzle);
-    this.setState({
-      hasNext: Object.keys(db[challenges])[currentIndex + 1],
-      hasPrev: Object.keys(db[challenges])[currentIndex - 1]
-    });
-    if (name == undefined) {
-      const puzzle = this.props.match.params.puzzle;
-      const challenges = this.props.match.params.challenges;
-      this.props.setPuzzle(db[challenges][puzzle]);
-      this.props.setChallenge(challenges);
-    }
+
+    puzzles[0] === undefined &&
+      database.ref(`challenges/${challenges}`).on("value", snapshot => {
+        this.props.setPuzzles(Object.values(snapshot.val()));
+      });
+
+    // currentPuzzle.name === undefined &&
   };
 
   componentWillReceiveProps = nextProps => {
@@ -66,58 +65,57 @@ class PuzzlePage extends Component {
     let resultsExpected = [];
     let resultsFromUser = [];
 
-    console.log("before try");
     try {
       inputs.forEach(test => {
         resultsExpected.push(vm.runInNewContext(solutions + "\n" + test, {}));
       });
-      console.log("before running");
       inputs.forEach(test => {
         resultsFromUser.push(vm.runInNewContext(userCode + "\n" + test, {}));
       });
-      console.log(resultsFromUser[0]);
       this.setState({
         hasBeenRun: true,
+        hasAnyError: false,
         resultsExpected,
         resultsFromUser
       });
-      console.log("set state");
     } catch (error) {
       console.log("something went wrong");
       console.log(error);
+      this.setState({
+        hasAnyError: true,
+        errorType: error.toString()
+      });
     }
   };
 
   render() {
     const { challenges, puzzle } = this.props.match.params;
-    const { description, code, section } = this.props.currentPuzzle;
+    const { description, code, section, inputs } = this.props.currentPuzzle;
     const {
       hasBeenRun,
       resultsExpected,
       resultsFromUser,
       hasNext,
-      hasPrev
+      hasPrev,
+      hasAnyError,
+      errorType
     } = this.state;
     let compareResults = [];
-    if (hasBeenRun) {
+    hasBeenRun &&
       resultsExpected.forEach((res, i) => {
-        if (res === resultsFromUser[i]) {
-          compareResults.push("Pass");
-        } else {
-          compareResults.push("----");
-        }
+        res === resultsFromUser[i]
+          ? compareResults.push(<p style={{ color: "green" }}>Pass</p>)
+          : compareResults.push(<p style={{ color: "red" }}>Failed!</p>);
       });
-    }
+
     return (
       <div>
-        <h1>Puzzle page</h1>
         <div>
-          <h2>
+          <h1>
             {challenges}
-            {" => "}
+            {" / "}
             {puzzle}
-          </h2>
-          <br />
+          </h1>
         </div>
         <div>
           <button
@@ -137,16 +135,23 @@ class PuzzlePage extends Component {
             next
           </button>
         </div>
+        <br />
         <div>
           <span>{description}</span>
         </div>
+        <br />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Editor code={code} />
-          <ListResults
-            resultsExpected={resultsExpected}
-            resultsFromUser={resultsFromUser}
-            compareResults={compareResults}
-          />
+          {hasAnyError ? (
+            <h1>{errorType}</h1>
+          ) : (
+            <ListResults
+              inputs={inputs}
+              resultsExpected={resultsExpected}
+              resultsFromUser={resultsFromUser}
+              compareResults={compareResults}
+            />
+          )}
         </div>
       </div>
     );
@@ -154,7 +159,7 @@ class PuzzlePage extends Component {
 }
 
 const ListResults = props => (
-  <div style={{ display: "flex" }}>
+  <div style={{ display: "flex", alignItems: "space-around" }}>
     <div>
       <span>Expected</span>
       <ul>
@@ -164,7 +169,11 @@ const ListResults = props => (
           })
         ) : (
           props.resultsExpected.map((res, i) => {
-            return <li key={i}>{res.toString()}</li>;
+            return (
+              <li key={i}>
+                {props.inputs[i]} -> {res.toString()}
+              </li>
+            );
           })
         )}
       </ul>
@@ -184,7 +193,7 @@ const ListResults = props => (
       </ul>
     </div>
     <div>
-      <span>Comparison</span>
+      <span>Results</span>
       <ul>
         {props.compareResults.map((comp, i) => {
           return <li key={i}>{comp}</li>;
@@ -197,11 +206,13 @@ const ListResults = props => (
 const mapStateToProps = state => ({
   currentPuzzle: state.challenge.currentPuzzle,
   currentChallenges: state.challenge.currentChallenges,
-  userCode: state.challenge.userCode
+  userCode: state.challenge.userCode,
+  puzzles: state.challenge.puzzles
 });
 
 const mapDispatchToProps = dispatch => ({
-  setPuzzle: puzzle => dispatch(setPuzzle(puzzle)),
+  setCurrentPuzzle: currentPuzzle => dispatch(setCurrentPuzzle(currentPuzzle)),
+  setPuzzles: puzzles => dispatch(setPuzzles(puzzles)),
   setChallenge: challenge => dispatch(setChallenge(challenge))
 });
 

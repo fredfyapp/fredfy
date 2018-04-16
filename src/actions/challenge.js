@@ -3,12 +3,17 @@ export const setChallenge = challenges => ({
   challenges
 });
 
-export const setPuzzle = puzzle => ({
-  type: "SET_PUZZLE",
-  puzzle
+export const setCurrentPuzzle = currentPuzzle => ({
+  type: "SET_CURRENT_PUZZLE",
+  currentPuzzle
 });
 
 export const setUserCode = userCode => ({
   type: "SET_USERCODE",
   userCode
+});
+
+export const setPuzzles = puzzles => ({
+  type: "SET_PUZZLES",
+  puzzles
 });

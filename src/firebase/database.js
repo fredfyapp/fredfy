@@ -11,6 +11,7 @@ import databaseMockup from "../databaseModel/database.json";
 export let charactersDB;
 export let subjectsDB;
 export let usersDB;
+export let challengesDB;
 
 const checkUserId = userId => {
   let isNewUser = true;
@@ -33,28 +34,26 @@ const checkUserId = userId => {
 
 // FETCH DATABASE FIREBASE
 export default userId => {
-  database
-    .ref()
-    .once("value")
-    .then(snapshot => {
-      const database = snapshot.val();
+  database.ref().once("value").then(snapshot => {
+    const database = snapshot.val();
 
-      // EXPORT DATABASE
-      charactersDB = database.characters;
-      subjectsDB = database.subjects;
-      usersDB = database.users;
+    // EXPORT DATABASE
+    charactersDB = database.characters;
+    subjectsDB = database.subjects;
+    usersDB = database.users;
+    challengesDB = database.challenges;
 
-      console.log("database", database);
+    // console.log("database", database);
 
-      if (userId) {
-        checkUserId(userId);
-        return;
-      }
+    if (userId) {
+      checkUserId(userId);
+      return;
+    }
 
-      // RENDER METHOD MUST COME IN THE LAST POSITION TO ALLOW
-      // DATABASE TO BE DECLARED FIRST AND USER HANDLED
-      renderApp();
-    });
+    // RENDER METHOD MUST COME IN THE LAST POSITION TO ALLOW
+    // DATABASE TO BE DECLARED FIRST AND USER HANDLED
+    renderApp();
+  });
 };
 
 // FETCH DATABASE MOCKUP
@@ -63,4 +62,5 @@ export const callDatabaseMockup = () => {
   charactersDB = databaseMockup.characters;
   subjectsDB = databaseMockup.subjects;
   usersDB = databaseMockup.users;
+  challengesDB = databaseMockup.challengesDB;
 };

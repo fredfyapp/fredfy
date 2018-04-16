@@ -2,57 +2,92 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // ********** api ************ //
-import db from "../../fixtures/challenges";
+import database from "../../firebase/firebase";
 
 // ******** REDUX **********//
 import { connect } from "react-redux";
-import { setPuzzle, setChallenge } from "../../actions/challenge";
+import {
+  setCurrentPuzzle,
+  setChallenge,
+  setPuzzles
+} from "../../actions/challenge";
 
 class ChallengePage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true
+    };
+  }
+
   componentDidMount = () => {
-    if (this.props.ChosenChallenges) {
-      this.props.setChallenge(this.props.match.params.challenges);
-      this.forceUpdate();
+    const { challenges } = this.props.match.params;
+    let {
+      currentChallenges,
+      setPuzzle,
+      setChallenge
+    } = this.props.currentChallenges;
+    if (!currentChallenges) {
+      this.props.setChallenge(challenges);
+      currentChallenges = challenges;
     }
+
+    const puzzles = database.ref(`challenges/${currentChallenges}`);
+    puzzles.on("value", snapshot => {
+      this.props.setPuzzles(Object.values(snapshot.val()));
+      this.setState({
+        isLoading: false
+      });
+    });
   };
 
-  handleChosenPuzzle = puzzle => {
+  handleChosenPuzzle = (puzzle, i) => {
     const currentChallenges = this.props.currentChallenges;
-    this.props.setPuzzle(db[currentChallenges][puzzle]);
+    const currentPuzzle = Object.values(this.props.puzzles[i][puzzle])[0];
+
+    this.props.setCurrentPuzzle(currentPuzzle);
   };
 
   render() {
-    const currentChallenges = this.props.currentChallenges
-      ? this.props.currentChallenges
-      : this.props.match.params.challenges;
-    const listOfPuzzles = Object.keys(
-      db[currentChallenges]
-    ).map((puzzle, i) => (
-      <li key={puzzle.toString()}>
-        <Link
-          key={puzzle.toString()}
-          to={`/challenges-you/${currentChallenges}/${puzzle}`}
-          onClick={() => {
-            this.handleChosenPuzzle(puzzle);
-          }}
-        >
-          {puzzle}
-        </Link>
-      </li>
-    ));
+    const puzzles = Object.values(this.props.puzzles).map(puzzle =>
+      Object.keys(puzzle)
+    );
+    const { challenges } = this.props.match.params;
+
     return (
       <div>
-        <h1>{currentChallenges}</h1>
-        <ul>{listOfPuzzles}</ul>{" "}
+        <span>{challenges}</span>
+        <ul>
+          {puzzles[0] ? (
+            puzzles.map((puzzle, i) => (
+              <li key={i}>
+                <Link
+                  key={i}
+                  to={`/challenges-you/${challenges}/${puzzle}`}
+                  onClick={() => {
+                    this.handleChosenPuzzle(puzzle, i);
+                  }}
+                >
+                  {puzzle}
+                </Link>
+              </li>
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </ul>
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
-  currentChallenges: state.challenge.currentChallenges
+  currentChallenges: state.challenge.currentChallenges,
+  puzzles: state.challenge.puzzles
 });
 const mapDispatchToProps = dispatch => ({
-  setPuzzle: puzzle => dispatch(setPuzzle(puzzle)),
+  setCurrentPuzzle: currentPuzzle => dispatch(setCurrentPuzzle(currentPuzzle)),
+  setPuzzles: puzzles => dispatch(setPuzzles(puzzles)),
   setChallenge: challenge => dispatch(setChallenge(challenge))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ChallengePage);

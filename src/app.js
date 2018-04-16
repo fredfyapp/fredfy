@@ -28,26 +28,26 @@ userAuth();
 
 ReactDOM.render(<Loading />, document.getElementById("app"));
 
-export const renderApp = () => {
-  const jsx = (
-    <Provider store={store}>
-      <div className="opacity-toggle-slow">
-        <AppRouter />
-      </div>
-    </Provider>
-  );
-  ReactDOM.render(jsx, document.getElementById("app"));
-};
+// export const renderApp = () => {
+//   const jsx = (
+//     <Provider store={store}>
+//       <div className="opacity-toggle-slow">
+//         <AppRouter />
+//       </div>
+//     </Provider>
+//   );
+//   ReactDOM.render(jsx, document.getElementById("app"));
+// };
 // ################################################## //
 
 // ########## FETCH DATABASE FROM MOCKUP ########## //
-// callDatabaseMockup();
+callDatabaseMockup();
 
-// const jsx = (
-//   <Provider store={store}>
-//     <AppRouter />
-//   </Provider>
-// );
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
 
-// ReactDOM.render(jsx, document.getElementById("app"));
+ReactDOM.render(jsx, document.getElementById("app"));
 // ################################################## //
