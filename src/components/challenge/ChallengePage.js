@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import {
   setCurrentPuzzle,
   setChallenge,
-  setPuzzles
+  setCurrentWorkout,
 } from "../../actions/challenge";
 
 class ChallengePage extends React.Component {
@@ -17,16 +17,16 @@ class ChallengePage extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: true
+      isLoading: true,
     };
   }
 
   componentDidMount = () => {
     const { challenges } = this.props.match.params;
-    const { currentChallenges, setPuzzles, setChallenge } = this.props;
+    const { currentChallenges, setCurrentWorkout, setChallenge } = this.props;
 
     database.ref(`challenges/${challenges}`).on("value", snapshot => {
-      setPuzzles(snapshot.val());
+      setCurrentWorkout(snapshot.val());
     });
   };
 
@@ -38,14 +38,14 @@ class ChallengePage extends React.Component {
 
   render() {
     const { challenges } = this.props.match.params;
-    const { puzzles } = this.props;
+    const { currentWorkout } = this.props;
 
     return (
       <div>
         <span>{challenges}</span>
         <ul>
-          {puzzles[0] ? (
-            puzzles.map((puzzle, i) => (
+          {currentWorkout[0] ? (
+            currentWorkout.map((puzzle, i) => (
               <li key={i}>
                 <Link
                   key={i}
@@ -68,11 +68,12 @@ class ChallengePage extends React.Component {
 }
 const mapStateToProps = state => ({
   currentChallenges: state.challenge.currentChallenges,
-  puzzles: state.challenge.puzzles
+  currentWorkout: state.challenge.currentWorkout,
 });
 const mapDispatchToProps = dispatch => ({
   setCurrentPuzzle: currentPuzzle => dispatch(setCurrentPuzzle(currentPuzzle)),
-  setPuzzles: puzzles => dispatch(setPuzzles(puzzles)),
-  setChallenge: challenge => dispatch(setChallenge(challenge))
+  setCurrentWorkout: currentWorkout =>
+    dispatch(setCurrentWorkout(currentWorkout)),
+  setChallenge: challenge => dispatch(setChallenge(challenge)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ChallengePage);

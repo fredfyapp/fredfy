@@ -12,7 +12,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistConfig = {
   key: "root",
-  storage
+  storage,
+  blacklist: [ "navigation", "auth", "playing", "user" ],
 };
 
 const persistedReducer = persistReducer(
@@ -22,8 +23,8 @@ const persistedReducer = persistReducer(
     navigation: navigationReducer,
     playing: playingReducer,
     user: userReducer,
-    challenge: challengeReducer
-  })
+    challenge: challengeReducer,
+  }),
 );
 
 // const store = createStore(
@@ -38,7 +39,7 @@ const persistedReducer = persistReducer(
 // );
 let store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk)),
 );
 export let persistor = persistStore(store);
 

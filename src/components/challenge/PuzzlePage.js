@@ -10,8 +10,11 @@ import { connect } from "react-redux";
 import {
   setCurrentPuzzle,
   setChallenge,
-  setPuzzles
+  setCurrentWorkout,
+  setUserCode,
 } from "../../actions/challenge";
+
+import { setPuzzlesSolved } from "../../actions/user";
 
 // vm // eval
 import vm from "vm";
@@ -30,33 +33,39 @@ class PuzzlePage extends Component {
       resultsExpected: [],
       resultsFromUser: [],
       hasNext: null,
-      hasPrev: null
+      hasPrev: null,
+      isUserReviewing: true,
     };
   }
 
-  loadNext = args => {
-    const { setCurrentPuzzle, puzzles, currentChallenges } = this.props;
-    const { puzzle } = this.props.match.params;
-    const currentIndex = puzzles.findIndex(p => p.name === puzzle);
-    const nextPuzzle = puzzles[currentIndex + args];
-    setCurrentPuzzle(nextPuzzle);
-    this.props.history.push(
-      `/challenges-you/${currentChallenges}/${nextPuzzle.name}`
-    );
-  };
-
   componentDidMount = () => {
-    const { puzzles, userCode, currentPuzzle, currentChallenges } = this.props;
+    const {
+      currentWorkout,
+      userCode,
+      currentPuzzle,
+      currentChallenges,
+      setUserCode,
+    } = this.props;
     const { challenges, puzzle } = this.props.match.params;
-    const currentIndex = puzzles.findIndex(p => p.name === puzzle);
-    puzzles[currentIndex - 1] && this.setState({ hasPrev: true });
-    puzzles[currentIndex + 1] && this.setState({ hasNext: true });
+    const currentIndex = currentWorkout.findIndex(p => p.name === puzzle);
+    currentWorkout[currentIndex - 1] && this.setState({ hasPrev: true });
+    currentWorkout[currentIndex + 1] && this.setState({ hasNext: true });
+    userCode && setUserCode("");
   };
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.userCode) {
       this.evaluateCode(nextProps.userCode);
     }
+  };
+
+  loadNext = args => {
+    const { setCurrentPuzzle, currentWorkout, currentChallenges } = this.props;
+    const { puzzle, challenges } = this.props.match.params;
+    const currentIndex = currentWorkout.findIndex(p => p.name === puzzle);
+    const nextPuzzle = currentWorkout[currentIndex + args];
+    setCurrentPuzzle(nextPuzzle);
+    this.props.history.push(`/challenges-you/${challenges}/${nextPuzzle.name}`);
   };
 
   evaluateCode = userCode => {
@@ -75,15 +84,45 @@ class PuzzlePage extends Component {
         hasBeenRun: true,
         hasAnyError: false,
         resultsExpected,
-        resultsFromUser
+        resultsFromUser,
       });
+      this.assessUserCode(
+        resultsExpected.toString() === resultsFromUser.toString(),
+      );
     } catch (error) {
       console.log("something went wrong");
       console.log(error);
       this.setState({
         hasAnyError: true,
-        errorType: error.toString()
+        errorType: error.toString(),
       });
+    }
+  };
+
+  assessUserCode = isCorrect => {
+    this.setState({
+      isCorrect,
+    });
+    if (isCorrect) {
+      const oldPuzzlesSolved = this.props.puzzlesSolved;
+      const currentPuzzle = this.props.currentPuzzle;
+      const currentWorkout = this.props.currentWorkout;
+      const { isUserReviewing } = this.state;
+      const hasBeenSolved = oldPuzzlesSolved.findIndex((p, k) => {
+        return p.name === currentPuzzle.name;
+      });
+
+      if (hasBeenSolved === -1) {
+        currentPuzzle.lastAttempt = Date.now();
+        currentPuzzle.numberOfTimesSolved = 1;
+        oldPuzzlesSolved.push(currentPuzzle);
+      }
+      if (isUserReviewing) {
+        const newCurrentWorkout = { ...currentWorkout }.filter(
+          p => p.name !== currentPuzzle.name,
+        );
+        console.log(newCurrentWorkout);
+      }
     }
   };
 
@@ -97,21 +136,29 @@ class PuzzlePage extends Component {
       hasNext,
       hasPrev,
       hasAnyError,
-      errorType
+      isCorrect,
+      errorType,
     } = this.state;
     let compareResults = [];
-    hasBeenRun &&
+    if (hasBeenRun) {
       resultsExpected.forEach((res, i) => {
         res === resultsFromUser[i]
           ? compareResults.push(<p style={{ color: "green" }}>Pass</p>)
           : compareResults.push(<p style={{ color: "red" }}>Failed!</p>);
       });
+    }
 
     return (
       <div>
         <div>
           <h1>
-            {challenges}
+            {<Link to={"/choose-a-challenge"}>Challenges</Link>}
+            {" / "}
+            {
+              <Link to={`/challenges-you/${challenges}`}>
+                {challenges.padEnd(20, " ")}
+              </Link>
+            }
             {" / "}
             {puzzle}
           </h1>
@@ -160,7 +207,7 @@ class PuzzlePage extends Component {
 const ListResults = props => (
   <div style={{ display: "flex", alignItems: "space-around" }}>
     <div>
-      <span>Expected</span>
+      <pre> Expected </pre>
       <ul>
         {props.resultsExpected[0] === undefined ? (
           props.resultsFromUser.map((res, i) => {
@@ -170,7 +217,9 @@ const ListResults = props => (
           props.resultsExpected.map((res, i) => {
             return (
               <li key={i}>
-                {props.inputs[i]} -> {res.toString()}
+                <pre>
+                  {props.inputs[i]} -> {res.toString()}
+                </pre>
               </li>
             );
           })
@@ -179,23 +228,35 @@ const ListResults = props => (
     </div>
     <div>
       <ul>
-        <span>Run</span>
+        <pre> Run </pre>
         {props.resultsFromUser[0] === undefined ? (
           props.resultsFromUser.map((res, i) => {
-            return <li key={i}>Error</li>;
+            return (
+              <li key={i}>
+                <pre> Error </pre>
+              </li>
+            );
           })
         ) : (
           props.resultsFromUser.map((res, i) => {
-            return <li key={i}>{res.toString()}</li>;
+            return (
+              <li key={i}>
+                <pre> {res.toString()} </pre>
+              </li>
+            );
           })
         )}
       </ul>
     </div>
     <div>
-      <span>Results</span>
+      <pre>Results</pre>
       <ul>
         {props.compareResults.map((comp, i) => {
-          return <li key={i}>{comp}</li>;
+          return (
+            <li key={i}>
+              <pre>{comp}</pre>
+            </li>
+          );
         })}
       </ul>
     </div>
@@ -206,13 +267,18 @@ const mapStateToProps = state => ({
   currentPuzzle: state.challenge.currentPuzzle,
   currentChallenges: state.challenge.currentChallenges,
   userCode: state.challenge.userCode,
-  puzzles: state.challenge.puzzles
+  currentWorkout: state.challenge.currentWorkout,
+  puzzlesSolved: state.user.puzzlesSolved,
+  puzzlesToReview: state.user.puzzlesToReview,
 });
 
 const mapDispatchToProps = dispatch => ({
   setCurrentPuzzle: currentPuzzle => dispatch(setCurrentPuzzle(currentPuzzle)),
-  setPuzzles: puzzles => dispatch(setPuzzles(puzzles)),
-  setChallenge: challenge => dispatch(setChallenge(challenge))
+  setCurrentWorkout: currentWorkout =>
+    dispatch(setCurrentWorkout(currentWorkout)),
+  setChallenge: challenge => dispatch(setChallenge(challenge)),
+  setUserCode: userCode => dispatch(setUserCode(userCode)),
+  setPuzzlesSolved: puzzles => dispatch(setPuzzlesSolved(puzzles)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PuzzlePage);

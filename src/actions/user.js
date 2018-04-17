@@ -31,3 +31,8 @@ export const setTotalPoints = points => ({
   type: "SET_TOTAL_POINTS",
   points
 });
+
+export const setPuzzlesSolved = puzzles => ({
+  type: "SET_PUZZLES_SOLVED",
+  puzzles
+});

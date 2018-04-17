@@ -2,7 +2,7 @@ export default (state = userReducerDefaultState, action) => {
   switch (action.type) {
     case "SET_USER":
       return {
-        user: action.user
+        user: action.user,
       };
     case "SET_CHOSEN_CHARACTER":
       return {
@@ -11,9 +11,9 @@ export default (state = userReducerDefaultState, action) => {
           ...state.subjects,
           [action.subject]: {
             ...state.subjects[action.subject],
-            character: action.character
-          }
-        }
+            character: action.character,
+          },
+        },
       };
     case "SET_FINISHED_SECTION":
       return {
@@ -24,10 +24,10 @@ export default (state = userReducerDefaultState, action) => {
             ...state.subjects[action.subject],
             finishedSections: {
               ...state.subjects[action.subject].finishedSections,
-              [action.section]: true
-            }
-          }
-        }
+              [action.section]: true,
+            },
+          },
+        },
       };
     case "SET_FINISHED_SUBJECT":
       return {
@@ -36,9 +36,9 @@ export default (state = userReducerDefaultState, action) => {
           ...state.subjects,
           [action.subject]: {
             ...state.subjects[action.subject],
-            isFinished: action.bool
-          }
-        }
+            isFinished: action.bool,
+          },
+        },
       };
     case "SET_SUBJECT_POINTS":
       return {
@@ -47,14 +47,19 @@ export default (state = userReducerDefaultState, action) => {
           ...state.subjects,
           [action.subject]: {
             ...state.subjects[action.subject],
-            points: action.points
-          }
-        }
+            points: action.points,
+          },
+        },
       };
     case "SET_TOTAL_POINTS":
       return {
         ...state,
-        totalPoints: action.points
+        totalPoints: action.points,
+      };
+    case "SET_PUZZLES_SOLVED":
+      return {
+        ...state,
+        puzzlesSolved: action.puzzles,
       };
     default:
       return state;
@@ -65,6 +70,8 @@ const userReducerDefaultState = {
   userId: "",
   username: "",
   totalPoints: 0,
+  puzzlesToReview: [],
+  puzzlesSolved: [],
   subjects: {
     html: {
       points: 0,
@@ -72,9 +79,9 @@ const userReducerDefaultState = {
       isFinished: false,
       finishedSections: {
         one: false,
-        two: false
+        two: false,
       },
-      finishedChallenges: {}
+      finishedChallenges: {},
     },
     css: {
       points: 0,
@@ -83,20 +90,20 @@ const userReducerDefaultState = {
       finishedSections: {
         colours: false,
         fonts: false,
-        images: false
+        images: false,
       },
       finishedChallenges: {
-        one: false
-      }
+        one: false,
+      },
     },
     javascript: {
       points: 0,
       character: "",
       isFinished: false,
       finishedSections: {},
-      finishedChallenges: {}
-    }
-  }
+      finishedChallenges: {},
+    },
+  },
 };
 
 // DEFAULT STATE WITH SOME DATA FILLED
