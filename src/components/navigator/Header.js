@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 
 // ********** ACTIONS ********** //
 import { setIsLoginModalOpen } from "../../actions/navigation";
+import { setPuzzlesToReview } from "../../actions/user";
 
 import { firebase } from "../../firebase/firebase";
 
@@ -16,7 +17,7 @@ class Header extends React.Component {
     firebase.auth().signOut();
   }
   componentDidMount = () => {
-    const { puzzlesSolved, puzzlesToReview } = this.props;
+    this.props.setPuzzlesToReview(Date.now());
   };
 
   render() {
@@ -75,6 +76,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setIsLoginModalOpen: isLoginModalOpen =>
     dispatch(setIsLoginModalOpen(isLoginModalOpen)),
+  setPuzzlesToReview: currentDate => dispatch(setPuzzlesToReview(currentDate)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

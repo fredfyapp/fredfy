@@ -4,6 +4,7 @@ import Editor from "./Editor";
 
 // ********** api ************ //
 import database from "../../firebase/firebase";
+import { firebase } from "../../firebase/firebase";
 
 // ******** REDUX **********//
 import { connect } from "react-redux";
@@ -14,7 +15,7 @@ import {
   setUserCode,
 } from "../../actions/challenge";
 
-import { setPuzzlesSolved } from "../../actions/user";
+import { setPuzzleSolved } from "../../actions/user";
 
 // vm // eval
 import vm from "vm";
@@ -104,27 +105,20 @@ class PuzzlePage extends Component {
       isCorrect,
     });
     if (isCorrect) {
-      const oldPuzzlesSolved = this.props.puzzlesSolved;
       const currentPuzzle = this.props.currentPuzzle;
       const currentWorkout = this.props.currentWorkout;
       const { isUserReviewing } = this.state;
-      const hasBeenSolved = oldPuzzlesSolved.findIndex((p, k) => {
-        return p.name === currentPuzzle.name;
-      });
+      const currentDate = new Date().getTime();
+      console.log(currentDate);
 
-      if (hasBeenSolved === -1) {
-        currentPuzzle.lastAttempt = Date.now();
-        currentPuzzle.numberOfTimesSolved = 1;
-        oldPuzzlesSolved.push(currentPuzzle);
-      }
+      this.props.setPuzzleSolved(currentPuzzle, currentDate);
+
       if (isUserReviewing) {
-        const newCurrentWorkout = { ...currentWorkout }.filter(
-          p => p.name !== currentPuzzle.name,
-        );
-        console.log(newCurrentWorkout);
       }
     }
   };
+
+  // handleReviewing = currentWork;
 
   render() {
     const { challenges, puzzle } = this.props.match.params;
@@ -268,7 +262,6 @@ const mapStateToProps = state => ({
   currentChallenges: state.challenge.currentChallenges,
   userCode: state.challenge.userCode,
   currentWorkout: state.challenge.currentWorkout,
-  puzzlesSolved: state.user.puzzlesSolved,
   puzzlesToReview: state.user.puzzlesToReview,
 });
 
@@ -278,7 +271,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setCurrentWorkout(currentWorkout)),
   setChallenge: challenge => dispatch(setChallenge(challenge)),
   setUserCode: userCode => dispatch(setUserCode(userCode)),
-  setPuzzlesSolved: puzzles => dispatch(setPuzzlesSolved(puzzles)),
+  setPuzzleSolved: (currentPuzzleSolved, currentDate) =>
+    dispatch(setPuzzleSolved(currentPuzzleSolved, currentDate)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PuzzlePage);
