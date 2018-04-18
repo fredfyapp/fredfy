@@ -37,7 +37,9 @@ const checkUserId = user => {
       ...stateUser,
       userId: user.uid,
       username: user.displayName,
-      subjects: {}
+      subjects: {},
+      puzzlesToReview: {},
+      puzzlesSolved: {}
     });
   } else {
     console.log("not new");
