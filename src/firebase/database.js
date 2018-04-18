@@ -26,8 +26,8 @@ const checkUserId = user => {
     }
   }
 
-  console.log(store.getState().user);
-  console.log(user.displayName);
+  // console.log(store.getState().user);
+  // console.log(user.displayName);
 
   if (isNewUser) {
     console.log("is new");
@@ -35,7 +35,8 @@ const checkUserId = user => {
     database.ref(`users/${user.uid}`).update({
       ...stateUser,
       userId: user.uid,
-      username: user.displayName
+      username: user.displayName,
+      subjects: {}
     });
   } else {
     console.log("not new");
@@ -44,7 +45,7 @@ const checkUserId = user => {
       .once("value")
       .then(snapshot => {
         const user = snapshot.val();
-        console.log(user);
+        // console.log(user);
         store.dispatch(setUser(user));
       });
   }
