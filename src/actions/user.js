@@ -3,25 +3,25 @@ import database from "../firebase/firebase";
 
 export const setUser = user => ({
   type: "SET_USER",
-  user
+  user,
 });
 
 export const setChosenCharacter = (character, subject) => ({
   type: "SET_CHOSEN_CHARACTER",
   character,
-  subject
+  subject,
 });
 
 export const setFinishedSection = (subject, section) => ({
   type: "SET_FINISHED_SECTION",
   subject,
-  section
+  section,
 });
 
 export const setFinishedSubject = (subject, bool) => ({
   type: "SET_FINISHED_SUBJECT",
   subject,
-  bool
+  bool,
 });
 
 export const startSetFinishedSubject = (subject, bool) => {
@@ -39,10 +39,21 @@ export const startSetFinishedSubject = (subject, bool) => {
 export const setSubjectPoints = (subject, points) => ({
   type: "SET_SUBJECT_POINTS",
   subject,
-  points
+  points,
 });
 
 export const setTotalPoints = points => ({
   type: "SET_TOTAL_POINTS",
-  points
+  points,
+});
+
+export const setPuzzleSolved = (puzzle, currentDate) => ({
+  type: "SET_PUZZLE_SOLVED",
+  puzzle,
+  currentDate,
+});
+
+export const setPuzzlesToReview = currentDate => ({
+  type: "SET_PUZZLES_TO_REVIEW",
+  currentDate,
 });

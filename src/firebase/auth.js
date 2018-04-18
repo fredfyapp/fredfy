@@ -1,11 +1,30 @@
 import { history } from "../routers/AppRouter";
 import { store } from "../app";
-import { firebase } from "./firebase";
+import database, { firebase } from "./firebase";
 import callDatabase, { callDatabaseMockup } from "./database";
 
 // ********** ACTIONS ********** //
 import { login, logout } from "../actions/auth";
 import { setIsLoginModalOpen, setIsAppRunning } from "../actions/navigation";
+
+function checkForFirstTime(userId) {
+  database.ref("users/").child(userId).once("value", function(snapshot) {
+    var exists = snapshot.val() !== null;
+    userFirstTimeCallback(userId, exists);
+  });
+}
+
+// Setup what to do with the user information.
+function userFirstTimeCallback(userId, exists) {
+  if (exists) {
+    console.log("user " + userId + " exists!");
+    // Do something here you want to do for non-firstime users...
+  } else {
+    // Do something here you want to do for first time users (Store data in database?)
+
+    database.ref(`users/${userId}`).set({});
+  }
+}
 
 // CHECK IF THE USER IS LOGGED
 export default () => {
@@ -22,6 +41,7 @@ export default () => {
       store.dispatch(setIsAppRunning(true));
       callDatabase(user);
       console.log("is logged");
+      checkForFirstTime(user.uid);
       return;
     }
 

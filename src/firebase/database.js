@@ -14,6 +14,7 @@ import { setUser } from "../actions/user";
 export let charactersDB;
 export let subjectsDB;
 export let usersDB;
+export let challengesDB;
 
 // CHECK IF USER IS NEW OR EXISTING
 const checkUserId = user => {
@@ -66,6 +67,7 @@ export default user => {
       charactersDB = database.characters;
       subjectsDB = database.subjects;
       usersDB = database.users;
+      challengesDB = database.challenges;
 
       if (user) {
         checkUserId(user);
@@ -84,4 +86,5 @@ export const callDatabaseMockup = () => {
   charactersDB = databaseMockup.characters;
   subjectsDB = databaseMockup.subjects;
   usersDB = databaseMockup.users;
+  challengesDB = databaseMockup.challengesDB;
 };

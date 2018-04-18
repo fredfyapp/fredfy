@@ -1,14 +1,19 @@
 export const setChallenge = challenges => ({
   type: "SET_CHALLENGE",
-  challenges
+  challenges,
 });
 
-export const setPuzzle = puzzle => ({
-  type: "SET_PUZZLE",
-  puzzle
+export const setCurrentPuzzle = currentPuzzle => ({
+  type: "SET_CURRENT_PUZZLE",
+  currentPuzzle,
 });
 
 export const setUserCode = userCode => ({
   type: "SET_USERCODE",
-  userCode
+  userCode,
+});
+
+export const setCurrentWorkout = currentWorkout => ({
+  type: "SET_CURRENT_WORKOUT",
+  currentWorkout,
 });

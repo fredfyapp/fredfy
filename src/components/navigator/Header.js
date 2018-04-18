@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 
 // ********** ACTIONS ********** //
 import { setIsLoginModalOpen } from "../../actions/navigation";
+import { setPuzzlesToReview } from "../../actions/user";
 
 import { firebase } from "../../firebase/firebase";
 
@@ -15,6 +16,9 @@ class Header extends React.Component {
     console.log("handle clicked");
     firebase.auth().signOut();
   }
+  componentDidMount = () => {
+    this.props.setPuzzlesToReview(Date.now());
+  };
 
   render() {
     return (
@@ -25,6 +29,8 @@ class Header extends React.Component {
             <h2>Learn_</h2>
           </Link>
         </div>
+        {/* <div>{console.log(this.props.puzzlesToReview)}</div>
+        <div>{console.log(this.props.puzzlesSolved)}</div> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -32,7 +38,8 @@ class Header extends React.Component {
           data-target="#navbarsExampleDefault"
           aria-controls="navbarsExampleDefault"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -48,7 +55,8 @@ class Header extends React.Component {
               <button
                 onClick={() => {
                   this.props.setIsLoginModalOpen(true);
-                }}>
+                }}
+              >
                 Connect
               </button>
             )}
@@ -60,12 +68,15 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: !!state.auth.uid
+  isAuthenticated: !!state.auth.uid,
+  puzzlesToReview: state.user.puzzlesToReview,
+  puzzlesSolved: state.user.puzzlesSolved,
 });
 
 const mapDispatchToProps = dispatch => ({
   setIsLoginModalOpen: isLoginModalOpen =>
-    dispatch(setIsLoginModalOpen(isLoginModalOpen))
+    dispatch(setIsLoginModalOpen(isLoginModalOpen)),
+  setPuzzlesToReview: currentDate => dispatch(setPuzzlesToReview(currentDate)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
