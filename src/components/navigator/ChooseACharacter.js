@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // ********** REDUX ********** //
 import { connect } from "react-redux";
-import { setChosenCharacter } from "../../actions/user";
+import { startSetChosenCharacter } from "../../actions/user";
 
 // ********** DATABASE ********** //
 import { charactersDB } from "../../firebase/database";
@@ -18,7 +18,7 @@ import objectToArray from "../../selectors/objectToArray";
 class ChooseACharacter extends React.Component {
   handleChosenCharacter = characterName => {
     const subjectName = this.props.subjectName;
-    this.props.dispatch(setChosenCharacter(characterName, subjectName));
+    this.props.dispatch(startSetChosenCharacter(subjectName, characterName));
   };
 
   componentDidMount() {
@@ -52,7 +52,7 @@ class ChooseACharacter extends React.Component {
 
 const mapStateToProps = state => ({
   subjectName: state.navigation.chosenSubject,
-  user: state.user
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(ChooseACharacter);

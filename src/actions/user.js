@@ -6,11 +6,27 @@ export const setUser = user => ({
   user,
 });
 
-export const setChosenCharacter = (character, subject) => ({
+export const setChosenCharacter = (subject, character) => ({
   type: "SET_CHOSEN_CHARACTER",
-  character,
   subject,
+  character,
 });
+
+export const startSetChosenCharacter = (subject, character) => {
+  (dispatch, getState) => {
+    const uid = getState().user.userId;
+    database
+      .ref(`users/${uid}/subjects/${subject}`)
+      .update({
+        character,
+        points: 0,
+        isFinished: false,
+      })
+      .then(() => {
+        dispatch(setChosenCharacter(subject, character));
+      });
+  };
+};
 
 export const setFinishedSection = (subject, section) => ({
   type: "SET_FINISHED_SECTION",

@@ -31,8 +31,15 @@ class ChooseASection extends React.Component {
 
     const subjectName = this.props.match.params.subject;
 
-    !user.subjects[subjectName].character &&
-      this.props.history.push(`/choose-a-character-for/${subjectName}`);
+    // IF USER DOESN'T HAVE CURRENT SUBJECT
+    if (user.subjects) {
+      if (!user.subjects[subjectName]) {
+        this.props.history.push(`/choose-a-character-for/${subjectName}`);
+      }
+    }
+
+    // !user.subjects[subjectName].character &&
+    //   this.props.history.push(`/choose-a-character-for/${subjectName}`);
   }
 
   render() {
@@ -53,10 +60,10 @@ class ChooseASection extends React.Component {
                   <Link
                     to={`/teaches-you/${subjectName}/${sectionName}`}
                     key={subjectName + sectionName}>
-                    <SectionCard
+                    {/* <SectionCard
                       subjectName={subjectName}
                       sectionName={sectionName}
-                    />
+                    /> */}
                   </Link>
                 );
               })}
@@ -71,10 +78,10 @@ class ChooseASection extends React.Component {
               <Inventory />
             </div>
             <div className="ranking-panel">
-              <SubjectRanking
+              {/* <SubjectRanking
                 subjectName={subjectName}
                 user={this.props.user}
-              />
+              /> */}
             </div>
           </div>
         </div>
