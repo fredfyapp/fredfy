@@ -9,15 +9,37 @@ import { connect } from "react-redux";
 import { setIsLoginModalOpen } from "../../actions/navigation";
 import { setPuzzlesToReview } from "../../actions/user";
 
-import { firebase } from "../../firebase/firebase";
+import database, { firebase } from "../../firebase/firebase";
 
 class Header extends React.Component {
   handleLogout() {
     console.log("handle clicked");
     firebase.auth().signOut();
+    console.log("after sign out");
   }
   componentDidMount = () => {
-    this.props.setPuzzlesToReview(Date.now());
+    const { userId } = this.props;
+    const currentDate = new Date().getTime();
+    const userRef = database.ref(`users/${userId}/`);
+    userRef.child("puzzlesSolved").orderByValue().once("value", s => {
+      const data = s.val();
+      if (data) {
+        const oneMinute = 10 * 1000;
+        Object.values(data).forEach(p => {
+          if (!p.isTobeReviewed) {
+            if (
+              p.lastAttempt +
+                Math.round(p.numberOfTimesSolved * 1.6 * oneMinute) <
+              currentDate
+            ) {
+              userRef.child("puzzlesToReview").push(p);
+            }
+          }
+        });
+      } else {
+        console.log("no");
+      }
+    });
   };
 
   render() {
@@ -71,6 +93,7 @@ const mapStateToProps = state => ({
   isAuthenticated: !!state.auth.uid,
   puzzlesToReview: state.user.puzzlesToReview,
   puzzlesSolved: state.user.puzzlesSolved,
+  userId: state.user.userId,
 });
 
 const mapDispatchToProps = dispatch => ({

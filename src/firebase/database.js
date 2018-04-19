@@ -37,18 +37,17 @@ const checkUserId = user => {
       ...stateUser,
       userId: user.uid,
       username: user.displayName,
-      subjects: {}
+      puzzlesToReview: {},
+      puzzlesSolved: {},
+      subjects: {},
     });
   } else {
     console.log("not new");
-    database
-      .ref(`users/${user.uid}`)
-      .once("value")
-      .then(snapshot => {
-        const user = snapshot.val();
-        // console.log(user);
-        store.dispatch(setUser(user));
-      });
+    database.ref(`users/${user.uid}`).once("value").then(snapshot => {
+      const user = snapshot.val();
+      // console.log(user);
+      store.dispatch(setUser(user));
+    });
   }
 
   renderApp();
@@ -56,28 +55,25 @@ const checkUserId = user => {
 
 // FETCH DATABASE FIREBASE
 export default user => {
-  database
-    .ref()
-    .once("value")
-    .then(snapshot => {
-      console.log("db firebase");
-      const database = snapshot.val();
+  database.ref().once("value").then(snapshot => {
+    console.log("db firebase");
+    const database = snapshot.val();
 
-      // EXPORT DATABASE
-      charactersDB = database.characters;
-      subjectsDB = database.subjects;
-      usersDB = database.users;
-      challengesDB = database.challenges;
+    // EXPORT DATABASE
+    charactersDB = database.characters;
+    subjectsDB = database.subjects;
+    usersDB = database.users;
+    challengesDB = database.challenges;
 
-      if (user) {
-        checkUserId(user);
-        return;
-      }
+    if (user) {
+      checkUserId(user);
+      return;
+    }
 
-      // RENDER METHOD MUST COME IN THE LAST POSITION TO ALLOW
-      // DATABASE TO BE DECLARED FIRST AND USER HANDLED
-      renderApp();
-    });
+    // RENDER METHOD MUST COME IN THE LAST POSITION TO ALLOW
+    // DATABASE TO BE DECLARED FIRST AND USER HANDLED
+    renderApp();
+  });
 };
 
 // FETCH DATABASE MOCKUP
