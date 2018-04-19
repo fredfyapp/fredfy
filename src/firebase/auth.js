@@ -41,7 +41,7 @@ export default () => {
       store.dispatch(setIsAppRunning(true));
       callDatabase(user);
       console.log("is logged");
-      checkForFirstTime(user.uid);
+      // checkForFirstTime(user.uid);
       return;
     }
 

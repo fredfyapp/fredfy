@@ -33,9 +33,9 @@ const persistedReducer = persistReducer(
 //     navigation: navigationReducer,
 //     playing: playingReducer,
 //     user: userReducer,
-//     challenge: challengeReducer
+//     challenge: challengeReducer,
 //   }),
-//   composeEnhancers(applyMiddleware(thunk))
+//   composeEnhancers(applyMiddleware(thunk)),
 // );
 let store = createStore(
   persistedReducer,

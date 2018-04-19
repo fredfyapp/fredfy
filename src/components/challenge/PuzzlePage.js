@@ -105,13 +105,31 @@ class PuzzlePage extends Component {
       isCorrect,
     });
     if (isCorrect) {
-      const currentPuzzle = this.props.currentPuzzle;
-      const currentWorkout = this.props.currentWorkout;
+      const { userId, currentPuzzle } = this.props;
       const { isUserReviewing } = this.state;
       const currentDate = new Date().getTime();
-      console.log(currentDate);
+      const puzzleJustSolved = {
+        ...currentPuzzle,
+        lastAttempt: currentDate,
+        numberOfTimesSolved: 1,
+        isToBeReviewed: false,
+      };
 
-      this.props.setPuzzleSolved(currentPuzzle, currentDate);
+      const db = database.ref(`users/${userId}/`);
+      db
+        .child("puzzlesSolved")
+        .orderByChild("name")
+        .equalTo(currentPuzzle.name)
+        .once("value", s => {
+          const data = s.val();
+          if (data) {
+            console.log("exis");
+          } else {
+            database
+              .ref(`users/${userId}/puzzlesSolved/`)
+              .push(puzzleJustSolved);
+          }
+        });
 
       if (isUserReviewing) {
       }
@@ -262,7 +280,7 @@ const mapStateToProps = state => ({
   currentChallenges: state.challenge.currentChallenges,
   userCode: state.challenge.userCode,
   currentWorkout: state.challenge.currentWorkout,
-  puzzlesToReview: state.user.puzzlesToReview,
+  userId: state.user.userId,
 });
 
 const mapDispatchToProps = dispatch => ({
