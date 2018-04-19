@@ -111,8 +111,7 @@ class PuzzlePage extends Component {
       const puzzleJustSolved = {
         ...currentPuzzle,
         lastAttempt: currentDate,
-        numberOfTimesSolved: 1,
-        isToBeReviewed: false,
+        nextInterval: 1,
       };
 
       const db = database.ref(`users/${userId}/`);

@@ -25,15 +25,14 @@ class Header extends React.Component {
       const data = s.val();
       if (data) {
         const oneMinute = 10 * 1000;
-        Object.values(data).forEach(p => {
-          if (!p.isTobeReviewed) {
-            if (
-              p.lastAttempt +
-                Math.round(p.numberOfTimesSolved * 1.6 * oneMinute) <
-              currentDate
-            ) {
-              userRef.child("puzzlesToReview").push(p);
-            }
+        Object.entries(data).forEach(([ key, p ]) => {
+          if (
+            p.lastAttempt + Math.round(p.nextInterval * 1.6 * oneMinute) <
+            currentDate
+          ) {
+            p.nextInterval = Math.round(p.nextInterval * 1.6);
+            userRef.child("puzzlesToReview").push(p);
+            userRef.child(`puzzlesSolved/${key}`).remove();
           }
         });
       } else {
