@@ -46,13 +46,21 @@ class WorldCard extends React.Component {
 
   render() {
     const subject = this.props.subjectName;
+    let isFinished = false;
+    console.log(this.props.user);
+    if (this.props.user.subjects) {
+      if (this.props.user.subjects[subject]) {
+        if (this.props.user.subjects[subject].isFinished) {
+          isFinished = true;
+        }
+      }
+    }
+
     return (
       <div>
         <h2>
           {subject}
-          {this.props.user.subjects[subject] &&
-            this.props.user.subjects[subject].isFinished &&
-            " - done!"}
+          {isFinished && " - done!"}
         </h2>
       </div>
     );
