@@ -8,10 +8,13 @@ import { login, logout } from "../actions/auth";
 import { setIsLoginModalOpen, setIsAppRunning } from "../actions/navigation";
 
 function checkForFirstTime(userId) {
-  database.ref("users/").child(userId).once("value", function(snapshot) {
-    var exists = snapshot.val() !== null;
-    userFirstTimeCallback(userId, exists);
-  });
+  database
+    .ref("users/")
+    .child(userId)
+    .once("value", function(snapshot) {
+      var exists = snapshot.val() !== null;
+      userFirstTimeCallback(userId, exists);
+    });
 }
 
 // Setup what to do with the user information.
@@ -41,7 +44,7 @@ export default () => {
       store.dispatch(setIsAppRunning(true));
       callDatabase(user);
       console.log("is logged");
-      checkForFirstTime(user.uid);
+      // checkForFirstTime(user.uid);
       return;
     }
 
