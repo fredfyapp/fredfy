@@ -1,0 +1,22 @@
+#footer {
+  max-width: $sz-full;
+  margin: 10px auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 25px 50px;
+  display: flex;
+  justify-content: space-around;
+
+  & > div {
+    display: flex;
+  }
+  & .logo {
+    flex-direction: column;
+    flex-grow: 1;
+    opacity: 0.3;
+  }
+  & .links {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+}

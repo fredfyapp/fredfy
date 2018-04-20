@@ -1,0 +1,84 @@
+/* GENERAL */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html .container {
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  line-height: 1em;
+  max-width: 100% !important;
+}
+
+body {
+  color: $dark-grey;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $m-size;
+  line-height: 1.6;
+  background: $bg-main;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.is-active {
+  font-weight: bold;
+}
+
+a {
+  color: #666;
+  &:hover {
+    color: #222;
+  }
+}
+
+
+/* CONTENT */
+
+.block-content {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  padding: 30px 20px 50px;
+
+  & > h2 {
+    font-family: 'Press Start 2P', Verdana, Arial;
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
+.content {
+  max-width: $sz-xxl;
+  margin: auto;
+  padding: 20px;
+}
+
+
+#gameover .btn,
+#congrats .btn,
+#world .btn,
+#hero .btn,
+#home .btn {
+  width: 300px;
+  margin: auto;
+  text-transform: uppercase;
+  position: absolute;
+  right: 0;
+  left: 0;
+}

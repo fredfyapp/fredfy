@@ -1,0 +1,34 @@
+.ranking {
+  background: lightgreen;
+}
+
+.table {
+  background: lightpink;
+}
+
+.table__header {
+  background: lightblue;
+  display: flex;
+  text-align: center;
+
+  h3 {
+    background: red;
+    width: 100px;
+  }
+}
+
+.table__body {
+  background: orange;
+  display: flex;
+  flex-direction: column;
+}
+
+.table__item {
+  display: flex;
+  text-align: center;
+
+  h4 {
+    background: red;
+    width: 100px;
+  }
+}

@@ -1,0 +1,15 @@
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.section__map {
+  background: red;
+}
+
+.section__sidepanel {
+  background: lightgreen;
+  display: flex;
+  flex-direction: column;
+}
