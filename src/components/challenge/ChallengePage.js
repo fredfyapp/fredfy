@@ -25,8 +25,8 @@ class ChallengePage extends React.Component {
     const { challenges } = this.props.match.params;
     const { currentChallenges, setCurrentWorkout, setChallenge } = this.props;
 
-    database.ref(`challenges/${challenges}`).on("value", snapshot => {
-      setCurrentWorkout(snapshot.val());
+    database.ref(`challenges/${challenges}`).on("value", s => {
+      setCurrentWorkout(Object.values(s.val()));
     });
   };
 

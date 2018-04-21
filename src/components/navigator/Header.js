@@ -8,10 +8,20 @@ import { connect } from "react-redux";
 // ********** ACTIONS ********** //
 import { setIsLoginModalOpen } from "../../actions/navigation";
 import { setPuzzlesToReview } from "../../actions/user";
+import { setCurrentWorkout } from "../../actions/challenge";
 
 import database, { firebase } from "../../firebase/firebase";
+import chal from "../../fixtures/chal.json";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      puzzlesToReview: [],
+    };
+  }
+
   handleLogout() {
     console.log("handle clicked");
     firebase.auth().signOut();
@@ -21,27 +31,48 @@ class Header extends React.Component {
     const { userId } = this.props;
     const currentDate = new Date().getTime();
     const userRef = database.ref(`users/${userId}/`);
-    userRef.child("puzzlesSolved").orderByValue().once("value", s => {
-      const data = s.val();
-      if (data) {
-        const oneMinute = 10 * 1000;
-        Object.entries(data).forEach(([ key, p ]) => {
-          if (
-            p.lastAttempt + Math.round(p.nextInterval * 1.6 * oneMinute) <
-            currentDate
-          ) {
-            p.nextInterval = Math.round(p.nextInterval * 1.6);
-            userRef.child("puzzlesToReview").push(p);
-            userRef.child(`puzzlesSolved/${key}`).remove();
+    const ten = 10 * 1000;
+    if (userId) {
+      userRef
+        .child("puzzlesSolved")
+        .orderByChild("shouldBeReviewed")
+        .equalTo(true)
+        .once("value", s => {
+          if (s.val()) {
+            this.setState({
+              puzzlesToReview: Object.values(s.val()),
+            });
           }
         });
-      } else {
-        console.log("no");
-      }
-    });
+    }
+
+    if (userId) {
+      userRef
+        .child("puzzlesSolved")
+        .orderByChild("shouldBeReviewed")
+        .equalTo(false)
+        .once("value", s => {
+          if (s.val()) {
+            for (const [ key, p ] of Object.entries(s.val())) {
+              if (
+                p.lastAttempt + Math.round(p.nextInterval * 1.6 * ten) <
+                currentDate
+              ) {
+                userRef.child(`puzzlesSolved/${key}`).update({
+                  shouldBeReviewed: true,
+                });
+              }
+            }
+          }
+        });
+    }
+  };
+  handleReview = puzzlesToReview => {
+    this.props.setCurrentWorkout(puzzlesToReview);
   };
 
   render() {
+    const { puzzlesToReview } = this.state;
     return (
       <nav className="header navbar navbar-expand-lg navbar-light bg-light">
         <div className="logo navbar-brand">
@@ -50,8 +81,21 @@ class Header extends React.Component {
             <h2>Learn_</h2>
           </Link>
         </div>
-        {/* <div>{console.log(this.props.puzzlesToReview)}</div>
-        <div>{console.log(this.props.puzzlesSolved)}</div> */}
+        <div>
+          {puzzlesToReview ? (
+            <Link
+              to={"/review"}
+              onClick={() => {
+                this.handleReview(puzzlesToReview);
+              }}
+            >
+              {" "}
+              review -> {puzzlesToReview.length}
+            </Link>
+          ) : (
+            <pre>review</pre>
+          )}
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -90,15 +134,15 @@ class Header extends React.Component {
 
 const mapStateToProps = state => ({
   isAuthenticated: !!state.auth.uid,
-  puzzlesToReview: state.user.puzzlesToReview,
-  puzzlesSolved: state.user.puzzlesSolved,
   userId: state.user.userId,
 });
 
 const mapDispatchToProps = dispatch => ({
   setIsLoginModalOpen: isLoginModalOpen =>
     dispatch(setIsLoginModalOpen(isLoginModalOpen)),
-  setPuzzlesToReview: currentDate => dispatch(setPuzzlesToReview(currentDate)),
+  setChallenge: challenges => dispatch(setChallenge(challenges)),
+  setCurrentWorkout: currentWorkout =>
+    dispatch(setCurrentWorkout(currentWorkout)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,0 +1,16 @@
+{
+  "basic Javascript": {
+    "declaring variables": {
+      "code": "const a;\nlet b;",
+      "decription": "In computer science, a variable is a storaged location paired with with an associated symbolic identifier, which contains some known or unknown quantity of information referred to as a value.",
+      "task": "Javascript uses 'let' and 'const' to store a variable pair, which the former is mutable and the latter is immutable.\n Declare two other variables c and d, which the c is mutable and d is immutable",
+      "section": "basic Javascript",
+      "name": "declaring variables",
+    }
+  }
+}
+In computer science, a variable is a storaged location paired with with an associated symbolic identifier, which contains some known or unknown quantity of information referred to as a value.
+Javascript uses 'let' and 'const' to store a variable pair, which the former is mutable and the latter is immutable. Define two other variables c and d, which the c is mutable and equals to 3 and d is immutable and equals to 4.
+
+When Javascript variables are declared. they have an initial value of undefined.
+Initialise the two variables 'a' and 'b' with 5 and 10 respectively so that they will not be undefined.

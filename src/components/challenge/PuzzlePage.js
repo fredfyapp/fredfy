@@ -106,31 +106,36 @@ class PuzzlePage extends Component {
     });
     if (isCorrect) {
       const { userId, currentPuzzle } = this.props;
-      const { isUserReviewing } = this.state;
+      const userRef = database.ref(`users/${userId}/`);
       const currentDate = new Date().getTime();
-      const puzzleJustSolved = {
-        ...currentPuzzle,
-        lastAttempt: currentDate,
-        nextInterval: 1,
-      };
-
-      const db = database.ref(`users/${userId}/`);
-      db
-        .child("puzzlesSolved")
-        .orderByChild("name")
-        .equalTo(currentPuzzle.name)
-        .once("value", s => {
-          const data = s.val();
-          if (data) {
-            console.log("exis");
-          } else {
-            database
-              .ref(`users/${userId}/puzzlesSolved/`)
-              .push(puzzleJustSolved);
-          }
-        });
-
-      if (isUserReviewing) {
+      if (currentPuzzle.shouldBeReviewed) {
+        userRef
+          .child("puzzlesSolved")
+          .orderByChild("name")
+          .equalTo(currentPuzzle.name)
+          .once("child_added", s => {
+            s.ref.update({
+              nextInterval: Math.round(currentPuzzle.nextInterval * 1.6),
+              shouldBeReviewed: false,
+              lastAttempt: currentDate,
+            });
+          });
+      } else {
+        const newPuzzle = {
+          ...currentPuzzle,
+          lastAttempt: currentDate,
+          nextInterval: 1,
+          shouldBeReviewed: false,
+        };
+        userRef
+          .child("puzzlesSolved")
+          .orderByChild("name")
+          .equalTo(currentPuzzle.name)
+          .once("value", s => {
+            if (!s.val()) {
+              database.ref(`users/${userId}/puzzlesSolved/`).push(newPuzzle);
+            }
+          });
       }
     }
   };
@@ -139,7 +144,13 @@ class PuzzlePage extends Component {
 
   render() {
     const { challenges, puzzle } = this.props.match.params;
-    const { description, code, section, inputs } = this.props.currentPuzzle;
+    const {
+      description,
+      code,
+      section,
+      inputs,
+      task,
+    } = this.props.currentPuzzle;
     const {
       hasBeenRun,
       resultsExpected,
@@ -195,6 +206,7 @@ class PuzzlePage extends Component {
         <br />
         <div>
           <span>{description}</span>
+          <span>{task}</span>
         </div>
         <br />
         <div style={{ display: "flex", justifyContent: "space-between" }}>

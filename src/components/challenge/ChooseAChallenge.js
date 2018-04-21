@@ -6,28 +6,36 @@ import database from "../../firebase/firebase";
 
 // ******** REDUX **********//
 import { connect } from "react-redux";
-import { setChallenge } from "../../actions/challenge";
+import { setChallenge, setCurrentWorkout } from "../../actions/challenge";
 
 class ChooseAChallenge extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      challenges: []
+      challenges: [],
+      click: 0,
     };
   }
 
   handleChosenChallenges = challenges => {
+    console.log(challenges);
+    const chalRef = database.ref(`challenges/${challenges}`);
+    chalRef.once("value", s => {
+      console.log(s.val());
+      this.props.setCurrentWorkout(Object.values(s.val()));
+    });
     this.props.setChallenge(challenges);
   };
 
   componentDidMount = () => {
-    const challenges = database.ref("challenges/");
-    challenges.on("value", snapshot =>
+    const challenges = database.ref("challenges/titles/");
+
+    challenges.once("value", s => {
       this.setState({
-        challenges: Object.keys(snapshot.val())
-      })
-    );
+        challenges: s.val(),
+      });
+    });
   };
 
   render() {
@@ -63,7 +71,9 @@ class ChooseAChallenge extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setChallenge: challenges => dispatch(setChallenge(challenges))
+  setChallenge: challenges => dispatch(setChallenge(challenges)),
+  setCurrentWorkout: currentWorkout =>
+    dispatch(setCurrentWorkout(currentWorkout)),
 });
 
 export default connect(null, mapDispatchToProps)(ChooseAChallenge);

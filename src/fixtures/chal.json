@@ -1,0 +1,439 @@
+{
+  "string-1" : [ {
+    "code" : "const helloName=function(name){ \n\n}",
+    "description" : [ "Given a string name, e.g. 'bob', return a greeting of the form 'Hello Bob!." ],
+    "inputs" : [ "helloName('Bob')", "helloName('Alice')", "helloName('X')", "helloName('Dolly')", "helloName('Alpha')", "helloName('Omega')", "helloName('Goodbye')", "helloName('ho ho ho')", "helloName('xyz!')", "helloName('Hello!')" ],
+    "name" : "helloName",
+    "section" : "string-1",
+    "solutions" : "const helloName = function (name){\n  return \"Hello \" + name;\n}"
+  }, {
+    "code" : "const makeAbba=function(a, b){ \n\n}",
+    "description" : [ "Given two strings, a and b, return the result of putting them together in the", "order abba, e.g. 'Hi' and 'Bye' returns 'HiByeByeHi'." ],
+    "inputs" : [ "makeAbba('Hi', 'Bye')", "makeAbba('Yo', 'Alice')", "makeAbba('What', 'Up')", "makeAbba('aaa', 'bbb')", "makeAbba('x', 'y')", "makeAbba('x', '')", "makeAbba('ba', 'Ya')", "makeAbba('Ya', 'Ya')" ],
+    "name" : "makeAbba",
+    "section" : "string-1",
+    "solutions" : "const makeAbba = function (a, b){\n  return a + b + b + a;\n}"
+  }, {
+    "code" : "const makeOutWord=function(out, word){ \n\n}",
+    "description" : [ "Given an 'out' string length 4, such as '<<>>', and a word, return a new string where", "the word is in the middle of the out string, e.g. '<<word>>'. Note: use str.substring(i, j)", "to extract the String starting at index i and going up to but not including index j." ],
+    "inputs" : [ "makeOutWord('<<>>', 'Yay')", "makeOutWord('<<>>', 'WooHoo')", "makeOutWord('[[]]', 'word')", "makeOutWord('HHoo', 'Hello')", "makeOutWord('abyz', 'YAY')" ],
+    "name" : "makeOutWord",
+    "section" : "string-1",
+    "solutions" : "const makeOutWord = function (out, word){\n  front = out.substring(0, 2);\n  back = out.substring(2, 4);\n  return front + word + back;\n}"
+  }, {
+    "code" : "const extraEnd=function(str){ \n\n}",
+    "description" : [ "Given a string, return a new string made of 3 copies of the last 2 chars", "of the original string. The string length will be at least 2." ],
+    "inputs" : [ "extraEnd('Hello')", "extraEnd('ab')", "extraEnd('Hi')", "extraEnd('Candy')", "extraEnd('Code')" ],
+    "name" : "extraEnd",
+    "section" : "string-1",
+    "solutions" : "const extraEnd = function (str){\n  if (str.length > 1){\n    back = str.substring(str.length - 2);\n    return back + back + back;\n  }\n}"
+  }, {
+    "code" : "const withoutEnd=function(str){ \n\n}",
+    "description" : [ "Given a string, return a version without the first and last char, so 'Hello' yields 'ell'." ],
+    "inputs" : [ "withoutEnd('Hello')", "withoutEnd('java')", "withoutEnd('coding')", "withoutEnd('code')", "withoutEnd('ab')", "withoutEnd('Chocolate!')", "withoutEnd('kitten')", "withoutEnd('woohoo')" ],
+    "name" : "withoutEnd",
+    "section" : "string-1",
+    "solutions" : "const withoutEnd = function (str){\n  return str.substring(1, str.length - 1);\n}"
+  }, {
+    "code" : "const comboString=function(a, b){ \n\n}",
+    "description" : [ "Given 2 strings, a and b, return a string of the form short+long+short, with", "the shorter string on the outside and the longer string on the inside. The", "strings will not be the same length, but they may be empty (length 0)." ],
+    "inputs" : [ "comboString('Hello', 'hi')", "comboString('Hi', 'Hello')", "comboString('aaa', 'b')", "comboString('b', 'aaa')", "comboString('aaa', '')", "comboString('', 'bb')", "comboString('aaa', '1234')", "comboString('aaa', 'bb')", "comboString('a', 'bb')", "comboString('bb', 'a')", "comboString('a', 'bb')", "comboString('xyz', 'ab')" ],
+    "name" : "comboString",
+    "section" : "string-1",
+    "solutions" : "const comboString = function (a, b){\n  if (a.length < b.length){\n    return a + b + a;\n  } else {\n    return b + a + b;\n  }\n}"
+  }, {
+    "code" : "const nonStart=function(a, b){ \n\n}",
+    "description" : [ "Given 2 strings, return their concatenation, except omit the first char", "of each. The strings will be at least length 1." ],
+    "inputs" : [ "nonStart('Hello', 'There')", "nonStart('java', 'code')", "nonStart('shotl', 'java')", "nonStart('ab', 'xy')", "nonStart('ab', 'x')", "nonStart('x', 'ac')", "nonStart('a', 'x')", "nonStart('kit', 'kat')", "nonStart('mart', 'dart')" ],
+    "name" : "nonStart",
+    "section" : "string-1",
+    "solutions" : "const nonStart = function (a, b){\n  a = a.substring(1, a.length);\n  b = b.substring(1, b.length);\n  return a + b;\n}"
+  }, {
+    "code" : "const firstHalf=function(str){ \n\n}",
+    "description" : [ "Given a string of even length, return the first half.", "So the string 'WooHoo' yields 'Woo'." ],
+    "inputs" : [ "firstHalf('WooHoo')", "firstHalf('HelloThere')", "firstHalf('abcdefg')", "firstHalf('ab')", "firstHalf('')", "firstHalf('0123456789')", "firstHalf('kitten')" ],
+    "name" : "firstHalf",
+    "section" : "string-1",
+    "solutions" : "const firstHalf = function (str){\n  if (str.length % 2 == 0){\n    return str.substring(0, str.length / 2);\n  }\n  return str;\n}"
+  }, {
+    "code" : "const firstTwo=function(str){ \n\n}",
+    "description" : [ "Given a string, return the string made of its first two chars, so the String", "'Hello' yields 'He'. If the string is shorter than length 2, return whatever" ],
+    "inputs" : [ "firstTwo('Hello')", "firstTwo('abcdefg')", "firstTwo('ab')", "firstTwo('a')", "firstTwo('')", "firstTwo('kitten')", "firstTwo('hi')", "firstTwo('hiya')" ],
+    "name" : "firstTwo",
+    "section" : "string-1",
+    "solutions" : "const firstTwo = function (str){\n  if (str.length > 2){\n    return str.substring(0, 2);\n  }\n  return str;\n}"
+  }, {
+    "code" : "const left2=function(str){ \n\n}",
+    "description" : [ "Given a string, return a 'rotated left 2' version where the first 2 chars are", "moved to the end. The string length will be at least 2." ],
+    "inputs" : [ "left2('Hello')", "left2('java')", "left2('Hi')", "left2('code')", "left2('cat')", "left2('12345')", "left2('Chocolate')", "left2('bricks')" ],
+    "name" : "left2",
+    "section" : "string-1",
+    "solutions" : "const left2 = function (str){\n  if (str.length > 1){\n    front = str.substring(0, 2);\n    back = str.substring(2, str.length);\n    return back + front;\n  }\n  return str;\n}"
+  }, {
+    "code" : "const right2=function(str){ \n\n}",
+    "description" : [ "Given a string, return a 'rotated right 2' version where the last 2 chars are", "moved to the start. The string length will be at least 2." ],
+    "inputs" : [ "right2('Hello')", "right2('java')", "right2('Hi')", "right2('code')", "right2('cat')", "right2('12345')" ],
+    "name" : "right2",
+    "section" : "string-1",
+    "solutions" : "const right2 = function (str){\n  if (str.length > 1){\n    back = str.substring(str.length - 2, str.length);\n    front = str.substring(0, str.length - 2);\n    return back + front;\n  }\n  return str;\n}"
+  }, {
+    "code" : "const theEnd=function(str, front){ \n\n}",
+    "description" : [ "Given a string, return a string length 1 from its front, unless front is false,", "in which case return a string length 1 from its back. The string will be non-em" ],
+    "inputs" : [ "theEnd('Hello', true)", "theEnd('Hello', false)", "theEnd('oh', true)", "theEnd('oh', false)", "theEnd('x', true)", "theEnd('x', false)", "theEnd('java', true)", "theEnd('chocolate', false)", "theEnd('1234', true)", "theEnd('code', false)" ],
+    "name" : "theEnd",
+    "section" : "string-1",
+    "solutions" : "const theEnd = function (str, front){\n  if (front){\n    return str.substring(0, 1);\n  }\n  return str.substring(str.length - 1);\n}"
+  }, {
+    "code" : "const withoutEnd2=function(str){ \n\n}",
+    "description" : [ "Given a string, return a version without both the first and last char of the", "string. The string may be any length, including 0." ],
+    "inputs" : [ "withoutEnd2('Hello')", "withoutEnd2('abc')", "withoutEnd2('ab')", "withoutEnd2('a')", "withoutEnd2('')", "withoutEnd2('coldy')", "withoutEnd2('java code')" ],
+    "name" : "withoutEnd2",
+    "section" : "string-1",
+    "solutions" : "const withoutEnd2 = function (str){\n  if (str.length <= 1){\n    return \"\";\n  }\n  return str.substring(1, str.length - 1);\n}"
+  }, {
+    "code" : "const middleTwo=function(str){ \n\n}",
+    "description" : [ "Given a string of even length, return a string made of the middle two chars,", "so the string 'string' yields 'ri'. The string length will be at least 2." ],
+    "inputs" : [ "middleTwo('string')", "middleTwo('code')", "middleTwo('Practice')", "middleTwo('ab')", "middleTwo('123456789')" ],
+    "name" : "middleTwo",
+    "section" : "string-1",
+    "solutions" : "const middleTwo = function (str){\n  if (str.length % 2 == 0){\n    temp = str.substring(str.length / 2 - 1);\n    mid = temp.substring(0, 2);\n    return mid;\n  }\n  return str;\n}"
+  }, {
+    "code" : "const endsLy=function(str){ \n\n}",
+    "description" : [ "Given a string, return true if it ends in 'ly'." ],
+    "inputs" : [ "endsLy('oddly')", "endsLy('y')", "endsLy('oddl')", "endsLy('olydd')", "endsLy('ly')", "endsLy('')", "endsLy('falsely')", "endsLy('evenly')" ],
+    "name" : "endsLy",
+    "section" : "string-1",
+    "solutions" : "const endsLy = function (str){\n  if (str.substring(str.length - 2, str.length) == \"ly\"){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const nTwice = function(str, n){ \n\n}",
+    "description" : [ "Given a string and an int n, return a string made of the first and last n chars", "from the string. The string length will be at least n." ],
+    "inputs" : [ "nTwice('hello', 2)", "nTwice('Chocolate', 3)", "nTwice('Chocolate', 1)", "nTwice('Chocolate', 0)", "nTwice('Hello', 4)", "nTwice('Code', 4)", "nTwice('Code', 2)" ],
+    "name" : "nTwice",
+    "section" : "string-1",
+    "solutions" : "const nTwice = function (nums){\n  count = 0;\n  for (x = 0; x < nums.length; x++){\n    if (nums[x] == 6){\n      if (nums[x + 1] == 6 || nums[x + 1] == 7){\n        count++;\n      }\n    }\n  }\n  return count;\n}"
+  } ],
+  "warmup-1" : [ {
+    "code" : "const sleepIn = function(weekday, vacation){ \n return !weekday || vacation \n\t\n}",
+    "description" : [ "The parameter weekday is true if it is a weekday, and the parameter vacation is true if we are on vacation. We sleep in if it is not a weekday or we're on vacation. Return true if we sleep in." ],
+    "inputs" : [ "sleepIn(true, true)", "sleepIn(true, false)", "sleepIn(false, true)", "sleepIn(false, false)" ],
+    "name" : "sleepIn",
+    "section" : "warmup-1",
+    "solutions" : "const sleepIn = function (weekday, vacation){\n  return !weekday || vacation;\n}"
+  }, {
+    "code" : "const diff21 = function (n){\n  if (n <= 21){\n    return 21 - n;\n  } else {\n    return (n - 21) * 2;\n  }\n}",
+    "description" : [ "Given an int n, return the absolute difference between n and 21,", "except return double the absolute difference if n is over 21." ],
+    "inputs" : [ "diff21(19)", "diff21(10)", "diff21(21)", "diff21(22)", "diff21(25)", "diff21(30)", "diff21(0)", "diff21(1)", "diff21(2)", "diff21(-1)", "diff21(-2)", "diff21(50)" ],
+    "name" : "diff21",
+    "section" : "warmup-1",
+    "solutions" : "const diff21 = function (n){\n  if (n <= 21){\n    return 21 - n;\n  } else {\n    return (n - 21) * 2;\n  }\n}"
+  }, {
+    "code" : "const nearHundred = function(n){ \n\n}",
+    "description" : [ "Given an int n, return True if it is within 10 of 100 or 200.", "Note: abs(num) computes the absolute value of a number." ],
+    "inputs" : [ "nearHundred(93)", "nearHundred(90)", "nearHundred(89)", "nearHundred(110)", "nearHundred(111)", "nearHundred(121)", "nearHundred(0)", "nearHundred(5)", "nearHundred(191)", "nearHundred(189)" ],
+    "name" : "nearHundred",
+    "section" : "warmup-1",
+    "solutions" : "const nearHundred = function (n){\n  return Math.abs(100 - n) <= 10 || Math.abs(200 - n) <= 10;\n}"
+  }, {
+    "code" : "const missingChar = function(str, n){ \n\n}",
+    "description" : [ "Given a non-empty string and an int n, return a new string", "where the char at index n has been removed. The value of n", "will be a valid index of a char in the original string", "(i.e. n will be in the range 0..str.length()-1 inclusive)." ],
+    "inputs" : [ "missingChar('kitten', 1)", "missingChar('kitten', 0)", "missingChar('kitten', 4)", "missingChar('Hi', 0)", "missingChar('Hi', 1)", "missingChar('code', 0)", "missingChar('code', 1)", "missingChar('code', 2)", "missingChar('code', 3)", "missingChar('chocolate', 8)" ],
+    "name" : "missingChar",
+    "section" : "warmup-1",
+    "solutions" : "const missingChar = function (str, n){\n  front = str.substring(0, n);\n  back = str.substring(n + 1, str.length);\n  return front + back;\n}"
+  }, {
+    "code" : "const backAround = function(str){ \n\n}",
+    "description" : [ "Given a string, take the last char and return a new string with", "the last char added at the front and back, so 'cat' yields 'tcatt'/", "The original string will be length 1 or more." ],
+    "inputs" : [ "backAround('cat')", "backAround('Hello')", "backAround('a')", "backAround('abc')", "backAround('read')", "backAround('boo')" ],
+    "name" : "backAround",
+    "section" : "warmup-1",
+    "solutions" : "const backAround = function (str){\n  last = str.substring(str.length - 1);\n  return last + str + last;\n}"
+  }, {
+    "code" : "const startHi = function(str){ \n\n}",
+    "description" : [ "Given a string, return true if the string starts with 'hi'", "and false otherwise." ],
+    "inputs" : [ "startHi('hi there')", "startHi('hi')", "startHi('hello hi')", "startHi('he')", "startHi('h')", "startHi('')", "startHi('ho hi')", "startHi('hi ho')" ],
+    "name" : "startHi",
+    "section" : "warmup-1",
+    "solutions" : "const startHi = function (str){\n  if (str.length < 2){\n    return false;\n  }\n  front = str.substring(0, 2);\n  if (front == \"hi\"){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const hasTeen=function(a, b, c){ \n\n}",
+    "description" : [ "We'll say that a number is 'teen' if it is in the range 13..19 inclusive.", "Given 3 int values, return true if 1 or more of them are teen." ],
+    "inputs" : [ "hasTeen(13, 20, 10)", "hasTeen(20, 19, 10)", "hasTeen(20, 10, 13)", "hasTeen(1, 20, 12)", "hasTeen(19, 20, 12)", "hasTeen(12, 20, 19)", "hasTeen(12, 9, 20)", "hasTeen(12, 18, 20)", "hasTeen(14, 2, 20)", "hasTeen(4, 2, 20)", "hasTeen(11, 22, 22)" ],
+    "name" : "hasTeen",
+    "section" : "warmup-1",
+    "solutions" : "const hasTeen = function (a, b, c){\n  return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);\n}"
+  }, {
+    "code" : "const mixStart=function(str){ \n\n}",
+    "description" : [ "Return true if the given string begins with 'mix', except the 'm' can be anything,", "//so 'pix', '9ix' .. all count." ],
+    "inputs" : [ "mixStart('mix snacks')", "mixStart('pix snacks')", "mixStart('piz snacks')", "mixStart('nix')", "mixStart('ni')", "mixStart('n')" ],
+    "name" : "mixStart",
+    "section" : "warmup-1",
+    "solutions" : "const mixStart = function (str){\n  if (str.length < 3){\n    return false;\n  }\n  two = str.substring(1, 3);\n  if (two == \"ix\"){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const close10=function(a, b){ \n\n}",
+    "description" : [ "Given 2 int values, return whichever value is nearest to the value 10,", "or return 0 in the event of a tie. Note that Math.abs(n) returns the absolute", "value of a number." ],
+    "inputs" : [ "close10(8, 13)", "close10(13, 8)", "close10(13, 7)", "close10(7, 13)", "close10(9, 13)", "close10(13, 8)", "close10(10, 12)", "close10(11, 10)", "close10(5, 21)", "close10(0, 20)", "close10(0, 20)", "close10(10, 10)" ],
+    "name" : "close10",
+    "section" : "warmup-1",
+    "solutions" : "const close10 = function (a, b){\n  aDiff = Math.abs(a - 10);\n  bDiff = Math.abs(b - 10);\n\n  if (aDiff < bDiff){\n    return a;\n  }\n  if (bDiff < aDiff){\n    return b;\n  }\n  return 0;\n}"
+  }, {
+    "code" : "const stringE=function(str){ \n\n}",
+    "description" : [ "Return true if the given string contains between 1 and 3 'e' chars." ],
+    "inputs" : [ "stringE('Hello')", "stringE('Heelle')", "stringE('Heelele')", "stringE('HII')", "stringE('e')", "stringE('')" ],
+    "name" : "stringE",
+    "section" : "warmup-1",
+    "solutions" : "const stringE = function (str){\n  count = 0;\n  for (var i = 0; i < str.length; i++){\n    if (str.charAt(i) == \"e\"){\n      count++;\n    }\n  }\n  return count >= 1 && count <= 3;\n}"
+  }, {
+    "code" : "const everyNth=function(str, n){ \n\n}",
+    "description" : [ "Given a non-empty string and an int N, return the string made starting with char 0,", "and then every Nth char of the string. So if N is 3, use char 0, 3, 6, ... and so on.", "N is 1 or more." ],
+    "inputs" : [ "everyNth('Miracle', 2)", "everyNth('abcdefg', 2)", "everyNth('abcdefg', 3)", "everyNth('Chocolate', 3)", "everyNth('Chocolates', 3)", "everyNth('Chocolates', 4)", "everyNth('Chocolates', 100)" ],
+    "name" : "everyNth",
+    "section" : "warmup-1",
+    "solutions" : "const everyNth = function (str, n){\n  result = \"\";\n  for (var i = 0; i < str.length; i = i + n){\n    result = result + str.charAt(i);\n  }\n  return result;\n}"
+  }, {
+    "code" : "const monkeyTrouble=function(aSmile, bSmile){ \n\n}",
+    "description" : [ "We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if", "each is smiling. We are in trouble if they are both smiling or if neither of", "them is smiling. Return true if we are in trouble." ],
+    "inputs" : [ "monkeyTrouble(true, true)", "monkeyTrouble(false, false)", "monkeyTrouble(true, false)", "monkeyTrouble(false, true)" ],
+    "name" : "monkeyTrouble",
+    "section" : "warmup-1",
+    "solutions" : "const monkeyTrouble = function (aSmile, bSmile){\n  if (aSmile && bSmile){\n    return true;\n  }\n  if (!aSmile && !bSmile){\n    return true;\n  }\n  return false;\n}"
+  }, {
+    "code" : "const parrotTrouble=function(talking, hour){ \n\n}",
+    "description" : [ "We have a loud talking parrot. The 'hour' parameter is the current hour", "time in the range 0..23. We are in trouble if the parrot is talking and", "the hour is before 7 or after 20.", "Return True if we are in trouble." ],
+    "inputs" : [ "parrotTrouble(true, 6)", "parrotTrouble(true, 7)", "parrotTrouble(false, 6)", "parrotTrouble(true, 21)", "parrotTrouble(false, 21)", "parrotTrouble(true, 23)", "parrotTrouble(false, 23)", "parrotTrouble(true, 20)", "parrotTrouble(false, 12)" ],
+    "name" : "parrotTrouble",
+    "section" : "warmup-1",
+    "solutions" : "const parrotTrouble = function (talking, hour){\n  if (talking === true && (hour < 7 || hour > 20)){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const posNeg=function(a, b, negative){ \n\n}",
+    "description" : [ "Given 2 int values, return True if one is negative and one is positive.", "Except if the parameter 'negative' is True, then return True only if", "both are negative." ],
+    "inputs" : [ "frontBack('code')", "frontBack('a')", "frontBack('ab')", "frontBack('abc')", "frontBack('')", "frontBack('Chocolate')", "frontBack('aavj')", "frontBack('hello')" ],
+    "name" : "frontBack",
+    "section" : "warmup-1",
+    "solutions" : "const frontBack = function (a, b, negative){\n  if (negative === true){\n    return a < 0 && b < 0;\n  }\n  if ((a < 0 && b > 0) || (a > 0 && b < 0)){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const frontBack=function(str){ \n\n}",
+    "description" : [ "Given a string, return a new string where the first and last chars", "have been exchanged." ],
+    "inputs" : [ "or35(3)", "or35(10)", "or35(8)", "or35(15)", "or35(5)", "or35(4)", "or35(9)", "or35(4)", "or35(7)", "or35(6)", "or35(17)", "or35(18)", "or35(29)", "or35(20)", "or35(21)", "or35(22)", "or35(45)", "or35(99)", "or35(100)", "or35(101)", "or35(121)", "or35(122)", "or35(123)" ],
+    "name" : "or35",
+    "section" : "warmup-1",
+    "solutions" : "const or35 = function (str){\n  if (str.length <= 1){\n    return str;\n  }\n  mid = str.substring(1, str.length - 1);\n\n  return str.charAt(str.length - 1) + mid + str.charAt(0);\n}"
+  }, {
+    "code" : "const or35=function(n){ \n\n}",
+    "description" : [ "Return true if the given non-negative number is a multiple of 3", "or a multiple of 5. (Hint: Use the % 'mod' operator)" ],
+    "inputs" : [ "posNeg(1, -1, false)", "posNeg(-1, 1, false)", "posNeg(-4, -5, true)", "posNeg(-4, -5, false)", "posNeg(-4, 5, false)", "posNeg(-4, 5, true)", "posNeg(1, 1, false)", "posNeg(-1, -1, false)", "posNeg(1, -1, true)", "posNeg(-1, 1, true)", "posNeg(1, 1, true)", "posNeg(-1, -1, true)", "posNeg(5, -5, false)", "posNeg(-6, 6, false)", "posNeg(-5, -6, false)", "posNeg(-2, -1, false)", "posNeg(1, 2, false)", "posNeg(-5, 6, true)", "posNeg(-5, -5, true)" ],
+    "name" : "posNeg",
+    "section" : "warmup-1",
+    "solutions" : "const posNeg = function (n){\n  if (n % 3 == 0 || n % 5 == 0){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const icyHot=function(temp1, temp2){ \n\n}",
+    "description" : [ "Given two temperatures, return true if one is less than 0 and ", "the other is greater than 100." ],
+    "inputs" : [ "icyHot(120, -1)", "icyHot(-1, 120)", "icyHot(2, 120)", "icyHot(-1, 100)", "icyHot(-2, 120)", "icyHot(120, 120)" ],
+    "name" : "icyHot",
+    "section" : "warmup-1",
+    "solutions" : "const icyHot = function (temp1, temp2){\n  if ((temp1 < 0 && temp2 > 100) || (temp2 < 0 && temp1 > 100)){\n    return true;\n  }\n  return false;\n}"
+  }, {
+    "code" : "const loneTeen=function(a, b){ \n\n}",
+    "description" : [ "We'll say that a number is 'teen' if it is in the range 13..19 inclusive.", "Given 2 int values, return true if one or the other is teen, but not both" ],
+    "inputs" : [ "loneTeen(13, 99)", "loneTeen(21, 19)", "loneTeen(13, 13)", "loneTeen(14, 20)", "loneTeen(20, 15)", "loneTeen(16, 17)", "loneTeen(16, 9)", "loneTeen(16, 18)", "loneTeen(13, 19)", "loneTeen(13, 20)", "loneTeen(6, 18)", "loneTeen(99, 13)", "loneTeen(99, 99)" ],
+    "name" : "loneTeen",
+    "section" : "warmup-1",
+    "solutions" : "const loneTeen = function (a, b){\n  var isTeen = function(num){\n    return num >= 13 && num <= 19;\n  };\n  var isTeenA = isTeen(a);\n  var isTeenB = isTeen(b);\n  return (isTeenA && !isTeenB) || (!isTeenA && isTeenB);\n}"
+  }, {
+    "code" : "const startOz=function(str){ \n\n}",
+    "description" : [ "Given a string, return a string made of the first 2 chars (if present),", "however include first char only if it is 'o' and include the second only", "if it is 'z', so 'ozymandias' yields 'oz'." ],
+    "inputs" : [ "startOz('ozymandias')", "startOz('bzoo')", "startOz('oxx')", "startOz('ounce')", "startOz('o')", "startOz('abc')", "startOz('')", "startOz('zoo')", "startOz('aztec')", "startOz('zzzz')", "startOz('oznic')" ],
+    "name" : "startOz",
+    "section" : "warmup-1",
+    "solutions" : "const startOz = function (str){\n  result = \"\";\n\n  if (str.length >= 1 && str.charAt(0) == \"o\"){\n    result += str.charAt(0);\n  }\n  if (str.length >= 2 && str.charAt(1) == \"z\"){\n    result += str.charAt(1);\n  }\n  return result;\n}"
+  }, {
+    "code" : "const in3050=function(a ,b){ \n\n}",
+    "description" : [ "Given 2 int values, return true if they are both in the range 30..40 inclusive,", "or they are both in the range 40..50 inclusive." ],
+    "inputs" : [ "in3050(30, 31)", "in3050(30, 41)", "in3050(40, 50)", "in3050(40, 51)", "in3050(39, 50)", "in3050(50, 39)", "in3050(40, 39)", "in3050(49, 48)", "in3050(50, 40)", "in3050(50, 51)", "in3050(35, 36)", "in3050(35, 45)" ],
+    "name" : "in3050",
+    "section" : "warmup-1",
+    "solutions" : "const in3050 = function (a, b){\n  if ((a >= 30 && a <= 40 && b >= 30 && b <= 40) || (a >= 40 && a <= 50 && b >= 40 && b <= 50)){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const lastDigit=function(a ,b){ \n\n}",
+    "description" : [ "Given two non-negative int values, return true if they have the same last digit,", "such as with 27 and 57. Note that the % 'mod' operator computes remainders,", "so 17 % 10 is 7." ],
+    "inputs" : [ "lastDigit(7, 17)", "lastDigit(6, 17)", "lastDigit(3, 113)", "lastDigit(114, 113)", "lastDigit(114, 4)", "lastDigit(10, 0)", "lastDigit(11, 0)" ],
+    "name" : "lastDigit",
+    "section" : "warmup-1",
+    "solutions" : "const lastDigit = function (a, b){\n  return a % 10 == b % 10;\n}"
+  }, {
+    "code" : "const sumDouble=function(a ,b){ \n\n}",
+    "description" : [ "Given two int values, return their sum. Unless the two values are the same,", "then return double their sum." ],
+    "inputs" : [ "sumDouble(1, 2)", "sumDouble(3, 2)", "sumDouble(2, 2)", "sumDouble(-1, 0)", "sumDouble(3, 3)", "sumDouble(0, 0)", "sumDouble(0, 1)", "sumDouble(3, 4)" ],
+    "name" : "sumDouble",
+    "section" : "warmup-1",
+    "solutions" : "const sumDouble = function (a, b){\n  if (a == b){\n    return 2 * (a + b);\n  } else {\n    return a + b;\n  }\n}"
+  }, {
+    "code" : "const makes10=function(a ,b){ \n\n}",
+    "description" : [ "Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10." ],
+    "inputs" : [ "makes10(9, 10)", "makes10(9, 9)", "makes10(1, 9)", "makes10(10, 1)", "makes10(10, 10)", "makes10(8, 2)", "makes10(8, 3)", "makes10(10, 42)", "makes10(12, -2)" ],
+    "name" : "makes10",
+    "section" : "warmup-1",
+    "solutions" : "const makes10 = function (a, b){\n  return a == 10 || b == 10 || a + b == 10;\n}"
+  }, {
+    "code" : "const notString=function(str){ \n\n}",
+    "description" : [ "Given a string, return a new string where 'not ' has been added to the front.", "However, if the string already begins with 'not', return the string unchanged." ],
+    "inputs" : [ "notString('candy')", "notString('x')", "notString('not bad')", "notString('bad')", "notString('not')", "notString('is not')", "notString('no')" ],
+    "name" : "notString",
+    "section" : "warmup-1",
+    "solutions" : "const notString = function (str){\n  if (str === null || str === undefined || str.substring(0, 3) === \"not\"){\n    return str;\n  }\n  return \"not \" + str;\n}"
+  }, {
+    "code" : "const front3=function(str){ \n\n}",
+    "description" : [ "Given a string, we'll say that the front is the first 3 chars of the string.", "If the string length is less than 3, the front is whatever is there.", "Return a new string which is 3 copies of the front." ],
+    "inputs" : [ "front3('Java')", "front3('Chocolate')", "front3('abc')", "front3('abcXYZ')", "front3('ab')", "front3('a')", "front3('')" ],
+    "name" : "front3",
+    "section" : "warmup-1",
+    "solutions" : "const front3 = function (str){\n  front = \"\";\n  if (str.length >= 3){\n    front = str.substring(0, 3);\n  } else {\n    front = str;\n  }\n  return front + front + front;\n}"
+  }, {
+    "code" : "const front22=function(str){ \n\n}",
+    "description" : [ "Given a string, take the first 2 chars and return the string with the 2", "chars added at both the front and back, so 'kitten' yields 'kikittenki'", "chars are there." ],
+    "inputs" : [ "front22('kitten')", "front22('Ha')", "front22('abc')", "front22('ab')", "front22('a')", "front22('')", "front22('Logic')" ],
+    "name" : "front22",
+    "section" : "warmup-1",
+    "solutions" : "const front22 = function (str){\n  take = 2;\n  if (take > str.length){\n    take = str.length;\n  }\n  front = str.substring(0, take);\n  return front + str + front;\n}"
+  }, {
+    "code" : "const in1020=function(a, b){ \n\n}",
+    "description" : [ "Given 2 int values, return true if either of them is in the range 10..20 inclusive." ],
+    "inputs" : [ "in1020(12, 99)", "in1020(21, 12)", "in1020(8, 99)", "in1020(99, 10)", "in1020(20, 20)", "in1020(21, 21)", "in1020(9, 9)" ],
+    "name" : "in1020",
+    "section" : "warmup-1",
+    "solutions" : "const in1020 = function (a, b){\n  if ((a >= 10 && a <= 20) || (b >= 10 && b <= 20)){\n    return true;\n  } else {\n    return false;\n  }\n}"
+  }, {
+    "code" : "const delDel=function(str){ \n\n}",
+    "description" : [ "Given a string, if the string \"del\" appears starting at index 1, return a string where that \"del\" has been deleted. Otherwise, return the string unchanged." ],
+    "inputs" : [ "delDel('adelbc')", "delDel('adelHello')", "delDel('abcdel')", "delDel('add')", "delDel('ad')", "delDel('a')", "delDel('')", "delDel('del')", "delDel('adel')", "delDel('aadelbb')" ],
+    "name" : "delDel",
+    "section" : "warmup-1",
+    "solutions" : "const delDel = function (str){\n  if (str.length < 4){\n    return str;\n  }\n  var output = str;\n  if (str.substring(1, 4) == \"del\"){\n    output = str.substring(0, 1) + str.substring(4, str.length);\n  }\n  return output;\n}"
+  }, {
+    "code" : "const intMax=function(a, b, c){ \n\n}",
+    "description" : [ "Given three int values, a b c, return the largest." ],
+    "inputs" : [ "intMax(1, 2, 3)", "intMax(1, 3, 2)", "intMax(3, 2, 1)", "intMax(9, 3, 3)", "intMax(3, 9, 3)", "intMax(3, 3, 9)", "intMax(8, 2, 3)", "intMax(-3, -1, -2)", "intMax(6, 2, 5)", "intMax(5, 6, 2)", "intMax(5, 2, 6)" ],
+    "name" : "intMax",
+    "section" : "warmup-1",
+    "solutions" : "const intMax = function (a, b, c){\n  max = 0;\n  if (a > b){\n    max = a;\n  } else {\n    max = b;\n  }\n  if (c > max){\n    max = c;\n  }\n  return max;\n}"
+  }, {
+    "code" : "const max1020=function(a, b){ \n\n}",
+    "description" : [ "Given 2 positive int values, return the larger value that is in the range 10..20", "inclusive, or return 0 if neither is in that range." ],
+    "inputs" : [ "max1020(11, 19)", "max1020(19, 11)", "max1020(11, 9)", "max1020(9, 21)", "max1020(10, 21)", "max1020(21, 10)", "max1020(9, 11)", "max1020(23, 10)", "max1020(20, 10)", "max1020(7, 20)", "max1020(17, 16)" ],
+    "name" : "max1020",
+    "section" : "warmup-1",
+    "solutions" : "const max1020 = function (a, b){\n  var between1020 = function(num){\n    return 10 <= num && num <= 20;\n  };\n  var result = 0;\n  if (between1020(a)){\n    result = a;\n  }\n  if (b > result && between1020(b)){\n    result = b;\n  }\n  return result;\n}"
+  }, {
+    "code" : "const endUp=function(str){ \n\n}",
+    "description" : [ "Given a string, return a new string where the last 3 chars are now in upper case.", "If the string has less than 3 chars, uppercase whatever is there. Note that", "str.toUpperCase() returns the uppercase version of a string." ],
+    "inputs" : [ "endUp('Hello')", "endUp('hi there')", "endUp('hi')", "endUp('woo hoo')", "endUp('xyz12')", "endUp('x')", "endUp('')" ],
+    "name" : "endUp",
+    "section" : "warmup-1",
+    "solutions" : "const endUp = function (str){\n  if (str.length <= 3){\n    return str.toUpperCase();\n  }\n  cut = str.length - 3;\n  front = str.substring(0, cut);\n  back = str.substring(cut);\n\n  return front + back.toUpperCase();\n}"
+  } ],
+  "warmup-2" : [ {
+    "code" : "const stringTimes=function(str, n){ \n\n}",
+    "description" : [ "Given a string and a non-negative int n, return a larger string that is n", "copies of the original string." ],
+    "inputs" : [ "stringTimes('Hi', 2)", "stringTimes('Hi', 3)", "stringTimes('Hi', 1)", "stringTimes('Hi', 0)", "stringTimes('Hi', 5)", "stringTimes('Oh Boy!', 2)", "stringTimes('x', 4)", "stringTimes('', 4)", "stringTimes('code', 2)", "stringTimes('code', 3)" ],
+    "name" : "stringTimes",
+    "section" : "warmup-2",
+    "solutions" : "const stringTimes = function (input){\n //todo return null}"
+  }, {
+    "code" : "const arrayCount9 = function(nums){ \n\n}",
+    "description" : [ "Given an array of ints, return the number of 9's in the array." ],
+    "inputs" : [ "doubleX('axxbb')", "doubleX('axaxax')", "doubleX('xxxxx')", "doubleX('xaxxx')", "doubleX('aaaax')", "doubleX('')", "doubleX('abc')", "doubleX('x')", "doubleX('xx')", "doubleX('xaxx')" ],
+    "name" : "doubleX",
+    "section" : "warmup-2",
+    "solutions" : "const doubleX = function (str, n){\n  result = \"\";\n  for (i = 0; i < n; i++){\n    result += str;\n  }\n  return result;\n}"
+  }, {
+    "code" : "const doubleX=function(str){ \n\n}",
+    "description" : [ "Given a string, return true if the first instance of 'x' in the string is", "immediately followed by another 'x'." ],
+    "inputs" : [ "last2('hixxhi')", "last2('xaxxaxaxx')", "last2('axxaaxx')", "last2('xxaxxaxxaxx')", "last2('xaxaxaa')", "last2('xxxx')", "last2('13121312')", "last2('11212')", "last2('13121311')", "last2('hi')", "last2('h')", "last2('')" ],
+    "name" : "last2",
+    "section" : "warmup-2",
+    "solutions" : "const last2 = function (str){\n  str.toLowerCase();\n  x = str.indexOf(\"x\");\n  if (x == -1){\n    return false;\n  }\n  if (x >= str.length){\n    return false;\n  }\n  return str.substring(x + 1, x + 2) == \"x\";\n}"
+  }, {
+    "code" : "const last2=function(str){ \n\n}",
+    "description" : [ "Given a string, return the count of the number of times that a substring ", "length 2 appears in the string and also as the last 2 chars of the string,", "so 'hixxxhi' yields 1 (we won't count the end substring). " ],
+    "inputs" : [ "altPairs('kitten')", "altPairs('Chocolate')", "altPairs('CodingHorror')", "altPairs('yak')", "altPairs('ya')", "altPairs('y')", "altPairs('')", "altPairs('ThisThatTheOther')" ],
+    "name" : "altPairs",
+    "section" : "warmup-2",
+    "solutions" : "const altPairs = function (str){\n  count = 0;\n  if (str.length < 2){\n    return 0;\n  }\n  end = str.substring(str.length - 2);\n  for (x = 0; x < str.length - 2; x++){\n    sub = str.substring(x, x + 2);\n    if (sub == end){\n      count++;\n    }\n  }\n  return count;\n}"
+  }, {
+    "code" : "const altPairs=function(str){ \n\n}",
+    "description" : [ "Given a string, return a string made of the chars at indexes ", "0,1, 4,5, 8,9 ...so 'kittens' yields 'kien'. " ],
+    "inputs" : [ "noTriples([1,1,2,2,1])", "noTriples([1,1,2,2,2,1])", "noTriples([1,1,2,2,2,1])", "noTriples([1,2,1])", "noTriples([1,1,1])", "noTriples([1,1])", "noTriples([1])", "noTriples([1])", "noTriples([])" ],
+    "name" : "noTriples",
+    "section" : "warmup-2",
+    "solutions" : "const noTriples = function (nums){\n  return !!nums.join(\"\").match(/123/g);\n  // for (x=0; x <= nums.length-2; x++){\n  // \tif(nums[x] == 1 && nums[x+1] == 2 && nums[x+2] == 3){\n  // \t\treturn true;\n  // \t}\n  // \treturn false;\n}"
+  }, {
+    "code" : "const noTriples=function(nums){ \n\n}",
+    "description" : [ "Given an array of ints, we'll say that a triple is a value appearing", "3 times in a row in the array. Return true if the array does not contain", "any triples." ],
+    "inputs" : [ "frontTimes('Chocolate', 2)", "frontTimes('Chocolate', 3)", "frontTimes('Abc', 3)", "frontTimes('Ab', 4)", "frontTimes('A', 4)", "frontTimes('',4)", "frontTimes('Abc', 0)" ],
+    "name" : "frontTimes",
+    "section" : "warmup-2",
+    "solutions" : "const frontTimes = function (str){\n  result = \"\";\n  for (x = 0; x < str.length; x += 4){\n    end = x + 2;\n    if (end > str.length){\n      end = str.length;\n    }\n    result = result + str.substring(x, end);\n  }\n  return result;\n}"
+  }, {
+    "code" : "const frontTimes = function(str, n){ \n\n}",
+    "description" : [ "Given a string and a non-negative int n, we'll say that the front of the string is", "the first 3 chars, or whatever is there if the string is less than length 3.", "Return n copies of the front;" ],
+    "inputs" : [ "stringBits('Hello')", "stringBits('Hi')", "stringBits('Heeololeo')", "stringBits('HiHiHi')", "stringBits('')", "stringBits('Greetings')", "stringBits('Chocolate')", "stringBits('pi')", "stringBits('Hello Kitten')", "stringBits('hxaxpxpxy')" ],
+    "name" : "stringBits",
+    "section" : "warmup-2",
+    "solutions" : "const stringBits = function (nums){\n  for (x = 0; x < nums.length - 2; x++){\n    first = nums[x];\n    if (first == nums[x + 1]){\n      if (first == nums[x + 2]){\n        return false;\n      }\n    }\n  }\n  return true;\n}"
+  }, {
+    "code" : "const stringBits = function(n){ \n\n}",
+    "description" : [ "Given a string, return a new string made of every other char ", "starting with the first, so 'Hello' yields 'Hlo'.", "Return n copies of the front;" ],
+    "inputs" : [ "arrayCount9([1,2,9])", "arrayCount9([1,9,9])", "arrayCount9([1,9,9,3,9])", "arrayCount9([1,2,3])", "arrayCount9([])", "arrayCount9([4,2,4,3,1])", "arrayCount9([9,2,4,3,1])" ],
+    "name" : "arrayCount9",
+    "section" : "warmup-2",
+    "solutions" : "const arrayCount9 = function (str, n){\n  frontLen = 3;\n  if (frontLen > str.length){\n    frontLen = str.length;\n  }\n  front = str.substring(0, frontLen);\n  result = \"\";\n  for (x = 0; x < n; x++){\n    result = result + front;\n  }\n  return result;\n}"
+  }, {
+    "code" : "const stringMatch = function(a,b){ \n\n}",
+    "description" : [ "Given 2 strings, a and b, return the number of the positions where they contain", "the same length 2 substring. So 'xxcaazz' and 'xxbaaz' yields 3, since the 'xx', " ],
+    "inputs" : [ "stringMatch('xxcaazz', 'xxbaaz')", "stringMatch('abc', 'abc')", "stringMatch('abc', 'axc')", "stringMatch('hello', 'he')", "stringMatch('he', 'hello')", "stringMatch('', 'hello')", "stringMatch('aabbccdd', 'abbbxxd')", "stringMatch('aaxxaaxx', 'iaxxai')", "stringMatch('iaxxai', 'aaxxaaxx')" ],
+    "name" : "stringMatch",
+    "section" : "warmup-2",
+    "solutions" : "const stringMatch = function (str){\n  result = \"\";\n  for (x = 0; x < str.length; x += 2){\n    result = result + str.substring(x, x + 1);\n  }\n  return result;\n}"
+  }, {
+    "code" : "const stringYak = function(str){ \n\n}",
+    "description" : [ "Suppose the string 'yak' is unlucky. Given a string, return a version where all ", "the 'yak' are removed, but the 'a' can be any char. The 'yak' strings will not overlap." ],
+    "inputs" : [ "stringYak('yakpak')", "stringYak('pakyak')", "stringYak('yak123ya')", "stringYak('yak')", "stringYak('yakxxxyak')", "stringYak('xxcaazz', 'hiyakHi')", "stringYak(xxxyakyyyakzzz')" ],
+    "name" : "stringYak",
+    "section" : "warmup-2",
+    "solutions" : "const stringYak = function (nums){\n  count = 0;\n  for (x = 0; x < nums.length; x++){\n    if (nums[x] == 9){\n      count++;\n    }\n  }\n  return count;\n}"
+  }, {
+    "code" : "const has271 = function(nums){ \n\n}",
+    "description" : [ "Given an array of ints, return true if it contains a 2, 7, 1 pattern -- a value, ", "followed by the value plus 5, followed by the value minus 1. Additionally the 271", "counts even if the '1' differs by 2 or less from the correct value." ],
+    "inputs" : [ "has271([1,2,7,1])", "has271([1,2,8,1])", "has271([2,7,1])", "has271([3,8,2])", "has271([2,7,3])", "has271([2,7,4])", "has271([2,7,-1])", "has271([2,7,-2])", "has271([4,5,3,8,0])", "has271([2,7,5,10,4])", "has271([2,7,-2,4,9,3])", "has271([2,7,5,10,1])", "has271([2,7,-2,10,2])" ],
+    "name" : "has271",
+    "section" : "warmup-2",
+    "solutions" : "const has271 = function (a, b){\n  len = Math.min(a.length, b.length);\n  count = 0;\n  for (x = 0; x < len - 1; x++){\n    aSub = a.substring(x, x + 2);\n    bSub = b.substring(x, x + 2);\n    if (aSub == bSub){\n      count++;\n    }\n  }\n  return count;\n}"
+  }, {
+    "code" : "const countXX = function(str){ \n\n}",
+    "description" : [ "Count the number of 'xx' in the given string. We'll say that overlapping is allowed,", "so 'xxx' contains 2 'xx'." ],
+    "inputs" : [ "countXX('abcxx')", "countXX('xxx')", "countXX('xxxx')", "countXX('abc')", "countXX('Hello There')", "countXX('Hexxo Thxxe')", "countXX('')", "countXX('Kittens')", "countXX('Kittensxxx')" ],
+    "name" : "countXX",
+    "section" : "warmup-2",
+    "solutions" : "const countXX = function (str){\n  result = \"\";\n  for (x = 0; x < str.length; x++){\n    if (x + 2 < str.length && str.charAt(x) == \"y\" && str.charAt(x + 2) == \"k\"){\n      x = x + 2;\n    } else {\n      result = result + str.charAt(x);\n    }\n  }\n  return result;\n}"
+  }, {
+    "code" : "const arrayFront9 = function(nums){ \n\n}",
+    "description" : [ "Given an array of ints, return true if one of the first 4 elements in ", "the array is a 9. The array length may be less than 4" ],
+    "inputs" : [ "arrayFront9([1,2,9,3,4])", "arrayFront9([1,2,3,4,9])", "arrayFront9([1,2,3,4,5])", "arrayFront9([9,2,3])", "arrayFront9([1,9,9])", "arrayFront9([1,2,3])", "arrayFront9([1,9])", "arrayFront9([5,5])", "arrayFront9([2])", "arrayFront9([9])", "arrayFront9([])", "arrayFront9([3,9,2,3,3])" ],
+    "name" : "arrayFront9",
+    "section" : "warmup-2",
+    "solutions" : "const arrayFront9 = function (nums){\n  return !!nums.join(\"\").match(/271/g);\n}"
+  }, {
+    "code" : "const stringX = function(str){ \n\n}",
+    "description" : [ "Given a string, return a version where all the 'x' have been removed.", "Except an 'x' at the very start or end should not be removed." ],
+    "inputs" : [ "stringX('xxHxix')", "stringX('abxxxcd')", "stringX('xabxxxcdx')", "stringX('xKittenx')", "stringX('Hello')", "stringX('xx')", "stringX('x')", "stringX('')" ],
+    "name" : "stringX",
+    "section" : "warmup-2",
+    "solutions" : "const stringX = function (str){\n  count = 0;\n  for (x = 0; x < str.length; x++){\n    if (str.charAt(x) == \"x\"){\n      if (str.charAt(x + 1) == \"x\"){\n        count++;\n      }\n    }\n  }\n  return count++;\n}"
+  }, {
+    "code" : "const array667 = function(nums){ \n\n}",
+    "description" : [ "are next to each other in the array. Also count instances where", "the second '6' is actually a 7." ],
+    "inputs" : [ "array667([6,6,2])", "array667([6,6,2,6])", "array667([6,7,2,6])", "array667([6,6,2,7,6,7])", "array667([1,6,3])", "array667([6,1])", "array667([])", "array667([3,6,7,6])", "array667([3,6,6,7])", "array667([6,3,6,6])", "array667([6,7,6,6])", "array667([1,2,3,5,6])", "array667([1,2,3,6,6])" ],
+    "name" : "array667",
+    "section" : "warmup-2",
+    "solutions" : "const array667 = function (str){\n  result = \"\";\n  for (x = 0; x < str.length - 1; x++){\n    result = result + str.substring(0, x + 1);\n  }\n  return result;\n}"
+  } ]
+}

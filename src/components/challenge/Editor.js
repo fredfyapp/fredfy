@@ -25,7 +25,7 @@ class Editor extends Component {
     this.state = {
       value: "",
       darkMode: false,
-      vim: true
+      vim: true,
     };
   }
 
@@ -33,7 +33,7 @@ class Editor extends Component {
     const value = nextProps.code;
     if (!this.state.value) {
       this.setState({
-        value
+        value,
       });
     }
   };
@@ -41,27 +41,27 @@ class Editor extends Component {
   componentDidMount() {
     var value = this.props.code;
     this.setState({
-      value
+      value,
     });
   }
 
   keybindingSwitcher = e => {
     e.preventDefault();
     this.setState({
-      vim: !this.state.vim
+      vim: !this.state.vim,
     });
   };
 
   themeSwitcher = e => {
     e.preventDefault();
     this.setState({
-      darkMode: !this.state.darkMode
+      darkMode: !this.state.darkMode,
     });
   };
 
   onChange = newValue => {
     this.setState({
-      value: newValue
+      value: newValue,
     });
   };
 
@@ -86,8 +86,10 @@ class Editor extends Component {
             value={value}
             mode="javascript"
             onChange={this.onChange}
+            fontFamily="monaco"
+            fontSize="12pt"
             focus
-            cursorStart={3}
+            cursorStart="3"
             height="350px"
             keyboardHandler={vim ? "vim" : ""}
             theme={darkMode ? "monokai" : "chrome"}
@@ -110,11 +112,11 @@ class Editor extends Component {
 }
 
 const mapStateToProps = state => ({
-  userCode: state.challenge.userCode
+  userCode: state.challenge.userCode,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setUserCode: userCode => dispatch(setUserCode(userCode))
+  setUserCode: userCode => dispatch(setUserCode(userCode)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

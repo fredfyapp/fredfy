@@ -30,6 +30,8 @@ import ProblemsPage from "../components/player/ProblemsPage";
 import ChooseAChallenge from "../components/challenge/ChooseAChallenge";
 import ChallengePage from "../components/challenge/ChallengePage";
 import PuzzlePage from "../components/challenge/PuzzlePage";
+import ReviewPage from "../components/challenge/ReviewPage";
+import AddChallenges from "../components/challenge/AddChallenges";
 
 // ********** NOT FOUND ********** //
 import NotFoundPage from "../components/NotFoundPage";
@@ -77,10 +79,21 @@ class AppRouter extends React.Component {
               exact={true}
             />
             <Navigator
+              path="/addChallenges"
+              component={AddChallenges}
+              exact={true}
+            />
+            <Navigator
               path="/challenges-you/:challenges/:puzzle"
               component={PuzzlePage}
               exact={true}
             />
+            {/* <Navigator
+              path="/review/:challenges/:puzzle"
+              component={ReviewPuzzles}
+              exact={true}
+            /> */}
+            <Navigator path="/review" component={ReviewPage} exact={true} />
             {/* Challenge routes end */}
             <Route component={NotFoundPage} />
           </Switch>

@@ -30,4 +30,5 @@ const challengeReducerDefaultState = {
   currentChallenges: "",
   userCode: "",
   currentWorkout: [],
+  puzzlesToReview: [],
 };
