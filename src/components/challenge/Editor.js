@@ -89,7 +89,7 @@ class Editor extends Component {
             fontFamily="monaco"
             fontSize="12pt"
             focus
-            cursorStart="3"
+            cursorStart={3}
             height="350px"
             keyboardHandler={vim ? "vim" : ""}
             theme={darkMode ? "monokai" : "chrome"}

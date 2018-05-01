@@ -171,45 +171,57 @@ class PuzzlePage extends Component {
     }
 
     return (
-      <div>
-        <div>
-          <h1>
-            {<Link to={"/choose-a-challenge"}>Challenges</Link>}
-            {" / "}
-            {
-              <Link to={`/challenges-you/${challenges}`}>
-                {challenges.padEnd(20, " ")}
-              </Link>
-            }
-            {" / "}
-            {puzzle}
-          </h1>
+      <div className="row">
+        <div className="col-sm">
+          <div>
+            <h1>
+              {<Link to={"/choose-a-challenge"}>Challenges</Link>}
+              {" / "}
+              {
+                <Link to={`/challenges-you/${challenges}`}>
+                  {challenges.padEnd(20, " ")}
+                </Link>
+              }
+              {" / "}
+              {puzzle}
+            </h1>
+          </div>
+
+          <div>
+            <button
+              disabled={!hasPrev}
+              onClick={() => {
+                this.loadNext(-1);
+              }}
+            >
+              prev
+            </button>
+            <button
+              disabled={!hasNext}
+              onClick={() => {
+                this.loadNext(1);
+              }}
+            >
+              next
+            </button>
+          </div>
+
+          <br />
+          <div>
+            <h1>Description</h1>
+            <span>{description}</span>
+            <br />
+            <br />
+            <br />
+            <h2>
+              <bold>Task</bold>{" "}
+            </h2>
+            <span>{task}</span>
+          </div>
         </div>
-        <div>
-          <button
-            disabled={!hasPrev}
-            onClick={() => {
-              this.loadNext(-1);
-            }}
-          >
-            prev
-          </button>
-          <button
-            disabled={!hasNext}
-            onClick={() => {
-              this.loadNext(1);
-            }}
-          >
-            next
-          </button>
-        </div>
+
         <br />
-        <div>
-          <span>{description}</span>
-          <span>{task}</span>
-        </div>
-        <br />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="col-sm">
           <Editor code={code} />
           {hasAnyError ? (
             <h1>{errorType}</h1>
