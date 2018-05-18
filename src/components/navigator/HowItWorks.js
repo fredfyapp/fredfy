@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 const HowItWorks = ({}) => {
   return (
-    <div>
-      <h2>HowItWorks</h2>
+    <div id="how-works" className="block-content container">
+      <h2>How Fredfy works?</h2>
     </div>
   );
 };

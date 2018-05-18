@@ -1,8 +1,8 @@
 #footer {
   max-width: $sz-full;
   margin: 10px auto;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 25px 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px 50px;
   display: flex;
   justify-content: space-around;
 
@@ -10,13 +10,34 @@
     display: flex;
   }
   & .logo {
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 1;
-    opacity: 0.3;
   }
   & .links {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
+    height: 20px;
+    height: 20px;
+    margin: 20px 0 0 20px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9em;
+  }
+}
+
+#footer .logo h1 a {
+  background: url("/images/logo-footer.svg") no-repeat top left / 40px auto;
+  width: 40px;
+  height: 40px;
+  color: rgba(0, 0, 0, 0);
+  font-size: 0.1em;
+  display: inline-block;
+}
+
+.links p a {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0 5px;
+  &:hover {
+    color: rgba(255, 255, 255, 1);
   }
 }

@@ -5,11 +5,12 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 html .container {
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1em;
   line-height: 1em;
   max-width: 100% !important;
@@ -20,7 +21,9 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
   line-height: 1.6;
-  background: $bg-main;
+  background: -webkit-radial-gradient(top, #07042e, #050b50);
+  background: radial-gradient(at top, #07042e, #050b50);
+  color: #fff;
 }
 
 .main-container {
@@ -47,17 +50,16 @@ a {
   }
 }
 
-
 /* CONTENT */
 
 .block-content {
   width: 100%;
-  min-height: 400px;
+  min-height: 300px;
   box-sizing: border-box;
   padding: 30px 20px 50px;
 
-  & > h2 {
-    font-family: 'Press Start 2P', Verdana, Arial;
+  & h2 {
+    font-family: "Press Start 2P", Verdana, Arial;
     font-size: 1.5em;
     text-align: center;
   }
@@ -68,7 +70,6 @@ a {
   margin: auto;
   padding: 20px;
 }
-
 
 #gameover .btn,
 #congrats .btn,
@@ -81,4 +82,90 @@ a {
   position: absolute;
   right: 0;
   left: 0;
+}
+
+#app {
+  background-image: url("/images/bg-sky.svg");
+}
+
+/**/
+.stars {
+  background: url("/images/stars.svg") no-repeat bottom center / 1000px auto;
+  height: 360px;
+}
+
+.start-game a {
+  background: #d8362a;
+  color: #fff;
+  border-radius: 100px;
+  padding: 12px 80px;
+  font-size: 2.4em;
+  &:hover {
+    background: #c0392b;
+  }
+}
+
+.space-home {
+  background: url("/images/spaceship-home.svg") no-repeat right center / 170px
+    auto;
+  width: 100%;
+  height: 340px;
+  position: relative;
+  top: -60px;
+
+  animation-name: sobe;
+  animation-duration: 30s;
+
+  .hi-fred {
+    background: url("/images/hi-fred.svg") no-repeat 147px 2px /160px auto;
+    width: 100%;
+    height: 130px;
+    position: relative;
+    top: -20px;
+    animation-name: aparece;
+    animation-duration: 10s;
+    animation-delay: 4s;
+    opacity: 0;
+  }
+}
+
+@keyframes aparece {
+  0% {
+    opacity: 0;
+  }
+  24% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sobe {
+  0% {
+    top: 80px;
+  }
+  100% {
+    top: -60px;
+  }
+}
+
+.welcome {
+  margin-top: 30px;
+}
+.welcome p {
+  text-align: center;
+  font-size: 1.4em;
+  margin: 20px auto;
+  line-height: 1.2em;
+  width: 60%;
 }

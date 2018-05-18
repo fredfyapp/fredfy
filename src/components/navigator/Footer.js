@@ -1,34 +1,29 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Footer = ({}) => {
   return (
     <footer id="footer">
       <div className="logo">
-        <h1>Fredfy</h1>
-        <h2>
-          Learn<br />Code<br />Repeat
-        </h2>
+        <h1>
+          <Link to="/">Fredfy</Link>
+        </h1>
       </div>
       <div className="links">
-        <ul className="pages">
-          <Link to='/how-it-works'>
-            <li>How works Fredfy?</li>
+        <p>
+          <Link to="/how-it-works">How works Fredfy?</Link>{" "}
+          <Link to="/our-team">Our Team</Link>{" "}
+          <Link to="/ranking">Ranking</Link> |
+          <Link to="https://github.com/fredfyapp/fredfy" target="_blank">
+            Code on GITHUB
           </Link>
-          <Link to='/our-team'>
-            <li>Our Team</li>
+          <Link to="https://invis.io/FWJ21Y99EMT" target="_blank">
+            Prototype on INVISION
           </Link>
-          <Link to='/ranking'>
-            <li>Ranking</li>
-          </Link>
-        </ul>
-        <ul className="media">
-          <li>Made in Dublin/Ireland @ 2018</li>
-          <li>Twitter</li>
-          <li>GitHub</li>
-        </ul>
+          | Made in Dublin/Ireland @ 2018
+        </p>
       </div>
     </footer>
   );

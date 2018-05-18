@@ -1,16 +1,15 @@
 // ********** REACT ********** //
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Header = ({}) => {
   return (
-    <nav className="header navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="header navbar navbar-expand-lg navbar-light">
       <div className="logo navbar-brand">
-        <Link to='/'>
-          <h1>Fredfy</h1>
-          <h2>Learn_</h2>
-        </Link>
+        <h1>
+          <Link to="/">Fredfy </Link>
+        </h1>
       </div>
       <button
         className="navbar-toggler"
@@ -25,9 +24,9 @@ const Header = ({}) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">Sign Up</li>
-          <li>Sign In</li>
-          <li>Profile</li>
+          <li className="nav-item">
+            <Link to="/">CONNECT</Link>
+          </li>
         </ul>
       </div>
     </nav>

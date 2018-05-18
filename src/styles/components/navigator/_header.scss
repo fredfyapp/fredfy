@@ -1,19 +1,16 @@
-.navbar {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
+.header {
+  width: $sz-xxl;
+  margin: 20px auto 80px;
+  height: 80px;
 
-.logo h1 {
-  font-family: 'Bungee', Impact, Arial;
-  font-size: 2em;
-  & a {
-    color: $tx-a;
+  .logo h1 a {
+    background: url("/images/logo-fredfy.svg") no-repeat top left / 180px auto;
+    width: 180px;
+    height: 60px;
+    color: rgba(0, 0, 0, 0);
+    font-size: 0.1em;
+    display: inline-block;
   }
-}
-
-.logo h2 {
-  font-family: 'Press Start 2P', Verdana, Arial;
-  font-size: 0.8em;
-  margin-top: -10px;
 }
 
 .mr-auto,
@@ -25,4 +22,17 @@
 .navbar-nav a {
   text-transform: uppercase;
   font-size: 0.9em;
+}
+
+.navbar-nav .nav-item a {
+  background: rgba(255, 255, 255, 0.9);
+  color: #050b50;
+  border-radius: 100px;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  padding: 8px 30px;
+  &:hover {
+    background: rgba(255, 255, 255, 1);
+  }
 }
