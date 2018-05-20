@@ -88,6 +88,13 @@ a {
   background-image: url("/images/bg-sky.svg");
 }
 
+// #app > div {
+//   background: url("/images/yellow-stars.svg") no-repeat center center / 50% auto;
+//   animation-name: sintila;
+//   animation-duration: 20s;
+//   animation-iteration-count: infinite;
+// }
+
 /**/
 .stars {
   background: url("/images/stars.svg") no-repeat bottom center / 1000px auto;
@@ -150,6 +157,27 @@ a {
   }
 }
 
+@keyframes sintila {
+  0% {
+    opacity: 0;
+  }
+  24% {
+    opacity: .5;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: .5;
+  }
+  86% {
+    opacity: .2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes sobe {
   0% {
     top: 80px;
@@ -168,4 +196,92 @@ a {
   margin: 20px auto;
   line-height: 1.2em;
   width: 60%;
+}
+
+.general-block{
+  padding: 25px 25px 20px;
+  color: #333;
+  border-radius: 8px;
+  width: 100%;
+  margin: 30px auto 20px;
+  background: #f3f3f3;
+
+  h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin:25px 0 10px;
+    color: #050b50;
+
+    &:first-child{
+      margin-top: 5px;
+    }
+  }
+
+  p{
+    margin-bottom: 5px;
+    line-height: 1.4em;
+  }
+
+  ul{
+    margin-left: 20px;
+    li{
+      list-style: initial;
+      line-height: 1.4em;
+    }
+  }
+}
+
+.trans-block{
+  padding: 25px 25px 20px;
+  width: 100%;
+  margin: 30px auto 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  a {
+    display: flex;
+    width: 19%;
+    margin: 3% 7%;
+    text-align: center;
+  }
+}
+
+#world .trans-block a{
+  &:hover{
+    position: relative;
+    top: -15px;
+  }
+  > div{
+    width: 210px;
+    height: 290px;
+    margin: 0 auto;
+    h2{
+      display: none;
+    }
+
+    &.html{
+      background: url("/images/w-html.svg") no-repeat top center / 100% auto;
+
+      h2{
+        display: block;
+        width: 170px;
+        height: 50px;
+        background: url("/images/done.svg") no-repeat center center / 100% auto;
+        position: relative;
+        top: 163px;
+        left: 20px;
+        font-size: .1px;
+        color: rgba(0,0,0,0);
+      }
+    }
+    &.css{
+      background: url("/images/w-css.svg") no-repeat top center / 100% auto;
+    }
+    &.javascript{
+      background: url("/images/w-js.svg") no-repeat top center / 100% auto;
+    }
+
+  }
 }

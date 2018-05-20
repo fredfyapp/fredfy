@@ -19,9 +19,9 @@ class ChooseAWorld extends React.Component {
 
   render() {
     return (
-      <div id="world" className="block-content">
+      <div id="world" className="block-content container">
         <h2>Choose a World</h2>
-        <div>
+        <div className="trans-block">
           {this.props.database.learning.map(subject => {
             return (
               <Link

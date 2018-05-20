@@ -28,20 +28,22 @@ class ChooseACharacter extends React.Component {
     return (
       <div id="hero" className="block-content">
         <h2>Choose a Hero</h2>
-        {this.props.database.characters.map((character) => {
-          return (
-            <Link
-              key={character.name}
-              to={`/teaches-you/${subject}`}
-              onClick={() => {
-                this.chosenCharacter = character.name;
-                this.handleChosenCharacter();
-              }}
-            >
-              <CharacterCard characterName={character.name} />
-            </Link>
-          );
-        })}
+        <div className="trans-block">
+          {this.props.database.characters.map((character) => {
+            return (
+              <Link
+                key={character.name}
+                to={`/teaches-you/${subject}`}
+                onClick={() => {
+                  this.chosenCharacter = character.name;
+                  this.handleChosenCharacter();
+                }}
+              >
+                <CharacterCard characterName={character.name} />
+              </Link>
+            );
+          })}
+        </div>
       </div>
     );
   }

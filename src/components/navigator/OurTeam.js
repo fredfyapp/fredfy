@@ -6,6 +6,20 @@ const OurTeam = ({}) => {
   return (
     <div id="our-team" className="block-content container">
       <h2>OurTeam</h2>
+      <div className="general-block">
+        <h3>Fredfy</h3>
+        <p>Learn to program through a gamified approach, making the experience pleasant and fun.</p>
+        <h3>Project</h3>
+        <p>Through a series of questions the learner will become fluent in the art of coding, having on its way questions of multiple choice, filling the gap and even real coding. Challenges with friends will make the experience even more exciting. It's time to learn how to be a programmer!</p>
+          <h3>Authors</h3>
+          <ul>
+            <li>Catalina Ravest - Documentation and Reseach</li>
+            <li>Leonardo São Thiago - JavaScript (React) Developer</li>
+            <li>Marcel Cruz - Product Engineer & JavaScript (React) Developer </li>
+            <li>Thiago Rodrigues - UX Designer and UI Developer</li>
+            <li>Willyum Anglim - Documentation and PR</li>
+          </ul>
+      </div>
     </div>
   );
 };
