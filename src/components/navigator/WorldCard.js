@@ -1,37 +1,55 @@
 // ********** REACT ********** //
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ********** REDUX ********** //
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import { setFinishedSubject } from "../../actions/user";
+import { setFinishedSubject } from '../../actions/user';
 
 // ********** SELECTORS ********** //
-import checkFinishedSections from "../../selectors/checkFinishedSections";
+import checkFinishedSections from '../../selectors/checkFinishedSections';
 
 class WorldCard extends React.Component {
   componentDidMount() {
     const subjectName = this.props.subject.subject;
     const userSubject = this.props.user.subjects[subjectName];
-    const finishedSections = this.props.user.subjects[subjectName]
-      .finishedSections;
+    let finishedSections;
 
-    if (checkFinishedSections(finishedSections)) {
-      this.props.setFinishedSubject(subjectName, true);
-    } else {
-      this.props.setFinishedSubject(subjectName, false);
+    if (this.props.user.subjects[subjectName]) {
+      finishedSections = this.props.user.subjects[subjectName].finishedSections;
     }
+
+    if (finishedSections) {
+      if (checkFinishedSections(finishedSections)) {
+        this.props.setFinishedSubject(subjectName, true);
+      } else {
+        this.props.setFinishedSubject(subjectName, false);
+      }
+    }
+
+    // if (checkFinishedSections(finishedSections)) {
+    //   this.props.setFinishedSubject(subjectName, true);
+    // } else {
+    //   this.props.setFinishedSubject(subjectName, false);
+    // }
   }
 
   render() {
     const subject = this.props.subject.subject;
+    let subjectStatus;
+
+    if (this.props.user.subjects[subject]) {
+      if (this.props.user.subjects[subject].isFinished) {
+        subjectStatus = 'subjectDone';
+      }
+    } else {
+      subjectStatus = 'subjectBlocked';
+    }
+
     return (
       <div className={subject}>
-        <h2>
-          {subject}
-          <span>{this.props.user.subjects[subject].isFinished && "done!"}</span>
-        </h2>
+        <h2 className={subjectStatus}>{subject}</h2>
       </div>
     );
   }
