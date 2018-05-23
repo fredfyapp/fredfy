@@ -1,9 +1,9 @@
 // ********** REACT ********** //
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ********** REDUX ********** //
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 const SectionCard = props => {
   const subject = props.subject;
@@ -11,10 +11,13 @@ const SectionCard = props => {
 
   return (
     <div>
-      <h2>
+      <h2
+        className={
+          props.user.subjects[subject].finishedSections[sectionName]
+            ? 'sectionDone'
+            : 'false'
+        }>
         {sectionName}
-        {props.user.subjects[subject].finishedSections[sectionName] &&
-          " - done!"}
       </h2>
     </div>
   );
