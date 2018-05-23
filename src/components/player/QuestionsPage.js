@@ -18,7 +18,6 @@ import { setIsPlaying, setShuffledQuestions } from '../../actions/playing';
 import shuffleArray from '../../selectors/shuffleArray';
 
 class QuestionsPage extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -26,11 +25,11 @@ class QuestionsPage extends React.Component {
     this.sectionName = this.props.match.params.section;
 
     this.subjectObject = this.props.database.learning.find(
-      (subject) => subject.subject === this.subjectName
+      subject => subject.subject === this.subjectName,
     );
 
     this.sectionObject = this.subjectObject.sections.find(
-      (section) => section.sectionName === this.sectionName
+      section => section.sectionName === this.sectionName,
     );
   }
 
@@ -40,7 +39,6 @@ class QuestionsPage extends React.Component {
   }
 
   render() {
-
     const subjectName = this.subjectName;
     const sectionName = this.sectionName;
     const sectionObject = this.sectionObject;
@@ -49,55 +47,59 @@ class QuestionsPage extends React.Component {
     const shuffledQuestions = this.props.playing.shuffledQuestions;
 
     return (
-      <div className='questions-page'>
+      <div className="questions-page">
         <div>
-            <h2>{this.sectionObject[sectionName]}</h2>
-          {
+          <h2>{this.sectionObject[sectionName]}</h2>
+          {/* {
             isPlaying ?
              <QuestionsCard
                shuffledQuestions={shuffledQuestions}
                {...this.props}
              /> :
             <Explanation sectionObject={sectionObject} />
-          }
+          } */}
+
+          <QuestionsCard
+            shuffledQuestions={shuffledQuestions}
+            {...this.props}
+          />
 
           <CharacterCard characterName={character} />
           <Link
             to={`/teaches-you/${subjectName}`}
             onClick={() => {
-              this.props.setIsPlaying(false)
-            }}
-          >
+              this.props.setIsPlaying(false);
+            }}>
             <h3>Go back</h3>
           </Link>
 
-          {
-            !isPlaying &&
-              <button
-                onClick={() => {
-                  this.props.setIsPlaying(true)
-                }}
-              >Play</button>
-          }
+          {!isPlaying && (
+            <button
+              onClick={() => {
+                this.props.setIsPlaying(true);
+              }}>
+              Play
+            </button>
+          )}
         </div>
       </div>
     );
   }
-
 }
 
 QuestionsPage.propTypes = {
   // : PropTypes.
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
-  playing: state.playing
+  playing: state.playing,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying)),
-  setShuffledQuestions: (shuffledQuestions) => dispatch(setShuffledQuestions(shuffledQuestions))
+const mapDispatchToProps = dispatch => ({
+  setIsPlaying: isPlaying => dispatch(setIsPlaying(isPlaying)),
+  setShuffledQuestions: shuffledQuestions =>
+    dispatch(setShuffledQuestions(shuffledQuestions)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);

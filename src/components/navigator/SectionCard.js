@@ -10,15 +10,13 @@ const SectionCard = props => {
   const sectionName = props.section.sectionName;
 
   return (
-    <div>
-      <h2
-        className={
-          props.user.subjects[subject].finishedSections[sectionName]
-            ? 'sectionDone'
-            : 'false'
-        }>
-        {sectionName}
-      </h2>
+    <div
+      className={
+        props.user.subjects[subject].finishedSections[sectionName]
+          ? 'sectionDone'
+          : 'false'
+      }>
+      <h2>{sectionName}</h2>
     </div>
   );
 };
