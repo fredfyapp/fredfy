@@ -17,14 +17,20 @@
   h3 {
     width: 100px;
     font-family: "Press Start 2P", Verdana, Arial;
-    font-size: .8em;
+    font-size: 1em;
     text-align: center;
     text-transform: uppercase;
     flex-grow: 1;
     padding: 15px 10px;
 
     &:last-child{
-      font-size: 1em;
+      font-size: 1.2em;
+    }
+    &:first-child{
+      width: 50px !important;
+      padding: 0 !important;
+      flex-grow: 0 !important;
+      margin: 15px;
     }
   }
 }
@@ -39,11 +45,40 @@
   display: flex;
   text-align: center;
 
+  .pic {
+    background: url("/images/face-fred.png") no-repeat center center /53px 53px;
+    font-size: .1em;
+    color:rgba(0,0,0,0);
+    width: 50px !important;
+    height: 50px;
+    border-radius: 100px;
+    border:2px solid #fff;
+    padding: 0 !important;
+    flex-grow: 0 !important;
+    margin: 15px;
+  }
+  &:nth-child(1) .pic {
+      background: url("/images/face-fred.png") no-repeat center center /53px 53px,
+  }
+
+  &:nth-child(2) .pic {
+    background: url("/images/face-chloe.png") no-repeat center center /53px 53px;
+  }
+  &:nth-child(3) .pic {
+    background: url("/images/face-piu.png") no-repeat center center /53px 53px;
+  }
+  &:nth-child(4) .pic {
+    background: url("/images/face-127.png") no-repeat center center /53px 53px;
+  }
+
   h4 {
     width: 100px;
     flex-grow: 1;
     padding: 15px 10px;
     text-align: center;
+    align-self: center;
+    font-family: "Press Start 2P", Verdana, Arial;
+    font-size: .8em;
   }
 }
 
