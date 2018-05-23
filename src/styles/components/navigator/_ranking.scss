@@ -1,24 +1,36 @@
 .ranking {
-  background: lightgreen;
+
 }
 
 .table {
-  background: lightpink;
+
+  padding: 20px;
+  margin: 20px 0;
 }
 
 .table__header {
-  background: lightblue;
+
   display: flex;
   text-align: center;
+  flex-direction: row;
 
   h3 {
-    background: red;
     width: 100px;
+    font-family: "Press Start 2P", Verdana, Arial;
+    font-size: .8em;
+    text-align: center;
+    text-transform: uppercase;
+    flex-grow: 1;
+    padding: 15px 10px;
+
+    &:last-child{
+      font-size: 1em;
+    }
   }
 }
 
 .table__body {
-  background: orange;
+
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +40,13 @@
   text-align: center;
 
   h4 {
-    background: red;
     width: 100px;
+    flex-grow: 1;
+    padding: 15px 10px;
+    text-align: center;
   }
+}
+
+.table__item:nth-child(odd){
+  background: rgba(0,0,0,0.2);
 }
