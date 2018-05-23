@@ -73,14 +73,14 @@ class QuestionsPage extends React.Component {
             <h3>Go back</h3>
           </Link>
 
-          {!isPlaying && (
+          {/* {!isPlaying && (
             <button
               onClick={() => {
                 this.props.setIsPlaying(true);
               }}>
               Play
             </button>
-          )}
+          )} */}
         </div>
       </div>
     );

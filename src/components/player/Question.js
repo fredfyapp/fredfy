@@ -7,27 +7,30 @@ import { connect } from 'react-redux';
 
 // ********** ACTIONS ********** //
 import { setIsPlaying, setShuffledOptions } from '../../actions/playing';
-import { setFinishedSection, setSubjectPoints, setTotalPoints } from '../../actions/user';
+import {
+  setFinishedSection,
+  setSubjectPoints,
+  setTotalPoints,
+} from '../../actions/user';
 
 // ********** SELECTORS ********** //
 import shuffleArray from '../../selectors/shuffleArray';
 
 class Question extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       questionsAnswered: 0,
       selectedOption: '',
-      error: ''
+      error: '',
     };
   }
 
   handleQuestionsAnswered = () => {
-    if(!this.state.selectedOption) {
+    if (!this.state.selectedOption) {
       this.setState({
-        error: 'Choose an option'
+        error: 'Choose an option',
       });
       return;
     }
@@ -38,15 +41,15 @@ class Question extends React.Component {
 
     if (!shuffledOptions[selectedOption].isCorrect) {
       this.setState({
-        error: 'Wrong answer'
+        error: 'Wrong answer',
       });
       return;
     }
 
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       questionsAnswered: prevState.questionsAnswered + 1,
       selectedOption: '',
-      error: ''
+      error: '',
     }));
 
     const index = this.state.questionsAnswered;
@@ -59,30 +62,33 @@ class Question extends React.Component {
     if (questions.length === index + 1) {
       alert('you finished');
       this.props.setFinishedSection(subjectName, sectionName);
-      this.props.setSubjectPoints(subjectName, this.props.subjectPoints + points);
-      
+      this.props.setSubjectPoints(
+        subjectName,
+        this.props.subjectPoints + points,
+      );
+
       this.props.setTotalPoints(this.props.totalPoints + points);
-      
+
       this.props.history.push(`/teaches-you/${subjectName}`);
       this.props.setIsPlaying(false);
       return;
     }
-    
+
     // + 1 TO GET NEXT ITEM IN THE ARRAY BEFORE CHANGING STATE
     this.props.setShuffledOptions(shuffleArray(questions[index + 1].options));
-  }
+  };
 
-  handleOptionChange = (changeEvent) => {
+  handleOptionChange = changeEvent => {
     this.setState({
-      selectedOption: changeEvent.target.value
+      selectedOption: changeEvent.target.value,
     });
-  }
+  };
 
   componentDidMount() {
     const index = this.state.questionsAnswered;
     const questions = this.props.questions;
 
-    if(questions[index]) {
+    if (questions[index]) {
       this.props.setShuffledOptions(shuffleArray(questions[index].options));
     }
   }
@@ -94,39 +100,33 @@ class Question extends React.Component {
 
     return (
       <div>
-        <h3>Correct questions: {index}</h3>
-        {
-          questions[index] &&
-            <div>
-              <h3>{questions[index].title}</h3>
-              <form>
-                {
-                  shuffledOptions.map((option, index) => (
-                    <div key={option.answer}>
-                      <label>
-                        <input
-                          type="radio"
-                          value={index}
-                          checked={this.state.selectedOption === index.toString()}
-                          correct={option.isCorrect.toString()}
-                          onChange={this.handleOptionChange}
-                        />
-                        {option.answer}
-                      </label>
-                    </div>
-                  ))
-                }
-              </form>
-            </div>
-        }
+        <div className={`a${index}`} />
+        {questions[index] && (
+          <div>
+            <h3>{questions[index].title}</h3>
+            <form>
+              {shuffledOptions.map((option, index) => (
+                <div key={option.answer}>
+                  <label>
+                    <input
+                      type="radio"
+                      value={index}
+                      checked={this.state.selectedOption === index.toString()}
+                      correct={option.isCorrect.toString()}
+                      onChange={this.handleOptionChange}
+                    />
+                    {option.answer}
+                  </label>
+                </div>
+              ))}
+            </form>
+          </div>
+        )}
         <button onClick={this.handleQuestionsAnswered}>Answer</button>
-        {
-          this.state.error && <p>{this.state.error}</p>
-        }
+        {this.state.error && <p className="wrong-answer">{this.state.error}</p>}
       </div>
     );
   }
-
 }
 
 Question.propTypes = {
@@ -137,15 +137,18 @@ const mapStateToProps = (state, props) => ({
   shuffledOptions: state.playing.shuffledOptions,
   subjectPoints: state.user.subjects[props.subjectName].points,
   totalPoints: state.user.totalPoints,
-  user: state.user
+  user: state.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setIsPlaying: (isPlaying) => dispatch(setIsPlaying(isPlaying)),
-  setShuffledOptions: (shuffledOptions) => dispatch(setShuffledOptions(shuffledOptions)),
-  setFinishedSection: (subject, section) => dispatch(setFinishedSection(subject, section)),
-  setSubjectPoints: (subject, points) => dispatch(setSubjectPoints(subject, points)),
-  setTotalPoints: (points) => dispatch(setTotalPoints(points))
+const mapDispatchToProps = dispatch => ({
+  setIsPlaying: isPlaying => dispatch(setIsPlaying(isPlaying)),
+  setShuffledOptions: shuffledOptions =>
+    dispatch(setShuffledOptions(shuffledOptions)),
+  setFinishedSection: (subject, section) =>
+    dispatch(setFinishedSection(subject, section)),
+  setSubjectPoints: (subject, points) =>
+    dispatch(setSubjectPoints(subject, points)),
+  setTotalPoints: points => dispatch(setTotalPoints(points)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);
