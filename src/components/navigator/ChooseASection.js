@@ -1,16 +1,16 @@
 // ********** REACT ********** //
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // ********** REDUX ********** //
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // ********** COMPONENTS ********** //
-import ChallengeCard from "./ChallengeCard";
-import SubjectRanking from "./SubjectRanking";
-import Inventory from "./Inventory";
-import SectionCard from "./SectionCard";
+import ChallengeCard from './ChallengeCard';
+import SubjectRanking from './SubjectRanking';
+import Inventory from './Inventory';
+import SectionCard from './SectionCard';
 
 class ChooseASection extends React.Component {
   componentDidMount() {
@@ -36,8 +36,7 @@ class ChooseASection extends React.Component {
                     to={`/teaches-you/${subjectObject.subject}/${
                       section.sectionName
                     }`}
-                    key={section.sectionName}
-                  >
+                    key={section.sectionName}>
                     <SectionCard
                       subject={subjectObject.subject}
                       section={section}
@@ -52,9 +51,6 @@ class ChooseASection extends React.Component {
           </div>
 
           <div className="section__sidepanel">
-            <div className="inventory-panel">
-              <Inventory />
-            </div>
             <div className="ranking-panel">
               <SubjectRanking
                 database={this.props.database}
@@ -75,9 +71,9 @@ ChooseASection.propTypes = {
 
 const mapStateToProps = (state, props) => ({
   subjectObject: props.database.learning.find(
-    subject => subject.subject === props.match.params.subject
+    subject => subject.subject === props.match.params.subject,
   ),
-  user: state.user
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(ChooseASection);
