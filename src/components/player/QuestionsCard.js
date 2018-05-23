@@ -8,12 +8,10 @@ import ProgressBar from './ProgressBar';
 import Question from './Question';
 
 class QuestionsCard extends React.Component {
-
   render() {
     const subjectName = this.props.match.params.subject;
     return (
       <div>
-        <ProgressBar />
         <Question
           questions={this.props.shuffledQuestions}
           subjectName={subjectName}
@@ -22,7 +20,6 @@ class QuestionsCard extends React.Component {
       </div>
     );
   }
-
 }
 
 QuestionsCard.propTypes = {
