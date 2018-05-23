@@ -13,11 +13,11 @@ const OurTeam = ({}) => {
         <p>Through a series of questions the learner will become fluent in the art of coding, having on its way questions of multiple choice, filling the gap and even real coding. Challenges with friends will make the experience even more exciting. It's time to learn how to be a programmer!</p>
           <h3>Authors</h3>
           <ul>
-            <li>Catalina Ravest - Documentation and Reseach</li>
-            <li>Leonardo São Thiago - JavaScript (React) Developer</li>
-            <li>Marcel Cruz - Product Engineer & JavaScript (React) Developer </li>
-            <li>Thiago Rodrigues - UX Designer and UI Developer</li>
-            <li>Willyum Anglim - Documentation and PR</li>
+            <li>Catalina Ravest - <i>Documentation and Reseach</i></li>
+            <li>Leonardo São Thiago - <i>JavaScript (React) Developer</i></li>
+            <li>Marcel Cruz - <i>Product Owner & JavaScript (React) Developer</i> </li>
+            <li>Thiago Rodrigues - <i>UX Designer and UI Developer</i></li>
+            <li>Willyum Anglim -<i> Documentation and PR</i></li>
           </ul>
       </div>
     </div>
