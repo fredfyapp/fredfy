@@ -25,7 +25,6 @@ const TableBody = ({ users, subjectObject }) => {
               <div
                 className='table__item'
                 key={user.id}>
-                  <h4 className='pic'>picture</h4>
                   <h4>{user.name}</h4>
                   <h4>{user.subjectPoints}</h4>
                   <h4>{user.totalPoints}</h4>

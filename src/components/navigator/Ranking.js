@@ -8,6 +8,7 @@ import { getGlobalTopUsers } from "../../selectors/getRanking";
 const TableHeader = ({ subjects }) => {
   return (
     <div className="table__header">
+      <h3></h3>
       <h3>Name</h3>
       {subjects[0].map(subject => {
         return <h3 key={subject.subject}>{subject.subject}</h3>;
@@ -24,6 +25,7 @@ const TableBody = ({ users }) => {
         {getGlobalTopUsers(users[0]).map(user => {
           return (
             <div className="table__item" key={user.id}>
+              <h4 className='pic'>pic</h4>
               <h4>{user.name}</h4>
               {user.subjects.map(subject => {
                 return (
