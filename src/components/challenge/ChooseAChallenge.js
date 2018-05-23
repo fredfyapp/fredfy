@@ -42,14 +42,19 @@ class ChooseAChallenge extends React.Component {
     const { challenges } = this.state;
 
     return (
-      <div>
-        <h3>Choose a Challenge</h3>
-        <div>
-          <ul>
+      <div className="container">
+        <p className="h1">Choose a Course</p>
+        <div className="">
+          <ul className="">
             {challenges[0] ? (
               challenges.map(challenge => (
-                <li key={challenge.toString()}>
+                <li
+                  className="card"
+                  style={{ width: "12rem" }}
+                  key={challenge.toString()}
+                >
                   <Link
+                    className="card-body"
                     key={challenge.toString()}
                     to={`/challenges-you/${challenge}`}
                     onClick={() => {

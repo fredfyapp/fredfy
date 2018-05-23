@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 const Footer = ({}) => {
   return (
-    <footer id="footer">
+    <footer id="footer" className="fixed-bottom">
       <div className="logo">
         <Link to="/">
           <h1>Fredfy</h1>
-          <h2>Learn<br />Code<br />Repeat</h2>
+          <h2>
+            Learn<br />Code<br />Repeat
+          </h2>
         </Link>
       </div>
       <div className="links">
@@ -30,7 +32,7 @@ const Footer = ({}) => {
               Twitter
             </Link>
           </li>
-          <li  className="gt social">
+          <li className="gt social">
             <Link to="https://github.com/fredfyapp/fredfy" target="_blank">
               Github
             </Link>

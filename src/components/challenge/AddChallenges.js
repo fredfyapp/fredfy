@@ -7,16 +7,12 @@ class AddChallenges extends Component {
 
     this.state = {
       type: "challenges",
+      section: "",
       code: "",
       description: "",
       task: "",
       inputs: "",
-      questionTitle: "",
       solution: "",
-      optionOne: "",
-      optionTwo: "",
-      optionThree: "",
-      optionFour: "",
       name: "",
     };
   }
@@ -34,15 +30,12 @@ class AddChallenges extends Component {
     e.preventDefault();
     const {
       type,
+      section,
       name,
       code,
       description,
       task,
       inputs,
-      optionOne,
-      optionTwo,
-      optionThree,
-      optionFour,
       solutions,
     } = this.state;
     const challenges = database.ref("challenges/variables/");
@@ -55,7 +48,7 @@ class AddChallenges extends Component {
         task,
         inputs: i,
         solutions,
-        section: "variables",
+        section: "Interview Questions - Grider's bootcamp",
         name,
       };
     } else if (this.state.type === "mcq") {
@@ -87,6 +80,15 @@ class AddChallenges extends Component {
                   type="text"
                   name="name"
                   value={this.state.name}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                section:
+                <textArea
+                  type="text"
+                  name="section"
+                  value={this.state.section}
                   onChange={this.handleChange}
                 />
               </label>
