@@ -60,14 +60,14 @@ class Question extends React.Component {
       alert('you finished');
       this.props.setFinishedSection(subjectName, sectionName);
       this.props.setSubjectPoints(subjectName, this.props.subjectPoints + points);
-      
+
       this.props.setTotalPoints(this.props.totalPoints + points);
-      
+
       this.props.history.push(`/teaches-you/${subjectName}`);
       this.props.setIsPlaying(false);
       return;
     }
-    
+
     // + 1 TO GET NEXT ITEM IN THE ARRAY BEFORE CHANGING STATE
     this.props.setShuffledOptions(shuffleArray(questions[index + 1].options));
   }
