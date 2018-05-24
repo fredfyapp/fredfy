@@ -257,6 +257,7 @@ a {
     position: relative;
     top: -15px;
   }
+
   > div{
     width: 210px;
     height: 290px;
@@ -264,27 +265,44 @@ a {
     h2{
       display: none;
     }
-
     &.html{
       background: url("/images/w-html.svg") no-repeat top center / 100% auto;
-
-      h2{
-        display: block;
-        width: 170px;
-        height: 50px;
-        background: url("/images/done.svg") no-repeat center center / 100% auto;
-        position: relative;
-        top: 163px;
-        left: 20px;
-        font-size: .1px;
-        color: rgba(0,0,0,0);
-      }
     }
     &.css{
       background: url("/images/w-css.svg") no-repeat top center / 100% auto;
     }
     &.javascript{
       background: url("/images/w-js.svg") no-repeat top center / 100% auto;
+    }
+    &.python{
+      background: url("/images/w-python.svg") no-repeat top center / 100% auto;
+    }
+    &.java{
+      background: url("/images/w-java.svg") no-repeat top center / 100% auto;
+    }
+    &.php{
+      background: url("/images/w-php.svg") no-repeat top center / 100% auto;
+    }
+    > div.subjectDone{
+      display: block;
+      width: 170px;
+      height: 50px;
+      background: url("/images/done.svg") no-repeat center center / 100% auto;
+      position: relative;
+      top: 167px;
+      left: 20px;
+      font-size: .1px;
+      color: rgba(0,0,0,0);
+    }
+    > div.subjectBlocked{
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4) url(/images/locked.svg) no-repeat center center/50px auto;
+      position: relative;
+      font-size: .1px;
+      color: transparent;
+      cursor: default;
     }
 
   }

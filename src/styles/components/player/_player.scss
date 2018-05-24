@@ -1,4 +1,8 @@
 .player {
-  background: lightblue;
+  padding: 50px;
   height: 100vh;
+  color: #333;
+  .content-container{
+    display: flex;
+  }
 }

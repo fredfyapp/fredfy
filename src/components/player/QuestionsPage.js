@@ -64,13 +64,13 @@ class QuestionsPage extends React.Component {
             {...this.props}
           />
 
-          <CharacterCard characterName={character} />
+          {/* <CharacterCard characterName={character} /> */}
           <Link
             to={`/teaches-you/${subjectName}`}
             onClick={() => {
               this.props.setIsPlaying(false);
             }}>
-            <h3>Go back</h3>
+            <h3 className='goBack'>Go back</h3>
           </Link>
 
           {/* {!isPlaying && (

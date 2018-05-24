@@ -2,9 +2,7 @@
 
 }
 
-.a9{
-  display: none;
-}
+
 .table {
 
   padding: 20px;
@@ -26,6 +24,10 @@
     flex-grow: 1;
     padding: 15px 10px;
 
+    &:nth-child(6), &:nth-child(7), &:nth-child(8)  {
+      display: none;
+    }
+
     &:last-child{
       font-size: 1.2em;
     }
@@ -33,7 +35,7 @@
       width: 50px !important;
       padding: 0 !important;
       flex-grow: 0 !important;
-      margin: 15px;
+      margin: 15px 10px 15px 50px;
     }
   }
 }
@@ -58,7 +60,7 @@
     border:2px solid #fff;
     padding: 0 !important;
     flex-grow: 0 !important;
-    margin: 15px;
+    margin: 15px 10px 15px 50px;
   }
   &:nth-child(1) .pic {
       background: url("/images/face-fred.png") no-repeat center center /53px 53px,

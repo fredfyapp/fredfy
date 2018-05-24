@@ -26,9 +26,10 @@ class ChooseASection extends React.Component {
     const subjectObject = this.props.subjectObject;
     return (
       <div>
-        <h2>{subjectObject.subject}</h2>
+
         <div className="section">
           <div className="section__map">
+            <h2>{subjectObject.subject}</h2>
             <div className="section__section-cards">
               {subjectObject.sections.map(section => {
                 return (

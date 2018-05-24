@@ -1,10 +1,44 @@
 .questions-page {
-  background: lightyellow;
-  height: 95vh;
-
+  background: white;
+  height: 85vh;
+  width: 90%;
+  display: flex;
   margin: 0 auto;
-
+  padding: 50px;
+  border-radius: 8px;
+  align-self: center;
   h2 {
     margin: 0;
   }
+  > div{
+    width: 100%;
+  }
+}
+
+div > h3{
+  font-size: 1.4em;
+  text-align: center;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+form{
+  div{
+    padding: 5px;
+  }
+}
+button{
+  width: 200px;
+  height: 60px;
+  padding: 5px 10px 0;
+  text-transform: uppercase;
+  margin: 20px 0;
+  border: 0;
+  font-family: "Press Start 2P", Verdana, Arial;
+  font-size: .9em;
+  color: #fff;
+  background: url(/images/submit.svg) no-repeat center center/100% auto;
+}
+.goBack{
+
 }

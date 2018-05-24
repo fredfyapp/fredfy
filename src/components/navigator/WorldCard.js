@@ -48,8 +48,10 @@ class WorldCard extends React.Component {
     }
 
     return (
-      <div className={`${subject} ${subjectStatus}`}>
-        <h2>{subject}</h2>
+      <div className={`${subject}`}>
+        <div className={`${subjectStatus}`}>
+          <h2>{subject}</h2>
+        </div>
       </div>
     );
   }

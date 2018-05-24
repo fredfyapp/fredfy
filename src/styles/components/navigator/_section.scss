@@ -5,11 +5,66 @@
 }
 
 .section__map {
-  background: red;
+  background: white;
+  width: 100%;
+  min-height: 500px;
+  padding: 40px;
+  border-radius: 8px;
+  margin: 0 30px 50px 0;
+  color: #333;
+
+  > h2{
+    border-bottom: 2px solid #050948;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    font-family: "Press Start 2P", Verdana, Arial;
+    font-size: 1.3em;
+    color: #050948;
+    text-transform: uppercase;
+
+    &::after {
+      content: ' COURSE';
+      font-family: "Press Start 2P", Verdana, Arial;
+      font-size: 1em;
+      color: #050948;
+      display: inline;
+    }
+  }
 }
 
-.section__sidepanel {
-  background: lightgreen;
+.ranking-panel {
+  background: rgba(0,0,0,0.2);
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  border: 3px solid rgba(0,0,0,.5);
+  border-radius: 8px;
+  .table{
+    margin: 0;
+  }
+  .table__header h3:first-child {
+    width: 100px !important;
+    margin: 0;
+    padding: 15px 10px !important;
+  }
+  .table__header h3 {
+    font-size: .8em !important;
+  }
+
+  a {
+    width: 100%;
+    color: #fff;
+    font-family: "Press Start 2P", Verdana, Arial;
+    font-size: 1.2em;
+    text-align: center;
+
+
+    h3{
+      padding: 10px;
+      margin: 0 10px;
+      text-transform: uppercase;
+      border-bottom: 3px solid rgba(0,0,0,.5);
+    }
+  }
 }
