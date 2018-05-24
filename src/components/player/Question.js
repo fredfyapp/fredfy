@@ -62,14 +62,10 @@ class Question extends React.Component {
     if (questions.length === index + 1) {
       alert('you finished');
       this.props.setFinishedSection(subjectName, sectionName);
-<<<<<<< HEAD
-      this.props.setSubjectPoints(subjectName, this.props.subjectPoints + points);
-=======
       this.props.setSubjectPoints(
         subjectName,
         this.props.subjectPoints + points,
       );
->>>>>>> fc098d8ff6c6156f1282b39e7ee0c98595eff576
 
       this.props.setTotalPoints(this.props.totalPoints + points);
 
