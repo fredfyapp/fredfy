@@ -32,11 +32,11 @@ ReactDOM.render(<Loading />, document.getElementById("app"));
 export const renderApp = () => {
   const jsx = (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <div className="opacity-toggle-slow">
-          <AppRouter />
-        </div>
-      </PersistGate>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <div className="opacity-toggle-slow">
+        <AppRouter />
+      </div>
+      {/* </PersistGate> */}
     </Provider>
   );
   ReactDOM.render(jsx, document.getElementById("app"));

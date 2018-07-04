@@ -4,7 +4,7 @@ import React from "react";
 // ********** REDUX ********** //
 import { connect } from "react-redux";
 
-import { startSetFinishedSubject } from "../../actions/user";
+import { setFinishedSubject } from "../../actions/user";
 
 // ********** SELECTORS ********** //
 import checkFinishedSections from "../../selectors/checkFinishedSections";
@@ -31,13 +31,13 @@ class WorldCard extends React.Component {
             checkFinishedSections(finishedSections) !==
               userSubjects[subjectName].isFinished
           ) {
-            this.props.startSetFinishedSubject(subjectName, true);
+            this.props.setFinishedSubject(subjectName, true);
           } else if (
             checkFinishedSections(finishedSections) === false &&
             checkFinishedSections(finishedSections) !==
               userSubjects[subjectName].isFinished
           ) {
-            this.props.startSetFinishedSubject(subjectName, false);
+            this.props.setFinishedSubject(subjectName, false);
           }
         }
       }
@@ -75,8 +75,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  startSetFinishedSubject: (subject, bool) =>
-    dispatch(startSetFinishedSubject(subject, bool)),
+  setFinishedSubject: (subject, bool) =>
+    dispatch(setFinishedSubject(subject, bool)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorldCard);

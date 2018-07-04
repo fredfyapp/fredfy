@@ -39,7 +39,7 @@ const checkUserId = user => {
       username: user.displayName,
       puzzlesToReview: {},
       puzzlesSolved: {},
-      subjects: {}
+      subjects: {},
     });
   } else {
     console.log("not new");

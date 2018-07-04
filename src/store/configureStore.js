@@ -27,20 +27,20 @@ const persistedReducer = persistReducer(
   }),
 );
 
-// const store = createStore(
-//   combineReducers({
-//     auth: authReducer,
-//     navigation: navigationReducer,
-//     playing: playingReducer,
-//     user: userReducer,
-//     challenge: challengeReducer,
-//   }),
-//   composeEnhancers(applyMiddleware(thunk)),
-// );
-let store = createStore(
-  persistedReducer,
+const store = createStore(
+  combineReducers({
+    auth: authReducer,
+    navigation: navigationReducer,
+    playing: playingReducer,
+    user: userReducer,
+    challenge: challengeReducer,
+  }),
   composeEnhancers(applyMiddleware(thunk)),
 );
+// let store = createStore(
+//   persistedReducer,
+//   composeEnhancers(applyMiddleware(thunk)),
+// );
 export let persistor = persistStore(store);
 
 export default () => {

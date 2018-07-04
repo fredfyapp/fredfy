@@ -13,7 +13,7 @@ export const setChosenCharacter = (subject, character) => ({
 });
 
 export const startSetChosenCharacter = (subject, character) => {
-  (dispatch, getState) => {
+  return (dispatch, getState) => {
     const uid = getState().user.userId;
     database
       .ref(`users/${uid}/subjects/${subject}`)
@@ -41,7 +41,7 @@ export const setFinishedSubject = (subject, bool) => ({
 });
 
 export const startSetFinishedSubject = (subject, bool) => {
-  (dispatch, getState) => {
+  return (dispatch, getState) => {
     const uid = getState().user.userId;
     database
       .ref(`users/${uid}/subjects/${subject}/isFinished`)
